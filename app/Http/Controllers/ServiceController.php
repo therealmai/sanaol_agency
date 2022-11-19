@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -38,7 +39,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate that all the fields are not empty
+        $request->validate([
+            'user_id'    => 'required',
+            'title'    => 'required',
+            'content'  => 'required',
+            'image'    => 'required',
+            'ref'      => 'required',
+        ]);
+
+        // Create a new model
+        Service::create([
+            'user_id'   => $request->user_id,
+            'title'   => $request->title,
+            'content' => $request->content,
+            'image'   => $request->image,
+            'ref'     => '#',
+        ]);
+
+        return response('Service successfully added', 200, ['application/json']);
     }
 
     /**
@@ -83,6 +102,11 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // find service using the id -- soft delete
+        Service::find($id)->update([
+            'is_deleted'  => true
+        ]);
+
+        return response('Service successfully deleted', 200, ['application/json']);
     }
 }

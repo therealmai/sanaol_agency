@@ -23,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/services', 'ServiceController@index');
 Route::get('/services/{id}', 'ServiceController@show');
 Route::patch('/services/{id}', 'ServiceController@update');
+Route::post('/services/create', 'ServiceController@store');
+Route::patch('/services/delete/{id}', 'ServiceController@destroy');
