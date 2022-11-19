@@ -11,7 +11,12 @@
     "tailwatch": "npx tailwindcss -i ./src/style.css -o ./src/assets/css/main.css --watch"
   },
   "dependencies": {
-    "vue": "^3.2.41"
+    "@headlessui/vue": "^1.7.4",
+    "@heroicons/vue": "^2.0.13",
+    "@tailwindcss/forms": "^0.5.3",
+    "vue": "^3.2.41",
+    "vue-router": "^4.0.13",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.2.0",

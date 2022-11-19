@@ -513,6 +513,27 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.rounded-\[9px\] {
+  border-radius: 9px;
+}
+
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(46 119 1 / var(--tw-bg-opacity));
+}
+
+.font-inter {
+  font-family: "Inter-Regular";
+}
+
 .drop-shadow {
   --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
