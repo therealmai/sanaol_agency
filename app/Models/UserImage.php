@@ -9,12 +9,12 @@ class UserImage extends Model
 {
     use HasFactory;
 
-    protected $table = "user_images";
+    protected $table = "users_images";
 
     protected $fillable = [
         'user_id',
         'image',
-        'is_meleted'
+        'is_deleted'
     ];
 
     public function User(){

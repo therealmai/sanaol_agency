@@ -9,7 +9,7 @@ class HeroBanner extends Model
 {
     use HasFactory;
 
-    protected $table = "hero_banner";
+    protected $table = "hero_banners";
 
     protected $fillable = [
         'header_tal',

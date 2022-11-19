@@ -16,7 +16,7 @@ class Event extends Model
         'content',
         'image',
         'author',
-        'type',
+        'event_type',
         'location',
         'date',
         'ref',
