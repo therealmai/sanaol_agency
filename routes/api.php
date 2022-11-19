@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HeroBannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('herobanner', [HeroBannerController::class, 'index']);
+Route::post('herobanner/create', [HeroBannerController::class, 'createBanner']);
+Route::put('herobanner/update/{id}', [HeroBannerController::class, 'updateBanner']);
+Route::put('herobanner/delete/{id}', [HeroBannerController::class, 'deleteBanner']);
