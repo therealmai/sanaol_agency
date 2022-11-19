@@ -10,4 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    // 8 hours
+    protected $TZ_OFFSET = 8;
 }
