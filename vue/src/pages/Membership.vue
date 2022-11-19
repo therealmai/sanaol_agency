@@ -1,12 +1,14 @@
 <template>
   <div>
-    THIS IS THE LOGIN PAGE
+    <div>THIS IS THE MEMBERSHIP PAGE</div>
   </div>
+
+  
 </template>
+
 
 <script>
 import Navbar from '../components/Navigation/Navbar.vue';
-
 export default{
   components: {
     Navbar,

@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./index.html",
@@ -7,17 +7,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#2E7701",
-        primaryHovered: "#6DBA3E",
-        secondary: "#C4C4C4",
-        secondaryHovered: "#E0E0E0",
-        lightgray: "#696969",
-        verylightgray: "#F5F5F5",
-        divider: "#EAEAEA",
-        error: "#DE3445",
-        inputField: "#F4F4F4",
-        inputText: "#000000",
-        buttonText: "#FFFFFF",
+        primary: "#7367F0",
+        secondary: "#525252",
+        lightgray: "#D9D9D9",
+        background2: "#F8F8FF",
+        text: "#525252",
+        // primaryHovered: "#6DBA3E",
+        // secondaryHovered: "#E0E0E0",
+        // lightgray: "#696969",
+        // verylightgray: "#F5F5F5",
+        // divider: "#EAEAEA",
+        // error: "#DE3445",
+        // inputField: "#F4F4F4",
+        // inputText: "#000000",
+        // buttonText: "#FFFFFF",
     },
     fontSize: {
         textButtons:"1.5rem",
@@ -26,6 +29,7 @@ module.exports = {
     },
     fontFamily: {
         inter: ['"Inter-Regular"'],
+        
     },
     },
   },
