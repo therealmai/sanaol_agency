@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HeroBanner;
+use App\Models\BannerImage;
 use Illuminate\Http\Request;
 
 class HeroBannerController extends Controller
@@ -18,7 +19,7 @@ class HeroBannerController extends Controller
     }
 
     /**
-     * Create a new hero banner with default values.
+     * Creates a new hero banner.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -47,7 +48,7 @@ class HeroBannerController extends Controller
     }
 
     /**
-     * Update existing hero banner.
+     * Updates existing hero banner.
      * 
      * @param  \Illuminate\Http\Request  $request
      * @param [type] $id
@@ -77,7 +78,7 @@ class HeroBannerController extends Controller
     }
 
     /**
-     * Delete existing hero banner.
+     * Deletes existing hero banner.
      *
      * @param [type] $id
      * @return \Illuminate\Http\Response
@@ -89,6 +90,74 @@ class HeroBannerController extends Controller
 
         if($banner->save()) {
             return response()->json($banner, 200);
+        } else {
+            return response()->json("Error in saving data", 400);
+        }
+    }
+
+    /**
+     * Creates a new hero banner image.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function createBannerImage(Request $request)
+    {
+        $validated = $request->validate([
+            'hero_id' => 'required',
+            'image' => 'required|max:255',
+        ]);
+
+        $bannerImage = new BannerImage;
+        $bannerImage->fill($request->except(['hero_id']));
+        $bannerImage->hero_id = $request->hero_id;
+
+        if($bannerImage->save()) {
+            return response()->json($bannerImage, 200);
+        } else {
+            return response()->json("Error in saving data", 400);
+        }
+    }
+
+    /**
+     * Updates existing hero banner image.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param [type] $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateBannerImage(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'hero_id' => 'required',
+            'image' => 'required|max:255',
+        ]);
+
+        $bannerImage = BannerImage::findOrFail($id);
+        $bannerImage->fill($request->except(['hero_id']));
+        $bannerImage->hero_id = $request->hero_id;
+
+        if($bannerImage->save()) {
+            return response()->json($bannerImage, 200);
+        } else {
+            return response()->json("Error in saving data", 400);
+        }
+    }
+
+    /**
+     * Deletes existing hero banner image.
+     *
+     * @param [type] $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteBannerImage($id)
+    {
+
+        $bannerImage = BannerImage::findOrFail($id);
+        $bannerImage->is_deleted = true;
+
+        if($bannerImage->save()) {
+            return response()->json($bannerImage, 200);
         } else {
             return response()->json("Error in saving data", 400);
         }

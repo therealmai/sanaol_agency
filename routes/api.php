@@ -21,5 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('herobanner', [HeroBannerController::class, 'index']);
 Route::post('herobanner/create', [HeroBannerController::class, 'createBanner']);
-Route::put('herobanner/update/{id}', [HeroBannerController::class, 'updateBanner']);
-Route::put('herobanner/delete/{id}', [HeroBannerController::class, 'deleteBanner']);
+Route::patch('herobanner/update/{id}', [HeroBannerController::class, 'updateBanner']);
+Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'deleteBanner']);
+Route::post('herobanner/image/create', [HeroBannerController::class, 'createBannerImage']);
+Route::patch('herobanner/image/update/{id}', [HeroBannerController::class, 'updateBannerImage']);
+Route::patch('herobanner/image/delete/{id}', [HeroBannerController::class, 'deleteBannerImage']);
