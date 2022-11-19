@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('banner_images', function (Blueprint $table) {
             $table->id();
-            $table->string('fname');
-            $table->string('lname');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('insta_handle');
-            $table->enum('user_type', ['general', 'admin', 'talent'])->default('general');
-            $table->boolean('is_member')->default(true);
+            $table->foreignId('hero_id');
+            $table->foreign('hero_id')->references('id')->on('hero_banners')->onDelete('cascade');
+            $table->string('image')->nullable();
             $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('banner_images');
     }
 };
