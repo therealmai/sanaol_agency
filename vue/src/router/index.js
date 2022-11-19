@@ -3,8 +3,10 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import App from "../App.vue";
 import Login from "../pages/Login.vue";
-import store from "../store";
+import Hero from "../pages/Hero.vue";
+import MainLayout from "../components/MainLayout.vue";
 
+import store from "../store";
 
 
 const routes = [
@@ -12,11 +14,25 @@ const routes = [
         path: "/",
         name: "home",
         component: App,
+        children:[
+            {
+                path: "/",
+                name: "menu",
+                component: ItemMenu,
+            },
+        ]
+
     },
     {
-        path: "/",
+        path: "/login",
         name: "login",
         component: Login,
+        
+    },
+    {
+        path: "/hero",
+        name: "hero",
+        component: Hero,
     },
 ];
 
