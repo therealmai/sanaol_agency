@@ -62,7 +62,7 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes: routes,
-    linkActiveClass: "px-0 py-2 bg-primary rounded-lg drop-shadow-lg text-white"
+    linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white"
 });
 
 // router.beforeEach((to, from, next) => {

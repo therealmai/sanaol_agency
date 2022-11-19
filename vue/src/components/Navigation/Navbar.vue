@@ -7,19 +7,19 @@
     
     <div class="space-x-6 pr-4">
       <router-link :to="{ name: 'membership' }">
-        <span class="font-medium px-2 py-2 text-slate-700 rounded-l ">MEMBERSHIP</span>
+        <span class="font-medium px-2 py-2 rounded-l ">MEMBERSHIP</span>
       </router-link>
       <router-link :to="{ name: 'talent' }">
-        <span class="font-medium px-2 py-2 text-slate-700 rounded-l ">TALENTS</span>
+        <span class="font-medium px-2 py-2 rounded-l ">TALENTS</span>
       </router-link>
       <router-link :to="{ name: 'services' }">
-        <span class="font-medium px-2 py-2 text-slate-700 rounded-l ">SERVICES</span>
+        <span class="font-medium px-2 py-2 rounded-l ">SERVICES</span>
       </router-link>
       <router-link :to="{ name: 'events' }">
-        <span class="font-medium px-2 py-2 text-slate-700 rounded-l ">NEWS & EVENTS</span>
+        <span class="font-medium px-2 py-2 rounded-l ">NEWS & EVENTS</span>
       </router-link>
       <router-link :to="{ name: 'login' }">
-        <span class="font-medium px-2 py-2 text-slate-700 rounded-l ">{{user.name}}</span>
+        <span class="font-medium px-2 py-2 rounded-l ">{{user.name}}</span>
       </router-link>
     </div>
 </nav>
