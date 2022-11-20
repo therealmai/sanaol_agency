@@ -22,11 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Users
-Route::get('users/all', [UserController::class, 'index'])->name('user.index');
+Route::get('users', [UserController::class, 'index'])->name('user.index');
 Route::post('users/create', [UserController::class, 'store'])->name('user.create');
 Route::get('users/{id}', [UserController::class, 'show'])->name('user.getUser');
-Route::put('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
-Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
+Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
+Route::patch('users/delete/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
 
 //Services
 Route::get('/services', 'ServiceController@index');
