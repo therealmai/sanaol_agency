@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/services', 'ServiceController@index');
 Route::get('/services/{id}', 'ServiceController@show');
 Route::patch('/services/{id}', 'ServiceController@update');
+
+Route::patch('/news/delete/{id}', 'NewsController@delete');
+Route::patch('/news/update/{id}', 'NewsController@update');
