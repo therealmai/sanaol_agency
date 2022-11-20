@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    private $TB_NAME = 'services';
     private $MSG_ERR_ID_NOT_FOUND = 'ID did not match any of the service found in database.';
     private $MSG_ERR_ADDITIONAL_PROPS = 'Model does not contain properties found in request';
     private $MSG_SUC_ID_FOUND = 'Service found.';
@@ -27,16 +26,6 @@ class ServiceController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -44,7 +33,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate that all the fields are not empty
+        $request->validate([
+            'user_id'    => 'required',
+            'title'    => 'required',
+            'content'  => 'required',
+            'image'    => 'required',
+            'ref'      => 'required',
+        ]);
+
+        // Create a new model
+        Service::create([
+            'user_id'   => $request->user_id,
+            'title'   => $request->title,
+            'content' => $request->content,
+            'image'   => $request->image,
+            'ref'     => '#',
+        ]);
+
+        return response('Service successfully added', 200, ['application/json']);
     }
 
     /**
@@ -124,7 +131,12 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // find service using the id -- soft delete
+        Service::find($id)->update([
+            'is_deleted'  => true
+        ]);
+
+        return response('Service successfully deleted', 200, ['application/json']);
     }
 
     public function generateRes($data, $status, $msg) {
