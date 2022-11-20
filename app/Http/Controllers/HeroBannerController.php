@@ -41,9 +41,9 @@ class HeroBannerController extends Controller
         $banner->user_id = $request->user_id;
 
         if($banner->save()) {
-            return response()->json($banner, 200);
+            return response()->json("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400);
+            return response()->json("Error in saving data", 400, ['application/json']);
         }
     }
 
@@ -71,9 +71,9 @@ class HeroBannerController extends Controller
         $banner->user_id = $request->user_id;
 
         if($banner->save()) {
-            return response()->json($banner, 200);
+            return response()->json("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400);
+            return response()->json("Error in saving data", 400, ['application/json']);
         }
     }
 
@@ -89,9 +89,9 @@ class HeroBannerController extends Controller
         $banner->is_deleted = true;
 
         if($banner->save()) {
-            return response()->json($banner, 200);
+            return response()->json("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400);
+            return response()->json("Error in saving data", 400, ['application/json']);
         }
     }
 
@@ -113,9 +113,9 @@ class HeroBannerController extends Controller
         $bannerImage->hero_id = $request->hero_id;
 
         if($bannerImage->save()) {
-            return response()->json($bannerImage, 200);
+            return response()->json("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400);
+            return response()->json("Error in saving data", 400, ['application/json']);
         }
     }
 
@@ -138,9 +138,9 @@ class HeroBannerController extends Controller
         $bannerImage->hero_id = $request->hero_id;
 
         if($bannerImage->save()) {
-            return response()->json($bannerImage, 200);
+            return response()->json("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400);
+            return response()->json("Error in saving data", 400, ['application/json']);
         }
     }
 
@@ -157,9 +157,9 @@ class HeroBannerController extends Controller
         $bannerImage->is_deleted = true;
 
         if($bannerImage->save()) {
-            return response()->json($bannerImage, 200);
+            return response()->json("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400);
+            return response()->json("Error in saving data", 400, ['application/json']);
         }
     }
 }
