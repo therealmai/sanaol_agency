@@ -47,6 +47,7 @@ npm run dev
 Terminal 2 - watch for css changes; install compilation and build
 
 ```
+cd vue
 npm run tailwatch
 ```
 
