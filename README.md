@@ -93,3 +93,19 @@ php artisan serve
 
 ```
 
+### CREATING A TICKET BRANCH
+
+Steps to create a ticket branch.
+1. Merge "main" branch to "{feature}/main" branch to update the "{feature}/main" branch. 
+    Ex: services/main, events/main
+2. Checkout to "{feature}/main" and do
+```
+git checkout -b {feature}/{ticket no.}
+
+```
+
+### CREATING A PR
+
+Steps to create a pull request.
+1. Ensure your ticket finishes testing
+2. TBD
