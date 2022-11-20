@@ -32,3 +32,5 @@ Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.dele
 Route::get('/services', 'ServiceController@index');
 Route::get('/services/{id}', 'ServiceController@show');
 Route::patch('/services/{id}', 'ServiceController@update');
+Route::post('/services/create', 'ServiceController@store');
+Route::patch('/services/delete/{id}', 'ServiceController@destroy');
