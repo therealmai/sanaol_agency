@@ -1,5 +1,5 @@
 <template>
-  <nav class=" bg-white drop-shadow-lg absolute-top fixed top-0  flex justify-between items-center space-x-4 h-[77px] min-h-[77px] w-full">
+  <nav class=" bg-white drop-shadow-lg absolute-top fixed top-0  flex justify-between items-center space-x-4 h-[64px] min-h-[64px] w-full">
     <div class="flex items-center ">
       <span class="p-6 m-6 bg-lightgray"></span>
       <p class="text-primary font-bold text-lg">System Name</p>

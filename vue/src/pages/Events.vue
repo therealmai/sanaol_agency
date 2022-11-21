@@ -1,10 +1,11 @@
 <template>
+<body>
   <div>
     <div>THIS IS THE EVENTS PAGE</div>
     
   </div>
 
-  
+</body>
 </template>
 
 
