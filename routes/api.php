@@ -25,8 +25,8 @@ Route::get('/services', 'ServiceController@index');
 Route::get('/services/{id}', 'ServiceController@show');
 Route::patch('/services/{id}', 'ServiceController@update');
 
-Route::post('/news/create', 'NewsController@create');
-Route::get('/news', 'NewsController@read');
-Route::get('/news/{id}', 'NewsController@show');
-Route::patch('/news/delete/{id}', 'NewsController@delete');
-Route::patch('/news/update/{id}', 'NewsController@update');
+Route::get('news', [NewsController::class, 'index']);
+Route::post('news/create', [NewsController::class, 'store']);
+Route::get('news/{id}', [NewsController::class, 'show']);
+Route::patch('news/{id}', [NewsController::class, 'update']);
+Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
