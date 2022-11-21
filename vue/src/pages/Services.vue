@@ -1,5 +1,5 @@
 <template>
-<body
+<body>
  <div style="padding-top: 96px; padding-left: 237.5px; padding-right: 237.5px; margin-bottom: 18px;color: #525252;">
   <h1 style=" font-weight: 700; text-align: center;font-size: x-large; ">Our Services</h1>
   <div style="font-size: large; margin-bottom: 8px; font-weight: 500;"> Management Team </div> 

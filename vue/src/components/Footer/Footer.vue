@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-primary flex inset-x-0 bottom-0 justify-between items-center space-x-4 h-[77px] min-h-[287.85px] w-full " 
+  <div class=" bg-primary flex inset-x-0 bottom-0 justify-between items-center space-x-4 h-[77px] min-h-[287.85px] w-full " >
       <!-- Footer Contents -->
       <footer class="text-center lg:text-left footer-bg text-white">
   <div class="mx-6 py-10 text-center md:text-left">
