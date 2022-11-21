@@ -26,7 +26,7 @@ Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 Route::patch('herobanner/{id}', [HeroBannerController::class, 'update']);
 Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
 
-
+Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
 Route::post('herobanner/image', [BannerImageController::class, 'store']);
 Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
 Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);

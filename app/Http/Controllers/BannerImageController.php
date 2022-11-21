@@ -40,21 +40,28 @@ class BannerImageController extends Controller
         $bannerImage->hero_id = $request->hero_id;
 
         if($bannerImage->save()) {
-            return response()->json("Succesfully saved data!", 200, ['application/json']);
+            return response("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400, ['application/json']);
+            return response("Error in saving data", 400, ['application/json']);
         }
     }
 
     /**
      * Display the specified hero banner image.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param [type] $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
         
+        $bannerImage = BannerImage::where('hero_id', $id)->get();
+
+        if(!$bannerImage->isEmpty()) {
+            return response($this->generateRes($bannerImage, 200, $this->MSG_SUC_ID_FOUND), 200, ['application/json']);
+        } else {
+            return response($this->generateRes($bannerImage, 400, $this->MSG_ERR_ID_NOT_FOUND), 400, ['application/json']);
+        }
     }
 
     /**
@@ -76,9 +83,9 @@ class BannerImageController extends Controller
         $bannerImage->hero_id = $request->hero_id;
 
         if($bannerImage->save()) {
-            return response()->json("Succesfully saved data!", 200, ['application/json']);
+            return response("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400, ['application/json']);
+            return response("Error in saving data", 400, ['application/json']);
         }
     }
 
@@ -95,9 +102,18 @@ class BannerImageController extends Controller
         $bannerImage->is_deleted = true;
 
         if($bannerImage->save()) {
-            return response()->json("Succesfully saved data!", 200, ['application/json']);
+            return response("Succesfully saved data!", 200, ['application/json']);
         } else {
-            return response()->json("Error in saving data", 400, ['application/json']);
+            return response("Error in saving data", 400, ['application/json']);
         }
+    }
+
+    public function generateRes($data, $status, $msg) {
+        $res = [
+            'data' => $data,
+            'status' => $status,
+            'msg' => $msg
+        ];
+        return $res;
     }
 }
