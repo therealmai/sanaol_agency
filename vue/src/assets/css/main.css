@@ -58,6 +58,10 @@ body {
   margin: 0;
   /* 1 */
   line-height: inherit;
+    padding: 0; margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
   /* 2 */
 }
 
@@ -555,6 +559,8 @@ video {
 
 .m-6 {
   margin: 1.5rem;
+  margin-right: 12px;
+  margin-left: 20%;
 }
 
 .mx-6 {
@@ -644,7 +650,7 @@ video {
 }
 
 .h-\[77px\] {
-  height: 77px;
+  height: 64px;
 }
 
 .h-\[47px\] {
@@ -677,7 +683,7 @@ video {
 }
 
 .min-h-\[77px\] {
-  min-height: 77px;
+  min-height: 63px;
 }
 
 .w-screen {
@@ -686,6 +692,7 @@ video {
 
 .w-full {
   width: 100%;
+ 
 }
 
 .w-4 {

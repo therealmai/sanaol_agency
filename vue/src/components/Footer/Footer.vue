@@ -1,4 +1,5 @@
 <template>
+
   <footer class="bg-primary flex justify-between items-center space-x-4 h-[77px] min-h-[287.85px]">
       <!-- Footer Contents -->
   <div class="text-center lg:text-left footer-bg text-white">

@@ -1,10 +1,12 @@
 <template>
-  <div class="m-12">
-    <div class="flex flex-row justify-center relative">
-      <div>THIS IS THE EVENTS PAGE</div>
-      <TextInput title="Name" :focus="false" default="Default Value"></TextInput>
-    </div>
+
+<body>
+  <div>
+    <div>THIS IS THE EVENTS PAGE</div>
+    
   </div>
+</body>
+
 </template>
 
 

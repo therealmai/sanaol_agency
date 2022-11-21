@@ -36,11 +36,6 @@ const routes = [
                 component: Hero
             },
             {
-                path: "/membership",
-                name: "membership",
-                component: Membership
-            },
-            {
                 path: "/talent",
                 name: "talent",
                 component: Talent
@@ -56,6 +51,13 @@ const routes = [
                 component: Events
             },
         ]
+        
+    },
+
+    {
+        path: "/membership",
+        name: "membership",
+        component: Membership
     },
 ];
 
