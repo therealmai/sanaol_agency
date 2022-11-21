@@ -1,12 +1,11 @@
 <template>
-  <div class="bg-primary flex inset-x-0 bottom-0 justify-between items-center space-x-4 h-[77px] min-h-[287.85px] w-full ">
+  <footer class="bg-primary flex justify-between items-center space-x-4 h-[77px] min-h-[287.85px]">
       <!-- Footer Contents -->
-      <footer class="text-center lg:text-left footer-bg text-white">
+  <div class="text-center lg:text-left footer-bg text-white">
   <div class="mx-6 py-10 text-center md:text-left">
     <div class="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div class="">
         <h6 class= "
-            
             font-semibold
             mb-4
             flex
@@ -102,10 +101,10 @@
     <span>© 2022 Sanaol Agency. All Rights Reserved.
 </span>
     </div>
-</footer>
+</div>
       
 
-  </div>
+  </footer>
 </template>
 
 <script>

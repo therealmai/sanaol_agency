@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class="flex flex-col h-screen w-screen">
     <!-- Navbar -->
     <Navbar></Navbar>
 
     <!-- content -->
-    <router-view></router-view>
+    <div class="flex-grow mb-auto relative">
+      <router-view></router-view> 
+    </div>
 
     <!-- Footer -->
     <Footer></Footer>

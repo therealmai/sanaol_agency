@@ -16,11 +16,12 @@ module.exports = {
         divider: "#E7E7E7",
         
         detailText: "#989898",
+        inputOutline: "#A8A8A8",
+        textInput:"#A8A8A8",
         // secondaryHovered: "#E0E0E0",
         // lightgray: "#696969",
         // verylightgray: "#F5F5F5",
         // error: "#DE3445",
-        // inputField: "#F4F4F4",
         // inputText: "#000000",
         // buttonText: "#FFFFFF",
     },
