@@ -12,7 +12,6 @@ class BannerImage extends Model
     protected $table = "banner_images";
 
     protected $fillable = [
-        'hero_id',
         'image',
         'is_deleted'
     ];
