@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HeroBannerController;
+use App\Http\Controllers\BannerImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('herobanner', [HeroBannerController::class, 'index']);
-Route::post('herobanner/create', [HeroBannerController::class, 'createBanner']);
-Route::patch('herobanner/update/{id}', [HeroBannerController::class, 'updateBanner']);
-Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'deleteBanner']);
-Route::post('herobanner/image/create', [HeroBannerController::class, 'createBannerImage']);
-Route::patch('herobanner/image/update/{id}', [HeroBannerController::class, 'updateBannerImage']);
-Route::patch('herobanner/image/delete/{id}', [HeroBannerController::class, 'deleteBannerImage']);
+Route::post('herobanner', [HeroBannerController::class, 'store']);
+Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
+Route::patch('herobanner/{id}', [HeroBannerController::class, 'update']);
+Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
+
+
+Route::post('herobanner/image', [BannerImageController::class, 'store']);
+Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
+Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
