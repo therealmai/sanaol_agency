@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HeroBannerController;
 use App\Http\Controllers\BannerImageController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,11 @@ Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
 Route::post('herobanner/image', [BannerImageController::class, 'store']);
 Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
 Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
+
+
+//News 
+Route::get('news', [NewsController::class, 'index']);
+Route::post('news/create', [NewsController::class, 'store']);
+Route::get('news/{id}', [NewsController::class, 'show']);
+Route::patch('news/{id}', [NewsController::class, 'update']);
+Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
