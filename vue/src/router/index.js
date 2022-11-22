@@ -5,10 +5,11 @@ import App from "../App.vue";
 import Login from "../pages/Login.vue";
 import Hero from "../pages/Hero.vue";
 import Membership from "../pages/Membership.vue";
-import Talent from "../pages/Talent.vue";
+import Talent_List from "../pages/Talent_List.vue";
 import Services from "../pages/Services.vue";   
 import Events from "../pages/Events.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
+
 
 import store from "../store";
 
@@ -36,9 +37,9 @@ const routes = [
                 component: Hero
             },
             {
-                path: "/talent",
-                name: "talent",
-                component: Talent
+                path: "/talent_list",
+                name: "talent_list",
+                component: Talent_List
             },
             {
                 path: "/services",
@@ -50,6 +51,7 @@ const routes = [
                 name: "events",
                 component: Events
             },
+            
         ]
         
     },

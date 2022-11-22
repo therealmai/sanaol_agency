@@ -11,7 +11,7 @@
       <router-link :to="{ name: 'membership' }">
         <span class="font-medium px-2 py-2 rounded-l ">MEMBERSHIP</span>
       </router-link>
-      <router-link :to="{ name: 'talent' }">
+      <router-link :to="{ name: 'talent_list' }">
         <span class="font-medium px-2 py-2 rounded-l ">TALENTS</span>
       </router-link>
       <router-link :to="{ name: 'services' }">
