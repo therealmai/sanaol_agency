@@ -6,6 +6,7 @@ import Login from "../pages/Login.vue";
 import Hero from "../pages/Hero.vue";
 import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
+import Talent_User from "../pages/Talent_User.vue";
 import Services from "../pages/Services.vue";   
 import Events from "../pages/Events.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
@@ -51,6 +52,11 @@ const routes = [
                 name: "events",
                 component: Events
             },
+            {
+                path: "/talent_user",
+                name: "talent_user",
+                component: Talent_User
+            }
             
         ]
         
