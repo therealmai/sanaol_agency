@@ -26,10 +26,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Protected Routes
+//For all users
 Route::group(['middleware' => ['auth:sanctum']], function() {
     //Auth
-    Route::get('auth/logout', [AuthController::class, 'logout']);;
+    Route::post('auth/logout', [AuthController::class, 'logout']);
+});
 
+//For talents
+Route::group(['middleware' => ['auth:talents']], function() {
+    //
+});
+
+//For admins
+Route::group(['middleware' => ['auth:admins']], function() {
     //Users
     Route::post('users/create', [UserController::class, 'store'])->name('user.create');
     Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
@@ -55,6 +64,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 //Auth
 Route::post('auth/register', [AuthController::class, 'register']);
 Route::post('auth/login', [AuthController::class, 'login']);
+
 
 //Users
 Route::get('users', [UserController::class, 'index'])->name('user.index');
