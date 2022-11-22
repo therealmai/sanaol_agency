@@ -679,7 +679,7 @@ video {
 }
 
 .min-h-\[287\.85px\] {
-  min-height: 287.85px;
+  min-height: 230px;
 }
 
 .min-h-\[77px\] {
@@ -1403,4 +1403,7 @@ body {
     text-align: left;
   }
 }
+
+
+
 
