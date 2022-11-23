@@ -75,6 +75,10 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $msg = '';
+        $status = '';
+        $err = false;
+
         $request->validate([
             'user_id' => 'required',
             'title' => 'required',
@@ -87,12 +91,14 @@ class EventsController extends Controller
             'ref' => 'required'
         ]);
 
-        $banner = HeroBanner::findOrFail($id);
-        $banner->fill($request->except(['user_id']));
-        $banner->user_id = $request->user_id;
+        $event = Event::find($id);
+        $event->fill($request->except(['user_id']));
+        $event->user_id = $request->user_id;
 
-        if($banner->save()) {
-            return response("Succesfully saved data!", 200, ['application/json']);
+        if($event->save()) {
+            $msg = $this->MSG_SUC_ID_FOUND;
+            $status = 200;
+            return response($this->generateRes($event, $status, $msg), 200, ['application/json']);
         } else {
             return response("Error in saving data", 400, ['application/json']);
         }
@@ -104,8 +110,24 @@ class EventsController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+        $event->is_deleted = true;
+
+        if($event->save()) {
+            return response("Succesfully deleted data!", 200, ['application/json']);
+        } else {
+            return response("Error in deleting data", 400, ['application/json']);
+        }
+    }
+
+    public function generateRes($data, $status, $msg) {
+        $res = [
+            'data' => $data,
+            'status' => $status,
+            'msg' => $msg
+        ];
+        return $res;
     }
 }
