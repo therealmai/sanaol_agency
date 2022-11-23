@@ -12,7 +12,7 @@ import Events from "../pages/Events.vue";
 import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
 
-
+import UserMgmtModalTester from "../pages/UserMgmtModalTester.vue"
 
 
 import store from "../store";
@@ -64,6 +64,11 @@ const routes = [
                 path: "/reminders",
                 name: "reminders",
                 component: Reminders
+            },
+            {
+                path: "/user_test",
+                name: "user_test",
+                component: UserMgmtModalTester
             }
         ]
         
