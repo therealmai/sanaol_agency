@@ -3,8 +3,13 @@
     <div class="flex items-center justify-center w-full h-full fixed top-0 left-0 bg-black  bg-opacity-50 z-[1000]">
       <div class="flex items-center justify-center flex-col space-y-4 bg-white px-8 py-16 rounded-[4px] w-[546px] h-[325px] relative z-[2] md:m-w-[80%] md:px-8 md:py-4">
         
-        <slot name="modal_content"></slot>
-        <!-- every modal should have a close button -->
+        <!-- to insert custom content use slot="modal_content" in the main page -->
+        
+        <slot name="modal_content"/>
+        <!-- all contents will be rendered here --> 
+        
+
+        <!-- modal close button -->
         <button  :style="{
                   height: height + 'px',
                   width: width + 'px',
