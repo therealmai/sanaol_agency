@@ -9,7 +9,10 @@ import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
 import Services from "../pages/Services.vue";   
 import Events from "../pages/Events.vue";
+import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
+
+
 
 
 import store from "../store";
@@ -56,8 +59,12 @@ const routes = [
                 path: "/talent_user",
                 name: "talent_user",
                 component: Talent_User
+            },
+            {
+                path: "/reminders",
+                name: "reminders",
+                component: Reminders
             }
-            
         ]
         
     },
