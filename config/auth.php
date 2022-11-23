@@ -40,6 +40,21 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'users' => [
+            'driver' => 'sanctum',
+            'provider' => 'users',
+        ],
+    
+        'talents' => [
+            'driver' => 'sanctum',
+            'provider' => 'talents',
+        ],
+    
+        'admins' => [
+            'driver' => 'sanctum',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -63,6 +78,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'talents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Talent::class,
+        ],
+    
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [
