@@ -1,27 +1,28 @@
 <template>
-  <div>
-  <label class="text-primary text-textInput font-semibold">
-    {{ title }}
-  </label>
-  <br>
-  <input
+  <div class="relative z-0 mb-6 w-full group">
+  <!-- <input
     @change="$emit('changeNumber', $event.target.value)"
-    v-model="num"
-    type="number"
-    class="
-      bg-inputField
-      h-[47px]
-      w-[146px]
-      rounded-[9px]
-      outline-none
-      text-textInput
-      pr-6
-      pl-4
-    "
-    :class="['text-' + color]"
+    min="0"
+    class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+            rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+            focus:border--indigo-500 peer"
+
     :style="{ height: height + 'px', width: width + 'px', textAlign: align }"
     :disabled="disable"
-  />
+  /> -->
+
+  <input v-model="num" type="number" name="num" id="num" placeholder=" " min="0" max="100" 
+            class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+            rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+            focus:border--indigo-500 peer" 
+            :disabled="disable"
+            @change="$emit('changeNumber', $event.target.value)"/>
+
+  <label for="num"
+            class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+            px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+            peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+            peer-focus:scale-75 peer-focus:-translate-y-8">{{ title }}</label>
   </div>
 </template>
 
@@ -45,10 +46,10 @@ export default {
   props: {
     default:Number,
     title: String,
-    color: String,
-    height: Number,
     width: Number,
+    height: Number,
     align: String,
+    textAlign: String,
     disabled: Boolean,
   },
   mounted() {
