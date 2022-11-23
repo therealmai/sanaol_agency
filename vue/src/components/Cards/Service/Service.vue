@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <div class="flex items-center justify-between" style="margin-left: 15%; margin-right: 20%; margin-top: 25px; margin-bottom: 15px;">
+        <div class="flex items-center justify-between ml-[15%] mr-[20%] mt-[25px] mb-[25px]">
             <div style="font-size: large; margin-bottom: 8px; font-weight: 500;"> {{ title }} </div>
              <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
             <div class="flex w-fit">
@@ -9,11 +9,12 @@
             </div>
         </div>
 
-        <div style="background-color: #D9D9D9; text-align:center; margin-left: 20%; margin-right: 20%;">
+        <div class="text-center mx-[20%] bg-[#D9D9D9]">
             <!-- use {{ image }} for img src given the filepath -->
             <img :src="image" alt="">
         </div>
-        <p style="text-align: justify; margin-top: 10px;margin-left: 20%; margin-right: 20%; margin-bottom: 10px;">
+
+        <p class="text-justify my-[10px] mx-[20%]">
             {{ content }}
         </p>
     </div>
