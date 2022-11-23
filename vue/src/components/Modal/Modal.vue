@@ -8,7 +8,6 @@
         <slot name="modal_content"/>
         <!-- all contents will be rendered here --> 
         
-
         <!-- modal close button -->
         <button  :style="{
                   height: height + 'px',
