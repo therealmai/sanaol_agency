@@ -1,10 +1,11 @@
   <!-- Sample Page  -->
   <!-- A sample page to show how modal works  -->
-
+  
 <template>
 <body class="flex flex-row justify-center items-center w-full h-full">
   <div>
       <button class="btn-primary" @click="showModal">OPEN MODAL</button>  
+
       <!-- Each modal must have a v-show property and close method to toggle its visibility  -->
       <Modal v-show="isModalVisible">
         <template v-slot:modal_content>
@@ -17,6 +18,8 @@
             <button class="btn-primary px-2 py-2" @click="closeModal">{{ text }}</button>
         </template>
       </Modal> 
+
+
   </div>
 </body>
 </template>
