@@ -15,11 +15,21 @@ body {
   top: 80px;
 }
 
-.user-name {
-  position: absolute; left: 170px;top: 20%; width: 200px; font-weight: bold;
-}
-
-.name-email {
-  position: absolute; left: 20%; top: 35%; color: #7367F0;
+@layer components{
+  .user-name {
+    position: absolute; left: 170px;top: 20%; width: 200px; font-weight: bold;
+  }
   
+  .name-email {
+    position: absolute; left: 20%; top: 35%; color: #7367F0;
+  }
+  
+  .btn-primary{
+    @apply bg-primary text-white p-2 my-1 font-bold w-40 m-0 hover:bg-secondary transition transform hover:-translate-y-1 rounded-sm;
+  }
+
+  .btn-secondary{
+    @apply bg-softgray text-primary p-2 my-1 font-bold w-40 m-0 hover:bg-secondary hover:text-softgray  transition transform hover:-translate-y-1 rounded-sm;
+  }
+
 }
