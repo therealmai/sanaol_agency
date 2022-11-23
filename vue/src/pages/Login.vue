@@ -10,58 +10,34 @@
             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
             alt="logo"
           />
-          <h4 class="text-xl font-semibold mt-1 mb-12 pb-1">Sanaol Agency</h4>
+          <h4 class="text-4xl font-semibold mt-1 mb-12 pb-1">Sanaol Agency</h4>
         </div>
 
         <form>
           <!-- email -->
-          <div class=" mb-4">
-            <input
-              v-model="text"
-              type="email"
-              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none"
-              id="user_email"
-              placeholder="Email Address"
-            />
+          <div class="relative z-0 mb-6 w-full group">
+            <input type="email" name="email" id="email" v-model="email" placeholder=" " required
+              class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+              rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+              focus:border--indigo-500 peer"/>
+            <label for="email"
+              class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+              px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+              peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+              peer-focus:scale-75 peer-focus:-translate-y-8">Email address</label>
           </div>
           
           <!-- password -->
-          <div class="container">
-            <div class="mb-4 relative">
-              <input v-if="showPassword"
-                type="password"
-                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none"
-                id="user_password"
-                placeholder="Password"
-                v-model="password"
-              >
-              <input v-else
-                type="password"
-                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none"
-                id="user_password"
-                placeholder="Password"
-                v-model="password"
-              >
-            </div>
-            <div class="control">
-              <button class="button" @click="toggleShow"><span class="icon is-small is-right">
-                <i class="fas" :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"></i>
-                <font-awesome-icon
-          size="xs"
-          class="hover:cursor-pointer stroke-2"
-          :icon="errorFlag === true ? 'xmark' : 'check'"
-          :class="errorFlag === true ? 'text-error' : 'text-primary'"
-        />
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
-                </svg>
-                </span>
-              </button>
-            </div>
+          <div class="relative z-0 mb-0 w-full group">
+            <input type="password" name="password" id="password" v-model="password"  placeholder=" " required
+              class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+              rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+              focus:border--indigo-500 peer"/>
+            <label for="password"
+              class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+              px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+              peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+              peer-focus:scale-75 peer-focus:-translate-y-8">Password</label>
           </div>
 
           <!-- forgot password -->
@@ -74,15 +50,37 @@
           <!-- Login Button -->
           <div class="text-center pt-1 mb-12 pb-1">
             <button
-              class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-slate-50 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+              class="inline-block px-6 py-4 text-white bg-indigo-500 font-medium text-base leading-tight
+              uppercase rounded shadow-md focus:shadow-lg
+              hover:bg-indigo-50 hover:shadow-lg hover:text-indigo-500
+              focus:outline-none focus:ring-0 active:shadow-lg transition duration-300 ease-in-out w-full mb-3"
               type="button"
               data-mdb-ripple="true"
               data-mdb-ripple-color="light"
-              style="color: #FFFFFF;
-                    background-color: #7367f0;"
+              @click="isUser = true"
+              data-model-toggle="popup-modal"
             >
               Log in
             </button>
+
+            <!-- <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-4 md:inset-0 h-modal md:h-full">
+                <div class="relative w-full max-w-md h-full md:h-auto">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                        <div class="p-6 text-center">
+                            <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
+                            <button data-modal-toggle="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                Yes, I'm sure
+                            </button>
+                            <button data-modal-toggle="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
           </div>
 
           <!-- Membership Button -->
@@ -96,6 +94,7 @@
         </form>
       </div>
     </div>
+    
 
 
     <!-- image -->
@@ -113,24 +112,6 @@ export default{
     Modal,
 
   },
-
-  data() {
-    return {
-      showPassword: false,
-      password: null
-    };
-  },
-  computed: {
-    buttonLabel() {
-      return (this.showPassword) ? "Hide" : "Show";
-    }
-  },
-  methods: {
-    toggleShow() {
-      this.showPassword = !this.showPassword;
-    }
-  }
-
 }
 </script>
 

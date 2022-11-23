@@ -10,172 +10,110 @@
           <!-- Form -->
           <form>
             <!-- Title -->
-            <div class="mb-8">
+            <div class="mb-10">
               <h1 class="text-4xl font-bold">Become a Rising Star</h1>
             </div>
 
             <!-- Form Group -->
-            <div class="flex gap-6">
-              <!-- First Name -->
-              <div class="form-group mb-6">
-                <input type="text" v-model="text" class="form-control
-                  block
-                  w-fill
-                  px-3
-                  py-1.5
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700 focus:bg-white focus:focus:border-indigo-500 focus:outline-none" id=""
-                  aria-describedby="" placeholder="First name">
+            <div class="grid md:grid-cols-2 md:gap-6">
+              <div class="relative z-0 mb-6 w-full group">
+                <input type="text" name="fname" id="fname" v-model="text" placeholder=" " required
+                  class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+                  rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+                  focus:border--indigo-500 peer"/>
+                <label for="fname"
+                  class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+                  px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+                  peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+                  peer-focus:scale-75 peer-focus:-translate-y-8">First Name</label>
               </div>
-              <!-- Last Name -->
-              <div class="form-group mb-6">
-                <input type="text" v-model="text" class="form-control
-                  block
-                  w-fill
-                  px-3
-                  py-1.5
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700 focus:bg-white focus:focus:border-indigo-500 focus:outline-none" id=""
-                  aria-describedby="emailHelp124" placeholder="Last name">
+              <div class="relative z-0 mb-6 w-full group">
+                <input type="text" name="lname" id="lname" v-model="text" placeholder=" " required
+                  class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+                  rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+                  focus:border--indigo-500 peer"/>
+                <label for="lname"
+                  class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+                  px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+                  peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+                  peer-focus:scale-75 peer-focus:-translate-y-8">Last Name</label>
               </div>
             </div>
 
             <!-- Instagram Handle -->
-            <div class="form-group mb-6">
-              <input type="text" v-model="text" class="form-control block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none" id=""
-                placeholder="Instagram Handle">
+            <div class="relative z-0 mb-6 w-full group">
+              <input type="text" name="handle" id="handle" v-model="text" placeholder=" " required
+                class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+                rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+                focus:border--indigo-500 peer"/>
+              <label for="handle"
+                class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+                px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+                peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+                peer-focus:scale-75 peer-focus:-translate-y-8">Instagram Handle</label>
             </div>
 
             <!-- Email -->
-            <div class="form-group mb-6">
-              <input type="email" v-model="email" class="form-control block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none" id=""
-                placeholder="Email address">
+            <div class="relative z-0 mb-6 w-full group">
+              <input type="email" name="email" id="email" v-model="email" placeholder=" " required
+                class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+                rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+                focus:border--indigo-500 peer"/>
+              <label for="email"
+                class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+                px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+                peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+                peer-focus:scale-75 peer-focus:-translate-y-8">Email address</label>
             </div>
             
             <!-- Password -->
-            <div class="form-group mb-6">
-              <input type="password" v-model="password" class="form-control block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none" id=""
-                placeholder="Password">
+            <div class="relative z-0 mb-6 w-full group">
+              <input type="password" name="password" id="password" v-model="password"  placeholder=" " required
+                class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+                rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+                focus:border--indigo-500 peer"/>
+              <label for="password"
+                class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+                px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+                peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+                peer-focus:scale-75 peer-focus:-translate-y-8">Password</label>
             </div>
 
             <!-- Confirm Password -->
-            <div class="form-group mb-6">
-              <input type="password" v-model="password" class="form-control block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none" id=""
-                placeholder="Confirm Password">
+            <div class="relative z-0 mb-6 w-full group">
+              <input type="password" name="confirm_password" id="confirm_password" v-model="password"  placeholder=" " required
+                class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+                rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+                focus:border--indigo-500 peer"/>
+              <label for="confirm_password"
+                class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+                px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+                peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+                peer-focus:scale-75 peer-focus:-translate-y-8">Confirm Password</label>
             </div>
             
             <!-- Why Join Sanaol Agency -->
-            <div class="form-group mb-6">
-              <textarea v-model="text"
-                class="
-                  form-control
-                  block
-                  w-full
-                  px-3
-                  py-1.5
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                "
-                id=""
-                rows="5"
-                placeholder="Why do you want to join Sanaol Agency?"
-              ></textarea>
+            <div class="relative z-0 mb-6 w-full group">
+              <textarea name="reason" id="reason" v-model="text"  placeholder=" " required rows="5"
+                class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+                rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+                focus:border--indigo-500 peer"/>
+              <label for="confirm_password"
+                class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+                px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+                peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+                peer-focus:scale-75 peer-focus:-translate-y-8">Why do you want to join Sanaol Agency</label>
             </div>
 
             <!-- Submit Button -->
             <button type="submit" class="
-              w-full
-              px-6
-              py-2.5
-              bg-indigo-500
-              text-white
-              font-medium
-              text-xs
-              leading-tight
-              uppercase
-              rounded
-              shadow-md
-              hover:bg-indigo-600 hover:shadow-lg
+              w-full px-6 py-3
+              bg-indigo-500 text-white font-medium text-base
+              leading-tight uppercase rounded shadow-md
+              hover:bg-indigo-50 hover:shadow-lg hover:text-indigo-500
               focus:bg-indigo-700 focus:shadow-lg focus:outline-none focus:ring-0
               active:bg-indigo-800 active:shadow-lg
-              transition
-              duration-150
+              transition duration-300
               ease-in-out">APPLY AS A MEMBER</button>
           </form>
       </div>
