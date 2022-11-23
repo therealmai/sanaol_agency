@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HeroBannerController;
 use App\Http\Controllers\BannerImageController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\EventsController;
 
 
 /*
@@ -92,3 +93,9 @@ Route::post('news/create', [NewsController::class, 'store']);
 Route::get('news/{id}', [NewsController::class, 'show']);
 Route::patch('news/{id}', [NewsController::class, 'update']);
 Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
+
+
+//Events
+Route::get('events', [EventsController::class, 'index'])->name('events.get');
+Route::post('events/create', [EventsController::class, 'store'])->name('events.create');
+
