@@ -9,22 +9,16 @@
   </div>
 </body>
 
-  
 </template>
-
 
 <script>
 import Navbar from '../components/Navigation/Navbar.vue';
 import Footer from '../components/Footer/Footer.vue';
-import EmailInput from '../components/Input/EmailInput.vue';
-import NumberInput from '../components/Input/NumberInput.vue';
 
 export default{
   components: {
     Navbar,
     Footer,
-    NumberInput,
-    EmailInput
   },
 }
 </script>

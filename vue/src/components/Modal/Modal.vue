@@ -8,12 +8,9 @@
         <slot name="modal_content"/>
         <!-- all contents will be rendered here --> 
         
-        <!-- modal close button -->
-        <button  :style="{
-                  height: height + 'px',
-                  width: width + 'px',
-                  fontSize: fontSize + 'px',
-                }" class="btn-primary px-2 py-2" @click="closeModal">{{ text }}</button>
+        <!-- close button area-->
+        <slot name="modal_button"/>
+
       </div>
       <div class="absolute w-full h-full shadow-sm"></div>
     </div>
@@ -29,7 +26,7 @@ export default {
     width: Number,
   },
   methods: {
-    closeModal(){ this.$emit('close'); }
+    // closeModal(){ this.$emit('close'); }
   },
 };
 </script>
