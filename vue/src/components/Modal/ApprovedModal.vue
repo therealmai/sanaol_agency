@@ -18,11 +18,11 @@
             />
           </svg>
         </span>
-        <h2 class="font-[700] text-[32px] text-secondary">Updated</h2>
+        <h2 class="font-[700] text-[32px] text-secondary">Approved</h2>
         <p
           class="font-[400] text-[18px] text-secondary text-center leading-[21.78px] max-w-[70%] py-2"
         >
-          Successfully updated {{ text }}
+          Successfully approved {{ text }}
         </p>
         <!-- <ConfirmButton text="OK" @click="close"></ConfirmButton> -->
       </div>

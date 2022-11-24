@@ -202,7 +202,11 @@
           >
             EDIT
           </button>
-          <button v-else class="py-1 rounded-sm bg-violet-500 text-white w-1/5">
+          <button
+            v-else
+            class="py-1 rounded-sm bg-violet-500 text-white w-1/5"
+            @click="updatePop"
+          >
             UPDATE
           </button>
           <button
@@ -215,12 +219,18 @@
           <button
             v-else
             class="py-1 rounded-sm bg-white text-red-500 border border-red-500 w-1/5"
-            @click="closeModal"
+            @click="deletePop"
           >
             DELETE
           </button>
         </div>
 
+        <UpdateModal
+          v-show="isUpdated"
+          text="user"
+          @close="closeModal"
+        ></UpdateModal>
+        <DeletedConfirmationModal v-show="isDeleted" text="user" @close="closeModal"> </DeletedConfirmationModal>
         <!-- modal close button -->
       </div>
       <div class="absolute w-full h-full"></div>
@@ -229,8 +239,15 @@
 </template>
 
 <script>
+import UpdateModal from "../UpdateModal.vue";
+import DeletedConfirmationModal from "../UserManagementModals/DeletedConfirmationModal.vue";
+
 export default {
-  name: "Modal",
+  name: "EditUserModal",
+  components: {
+    UpdateModal,
+    DeletedConfirmationModal,
+  },
   props: {
     firstName: String,
     lastName: String,
@@ -246,6 +263,8 @@ export default {
   },
   data() {
     return {
+      isUpdated: false,
+      isDeleted: false,
       editMode: false,
       password: "",
       passwordFieldType: "password",
@@ -272,11 +291,19 @@ export default {
         reader.readAsDataURL(input.files[0]);
       }
     },
+    deletePop() {
+      this.isDeleted = true;
+    },
+    updatePop() {
+      this.isUpdated = true;
+    },
     reset() {
       this.image = null;
       this.preview = null;
     },
     closeModal() {
+      this.isDeleted = false;
+      this.isUpdated = false;
       this.editMode = false;
       this.$emit("close");
     },

@@ -1,20 +1,25 @@
 <script>
 import EditUserModal from "../components/Modal/UserManagementModals/EditUserModal.vue";
 import ViewApplicationModal from "../components/Modal/UserManagementModals/ViewApplicationModal.vue";
-import UpdatedModal from "../components/Modal/UserManagementModals/UpdatedModal.vue";
-import Sample from "../pages/Sample.vue";
+import DeletedConfirmationModal from "../components/Modal/UserManagementModals/DeletedConfirmationModal.vue";
+import DeniedConfirmationModal from "../components/Modal/UserManagementModals/DeniedConfirmationModal.vue";
+import ApprovedConfirmationModal from "../components/Modal/UserManagementModals/ApprovedConfirmModal.vue";
 
 export default {
   components: {
     EditUserModal,
     ViewApplicationModal,
-    UpdatedModal,
+    DeletedConfirmationModal,
+    DeniedConfirmationModal,
+    ApprovedConfirmationModal,
   },
   data() {
     return {
       isModalVisible: false,
       isApplicationModalVisible: false,
-      isUpdatedModalVisible: false,
+      isDeletedVisible: false,
+      isDeniedVisible: false,
+      isApprovedVisible: false,
     };
   },
   methods: {
@@ -26,8 +31,14 @@ export default {
         case "application":
           this.isApplicationModalVisible = true;
           break;
-        case "updated":
-          this.isUpdatedModalVisible = true;
+        case "deleted":
+          this.isDeletedVisible = true;
+          break;
+        case "denied":
+          this.isDeniedVisible = true;
+          break;
+        case "approved":
+          this.isApprovedVisible = true;
           break;
       }
     },
@@ -39,8 +50,14 @@ export default {
         case "application":
           this.isApplicationModalVisible = false;
           break;
-        case "updated":
-          this.isUpdatedModalVisible = false;
+        case "deleted":
+          this.isDeletedVisible = false;
+          break;
+        case "denied":
+          this.isDeniedVisible = false;
+          break;
+        case "approved":
+          this.isApprovedVisible = false;
           break;
       }
     },
@@ -56,8 +73,14 @@ export default {
     <button class="btn-primary" @click="showModal('application')">
       View Application Modal
     </button>
-    <button class="btn-primary" @click="showModal('updated')">
-      Updated Modal
+    <button class="btn-primary" @click="showModal('deleted')">
+      Deleted Modal
+    </button>
+    <button class="btn-primary" @click="showModal('denied')">
+      Denied Modal
+    </button>
+    <button class="btn-primary" @click="showModal('approved')">
+      Approved Modal
     </button>
   </div>
   <edit-user-modal
@@ -69,8 +92,16 @@ export default {
     v-show="isApplicationModalVisible"
     @close="closeModal('application')"
   />
-  <updated-modal
-    v-show="isUpdatedModalVisible"
-    @close="closeModal('updated')"
+  <deleted-confirmation-modal
+    v-show="isDeletedVisible"
+    @close="closeModal('deleted')"
+  />
+  <denied-confirmation-modal
+    v-show="isDeniedVisible"
+    @close="closeModal('denied')"
+  />
+  <approved-confirmation-modal
+    v-show="isApprovedVisible"
+    @close="closeModal('approved')"
   />
 </template>

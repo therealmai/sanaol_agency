@@ -114,7 +114,7 @@
 
 <script>
 export default {
-  name: "Modal",
+  name: "ViewApplicationModal",
   props: {
     firstName: String,
     LastName: String,
