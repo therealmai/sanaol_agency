@@ -4,33 +4,35 @@
       class="flex items-center justify-center w-full h-full fixed top-0 left-0 bg-black bg-opacity-50 z-[1000]"
     >
       <div
-        class="flex-col space-y-4 bg-white px-8 py-16 rounded-[4px] w-[546px] h-auto relative z-[2] md:m-w-[80%] md:px-8 md:py-4"
+        class="flex-col space-y-4 bg-white px-8 py-16 rounded-[4px] w-[652px] h-auto z-[2] md:m-w-[80%] md:px-8 md:py-4"
       >
         <!-- to insert custom content use slot="modal_content" in the main page -->
 
-        <h1 v-if="!editMode" class="font-bold text-2xl text-secondary">
-          User ID
-        </h1>
-        <h1 v-else class="font-bold text-2xl text-secondary">Edit User</h1>
-        <button
-          class="absolute top-2 right-8 rounded-full flex justify-center items-center w-5 h-5"
-          @click="closeModal"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-            <path
-              d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
-            />
-          </svg>
-        </button>
+        <div class="flex flex-row justify-between items-center py-4">
+          <h1 v-if="!editMode" class="font-bold text-2xl text-secondary">
+            User ID
+          </h1>
+          <h1 v-else class="font-bold text-2xl text-secondary">Edit User</h1>
+          <button
+            class="rounded-full flex justify-center items-center w-5 h-5"
+            @click="closeModal"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path
+                d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
+              />
+            </svg>
+          </button>
+        </div>
         <div class="flex flex-col space-y-4">
           <div class="form-group">
-            <label class="w-auto" for="my-file" v-if="!preview">
+            <label class="w-[150px]" for="my-file" v-if="!preview">
               <div
                 class="rounded-md flex flex-col items-center justify-center pt-5 pb-6 bg-neutral-300 w-[150px] h-[150px]"
                 :class="{ 'hover:bg-neutral-200 cursor-pointer': editMode }"
               >
-                <img v-if="ImageUrl" v-bind:src="ImageUrl" />
+                <img v-if="imageUrl" v-bind:src="imageUrl" />
                 <svg
                   v-else
                   aria-hidden="true"
@@ -130,7 +132,9 @@
               class="focus:outline-none border-none"
               type="text"
               id="instagram_username"
-              :placeHolder="instagramUsername ? instagramUsername : '@NoelGwapo'"
+              :placeHolder="
+                instagramUsername ? instagramUsername : '@NoelGwapo'
+              "
             />
           </div>
           <div
@@ -163,11 +167,7 @@
                 :placeholder="Test"
               />
             </div>
-            <button
-              v-if="editMode"
-              @click="togglePasswordPreview"
-              class="pr-3"
-            >
+            <button v-if="editMode" @click="togglePasswordPreview" class="pr-3">
               <svg
                 v-if="passwordFieldType === 'password'"
                 class="w-5"
