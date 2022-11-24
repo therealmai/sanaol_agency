@@ -8,6 +8,7 @@ import Membership from "../pages/Membership.vue";
 import Talent from "../pages/Talent.vue";
 import Services from "../pages/Services.vue";   
 import Events from "../pages/Events.vue";
+import Edit_Events from "../pages/Edit_Events.vue"
 import MainLayout from "../components/Layout/MainLayout.vue";
 
 import store from "../store";
@@ -49,6 +50,11 @@ const routes = [
                 path: "/events",
                 name: "events",
                 component: Events
+            },
+            {
+                path: "/edit_events",
+                name: "edit_events",
+                component: Edit_Events
             },
         ]
         
