@@ -607,10 +607,13 @@ video {
   z-index: 2;
 }
 
+<<<<<<< Updated upstream
 .z-50 {
   z-index: 50;
 }
 
+=======
+>>>>>>> Stashed changes
 .m-6 {
   margin: 1.5rem;
 }
@@ -641,6 +644,7 @@ video {
   margin-top: 3.5rem;
 }
 
+<<<<<<< Updated upstream
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -649,6 +653,8 @@ video {
   margin-bottom: 0.75rem;
 }
 
+=======
+>>>>>>> Stashed changes
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -683,6 +689,26 @@ video {
 
 .inline-block {
   display: inline-block;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
+.mb-14 {
+  margin-bottom: 3.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.block {
+  display: block;
 }
 
 .mt-4 {
@@ -769,6 +795,7 @@ video {
   height: 406.18px;
 }
 
+<<<<<<< Updated upstream
 .h-12 {
   height: 3rem;
 }
@@ -781,6 +808,8 @@ video {
   max-height: 50%;
 }
 
+=======
+>>>>>>> Stashed changes
 .h-\[520px\] {
   height: 520px;
 }
@@ -807,6 +836,7 @@ video {
 
 .w-full {
   width: 100%;
+<<<<<<< Updated upstream
 }
 
 .w-\[66\.31px\] {
@@ -815,6 +845,8 @@ video {
 
 .w-\[141px\] {
   width: 141px;
+=======
+>>>>>>> Stashed changes
 }
 
 .w-4 {
@@ -862,6 +894,7 @@ video {
   width: 634.81px;
 }
 
+<<<<<<< Updated upstream
 .w-12 {
   width: 3rem;
 }
@@ -903,6 +936,8 @@ video {
   max-width: 70%;
 }
 
+=======
+>>>>>>> Stashed changes
 .max-w-\[458px\] {
   max-width: 458px;
 }
@@ -1071,6 +1106,7 @@ video {
   border-width: 2px;
 }
 
+<<<<<<< Updated upstream
 .border-solid {
   border-style: solid;
 }
@@ -1092,6 +1128,14 @@ video {
 .bg-indigo-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
+=======
+.border {
+  border-width: 1px;
+}
+
+.border-none {
+  border-style: none;
+>>>>>>> Stashed changes
 }
 
 .border {
@@ -1170,10 +1214,13 @@ video {
   padding-right: 3rem;
 }
 
+<<<<<<< Updated upstream
 .p-\[30px\] {
   padding: 30px;
 }
 
+=======
+>>>>>>> Stashed changes
 .p-3 {
   padding: 0.75rem;
 }
@@ -1203,6 +1250,7 @@ video {
   padding-bottom: 14px;
 }
 
+<<<<<<< Updated upstream
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -1211,6 +1259,11 @@ video {
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
+=======
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+>>>>>>> Stashed changes
 }
 
 .px-6 {
@@ -1274,6 +1327,7 @@ video {
   padding-top: 0px;
 }
 
+<<<<<<< Updated upstream
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -1282,10 +1336,13 @@ video {
   padding-bottom: 1.5rem;
 }
 
+=======
+>>>>>>> Stashed changes
 .text-center {
   text-align: center;
 }
 
+<<<<<<< Updated upstream
 .text-\[32px\] {
   font-size: 32px;
 }
@@ -1299,6 +1356,8 @@ video {
   line-height: 1.5rem;
 }
 
+=======
+>>>>>>> Stashed changes
 .text-textButtons {
   font-size: 1.5rem;
 }
@@ -1333,6 +1392,7 @@ video {
   font-size: 28px;
 }
 
+<<<<<<< Updated upstream
 .font-\[700\] {
   font-weight: 700;
 }
@@ -1343,6 +1403,10 @@ video {
 
 .font-\[20px\] {
   font-weight: 20px;
+=======
+.font-medium {
+  font-weight: 500;
+>>>>>>> Stashed changes
 }
 
 .font-normal {
@@ -1357,6 +1421,7 @@ video {
   font-weight: 600;
 }
 
+<<<<<<< Updated upstream
 .font-medium {
   font-weight: 500;
 }
@@ -1373,6 +1438,8 @@ video {
   line-height: 1.25;
 }
 
+=======
+>>>>>>> Stashed changes
 .leading-normal {
   line-height: 1.5;
 }
@@ -1381,6 +1448,7 @@ video {
   line-height: 1;
 }
 
+<<<<<<< Updated upstream
 .text-\[\#7367F0\] {
   --tw-text-opacity: 1;
   color: rgb(115 103 240 / var(--tw-text-opacity));
@@ -1397,16 +1465,23 @@ video {
 }
 
 .text-primary {
+=======
+.text-white {
+>>>>>>> Stashed changes
   --tw-text-opacity: 1;
   color: rgb(115 103 240 / var(--tw-text-opacity));
 }
 
+<<<<<<< Updated upstream
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .text-gray-500 {
+=======
+.text-primary {
+>>>>>>> Stashed changes
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
@@ -1427,12 +1502,15 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+<<<<<<< Updated upstream
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+=======
+>>>>>>> Stashed changes
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1479,6 +1557,7 @@ video {
   transition-duration: 150ms;
 }
 
+<<<<<<< Updated upstream
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -1487,6 +1566,8 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+=======
+>>>>>>> Stashed changes
 body {
   margin: 0;
   display: flex;
@@ -1500,6 +1581,7 @@ body {
   top: 80px;
 }
 
+<<<<<<< Updated upstream
 @layer Reminders {
   .reminders-position {
     margin-left: 15%;
@@ -1550,6 +1632,8 @@ body {
   cursor: pointer;
 }
 
+=======
+>>>>>>> Stashed changes
 .hover\:bg-primaryHovered:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(115 103 240 / var(--tw-bg-opacity));
@@ -1560,6 +1644,7 @@ body {
   color: rgb(238 242 255 / var(--tw-text-opacity));
 }
 
+<<<<<<< Updated upstream
 .hover\:text-indigo-500:hover {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
@@ -1676,6 +1761,9 @@ body {
     max-width: 100%;
   }
 
+=======
+@media (min-width: 640px) {
+>>>>>>> Stashed changes
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1684,6 +1772,7 @@ body {
     grid-template-rows: repeat(1, minmax(0, 1fr));
   }
 }
+<<<<<<< Updated upstream
 
 @media (min-width: 768px) {
   .md\:h-screen {
@@ -1700,6 +1789,12 @@ body {
 
   .md\:max-w-\[50\%\] {
     max-width: 50%;
+=======
+
+@media (min-width: 768px) {
+  .md\:h-screen {
+    height: 100vh;
+>>>>>>> Stashed changes
   }
 
   .md\:grid-cols-2 {
@@ -1710,6 +1805,7 @@ body {
     justify-content: flex-start;
   }
 
+<<<<<<< Updated upstream
   .md\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -1720,6 +1816,8 @@ body {
     padding-bottom: 1rem;
   }
 
+=======
+>>>>>>> Stashed changes
   .md\:text-left {
     text-align: left;
   }
