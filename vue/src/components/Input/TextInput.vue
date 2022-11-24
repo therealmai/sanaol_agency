@@ -11,14 +11,18 @@
           pl-4
           pr-4
           py-[14px]
-          h-[47px]
-          w-[374px]
           bg-inputField
-          rounded-[9px]
+          rounded-[2px]
           text-inputText
           outline
           outline-inputOutline
+          box-outline
+          text-color
         "
+        style = "color: #525252;"
+        :style ="{ width: width + 'px', height: height + 'px', fontSize: fontSize + 'px' }"
+
+
         :class="errorFlag == true ? 'border-2 border-error' : 'border-none'"
         :autofocus="focus"
       />
@@ -55,6 +59,9 @@ export default {
     focus: Boolean,
     errorAlign: String,
     errorText: String,
+    width: Number,
+    height: Number,
+    fontSize: Number,
   },
   data() {
     return {
