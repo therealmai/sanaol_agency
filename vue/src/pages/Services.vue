@@ -7,6 +7,7 @@
   
       <!-- INDIVIDUAL SERVICES -->
       <!-- USE LOOP WHEN FETCHING FROM DATABASE -->
+      <router-link to="/services/edit/1"><PrimaryButton text="EDIT SECTION" color="white" fontSize="15"/></router-link>
       <Service title="Recreational Acitvity" 
                content="A successful competition for me is always going out there and putting 100 percent into whatever I'm doing. 
                         It's not always winning. People, I think, mistake that it's just winning. 
@@ -17,6 +18,7 @@
                image="https://i0.wp.com/www.traveling-up.com/wp-content/uploads/2019/04/COVER-mainstream-beers-in-the-philippines-san-miguel-vintage-bottles.jpg?fit=1200%2C675&ssl=1">
       </Service>
   
+      <router-link to="/services/edit/1"><PrimaryButton text="EDIT SECTION" color="white" fontSize="15"/></router-link>
       <Service title="Demolition" 
                content="We clawed, we chained, our hearts in vain.
                         We jumped, never asking why.
@@ -42,6 +44,7 @@
                image="https://i.ytimg.com/vi/VP8KjbXuP8Y/maxresdefault.jpg">
       </Service>
   
+      <router-link to="/services/edit/1"><PrimaryButton text="EDIT SECTION" color="white" fontSize="15"/></router-link>
       <Service title="Lawnmowing" 
                content="I walked through the door with you.
                         The air was cold.
@@ -69,20 +72,22 @@
   
     </div>
   </body>
-  </template>
+</template>
   
   
-  <script>
+<script>
   import Navbar from '../components/Navigation/Navbar.vue';
   import Service from '../components/Cards/Service/Service.vue';
-  
+  import PrimaryButton from '../components/Buttons/PrimaryButton.vue';
+
   export default{
     components: {
       Navbar,
-      Service
+      Service,
+      PrimaryButton
     },
   }
-  </script>
+</script>
   
-  <style>
-  </style>
+<style>
+</style>

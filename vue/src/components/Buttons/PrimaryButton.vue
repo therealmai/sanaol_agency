@@ -1,5 +1,5 @@
 <template>
-  <div
+  <button
     class="
       flex
       justify-center
@@ -23,7 +23,7 @@
     }"
   >
     {{ finalText }}
-  </div>
+  </button>
 </template>
 
 <script>
@@ -31,9 +31,9 @@ export default {
   name: "PrimaryButton",
   props: {
     text: String,
-    height: Number,
-    width: Number,
-    fontSize: Number,
+    height: String,
+    width: String,
+    fontSize: String,
     color: String,
     hover: String,
   },
