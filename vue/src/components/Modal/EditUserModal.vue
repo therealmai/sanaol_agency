@@ -8,17 +8,18 @@
       >
         <!-- to insert custom content use slot="modal_content" in the main page -->
 
-        <h1 class="font-bold text-2xl">Edit User</h1>
+        <h1 class="font-bold text-2xl text-secondary">Edit User</h1>
         <button
           class="absolute top-2 right-8 rounded-full border border-black flex justify-center items-center w-5 h-5"
+          @click="closeModal"
         >
           X
         </button>
-        <form class="flex flex-col space-y-4">
+        <div class="flex flex-col space-y-4">
           <div class="form-group">
-            <label for="my-file" v-if="!preview">
+            <label class="w-full" for="my-file" v-if="!preview">
               <div
-                class="rounded-md flex flex-col items-center justify-center pt-5 pb-6 bg-neutral-300 w-[150px] h-[150px] cursor-pointer"
+                class="rounded-md flex flex-col items-center justify-center pt-5 pb-6 bg-neutral-300 hover:bg-neutral-200 w-[150px] h-[150px] cursor-pointer"
               >
                 <svg
                   aria-hidden="true"
@@ -37,6 +38,7 @@
                 </svg>
               </div>
               <input
+                :disabled="disabled"
                 type="file"
                 accept="image/*"
                 @change="previewImage"
@@ -67,6 +69,7 @@
                 >First Name</label
               >
               <input
+                :disabled="disabled"
                 class="peer focus:outline-none border-none"
                 id="first_name"
                 type="text"
@@ -79,6 +82,7 @@
                 >Last Name</label
               >
               <input
+                :disabled="disabled"
                 class="focus:outline-none border-none"
                 id="last_name"
                 type="text"
@@ -90,6 +94,7 @@
           >
             <label class="text-sm text-neutral-500" for="role">Role</label>
             <input
+              :disabled="disabled"
               class="focus:outline-none border-none"
               id="role"
               type="text"
@@ -99,9 +104,10 @@
             class="flex flex-col focus-within:border-violet-500 border rounded-md border-neutral-400 w-full pl-3 py-1"
           >
             <label class="text-sm text-neutral-500" for="instagram_username">
-              Isntagram Username
+              Instagram Username
             </label>
             <input
+              :disabled="disabled"
               class="focus:outline-none border-none"
               id="instagram_username"
               type="text"
@@ -114,34 +120,55 @@
               Email Address
             </label>
             <input
-              class="focus:outline-none border-none"
+              :disabled="disabled"
               id="email"
-              type="text"
+              type="email"
+              class="invalid:text-red-500 focus:outline-none border-none"
             />
           </div>
           <div
-            class="flex flex-col focus-within:border-violet-500 border rounded-md border-neutral-400 w-full pl-3 py-1"
+            class="flex flex-row justify-between focus-within:border-violet-500 border rounded-md border-neutral-400 w-full pl-3 py-1"
           >
-            <label class="text-sm text-neutral-500" for="password"
-              >Password</label
-            >
-            <input
-              class="focus:outline-none border-none"
-              id="password"
-              type="password"
-            />
-          </div>
-          <div class="flex flex-row justify-center space-x-3">
-            <button class="py-1 rounded-sm bg-violet-500 text-white w-1/5">
-              UPDATE
-            </button>
+            <div class="flex flex-col w-full">
+              <label class="text-sm text-neutral-500" for="password">
+                Password
+              </label>
+              <input
+                :disabled="disabled"
+                class="focus:outline-none border-none"
+                id="password"
+                :type="passwordFieldType"
+                v-model="password"
+              />
+            </div>
             <button
-              class="py-1 rounded-sm bg-white text-violet-500 border border-violet-500 w-1/5"
+              v-if="!disabled"
+              @click="togglePasswordPreview"
+              class="bg-black p-2 text-white"
             >
-              CANCEL
+              Eyes
             </button>
           </div>
-        </form>
+          <div class="flex flex-row justify-center space-x-3"></div>
+        </div>
+        <div class="flex flex-row justify-center space-x-3">
+          <button
+            v-if="disabled"
+            @click="toggleDisabledForm"
+            class="py-1 rounded-sm bg-violet-500 text-white w-1/5"
+          >
+            EDIT
+          </button>
+          <button v-else class="py-1 rounded-sm bg-violet-500 text-white w-1/5">
+            UPDATE
+          </button>
+          <button
+            class="py-1 rounded-sm bg-white text-violet-500 border border-violet-500 w-1/5"
+            @click="closeModal"
+          >
+            CANCEL
+          </button>
+        </div>
 
         <!-- modal close button -->
       </div>
@@ -154,6 +181,12 @@
 export default {
   name: "Modal",
   props: {
+    firstName: String,
+    LastName: String,
+    Role: String,
+    InstagramUsername: String,
+    Password: "**********",
+
     text: String,
     fontSize: Number,
     height: Number,
@@ -161,12 +194,18 @@ export default {
   },
   data: function () {
     return {
+      disabled: true,
+      password: "",
+      passwordFieldType: "password",
       preview: null,
       image: null,
-
     };
   },
   methods: {
+    togglePasswordPreview() {
+      this.passwordFieldType =
+        this.passwordFieldType === "password" ? "test" : "password";
+    },
     previewImage: function (event) {
       var input = event.target;
       if (input.files) {
