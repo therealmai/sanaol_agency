@@ -7,8 +7,9 @@ import Hero from "../pages/Hero.vue";
 import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
-import Services from "../pages/Services.vue";   
+import Services from "../pages/Services.vue";
 import Events from "../pages/Events.vue";
+import News from "../pages/News.vue";
 import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
 
@@ -33,7 +34,7 @@ const routes = [
                 path: "/login",
                 name: "login",
                 component: Login,
-                
+
             },
             {
                 path: "/hero",
@@ -64,9 +65,14 @@ const routes = [
                 path: "/reminders",
                 name: "reminders",
                 component: Reminders
+            },
+            {
+              path: "/news/:id",
+              name: "news",
+              component: News
             }
         ]
-        
+
     },
 
     {
@@ -89,7 +95,7 @@ const router = createRouter({
 //         next({ name: "navigation" });
 //     }else {
 //         next();
-//     }   
+//     }
 // });
 
 export default router;
