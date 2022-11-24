@@ -14,25 +14,18 @@ module.exports = {
         outline_border: "#525252",
         primaryHovered: "#7367F0",
         divider: "#E7E7E7",
-        
         detailText: "#989898",
         inputOutline: "#A8A8A8",
         textInput:"#A8A8A8",
-        // secondaryHovered: "#E0E0E0",
-        // lightgray: "#696969",
-        // verylightgray: "#F5F5F5",
-        // error: "#DE3445",
-        // inputText: "#000000",
-        // buttonText: "#FFFFFF",
     },
+
     fontSize: {
         textButtons:"1.5rem",
         textModal: "1.25rem",
         textInput: "1.25rem",
     },
     fontFamily: {
-        inter: ['"Inter-Regular"'],
-        
+        inter: ['"Inter"'],
     },
     },
   },

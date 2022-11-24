@@ -21,7 +21,7 @@ body {
   }
   
   .name-email {
-    position: absolute; left: 20%; top: 35%; color: #7367F0;
+    @apply left-2/4 top-1/3 text-[#7367F0] flex flex-row justify-center items-center w-full ;
   }
   
   .btn-primary{
