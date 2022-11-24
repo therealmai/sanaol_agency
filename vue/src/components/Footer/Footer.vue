@@ -1,6 +1,6 @@
 <template>
 
-  <footer class="bg-primary flex justify-between items-center space-x-4 h-[77px] min-h-[287.85px]">
+  <footer class="bg-primary flex justify-between items-center space-x-4 h-[77px] min-h-[230.20px]">
       <!-- Footer Contents -->
   <div class="text-center lg:text-left footer-bg text-white">
   <div class="mx-6 py-10 text-center md:text-left">
@@ -98,7 +98,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center p-6 footer-background-color text-white">
+  <div class="text-center p-6 footer-background-color text-white " style="padding: 0;">
     <span>© 2022 Sanaol Agency. All Rights Reserved.
 </span>
     </div>
