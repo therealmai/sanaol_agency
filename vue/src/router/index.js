@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import App from "../App.vue";
 import Login from "../pages/Login.vue";
 import Hero from "../pages/Hero.vue";
-import HerobannerMG from "../pages/HerobannerMG.vue";
+import HerobannerMG from "../pages/herobannerMG.vue";
 import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
