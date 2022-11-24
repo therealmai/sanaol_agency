@@ -92,13 +92,9 @@
         </div>
         <div class="flex flex-row justify-center space-x-3">
           <button
-            v-if="disabled"
             @click="toggleDisabledForm"
             class="py-1 rounded-sm bg-violet-500 text-white w-1/5"
           >
-            EDIT
-          </button>
-          <button v-else class="py-1 rounded-sm bg-violet-500 text-white w-1/5">
             APPROVE
           </button>
           <button
@@ -124,45 +120,13 @@ export default {
     LastName: String,
     Role: String,
     InstagramUsername: String,
-    Password: "**********",
 
     text: String,
     fontSize: Number,
     height: Number,
     width: Number,
   },
-  data: function () {
-    return {
-      disabled: true,
-      password: "",
-      passwordFieldType: "password",
-      preview: null,
-      image: null,
-    };
-  },
   methods: {
-    toggleDisabledForm() {
-      this.disabled = !this.disabled;
-    },
-    togglePasswordPreview() {
-      this.passwordFieldType =
-        this.passwordFieldType === "password" ? "test" : "password";
-    },
-    previewImage: function (event) {
-      var input = event.target;
-      if (input.files) {
-        var reader = new FileReader();
-        reader.onload = (e) => {
-          this.preview = e.target.result;
-        };
-        this.image = input.files[0];
-        reader.readAsDataURL(input.files[0]);
-      }
-    },
-    reset: function () {
-      this.image = null;
-      this.preview = null;
-    },
     closeModal() {
       this.$emit("close");
     },
