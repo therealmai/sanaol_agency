@@ -6,7 +6,7 @@
             rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
             focus:border--indigo-500 peer" 
             :disabled="disable"
-            @change="$emit('changeNumber', $event.target.value)"/>
+            @change="$emit('changeInput', $event.target.value)"/>
 
   <label for="text"
             class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8

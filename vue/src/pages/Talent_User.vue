@@ -14,12 +14,12 @@
               <div class="text-primary space-y-4 font-inter">
                       <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
-                          <p class="font-bold text-[32px] m-0 p-0">Juan De la Cruz</p>
+                          <p class="font-bold text-[32px] m-0 p-0">{{ name }}</p>
                           <p class="font-semibold text-[20px] p-0">@juandelacruz</p>
                         </div>
                         <div class="flex items-center ">
                           <!-- button -->
-                          <EditBtn style="padding-right:30px" text="Edit Profile" @click="showModal"></EditBtn>
+                          <EditBtn style="padding-right:30px" text="Edit Profile" @click='showModal'></EditBtn>
                         </div>
                       </div>
                     <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8]"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit aut suscipit eum minus, omnis adipisci dicta molestiae corrupti laudantium exercitationem mollitia ipsa illo cupiditate sunt accusamus maxime nostrum aliquid. Praesentium?</p>
@@ -30,12 +30,10 @@
         <div>
             <div class="flex flex-row justify-center md:mt-[120px] sm:mt-[100px]  mb-[250px] ml-[160px] gap-4 h-[667.12px]">
               <!-- pictures inserted here -->
-
               <!-- <div :style="{ backgroundImage: `url(${post.image})` }"></div> -->
               <div class="card-zoom">
-                <div class="card-zoom-image" style="background-image: url('https://pixy.org/src2/624/thumbs350/6241751.jpg')"></div>
+                <div class="card-zoom-image" style='background-image: url("https://pixy.org/src2/624/thumbs350/6241751.jpg")'></div>
               </div>
-                
                 
                 <div class="flex flex-col gap-4">
                   <div class="card-zoom">
@@ -46,13 +44,12 @@
                     <div class="card-zoom-image h-full w-[468.06px] rounded-[8px]" style="background-image: url('https://pixy.org/src2/624/thumbs350/6241753.jpg')"></div>
                   </div>
 
-
                 </div>
             </div>
         </div>
         
         <!-- profile modal display here -->
-        <ProfileModal v-show="isProfileVisible" text="Profile Modal" @profile="closeModal">
+        <ProfileModal v-show="isProfileVisible" text="Profile Modal" @profile="closeModal" @update="showUpdate">
           <template v-slot:profile_body>
             <!-- content here -->
               <div class="flex flex-col w-[800px] max-h-[756px] mt-[30px] space-y-4">  
@@ -64,22 +61,23 @@
                     <div class="h-[450px] w-full">
                         <form action="">
                             <div class="flex flex-row gap-4 ">
-                              <InputField title="First Name"></InputField>
-                              <InputField title="Last Name"></InputField>
+                              <InputField title="First Name" @changeInput='storeFName'></InputField>
+                              <InputField title="Last Name" @changeInput='storeLName'></InputField>
                             </div>
                             <InputField title="Instagram Username"></InputField>
                             <TextArea title="Biography"></TextArea>
                         </form>
                     </div>
-
                     <!-- featured photos -->
-
                     
                 </div>
               </div>
           </template>
         </ProfileModal>
-  
+        
+        <!-- only show when confirm is clicked and isUpdated is true -->
+        <UpdateModal v-show="isUpdated" :text="text" @click="hideUpdate">
+        </UpdateModal>
       </div>
   </body>
   
@@ -92,6 +90,7 @@
   import ProfileModal from '../components/Modal/ProfileEditModal.vue';
   import InputField from '../components/Input/InputField.vue';
   import TextArea from '../components/Input/TextArea.vue';
+  import UpdateModal from "../components/Modal/UpdateModal.vue";
 
 
   export default{
@@ -99,21 +98,42 @@
       EditBtn,
       InputField,
       TextArea,
-      ProfileModal
+      ProfileModal,
+      UpdateModal
     },
     data() {
     return {
-      isProfileVisible: false
+      text: 'Profile',
+      isProfileVisible: false,
+      isUpdated: false,
+      name: 'Juan De La Cruz',
+      lastname: ' ',
+      firstname: ' ',
     }
   },
   methods: {
+    storeFName(value){
+      this.firstname = value;
+      this.name = value;
+    },
+    storeLName(value){
+      this.lastname = value;
+    },
       showModal() {
         this.isProfileVisible = true;
       },
       closeModal() {
         this.isProfileVisible = false;
+      },
+      showUpdate(){
+        this.isProfileVisible = false;
+        this.isUpdated = true;
+      },
+      hideUpdate(){
+        this.isUpdated = false;
       }
-      }
+    },
+   
  };
   
   </script>

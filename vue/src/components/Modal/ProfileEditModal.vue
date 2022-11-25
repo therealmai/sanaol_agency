@@ -15,10 +15,9 @@
             </div>
             
         </template>
-
     </Modal>
     
-    <ConfirmModal v-show="isVisible" @close="closeModal">
+    <ConfirmModal v-show="isVisible" @close="closeModal" @update="toggleUpdate">
         <template #confirm_body>
               <!-- Write code here -->
                 <div class="flex flex-col justify-center items-center space-y-2">
@@ -38,6 +37,8 @@
                 </div>
           </template>
       </ConfirmModal>
+
+   
 
   </div>
 </template>
@@ -62,10 +63,14 @@ export default {
   },
   data() {
     return {  
-      isVisible: false
+      isVisible: false,
     }
   },
   methods: {
+      toggleUpdate(){
+        this.isVisible = false;
+        this.$emit('update');
+      },
       showModal() {
         this.isVisible = true;
       },
@@ -74,7 +79,7 @@ export default {
       },
       close(){
       this.$emit('profile');
-    }
+      }
     }
 };
 </script>

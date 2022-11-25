@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal>
+    <Modal >
       <template #modal_content>
           <slot name="confirm_body"/>
       </template>
@@ -15,10 +15,6 @@
 
     </Modal>
 
-    <UpdateModal v-show="isUpdated" :text="text" @close="closeModal">
-
-    </UpdateModal>
-
   </div>
 
 </template>
@@ -27,7 +23,6 @@
 import Modal from "../Modal/Modal.vue";
 import ConfirmButton from "../Buttons/ConfirmButton.vue";
 import CancelButton from "../Buttons/CancelButton.vue";
-import UpdateModal from "../Modal/UpdateModal.vue";
 
 export default {
   name: 'Confirmation',
@@ -43,15 +38,13 @@ export default {
     Modal,
     ConfirmButton,
     CancelButton,
-    UpdateModal
   },
   methods:{
      closeModal(){ 
-      this.isUpdated = false;
       this.$emit('close');
     },
      update(){
-       this.isUpdated = true;
+      this.$emit('update');
      }
   },
 };
