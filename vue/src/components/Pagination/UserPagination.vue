@@ -1,6 +1,6 @@
 <template>
-    <div class="w-full">
-      <div class="flex justify-between py-4 pl-8 bg-white">
+    <div class="w-full min-w-fit justify-between">
+      <div class="flex py-4 px-8 bg-white">
         <span class="w-3/12 text-lg font-bold text-[#393540]">USER</span>
         <span class="w-4/12 text-lg font-bold text-[#393540]">EMAIL</span>
         <span class="w-2/12 text-lg font-bold text-[#393540]">ROLE</span>
