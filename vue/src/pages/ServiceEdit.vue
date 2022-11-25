@@ -57,7 +57,6 @@
 <script>
     import PrimaryButton from '../components/Buttons/PrimaryButton.vue';
     import CancelButton from '../components/Buttons/CancelButton.vue';
-    import SecondaryButton from '../components/Buttons/SecondaryButton.vue';
     import ConfirmButton from '../components/Buttons/ConfirmButton.vue';
     import Confirmation from '../components/Modal/Confirmation.vue';
     import Modal from '../components/Modal/Modal.vue';
@@ -103,7 +102,6 @@
             }
         },  
         components: {
-            SecondaryButton,
             PrimaryButton,
             Confirmation,
             Modal,
