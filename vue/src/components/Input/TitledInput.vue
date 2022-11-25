@@ -19,7 +19,7 @@
           box-outline
           text-color
           pb-5
-          pt-
+          pt-10
         "
         style = "color: #525252;"
         :style ="{ width: width + 'px', height: height + 'px', fontSize: fontSize + 'px' }"
