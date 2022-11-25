@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
+    './src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js',
   ],
   theme: {
     extend: {
@@ -24,18 +25,23 @@ module.exports = {
         // error: "#DE3445",
         // inputText: "#000000",
         // buttonText: "#FFFFFF",
-    },
-    fontSize: {
-        textButtons:"1.5rem",
-        textModal: "1.25rem",
-        textInput: "1.25rem",
-    },
-    fontFamily: {
-        inter: ['"Inter-Regular"'],
-        
-    },
+      },
+      fontSize: {
+          textButtons:"1.5rem",
+          textModal: "1.25rem",
+          textInput: "1.25rem",
+      },
+      fontFamily: {
+          inter: ['"Inter-Regular"'],
+          
+      },
+      height:{
+        '128': '32rem',
+        '220': '39.5rem',
+      },
     },
   },
-  plugins: []
-  
+  plugins: [
+    require('tw-elements/dist/plugin')
+  ]
 }
