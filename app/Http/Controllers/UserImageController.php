@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserImage;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class UserImageController extends Controller
 {
@@ -32,15 +33,16 @@ class UserImageController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'hero_id' => 'required',
-            'image' => 'required|max:255',
+            'user_id' => 'required',
+            'image' => 'required',
         ]);
 
-        $bannerImage = new BannerImage;
-        $bannerImage->fill($request->except(['hero_id']));
-        $bannerImage->hero_id = $request->hero_id;
+        $userImage = new UserImage;
+        $userImage->fill($request->except(['user_id']));
+        $userImage->user_id = $request->user_id;
+        
 
-        if($bannerImage->save()) {
+        if($userImage->save()) {
             return response("Succesfully saved data!", 200, ['application/json']);
         } else {
             return response("Error in saving data", 400, ['application/json']);
@@ -53,9 +55,15 @@ class UserImageController extends Controller
      * @param  \App\Models\UserImage  $userImage
      * @return \Illuminate\Http\Response
      */
-    public function show(UserImage $userImage)
+    public function show($id)
     {
-        //
+        $userImage = UserImage::where('user_id', $id)->get();
+
+        if(!$userImage->isEmpty()) {
+            return response($this->generateRes($userImage, 200, $this->MSG_SUC_ID_FOUND), 200, ['application/json']);
+        } else {
+            return response($this->generateRes($userImage, 400, $this->MSG_ERR_ID_NOT_FOUND), 400, ['application/json']);
+        }
     }
 
     /**
@@ -65,9 +73,23 @@ class UserImageController extends Controller
      * @param  \App\Models\UserImage  $userImage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserImage $userImage)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'user_id' => 'required',
+            'image' => 'required',
+        ]);
+
+        $userImage = UserImage::find($id);
+        $userImage->fill($request->except(['user_id']));
+        $userImage->user_id = $request->user_id;
+        $userImage->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+
+        if($userImage->save()) {
+            return response("Succesfully saved data!", 200, ['application/json']);
+        } else {
+            return response("Error in saving data", 400, ['application/json']);
+        }
     }
 
     /**
@@ -76,8 +98,26 @@ class UserImageController extends Controller
      * @param  \App\Models\UserImage  $userImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserImage $userImage)
+    public function destroy($id)
     {
-        //
+        
+        $userImage = UserImage::find($id);
+        $userImage->is_deleted = true;
+        $userImage->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+
+        if($userImage->save()) {
+            return response("Succesfully deleted data!", 200, ['application/json']);
+        } else {
+            return response("Error in saving data", 400, ['application/json']);
+        }
+    }
+
+    public function generateRes($data, $status, $msg) {
+        $res = [
+            'data' => $data,
+            'status' => $status,
+            'msg' => $msg
+        ];
+        return $res;
     }
 }
