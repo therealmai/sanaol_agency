@@ -31,7 +31,7 @@ module.exports = {
         textInput: "1.25rem",
     },
     fontFamily: {
-        inter: ['"Inter-Regular"'],
+        inter: ['"Inter"'],
         
     },
     },
