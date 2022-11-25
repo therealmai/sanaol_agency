@@ -11,6 +11,7 @@ import Services from "../pages/Services.vue";
 import Events from "../pages/Events.vue";
 import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
+import UserManagement from "../pages/UserManagement.vue";  
 
 
 
@@ -69,7 +70,12 @@ const routes = [
                 path: "/reminders",
                 name: "reminders",
                 component: Reminders
-            }
+            },
+            {
+                path: "/usermanagement",
+                name: "usermanagement",
+                component: UserManagement
+            },
         ]
         
     },

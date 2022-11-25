@@ -1,12 +1,12 @@
 <template>
     <div
       class="
-        bg-primary
+        bg-white
         text-[20px]
         px-3
         py-1
         uppercase
-        text-white
+        text-black
         font-bold
         hover:cursor-pointer
       "
@@ -24,7 +24,7 @@
     },
     methods: {
       movePage() {
-        this.text == "Prev" ? this.$emit("prev") : this.$emit("next");
+        this.text == "<" ? this.$emit("prev") : this.$emit("next");
       },
     },
     emits: ["prev", "next"],

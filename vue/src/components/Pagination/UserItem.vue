@@ -1,9 +1,13 @@
 <template>
     <div class="flex w-full py-4 pl-8 bg-white border-t border-divider">
-      <span class="w-1/4 text-[#696969] text-textInput">{{image}} {{fname}} {{lname}} {{handle}}</span>
-      <span class="w-1/4 text-[#696969] text-textInput">{{email}}</span>
-      <span class="w-1/4 text-[#696969] text-textInput">{{user_type}}</span>
-      <span class="w-1/4 grid grid-cols-2 text-[#696969] text-textInput gap-x-4">
+      <div class="w-3/12 grid-cols-4 grid-rows-4">
+        <div class="text-[#696969] col-span-2 row-span-4">Image</div>
+        <div class="text-[#696969] col-span-2 row-span-2">JohnDoe</div>
+        <div class="text-[#696969] col-span-2 row-span-2">@jonny</div>
+      </div>
+      <span class="w-4/12 text-[#696969]">gwaposijade@gmail.com</span>
+      <span class="w-2/12 text-[#696969]">Admin</span>
+      <span class="w-3/12 grid grid-cols-2 text-[#696969] gap-x-4">
         <LearnButton :fontSize="16" :height="31" :width="84" text="EDIT" />
         <DeleteButton :fontSize="16" :height="31" :width="84" text="DELETE" />
       </span>

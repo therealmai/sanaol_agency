@@ -7,11 +7,11 @@
         justify-center
         w-[38px]
         uppercase
-        text-white
+        text-black
         font-bold
         hover:cursor-pointer
       "
-      :class="[selected ? 'bg-[#6B6B6B]' : 'bg-secondary']"
+      :class="[selected ? 'bg-[#6B6B6B]' : 'bg-white']"
       @click="$emit('updatePage', page)"
     >
       {{ page }}
