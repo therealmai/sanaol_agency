@@ -9,6 +9,7 @@ import Talent from "../pages/Talent.vue";
 import Services from "../pages/Services.vue";   
 import Events from "../pages/Events.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
+import EventsManagement from "../pages/EventsManagement.vue";
 
 import store from "../store";
 
@@ -49,6 +50,11 @@ const routes = [
                 path: "/events",
                 name: "events",
                 component: Events
+            },
+            {
+                path: "/events_management",
+                name: "events_management",
+                component: EventsManagement
             },
         ]
         
