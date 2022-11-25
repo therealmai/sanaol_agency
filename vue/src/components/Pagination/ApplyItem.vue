@@ -1,5 +1,5 @@
 <template>
-    <div class="flex min-w-max justify-between gap-x-2 py-4 px-8 bg-white border-t border-divider ">
+    <div class="flex min-w-max justify-between gap-x-2 py-1 px-8 bg-white border-t border-divider ">
       <div class="w-3/12 min-w-max grid grid-cols-4 grid-rows-4">
         <div class="text-[#696969] col-span-2 row-span-4">Image</div>
         <div class="text-[#696969] col-span-2 row-span-2">JohnDoe</div>

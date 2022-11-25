@@ -31,7 +31,7 @@
     components: { UserItem, PaginationController },
     data() {
       return {
-        n:[1,2,3,4,5],
+        n:[1,2,3,4,5,6,7,8],
         User:{},
       }
     },
