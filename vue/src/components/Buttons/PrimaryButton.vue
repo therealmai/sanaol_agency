@@ -1,5 +1,6 @@
 <template>
   <button
+    v-on:click="callBack"
     class="
       flex
       justify-center
@@ -37,6 +38,11 @@ export default {
     color: String,
     hover: String,
   },
+  methods: {
+    callBack() {
+      this.$emit('onClick');
+    }
+  },  
   computed: {
     finalText() {
       return this.text;
