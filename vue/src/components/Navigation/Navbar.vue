@@ -14,6 +14,9 @@
       <router-link :to="{ name: 'talent_list' }">
         <span class="font-medium px-2 py-2 rounded-l ">TALENTS</span>
       </router-link>
+      <router-link :to="{ name: 'reminders' }">
+        <span class="font-medium px-2 py-2 rounded-l ">REMINDERS</span>
+      </router-link>
       <router-link :to="{ name: 'services' }">
         <span class="font-medium px-2 py-2 rounded-l ">SERVICES</span>
       </router-link>
