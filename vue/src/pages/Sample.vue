@@ -2,8 +2,7 @@
   <!-- A sample page to show how modal works  -->
   
 <template>
-<body class="flex flex-row justify-center items-center w-full h-full">
-  <div>
+  <div class="flex flex-row justify-center items-center w-full h-full">
       <button class="btn-primary" @click="showModal">OPEN MODAL</button>  
 
       <!-- Each modal must have a v-show property and close method to toggle its visibility  -->
@@ -21,7 +20,6 @@
 
 
   </div>
-</body>
 </template>
 
 <script>

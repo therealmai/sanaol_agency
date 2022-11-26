@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal>
+    <Modal >
       <template #modal_content>
           <slot name="confirm_body"/>
       </template>
@@ -14,10 +14,6 @@
       </template>
 
     </Modal>
-
-    <UpdateModal v-show="isUpdated" :text="text" @close="closeModal">
-
-    </UpdateModal>
 
   </div>
 
@@ -47,11 +43,10 @@ export default {
   },
   methods:{
      closeModal(){ 
-      this.isUpdated = false;
       this.$emit('close');
     },
      update(){
-       this.isUpdated = true;
+      this.$emit('update');
      }
   },
 };

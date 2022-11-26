@@ -31,6 +31,11 @@ const routes = [
         component: MainLayout,
         children:[
             {
+                path: "/membership",
+                name: "membership",
+                component: Membership,
+            },
+            {
                 path: "/login",
                 name: "login",
                 component: Login,
