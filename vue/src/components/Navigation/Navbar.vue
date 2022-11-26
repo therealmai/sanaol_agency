@@ -1,6 +1,6 @@
 <template>
 
-  <nav class=" bg-white drop-shadow-lg flex fixed top-0 z-50 justify-between items-center space-x-4 h-[77px] min-h-[77px] w-full">
+  <nav class=" bg-white drop-shadow-lg flex sticky top-0 z-50 justify-between items-center space-x-4 h-[77px] min-h-[77px] w-full">
 
     <div class="flex items-center ">
       <span class="p-6 m-6 bg-lightgray"></span>

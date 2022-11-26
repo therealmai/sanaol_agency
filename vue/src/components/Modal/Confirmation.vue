@@ -8,8 +8,8 @@
       <!-- buttons here -->
       <template #modal_button>
         <div class="flex flex-row space-x-6 ">
-          <FilledButton text="CONFIRM" @click="update"> </FilledButton>
-          <OutlineButton text="Outline" @click="closeModal"></OutlineButton>
+          <FilledButton text="CONFIRM" @click="update" class="w-[100px]"> </FilledButton>
+          <OutlineButton text="CANCEL" @click="closeModal" class="w-[100px]"></OutlineButton>
         </div>
       </template>
 

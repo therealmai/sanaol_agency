@@ -1,5 +1,5 @@
-<template>
-  <div class="flex m-0">
+<template> 
+  <div class="flex m-0 ">
   
       <div class="flex items-center justify-center container h-fit">
       <!-- insert log in template here. -->

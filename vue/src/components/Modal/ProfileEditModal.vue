@@ -10,8 +10,8 @@
         <template v-slot:modal_button>
             <!-- insert buttons to toggle display of modal -->
             <div class="flex flex-row gap-6 ml-[655px]">
-              <FilledButton @click="showModal" text="Save"></FilledButton>
-              <OutlineButton @click="close" text="Close"></OutlineButton>
+              <FilledButton @click="showModal" class="w-[100px]" text="Save"></FilledButton>
+              <OutlineButton @click="close" class="w-[100px]" text="Close"></OutlineButton>
             </div>
             
         </template>

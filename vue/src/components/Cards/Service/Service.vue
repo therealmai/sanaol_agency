@@ -4,7 +4,7 @@
             <div class="text-[20px] font-bold mb-[8px]"> {{ title }} </div>
              <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
             <div class="flex w-fit">
-                <router-link :to="'/services/edit/'+ id"><FilledButton text="Edit Section" class="w-[100px] text-[12px]" color="white"  ></FilledButton></router-link>
+                <router-link :to="'/services/edit/'+ id"><FilledButton text="Edit Section" class="w-[150px] " color="white"  ></FilledButton></router-link>
             </div>
         </div>
 
@@ -20,11 +20,15 @@
 
 </template>
   
-  
   <script>
   import FilledButton from '../../Buttons/FilledButton.vue';
   export default {
     name: 'Service',
+    data() {
+        return {
+            id: 1
+        }
+    },
     components: {
         FilledButton
     },
