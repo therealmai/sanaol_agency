@@ -11,7 +11,7 @@
         <p class="font-mediem leading-none text-[16px] text-secondary w-full">
           Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         </p>
-        <LearnButton :fontSize="20" :height="36" :width="178" text="LEARN MORE" />
+        <FilledButton class="w-[178]" text="LEARN MORE" />
     </div>
   <!-- </div> -->
 
@@ -19,12 +19,12 @@
 
 <script>
 
-import LearnButton from '../../Buttons/LearnButton.vue';
+import FilledButton from '../../Buttons/FilledButton.vue';
 
 export default {
   name: 'ServiceCard',
   components: {
-    LearnButton
+    FilledButton
   },
   props: {
     text: String,

@@ -8,8 +8,8 @@
       <!-- buttons here -->
       <template #modal_button>
         <div class="flex flex-row space-x-6 ">
-          <ConfirmButton text="CONFIRM" @click="update"></ConfirmButton>
-          <CancelButton text="CANCEL" @click="closeModal"></CancelButton>
+          <FilledButton text="CONFIRM" @click="update"> </FilledButton>
+          <OutlineButton text="Outline" @click="closeModal"></OutlineButton>
         </div>
       </template>
 
@@ -25,8 +25,8 @@
 <script>
 
 import Modal from "../Modal/Modal.vue";
-import ConfirmButton from "../Buttons/ConfirmButton.vue";
-import CancelButton from "../Buttons/CancelButton.vue";
+import FilledButton from "../Buttons/FilledButton.vue";
+import OutlineButton from "../Buttons/OutlineButton.vue";
 import UpdateModal from "../Modal/UpdateModal.vue";
 
 export default {
@@ -41,8 +41,8 @@ export default {
   },
   components: {
     Modal,
-    ConfirmButton,
-    CancelButton,
+    FilledButton,
+    OutlineButton,
     UpdateModal
   },
   methods:{

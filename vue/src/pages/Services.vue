@@ -71,15 +71,11 @@
   
   
 <script>
-  import Navbar from '../components/Navigation/Navbar.vue';
   import Service from '../components/Cards/Service/Service.vue';
-  import PrimaryButton from '../components/Buttons/PrimaryButton.vue';
 
   export default{
     components: {
-      Navbar,
       Service,
-      PrimaryButton
     },
   }
 </script>

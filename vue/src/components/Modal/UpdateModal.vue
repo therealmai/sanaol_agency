@@ -1,5 +1,4 @@
 <template >
-
     <Modal>
         <template #modal_content  >
             <div @click="close" class="flex flex-col justify-center items-center" >
@@ -10,7 +9,7 @@
               <h2 class="font-[700] text-[32px] text-secondary ">Updated</h2>
               <p class="font-[400] text-[18px] text-secondary text-center leading-[21.78px] max-w-[70%] py-2 pb-6">Successfully updated {{ text }}</p>
 
-              <!-- <ConfirmButton text="OK" @click="close"></ConfirmButton> -->
+              <!-- <FilledButton text="OK" @click="close"></FilledButton> -->
             </div>
 
         </template>
@@ -20,13 +19,13 @@
 
 <script>
 import Modal from "../Modal/Modal.vue";
-import ConfirmButton from "../Buttons/ConfirmButton.vue";
+import FilledButton from "../Buttons/FilledButton.vue";
 
 export default {
   name: 'UpdateModal',
   components: {
     Modal,
-    ConfirmButton
+    FilledButton
   },
   props: {
     text: String
