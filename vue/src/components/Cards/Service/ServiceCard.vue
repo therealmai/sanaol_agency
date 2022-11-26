@@ -11,7 +11,7 @@
         <p class="font-mediem leading-none text-[16px] text-secondary w-full">
           Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         </p>
-        <FilledButton class="w-[176px]" text="LEARN MORE"/>
+        <FilledButton class="w-[178]" text="LEARN MORE" />
     </div>
   <!-- </div> -->
 

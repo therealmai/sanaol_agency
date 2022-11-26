@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="flex flex-col">
     <div class="w-full object-cover h-screen lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
  
@@ -26,12 +27,12 @@
   </div>
   
 </div>
+</div>
 </template>
 
 
 <script>
-import Navbar from '../components/Navigation/Navbar.vue';
-// import FilledButton from '../components/Buttons/FilledButton.vue';
+import FilledButton from '../components/Buttons/FilledButton.vue';
 import EventCard from '../components/Cards/Events/EventCard.vue';
 import ServiceCard from '../components/Cards/Service/ServiceCard.vue';
 import NewsCard from '../components/Cards/News/NewsCard.vue';
@@ -40,8 +41,7 @@ import Label from '../components/Label/Label.vue';
 
 export default{
   components: {
-    Navbar,
-    // FilledButton,
+    FilledButton,
     EventCard,
     ServiceCard,
     NewsCard,
