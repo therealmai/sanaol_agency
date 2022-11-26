@@ -10,6 +10,7 @@ module.exports = {
         primary: "#7367F0",
         secondary: "#525252",
         lightgray: "#D9D9D9",
+        lightpurple: "#F6F5FF",
         background2: "#F8F8FF",
         outline_border: "#525252",
         primaryHovered: "#7367F0",
@@ -18,12 +19,6 @@ module.exports = {
         detailText: "#989898",
         inputOutline: "#A8A8A8",
         textInput:"#A8A8A8",
-        // secondaryHovered: "#E0E0E0",
-        // lightgray: "#696969",
-        // verylightgray: "#F5F5F5",
-        // error: "#DE3445",
-        // inputText: "#000000",
-        // buttonText: "#FFFFFF",
     },
     fontSize: {
         textButtons:"1.5rem",
@@ -31,7 +26,7 @@ module.exports = {
         textInput: "1.25rem",
     },
     fontFamily: {
-        inter: ['"Inter-Regular"'],
+        inter: ['"Inter"'],
         
     },
     },

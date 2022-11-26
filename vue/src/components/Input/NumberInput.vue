@@ -1,15 +1,5 @@
 <template>
   <div class="relative z-0 mb-6 w-full group">
-  <!-- <input
-    @change="$emit('changeNumber', $event.target.value)"
-    min="0"
-    class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
-            rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
-            focus:border--indigo-500 peer"
-
-    :style="{ height: height + 'px', width: width + 'px', textAlign: align }"
-    :disabled="disable"
-  /> -->
 
   <input v-model="num" type="number" name="num" id="num" placeholder=" " min="0" max="100" 
             class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
