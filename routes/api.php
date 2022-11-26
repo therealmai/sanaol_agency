@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::patch('/services/delete/{id}', 'ServiceController@destroy');
 
     //HeroBanner
-    Route::post('herobanner', [HeroBannerController::class, 'store']);
+    Route::post('herobanner/create', [HeroBannerController::class, 'store']);
     Route::patch('herobanner/{id}', [HeroBannerController::class, 'update']);
     Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
 
@@ -84,7 +84,6 @@ Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
 Route::post('herobanner/image', [BannerImageController::class, 'store']);
 Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
 Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
-
 
 //News 
 Route::get('news', [NewsController::class, 'index']);
