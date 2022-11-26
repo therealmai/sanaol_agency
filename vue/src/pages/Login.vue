@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <div class="flex m-0">
   
       <div class="flex items-center justify-center container h-fit">
       <!-- insert log in template here. -->
@@ -93,7 +93,7 @@
   
       <!-- image -->
       <div class="object-cover h-auto lg:w-screen md:h-auto bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
-  </body>
+  </div>
   </template>
   
   <script setup>

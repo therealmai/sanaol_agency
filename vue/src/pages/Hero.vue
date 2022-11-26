@@ -33,7 +33,6 @@
 
 <script>
 import Navbar from '../components/Navigation/Navbar.vue';
-import PrimaryButton from '../components/Buttons/PrimaryButton.vue';
 import EventCard from '../components/Cards/Events/EventCard.vue';
 import ServiceCard from '../components/Cards/Service/ServiceCard.vue';
 import NewsCard from '../components/Cards/News/NewsCard.vue';
@@ -43,7 +42,6 @@ import Label from '../components/Label/Label.vue';
 export default{
   components: {
     Navbar,
-    PrimaryButton,
     EventCard,
     ServiceCard,
     NewsCard,

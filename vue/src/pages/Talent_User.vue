@@ -1,6 +1,5 @@
 <template>
 
-  <body>
       <div class="w-full">
         <!-- background cover -->
         <div class="bg-background2 relative h-[321px]">
@@ -18,8 +17,12 @@
                           <p class="font-semibold text-[20px] p-0">@juandelacruz</p>
                         </div>
                         <div class="flex items-center ">
-                          <!-- button -->
-                          <EditBtn style="padding-right:30px" text="Edit Profile" @click='showModal'></EditBtn>
+                        
+                          <!-- edit button will show if the user talent-->
+                          <div v-show="isTalent">  
+                            <EditBtn class="w-[150px]" text="Edit Profile" @click='showModal'></EditBtn>
+                          </div>
+
                         </div>
                       </div>
                     <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8]"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit aut suscipit eum minus, omnis adipisci dicta molestiae corrupti laudantium exercitationem mollitia ipsa illo cupiditate sunt accusamus maxime nostrum aliquid. Praesentium?</p>
@@ -79,19 +82,16 @@
         <UpdateModal v-show="isUpdated" :text="text" @click="hideUpdate">
         </UpdateModal>
       </div>
-  </body>
-  
-    
+
   </template>
   
   
   <script>
-  import EditBtn from '../components/Buttons/EditButton.vue';
+  import EditBtn from '../components/Buttons/FilledButton.vue';
   import ProfileModal from '../components/Modal/ProfileEditModal.vue';
   import InputField from '../components/Input/InputField.vue';
   import TextArea from '../components/Input/TextArea.vue';
   import UpdateModal from "../components/Modal/UpdateModal.vue";
-
 
   export default{
     components: {
@@ -109,6 +109,7 @@
       name: 'Juan De La Cruz',
       lastname: ' ',
       firstname: ' ',
+      isTalent: true
     }
   },
   methods: {

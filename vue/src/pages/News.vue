@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import FilledBtn from '../components/Buttons/ConfirmButton.vue';
-import OutBtn from '../components/Buttons/CancelButton.vue';
+import FilledBtn from '../components/Buttons/FilledButton.vue';
+import OutBtn from '../components/Buttons/OutlineButton.vue';
 
 import axios from 'axios'
 

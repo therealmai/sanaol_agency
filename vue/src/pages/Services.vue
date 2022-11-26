@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <div>
     <!-- MAIN SERVICE PAGE -->
     <div class="pt-[96px] px-[237.5px] mb-[25px] text-[#525252]">
       <!-- TITLE -->
@@ -68,17 +68,15 @@
       </Service>
   
     </div>
-  </body>
+  </div>
   </template>
   
   
   <script>
-  import Navbar from '../components/Navigation/Navbar.vue';
   import Service from '../components/Cards/Service/Service.vue';
   
   export default{
     components: {
-      Navbar,
       Service
     },
   }
