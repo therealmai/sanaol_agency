@@ -1,5 +1,7 @@
 Trello: https://trello.com/b/FaILhCut/masterboard
 
+GDocs: https://docs.google.com/document/d/1Svu7aSQSrrJWlBobQ3g16plVqbe4gtShEG3oo7ViGs8/edit
+
 ERD: https://lucid.app/lucidchart/9a1cab09-f0a9-442d-a978-dfa0e3b312db/edit?viewport_loc=-669%2C-99%2C3945%2C1969%2C0_0&invitationId=inv_39c2fe27-80e4-464b-b9e3-ffd73aea9b29
 
 UI: https://www.figma.com/file/z3FHt6b2J9WzAWoE3pkZcq/Masterboard?node-id=0%3A1&t=RqSsjF12qRpDYPWm-1

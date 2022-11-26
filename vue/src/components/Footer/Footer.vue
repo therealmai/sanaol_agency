@@ -1,6 +1,6 @@
 <template>
 
-  <footer class="bg-primary flex justify-between items-center space-x-4 h-[77px] min-h-[230.20px]">
+  <footer class="bg-primary flex justify-between items-center space-x-4 h-[77px] min-h-[230.20px] bottom-0 w-full">
       <!-- Footer Contents -->
   <div class="text-center lg:text-left footer-bg text-white">
   <div class="mx-6 py-10 text-center md:text-left">

@@ -8,7 +8,9 @@ import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
 import Services from "../pages/Services.vue";   
+import ServiceEdit from "../pages/ServiceEdit.vue"
 import Events from "../pages/Events.vue";
+import News from "../pages/News.vue";
 import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
 
@@ -30,10 +32,15 @@ const routes = [
         component: MainLayout,
         children:[
             {
+                path: "/membership",
+                name: "membership",
+                component: Membership,
+            },
+            {
                 path: "/login",
                 name: "login",
                 component: Login,
-                
+
             },
             {
                 path: "/hero",
@@ -51,6 +58,11 @@ const routes = [
                 component: Services
             },
             {
+                path: "/services/edit/:id",
+                name: "serviceEdit",
+                component: ServiceEdit
+            },
+            {
                 path: "/events",
                 name: "events",
                 component: Events
@@ -64,9 +76,14 @@ const routes = [
                 path: "/reminders",
                 name: "reminders",
                 component: Reminders
+            },
+            {
+              path: "/news/:id",
+              name: "news",
+              component: News
             }
         ]
-        
+
     },
 
     {
@@ -89,7 +106,7 @@ const router = createRouter({
 //         next({ name: "navigation" });
 //     }else {
 //         next();
-//     }   
+//     }
 // });
 
 export default router;
