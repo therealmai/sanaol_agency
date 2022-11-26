@@ -10,8 +10,8 @@
         <template v-slot:modal_button>
             <!-- insert buttons to toggle display of modal -->
             <div class="flex flex-row gap-6 ml-[655px]">
-              <Btn @click="showModal" text="Save"></Btn>
-              <CancelBtn @click="close" text="Close"></CancelBtn>
+              <FilledButton @click="showModal" text="Save"></FilledButton>
+              <OutlineButton @click="close" text="Close"></OutlineButton>
             </div>
             
         </template>
@@ -46,16 +46,16 @@
 <script>
 import Modal from './Modal.vue';
 import ConfirmModal from './Confirmation.vue';
-import Btn from "../Buttons/ConfirmButton.vue";
-import CancelBtn from "../Buttons/CancelButton.vue";
+import FilledButton from "../Buttons/FilledButton.vue";
+import OutlineButton from "../Buttons/OutlineButton.vue";
 import Info from '../Others/Info.vue';
 
 export default {
   components:{
     Modal,
     ConfirmModal,
-    CancelBtn,
-    Btn,
+    OutlineButton,
+    FilledButton,
     Info
   },
   props: {

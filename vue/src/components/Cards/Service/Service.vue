@@ -5,7 +5,6 @@
              <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
             <div class="flex w-fit">
                 <router-link :to="'/services/edit/'+ id"><FilledButton text="Edit Section" class="w-[100px] text-[12px]" color="white"  ></FilledButton></router-link>
-                <FilledButton text="Edit Section" class="w-[186px]"></FilledButton>
             </div>
         </div>
 
@@ -21,7 +20,6 @@
 
 </template>
   
-  </template>
   
   <script>
   import FilledButton from '../../Buttons/FilledButton.vue';
