@@ -1,10 +1,10 @@
 <template>
   <label class="text-textInput font-normal">
-    {{ title }}
+    <div style= "position: absolute;margin-top:35px;margin-left:15px; font-size: 14px;">{{ title }} </div>
     <br />
       <!-- TODO: When verification is set up, bind padding-right to state to accomodate Password eye icon. -->
-      <input
-        v-model="input"
+      <input 
+        
         type="text"
         :maxlength="limit"
         class="
@@ -18,14 +18,20 @@
           outline-inputOutline
           box-outline
           text-color
+          pb-5
+          pt-10
         "
         style = "color: #525252;"
         :style ="{ width: width + 'px', height: height + 'px', fontSize: fontSize + 'px' }"
-
+        :value="modelValue" 
+        @input="$emit('update:modelValue', $event.target.value)"
+        
+        
 
         :class="errorFlag == true ? 'border-2 border-error' : 'border-none'"
         :autofocus="focus"
       />
+      
       <div class="absolute right-5 top-2">
         <font-awesome-icon
           size="xs"
@@ -43,7 +49,7 @@
 import ErrorText from "./ErrorText.vue";
 
 export default {
-  name: "TextInput",
+  name: "TitledInput",
   components: {
     ErrorText,
   },
@@ -62,6 +68,12 @@ export default {
     width: Number,
     height: Number,
     fontSize: Number,
+    modelValue: String,
+  },
+  methods: {
+    updateData(data) {
+      this.$emit('input' , data);
+    }
   },
   data() {
     return {

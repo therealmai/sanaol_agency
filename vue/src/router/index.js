@@ -13,6 +13,8 @@ import MainLayout from "../components/Layout/MainLayout.vue";
 
 import store from "../store";
 
+import tag from "../components/Input/InputTags.vue"
+
 
 const routes = [
     // {
@@ -55,6 +57,11 @@ const routes = [
                 path: "/edit_events",
                 name: "edit_events",
                 component: Edit_Events
+            },
+            {
+                path: "/tag",
+                name: "tag",
+                component: tag
             },
         ]
         
