@@ -64,11 +64,12 @@
                     <div class="h-[450px] w-full">
                         <form action="">
                             <div class="flex flex-row gap-4 ">
-                              <InputField title="First Name" @changeInput='storeFName'></InputField>
-                              <InputField title="Last Name" @changeInput='storeLName'></InputField>
+                              <InputField title="First Name" v-model="form.firstname"></InputField>
+                              <InputField title="Last Name" v-model="form.lastname"></InputField>
                             </div>
-                            <InputField title="Instagram Username"></InputField>
-                            <TextArea title="Biography"></TextArea>
+                            <InputField title="Instagram Username" v-model="form.ighandle"></InputField>
+                            <TextArea title="Biography" v-model="form.bio"></TextArea>
+
                         </form>
                     </div>
                     <!-- featured photos -->
@@ -107,19 +108,16 @@
       isProfileVisible: false,
       isUpdated: false,
       name: 'Juan De La Cruz',
-      lastname: ' ',
-      firstname: ' ',
-      isTalent: true
+      isTalent: true,
+      form:{
+        firstname: '',
+        lastname: '',
+        ighandle:'',
+        bio:'',
+      }
     }
   },
   methods: {
-    storeFName(value){
-      this.firstname = value;
-      this.name = value;
-    },
-    storeLName(value){
-      this.lastname = value;
-    },
       showModal() {
         this.isProfileVisible = true;
       },

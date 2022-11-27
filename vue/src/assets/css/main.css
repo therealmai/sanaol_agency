@@ -4203,34 +4203,6 @@ textarea.form-control.is-invalid {
   width: 176px;
 }
 
-.w-\[1\] {
-  width: 1;
-}
-
-.w-\[132px\] {
-  width: 132px;
-}
-
-.w-\[99px\] {
-  width: 99px;
-}
-
-.w-\[140px\] {
-  width: 140px;
-}
-
-.w-\[100\[x\]\] {
-  width: 100[x];
-}
-
-.w-\[100\] {
-  width: 100;
-}
-
-.w-\[200px\] {
-  width: 200px;
-}
-
 .max-w-\[880px\] {
   max-width: 880px;
 }
@@ -4859,10 +4831,6 @@ textarea.form-control.is-invalid {
   font-size: 24px;
 }
 
-.text-\[12px\] {
-  font-size: 12px;
-}
-
 .text-\[28px\] {
   font-size: 28px;
 }
@@ -4947,12 +4915,12 @@ textarea.form-control.is-invalid {
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 
-.text-\[\#525252\] {
+.text-secondary {
   --tw-text-opacity: 1;
   color: rgb(82 82 82 / var(--tw-text-opacity));
 }
 
-.text-secondary {
+.text-\[\#525252\] {
   --tw-text-opacity: 1;
   color: rgb(82 82 82 / var(--tw-text-opacity));
 }
