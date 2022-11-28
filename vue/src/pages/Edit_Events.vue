@@ -17,7 +17,7 @@
             
         <div class="flex">
             
-            <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36"/>
+            <OutlineButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36"/>
             <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36"/>
             <OutlineButton fontSize="12" color="white" text="Cancel" width="99" height="36"/>
         </div><br><br><br>
