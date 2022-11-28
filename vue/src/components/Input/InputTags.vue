@@ -27,7 +27,7 @@ export default {
   props: {
     text: String,
     width: Number,
-    heigh: Number,
+    height: Number,
   },
   methods: {
     addTag (event) {
