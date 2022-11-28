@@ -8,6 +8,7 @@ use App\Http\Controllers\HeroBannerController;
 use App\Http\Controllers\BannerImageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserImageController;
+use App\Http\Controllers\EventsController;
 
 
 /*
@@ -98,3 +99,10 @@ Route::get('user/image/{id}', [UserImageController::class, 'show'])->name('userI
 Route::post('user/image/create', [UserImageController::class, 'store'])->name('userImage.store');
 Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
 Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
+
+//Events
+Route::get('events', [EventsController::class, 'index'])->name('events.get');
+Route::get('events/{id}', [EventsController::class, 'show'])->name('events.getSingle');
+Route::post('events/create', [EventsController::class, 'store'])->name('events.create');
+Route::patch('events/{id}', [EventsController::class, 'update'])->name('events.update');
+Route::patch('events/delete/{id}', [EventsController::class, 'destroy'])->name('events.delete');

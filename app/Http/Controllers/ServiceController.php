@@ -10,8 +10,8 @@ class ServiceController extends Controller
 {
     private $MSG_ERR_ID_NOT_FOUND = 'ID did not match any of the service found in database.';
     private $MSG_ERR_ADDITIONAL_PROPS = 'Model does not contain properties found in request';
-    private $MSG_SUC_ID_FOUND = 'Service found.';
-    private $MSG_SUC_UPDATE = 'Service successfully updated.';
+    private $MSG_SUC_ID_FOUND = 'Event found.';
+    private $MSG_SUC_UPDATE = 'Event successfully updated.';
 
     /**
      * Display a listing of the resource.
