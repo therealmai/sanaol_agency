@@ -17,9 +17,9 @@
             
         <div class="flex">
             
-            <primary-button class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36"/>
-            <primary-button class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36"/>
-            <primary-button fontSize="12" color="white" text="Cancel" width="99" height="36"/>
+            <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36"/>
+            <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36"/>
+            <OutlineButton fontSize="12" color="white" text="Cancel" width="99" height="36"/>
         </div><br><br><br>
         </div>
     </form>
@@ -27,14 +27,16 @@
 </template>
 
 <script>
-import PrimaryButton from '../components/Buttons/PrimaryButton.vue'
+import FilledButton from '../components/Buttons/FilledButton.vue'
 import TitledInput from '../components/Input/TitledInput.vue'
 import InputTags from '../components/Input/InputTags.vue'
+import OutlineButton from '../components/Buttons/OutlineButton.vue'
 export default {
   components: { 
-    PrimaryButton,
+    FilledButton,
     TitledInput,
     InputTags,
+    OutlineButton
 
      },
     data() {

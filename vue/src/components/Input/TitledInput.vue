@@ -3,13 +3,9 @@
     <div style= "position: absolute;margin-top:35px;margin-left:15px; font-size: 14px;">{{ title }} </div>
     <br />
       <!-- TODO: When verification is set up, bind padding-right to state to accomodate Password eye icon. -->
-<<<<<<< HEAD
       <input
-        v-model="input"
-=======
-      <input 
-        
->>>>>>> events/cs-36
+      :value="modelValue"
+      @input="$emit('update:modelValue',$event.target.value)"
         type="text"
         :maxlength="limit"
         class="
@@ -28,22 +24,11 @@
         "
         style = "color: #525252;"
         :style ="{ width: width + 'px', height: height + 'px', fontSize: fontSize + 'px' }"
-<<<<<<< HEAD
 
-=======
-        :value="modelValue" 
-        @input="$emit('update:modelValue', $event.target.value)"
-        
-        
->>>>>>> events/cs-36
 
         :class="errorFlag == true ? 'border-2 border-error' : 'border-none'"
         :autofocus="focus"
       />
-<<<<<<< HEAD
-=======
-      
->>>>>>> events/cs-36
       <div class="absolute right-5 top-2">
         <font-awesome-icon
           size="xs"
@@ -80,15 +65,7 @@ export default {
     width: Number,
     height: Number,
     fontSize: Number,
-<<<<<<< HEAD
-=======
     modelValue: String,
-  },
-  methods: {
-    updateData(data) {
-      this.$emit('input' , data);
-    }
->>>>>>> events/cs-36
   },
   data() {
     return {
