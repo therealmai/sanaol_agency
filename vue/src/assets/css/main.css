@@ -4058,6 +4058,14 @@ textarea.form-control.is-invalid {
   height: 406.18px;
 }
 
+.h-\[1px\] {
+  height: 1px;
+}
+
+.h-\[130px\] {
+  height: 130px;
+}
+
 .max-h-screen {
   max-height: 100vh;
 }
@@ -4201,6 +4209,10 @@ textarea.form-control.is-invalid {
 
 .w-\[176px\] {
   width: 176px;
+}
+
+.w-\[160px\] {
+  width: 160px;
 }
 
 .max-w-\[880px\] {

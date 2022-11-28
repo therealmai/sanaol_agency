@@ -55,14 +55,18 @@
         <ProfileModal v-show="isProfileVisible" text="Profile Modal" @profile="closeModal" @update="showUpdate">
           <template v-slot:profile_body>
             <!-- content here -->
+            <form action="">
               <div class="flex flex-col w-[800px] max-h-[756px] mt-[30px] space-y-4">  
 
                 <span class="text-[32px] font-bold text-[#525252]">Edit Profile</span>
                 <div class="flex flex-row gap-10">
-                  <img class="w-[158px] h-[158px] object-cover rounded-[50%]" src="https://pixy.org/src2/573/thumbs350/5733959.jpg" alt="alternatetext">
-
+                  
+                  <input type="file" accept="image/*" name="file" id="file" @change="loadFile" style="display:none;"/>
+                  <label for="file">
+                    <img id="talentImg" class="w-[160px] h-[130px] object-cover rounded-[50%]" :src="form.image" alt="alternatetext">
+                  </label>
+                
                     <div class="h-[450px] w-full">
-                        <form action="">
                             <div class="flex flex-row gap-4 ">
                               <InputField title="First Name" v-model="form.firstname"></InputField>
                               <InputField title="Last Name" v-model="form.lastname"></InputField>
@@ -70,12 +74,12 @@
                             <InputField title="Instagram Username" v-model="form.ighandle"></InputField>
                             <TextArea title="Biography" v-model="form.bio"></TextArea>
 
-                        </form>
-                    </div>
-                    <!-- featured photos -->
-                    
-                </div>
-              </div>
+                          </div>
+                          <!-- featured photos -->
+                          
+                        </div>
+                      </div>
+            </form>
           </template>
         </ProfileModal>
         
@@ -114,6 +118,7 @@
         lastname: '',
         ighandle:'',
         bio:'',
+        image:'https://pixy.org/src2/573/thumbs350/5733959.jpg'
       }
     }
   },
@@ -130,7 +135,11 @@
       },
       hideUpdate(){
         this.isUpdated = false;
-      }
+      },
+      loadFile(e) {
+                let imgHtml = document.querySelector('#talentImg');
+                imgHtml.src = URL.createObjectURL(e.target.files[0]);
+            },
     },
    
  };
