@@ -27,7 +27,6 @@ export default {
   props: {
     text: String,
     width: Number,
-    height: Number,
   },
   methods: {
     addTag (event) {
@@ -59,6 +58,7 @@ export default {
     font-size: 0.9em;
     box-sizing: border-box;
     padding: 0 10px;
+    border-radius: 2px;
 }
 .tag-input__tag {
     height: 20px;
