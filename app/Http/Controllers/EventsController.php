@@ -61,9 +61,15 @@ class EventsController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show($id)
     {
-        
+        $event = HeroBanner::find($id);
+
+        if($banner) {
+            return response($this->generateRes($event, 200, $this->MSG_SUC_ID_FOUND), 200, ['application/json']);
+        } else {
+            return response($this->generateRes($event, 400, $this->MSG_ERR_ID_NOT_FOUND), 400, ['application/json']);
+        }
     }
 
     /**
