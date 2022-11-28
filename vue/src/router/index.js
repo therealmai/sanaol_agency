@@ -8,10 +8,11 @@ import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
 import Services from "../pages/Services.vue";   
-import ServiceEdit from "../pages/ServiceEdit.vue"
+import ServiceEdit from "../pages/ServiceEdit.vue";
 import Events from "../pages/Events.vue";
-import Edit_Events from "../pages/Edit_Events.vue"
+import Edit_Events from "../pages/EditEvents.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
+import CreateEvent from "../pages/CreateEvent.vue";
 
 
 
@@ -74,9 +75,9 @@ const routes = [
                 component: Edit_Events
             },
             {
-                path: "/tag",
-                name: "tag",
-                component: tag
+                path: "/create_event",
+                name: "createEvent",
+                component: CreateEvent
             },
         ]
 
