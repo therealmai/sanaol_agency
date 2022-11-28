@@ -10,14 +10,15 @@ import Talent_User from "../pages/Talent_User.vue";
 import Services from "../pages/Services.vue";   
 import ServiceEdit from "../pages/ServiceEdit.vue"
 import Events from "../pages/Events.vue";
-import News from "../pages/News.vue";
-import Reminders from "../pages/Reminders.vue";
+import Edit_Events from "../pages/Edit_Events.vue"
 import MainLayout from "../components/Layout/MainLayout.vue";
 
 
 
 
 import store from "../store";
+
+import tag from "../components/Input/InputTags.vue"
 
 
 const routes = [
@@ -68,20 +69,15 @@ const routes = [
                 component: Events
             },
             {
-                path: "/talent_user",
-                name: "talent_user",
-                component: Talent_User
+                path: "/edit_events",
+                name: "edit_events",
+                component: Edit_Events
             },
             {
-                path: "/reminders",
-                name: "reminders",
-                component: Reminders
+                path: "/tag",
+                name: "tag",
+                component: tag
             },
-            {
-              path: "/news/:id",
-              name: "news",
-              component: News
-            }
         ]
 
     },
