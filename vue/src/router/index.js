@@ -14,8 +14,7 @@ import Edit_Events from "../pages/EditEvents.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
 import CreateEvent from "../pages/CreateEvent.vue";
 
-
-
+import Sample from "../pages/Sample.vue"
 
 import store from "../store";
 
@@ -78,6 +77,11 @@ const routes = [
                 path: "/create_event",
                 name: "createEvent",
                 component: CreateEvent
+            },
+            {
+                path: "/sample",
+                name: "Sample",
+                component: Sample
             },
         ]
 
