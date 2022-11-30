@@ -13,12 +13,13 @@ import Events from "../pages/Events.vue";
 import News from "../pages/News.vue";
 import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
-
+import UserManagement from "../pages/UserManagement.vue";  
+import News_Create from "../pages/News_Create.vue";
+import News_Update from "../pages/News_Update.vue";
 
 
 
 import store from "../store";
-
 
 const routes = [
     // {
@@ -81,7 +82,27 @@ const routes = [
               path: "/news/:id",
               name: "news",
               component: News
-            }
+            },
+            {
+                path: "/usermanagement",
+                name: "usermanagement",
+                component: UserManagement
+            },
+            {
+                path: "/Profile",
+                name: "Profile",
+                component: Talent_User
+            }, 
+            {
+                path: "/news_create",
+                name: "news_create",
+                component: News_Create
+            },
+            {
+                path: "/news_update",
+                name: "news_update",
+                component: News_Update
+            },
         ]
 
     },
