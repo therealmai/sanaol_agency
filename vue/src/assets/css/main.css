@@ -3714,6 +3714,22 @@ textarea.form-control.is-invalid {
   z-index: 2;
 }
 
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.row-span-4 {
+  grid-row: span 4 / span 4;
+}
+
+.row-span-2 {
+  grid-row: span 2 / span 2;
+}
+
 .float-left {
   float: left;
 }
@@ -3763,6 +3779,11 @@ textarea.form-control.is-invalid {
 .my-\[10px\] {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .ml-28 {
@@ -4203,32 +4224,25 @@ textarea.form-control.is-invalid {
   width: 176px;
 }
 
-.w-\[1\] {
-  width: 1;
+.w-3\/12 {
+  width: 25%;
 }
 
-.w-\[132px\] {
-  width: 132px;
+.w-4\/12 {
+  width: 33.333333%;
 }
 
-.w-\[99px\] {
-  width: 99px;
+.w-2\/12 {
+  width: 16.666667%;
 }
 
-.w-\[140px\] {
-  width: 140px;
+.min-w-full {
+  min-width: 100%;
 }
 
-.w-\[100\[x\]\] {
-  width: 100[x];
-}
-
-.w-\[100\] {
-  width: 100;
-}
-
-.w-\[200px\] {
-  width: 200px;
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
 
 .max-w-\[880px\] {
@@ -4288,6 +4302,14 @@ textarea.form-control.is-invalid {
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-rows-4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -4370,6 +4392,16 @@ textarea.form-control.is-invalid {
   gap: 0.5rem;
 }
 
+.gap-x-5 {
+  -moz-column-gap: 1.25rem;
+       column-gap: 1.25rem;
+}
+
+.gap-x-2 {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
+}
+
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -4392,6 +4424,14 @@ textarea.form-control.is-invalid {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.justify-self-end {
+  justify-self: end;
+}
+
+.overflow-auto {
+  overflow: auto;
 }
 
 .overflow-hidden {
@@ -4505,6 +4545,11 @@ textarea.form-control.is-invalid {
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.border-divider {
+  --tw-border-opacity: 1;
+  border-color: rgb(231 231 231 / var(--tw-border-opacity));
 }
 
 .bg-transparent {
@@ -4703,6 +4748,11 @@ textarea.form-control.is-invalid {
   padding-right: 3rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -4791,6 +4841,10 @@ textarea.form-control.is-invalid {
   font-family: "Inter";
 }
 
+.font-sans {
+  font-family: Inter, sans-serif;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -4857,10 +4911,6 @@ textarea.form-control.is-invalid {
 
 .text-\[24px\] {
   font-size: 24px;
-}
-
-.text-\[12px\] {
-  font-size: 12px;
 }
 
 .text-\[28px\] {
@@ -4947,12 +4997,12 @@ textarea.form-control.is-invalid {
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 
-.text-\[\#525252\] {
+.text-secondary {
   --tw-text-opacity: 1;
   color: rgb(82 82 82 / var(--tw-text-opacity));
 }
 
-.text-secondary {
+.text-\[\#525252\] {
   --tw-text-opacity: 1;
   color: rgb(82 82 82 / var(--tw-text-opacity));
 }
@@ -5005,6 +5055,11 @@ textarea.form-control.is-invalid {
 .text-detailText {
   --tw-text-opacity: 1;
   color: rgb(152 152 152 / var(--tw-text-opacity));
+}
+
+.text-\[\#696969\] {
+  --tw-text-opacity: 1;
+  color: rgb(105 105 105 / var(--tw-text-opacity));
 }
 
 .underline {
