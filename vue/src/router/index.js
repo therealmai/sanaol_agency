@@ -13,6 +13,7 @@ import Events from "../pages/Events.vue";
 import News from "../pages/News.vue";
 import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
+import UserManagement from "../pages/UserManagement.vue";  
 
 
 
@@ -81,7 +82,12 @@ const routes = [
               path: "/news/:id",
               name: "news",
               component: News
-            }
+            },
+            {
+                path: "/usermanagement",
+                name: "usermanagement",
+                component: UserManagement
+            },
         ]
 
     },
