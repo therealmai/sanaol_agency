@@ -7,9 +7,9 @@
       </div>
       <span class="w-4/12 min-w-max text-base ">gwaposijade@gmail.com</span>
       <span class="w-2/12 min-w-max text-base ">Admin</span>
-      <span class="w-3/12 min-w-max text-base grid grid-cols-2  gap-x-2">
-        <FilledButton :fontSize="16" :height="31" :width="84" text="EDIT" />
-        <OutlineButton :fontSize="16" :height="31" :width="84" text="DELETE" />
+      <span class="flex flex-row justify-center flex-nowrap text-[#696969] gap-x-2">
+        <FilledButton class="w-[100px]" text="EDIT" />
+        <OutlineButton class="w-[100px]" text="DELETE" />
       </span>
     </div>
   </template>
