@@ -15,6 +15,7 @@
 
 <script>
 export default {
+  name:"Filled",
   props:{
   text: String
   },
