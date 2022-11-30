@@ -63,22 +63,37 @@
                   
                   <input type="file" accept="image/*" name="file" id="file" @change="loadFile" style="display:none;"/>
                   <label for="file">
-                    <img id="talentImg" class="w-[160px] h-[130px] object-cover rounded-[50%]" :src="form.image" alt="alternatetext">
+                    <div>
+                      <!-- <div class="bg-black bg-opacity-0 p-4 hover:bg-opacity-50 transition-all duration-1000"> -->
+                        <img id="talentImg" class=" hover:bg-black hover:bg-opacity-90 hover:cursor-pointer w-[160px] h-[130px] object-cover rounded-[50%]" :src="form.image" alt="alternatetext">
+                      <!-- </div> -->
+                    </div>
                   </label>
                 
-                    <div class="h-[450px] w-full">
-                            <div class="flex flex-row gap-4 ">
-                              <InputField title="First Name" v-model="form.firstname"></InputField>
-                              <InputField title="Last Name" v-model="form.lastname"></InputField>
-                            </div>
-                            <InputField title="Instagram Username" v-model="form.ighandle"></InputField>
-                            <TextArea title="Biography" v-model="form.bio"></TextArea>
-
-                          </div>
-                          <!-- featured photos -->
-                          
-                        </div>
+                      <div class="h-[450px] w-full flex flex-col">
+                              <div>
+                                <div class="flex flex-row gap-4 ">
+                                  <InputField title="First Name" v-model="form.firstname"></InputField>
+                                  <InputField title="Last Name" v-model="form.lastname"></InputField>
+                                </div>
+                                <InputField title="Instagram Username" v-model="form.ighandle"></InputField>
+                                <TextArea title="Biography" v-model="form.bio"></TextArea>
+                              </div>
+                              
+                              <!-- featured photos -->
+                              <div>
+                                <p>Featured Photos</p>
+                                 <div class="flex flex-row text-[#A8A8A8] gap-6 w-full">
+                                    <!-- v-for loop the images -->
+                                    <img id="imgService" :src="form.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
+                                    <img id="imgService" :src="form.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
+                                    <img id="imgService" :src="form.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
+                                 </div>
+                              </div>
                       </div>
+                    </div>
+
+                  </div>
             </form>
           </template>
         </ProfileModal>
@@ -117,7 +132,7 @@
         firstname: '',
         lastname: '',
         ighandle:'',
-        bio:'',
+        bio:'Because I want to be popular',
         image:'https://pixy.org/src2/573/thumbs350/5733959.jpg'
       }
     }
