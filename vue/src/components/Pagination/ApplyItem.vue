@@ -8,18 +8,18 @@
       <span class="w-4/12 min-w-max text-[#696969]">gwaposijade@gmail.com</span>
       <span class="w-2/12 min-w-max text-[#696969]">Application</span>
       <span class="w-3/12 min-w-max grid grid-cols-2 text-[#696969] gap-x-2">
-        <LearnButton :fontSize="16" :height="31" :width="84" text="APPROVE" />
-        <DeleteButton :fontSize="16" :height="31" :width="84" text="DENY" />
+        <FilledButton :fontSize="16" :height="31" :width="84" text="APPROVE" />
+        <OutlineButton :fontSize="16" :height="31" :width="84" text="DENY" />
       </span>
     </div>
   </template>
   
   <script>
-  import LearnButton from '../Buttons/LearnButton.vue';
-  import DeleteButton from '../Buttons/DeleteButton.vue';
+  import FilledButton from '../Buttons/FilledButton.vue';
+  import OutlineButton from '../Buttons/OutlineButton.vue';
   export default {
     name: "ApplyItem",
-    components: { LearnButton, DeleteButton },
+    components: { FilledButton, OutlineButton },
     props: ['id','image','fname','lname','handle','email','user_type']
   };
   </script>

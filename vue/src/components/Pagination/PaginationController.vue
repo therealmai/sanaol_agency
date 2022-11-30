@@ -1,6 +1,6 @@
 <template>
     <div class="flex gap-4">
-      <PaginationButton text="<" @prev="goBack" />
+      <PaginationButton text="<"  @prev="goBack" />
       <PaginationPage
         :key="n"
         v-for="n in pages"
