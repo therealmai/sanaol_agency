@@ -139,18 +139,21 @@ export default {
         },
         showUpdateModal() {
             this.isUpdateModalVisible = true;
+        },
+        closeUpdateModal() {
+            this.isUpdateModalVisible = false;
         }
     },
     data() {
         return {
-             title: "Lorem Ipsum",
-             date: "November 18, 2022",
-             location: "Hong Kong Disneyland",
-             type: "Beerfest",
-             description: "1",
-             url: null,
-             
-        };
+            title: "Lorem Ipsum",
+            date: "November 18, 2022",
+            location: "Hong Kong Disneyland",
+            type: "Beerfest",
+            description: "1",
+            url: null,
+            isUpdateModalVisible: false
+        }
     }
  };
 </script>
