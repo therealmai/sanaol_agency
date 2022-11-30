@@ -14,12 +14,7 @@ import News from "../pages/News.vue";
 import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
 import UserManagement from "../pages/UserManagement.vue";  
-
-
-
-
 import store from "../store";
-
 
 const routes = [
     // {
@@ -87,6 +82,11 @@ const routes = [
                 path: "/usermanagement",
                 name: "usermanagement",
                 component: UserManagement
+            },
+            {
+                path: "/Profile",
+                name: "Profile",
+                component: Talent_User
             },
         ]
 

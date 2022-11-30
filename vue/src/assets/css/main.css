@@ -3938,6 +3938,10 @@ textarea.form-control.is-invalid {
   margin-top: 25px;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -4555,6 +4559,10 @@ textarea.form-control.is-invalid {
   border-radius: 1rem;
 }
 
+.rounded-\[7px\] {
+  border-radius: 7px;
+}
+
 .rounded-t {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
@@ -4675,6 +4683,11 @@ textarea.form-control.is-invalid {
 .bg-\[\#D9D9D9\] {
   --tw-bg-opacity: 1;
   background-color: rgb(217 217 217 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#F6F5FF\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(246 245 255 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -4884,6 +4897,18 @@ textarea.form-control.is-invalid {
 
 .pt-0 {
   padding-top: 0px;
+}
+
+.pr-5 {
+  padding-right: 1.25rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
+}
+
+.pl-6 {
+  padding-left: 1.5rem;
 }
 
 .text-center {
@@ -5125,6 +5150,21 @@ textarea.form-control.is-invalid {
 .text-\[\#696969\] {
   --tw-text-opacity: 1;
   color: rgb(105 105 105 / var(--tw-text-opacity));
+}
+
+.text-lightgray {
+  --tw-text-opacity: 1;
+  color: rgb(217 217 217 / var(--tw-text-opacity));
+}
+
+.text-lightpurple {
+  --tw-text-opacity: 1;
+  color: rgb(246 245 255 / var(--tw-text-opacity));
+}
+
+.text-\[\#F6F5FF\] {
+  --tw-text-opacity: 1;
+  color: rgb(246 245 255 / var(--tw-text-opacity));
 }
 
 .underline {
