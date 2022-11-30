@@ -96,6 +96,12 @@
             </template>
         </Modal>
         -->
+
+        <!-- Modal appears after you click the CONFIRM button -->
+        <!--
+        <DeletedModal text="news article">
+        </DeletedModal>
+        -->
     </form>
 </body>
 </template>
@@ -109,6 +115,7 @@ import Modal from '../components/Modal/Modal.vue'
 import Info from '../components/Others/Info.vue'
 import UpdateModal from '../components/Modal/UpdateModal.vue'
 import Warning from '../components/Others/Warning.vue'
+import DeletedModal from '../components/Modal/DeletedModal.vue'
 
 export default {
   components: { 
@@ -119,7 +126,8 @@ export default {
     Modal,
     Info,
     UpdateModal,
-    Warning, 
+    Warning,
+    DeletedModal 
     },
     methods: {
         onFileChange (e) {
