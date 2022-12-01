@@ -49,7 +49,7 @@
             <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model="description"></titled-input><br><br>
             
         <div class="flex gap-4">
-            <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal" />
+            <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
             <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36"/>
             <OutlineButton fontSize="12" color="white" text="Cancel" width="99" height="36"/>
         </div><br><br><br>
@@ -71,7 +71,7 @@
                 </div>
             </template>
         </Modal>
-        -->
+        
 
          <!-- Modal appears after you click the CONFIRM button -->
          <!-- 
@@ -152,7 +152,7 @@ export default {
             type: "Beerfest",
             description: "1",
             url: null,
-            isUpdateModalVisible: false
+            isUpdateModalVisible: false,
         }
     }
  };
