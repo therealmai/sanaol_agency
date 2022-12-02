@@ -10,6 +10,8 @@ ScreenFlow: https://www.figma.com/file/Qj2A3fi7RsCjYLZrDSDn3c/CS-3105-Screenflow
 
 Laravel Docs: https://laravel.com/docs/9.x/installation
 
+SwaggerHub: https://app.swaggerhub.com/apis-docs/therealmai/masterboard/1.0.0
+
 # 3105 APPLICATION DEVELOPMENT - SANAOL AGENCY 
 
 ## About
