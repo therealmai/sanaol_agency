@@ -104,3 +104,6 @@ Steps to create a pull request.
 5. Click "Create pull request". 
 6. Write down the changes you have applied based on the code you have contributed. Attach supporting image/s whenever necessary.
 7. Click "Create pull request"
+
+### SwaggerHub API Documentation Masterboard
+https://app.swaggerhub.com/apis-docs/therealmai/masterboard/1.0.0
