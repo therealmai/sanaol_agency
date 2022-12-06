@@ -11,20 +11,20 @@
       
       <!-- display if user is admin (go to store/index.js to change role of user) -->
       
-      <router-link  v-show="user.role == 'ADMIN'" :to="{ name: 'usermanagement' }">
+      <router-link  v-show="user.user_type == 'ADMIN' " :to="{ name: 'usermanagement' }">
         <span class="font-medium px-2 py-2 rounded-l ">USERS</span>
       </router-link>
-      <router-link v-show="user.role == 'GENERAL' " :to="{ name: 'membership' }">
+      <router-link v-show="user.user_type == 'GENERAL' " :to="{ name: 'membership' }">
         <span class="font-medium px-2 py-2 rounded-l ">MEMBERSHIP</span>
       </router-link>
-      <router-link v-show="user.role == 'TALENT'" :to="{ name: 'Profile' }">
+      <router-link v-show="user.user_type == 'TALENT'" :to="{ name: 'Profile' }">
         <span class="font-medium px-2 py-2 rounded-l ">PROFILE</span>
       </router-link>
 
       <router-link :to="{ name: 'talent_list' }">
         <span class="font-medium px-2 py-2 rounded-l ">TALENTS</span>
       </router-link>
-      <router-link v-show="user.role == 'ADMIN' || user.role == 'TALENT'"  :to="{ name: 'reminders' }">
+      <router-link v-show="user.user_type == 'ADMIN' || user.user_type == 'TALENT'"  :to="{ name: 'reminders' }">
         <span class="font-medium px-2 py-2 rounded-l ">REMINDERS</span>
       </router-link>
       <router-link :to="{ name: 'services' }">

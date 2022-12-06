@@ -68,7 +68,7 @@
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
                 data-model-toggle="popup-modal"
-                @click="staticLogin"
+                @click="login"
               >
                 Log in
               </button>
@@ -101,26 +101,25 @@
   import errorModal from '../components/Modal/ErrorModal.vue';
   import store from "../store";
   import {useRouter} from "vue-router";
+  import { reactive, computed } from 'vue';
   import Footer from '../components/Footer/Footer.vue';
   
   const toggleModal = errorModal.methods.toggleModal();
   const router = useRouter();
-  const user = {
+  const user = reactive({
     email: '',
     password: '',
-  }
+  })
   
   function login(ev) {
     ev.preventDefault();
   
     store.dispatch('login', user)
       .then(() => {
-        router.push({
-          name:'Hero'
-        })
+        router.push('hero');
       })
       .catch(err => {
-        err.value = toggleModal;
+        // err.value = toggleModal;
       })
   }
   
