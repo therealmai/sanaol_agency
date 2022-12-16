@@ -101,12 +101,12 @@
                   peer-focus:scale-75 peer-focus:-translate-y-8">Why do you want to join Sanaol Agency</label>
               </div>
               <!-- Error Modal -->
-              <errorModal>
+              <!-- <errorModal>
                 <template v-slot:modal-title> Registration </template>
                 <template v-slot:modal-content>
                   <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400">User already exists. Enter different credentials.</h3>
                 </template>
-              </errorModal>
+              </errorModal> -->
               <!-- Submit Button -->
               <button type="submit" @click="staticRegister"
                 class="w-full px-6 py-3 mb-6
