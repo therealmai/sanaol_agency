@@ -148,3 +148,5 @@ You will have this error when it shows a pop up errror message or when intellise
 4. Select python.exe
 5. Click Ok
 6. Check if working
+
+Robot Framework Docs https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html
