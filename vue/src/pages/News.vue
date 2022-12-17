@@ -1,13 +1,13 @@
 <template>
   <div class="font-inter flex flex-col space-y-4">
-      
+
       <div class="">
         <OutBtn text="BACK" class="w-[100px] ml-[44px] mt-[31.79px]"></OutBtn>
       </div>
 
       <div class="flex flex-row items-center justify-between ml-[15%] mr-[20%] mb-[25px]">
           <div class="font-bold text-[32px] mb-[8px] text-[#525252]"> News </div>
-         
+
           <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
           <div class="flex flex-row gap-4 right-[314.44px]" v-if="true">
             <OutBtn text="DELETE" class="w-[123px]"></OutBtn>
@@ -16,9 +16,9 @@
       </div>
 
       <div class="text-center mx-[20%] flex flex-col justify-center items-center">
-          <img width="880" height="495" :src="news.image"/>
+          <img class="w-[880px] h-[495px]" :src="news.image"/>
           <div class="text-[32px] font-bold text-secondary"> {{news.title}} </div>
-          <div class="text-[#989898] text-[20px] font-extralight"> {{news.created_at}} </div>
+          <div class="text-[#989898] text-[20px] font-extralight"> {{ months[new Date(news.created_at).getMonth()-1]+' '+new Date(news.created_at).getDate()+', '+new Date(news.created_at).getFullYear() }} </div>
           <p class="text-justify max-w-[880px] mb-[50px] mt-[20px] text-secondary">
               {{news.content}}
           </p>
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import Navbar from '../components/Navigation/Navbar.vue';
 import FilledBtn from '../components/Buttons/FilledButton.vue';
 import OutBtn from '../components/Buttons/OutlineButton.vue';
 
@@ -44,20 +45,20 @@ export default {
         image: 'https://animecorner.me/wp-content/uploads/2022/05/Spy-x-family-06-31.png',
         created_at: 'July 14, 2022'
       },
-      real_news: []
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:8000/api/news/'+this.$route.params.id).then(function (response) {
-      var received_data = response.data.data
-      //I cannot pass the response to news so I put dummy data on news for now.
-      //On console log, pls confirm that the right data was fetched
-      console.log(received_data)
-    })
+    axios.get('http://127.0.0.1:8000/api/news/'+this.$route.params.id).then(
+      (response) => {
+        this.news = response.data.data
+      }
+    )
   },
   components: {
       FilledBtn,
-      OutBtn
+      OutBtn,
+      Navbar
   },
   computed: {
 
