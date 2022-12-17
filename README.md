@@ -125,12 +125,11 @@ Requirements
     4. extension has check mark
 4. web driver (check the first part of sir's video)
     
-Installing venv
+Creating venv
 From the root foler, do:
 ```
 cd vue/selenium
 python -m venv venv
-pip install -r requirements.txt
 ```
 
 Activating venv
@@ -140,13 +139,22 @@ cd vue/selenium/venv/Scripts
 . activate
 ```
 
-Resolving extension Robot Code python error
+Installing dependencies
+In folder /vue/selenium, do:
+```
+pip install -r requirements.txt
+```
+
+Resolving Robot Framework package not found in workspace folder.
 You will have this error when it shows a pop up errror message or when intellisense is not working in .robot files.
-1. Click the button in the error pop up message
-2. Click add path
-3. Navigate to /vue/selenium/venv/Scripts
-4. Select python.exe
-5. Click Ok
-6. Check if working
+![image](https://user-images.githubusercontent.com/77256997/208225619-2995d666-a25f-4cb9-abf5-4b8bda7106e0.png)
+
+1. Click "Select Python Interpreter"
+2. Click "Enter interpreter path..."
+3. Click "Find..."
+4. Navigate to /vue/selenium/venv/Scripts
+5. Select python.exe
+6. Click Ok
+7. Check if working
 
 Robot Framework Docs https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html
