@@ -111,7 +111,9 @@ Steps to create a pull request.
 https://app.swaggerhub.com/apis-docs/therealmai/masterboard/1.0.0
 
 
-### SELENIUM TESTING SETUP
+
+
+### SELENIUM SETUP
 
 Requirements
 1. python (latest version) (search in google how to install and verify)
@@ -121,6 +123,7 @@ Requirements
     2. search id in extension market place
     3. author is Daniel Biehl 
     4. extension has check mark
+4. web driver check the first part of sir's video
     
 Installing venv
 From the root foler, do:
