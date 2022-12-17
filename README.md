@@ -109,3 +109,44 @@ Steps to create a pull request.
 
 ### SwaggerHub API Documentation Masterboard
 https://app.swaggerhub.com/apis-docs/therealmai/masterboard/1.0.0
+
+
+
+
+### SELENIUM SETUP
+
+Requirements
+1. python (latest version) (search in google how to install and verify)
+2. chropath from https://chrome.google.com/webstore/detail/chropath/ljngjbnaijcbncmcnjfhigebomdlkcjo
+3. Robot Code (vs code extension)
+    1. extension id = d-biehl.robotcode
+    2. search id in extension market place
+    3. author is Daniel Biehl 
+    4. extension has check mark
+4. web driver (check the first part of sir's video)
+    
+Installing venv
+From the root foler, do:
+```
+cd vue/selenium
+python -m venv venv
+pip install -r requirements.txt
+```
+
+Activating venv
+From the root folder, do:
+```
+cd vue/selenium/venv/Scripts
+. activate
+```
+
+Resolving extension Robot Code python error
+You will have this error when it shows a pop up errror message or when intellisense is not working in .robot files.
+1. Click the button in the error pop up message
+2. Click add path
+3. Navigate to /vue/selenium/venv/Scripts
+4. Select python.exe
+5. Click Ok
+6. Check if working
+
+Robot Framework Docs https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html
