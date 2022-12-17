@@ -67,8 +67,8 @@
                 <p class="modal-paragraph">Are you sure you want to save the changes<br>made on this service? Please confirm.</p>
                 <Info text="Saving the changes will change what the public sees on the services page."></Info>
                 <div class="flex gap-10 mt-5 mb-5">
-                    <FilledButton class="h-25 w-40" text="CONFIRM" @click="confirmUpdateModal"></FilledButton>
-                    <OutlineButton class="h-25 w-40" text="CANCEL" @click="closeUpdateModal"></OutlineButton>
+                    <FilledButton class="w-[100px]" text="CONFIRM" @click="confirmUpdateModal"></FilledButton>
+                    <OutlineButton class="w-[100px]" text="CANCEL" @click="closeUpdateModal"></OutlineButton>
                 </div>
             </template>
         </Modal>
@@ -87,8 +87,8 @@
                 <p class="modal-paragraph">Are you sure you want to delete this<br>news article? Please confirm.</p>
                 <Warning text="Deleting this will also delete information pertaining to the news article."></Warning>
                 <div class="flex gap-10 mt-5 mb-5">
-                    <FilledButton class="h-25 w-40" text="CONFIRM" @click="confirmDeleteModal"></FilledButton>
-                    <OutlineButton class="h-25 w-40" text="CANCEL" @click="closeDeleteModal"></OutlineButton>
+                    <FilledButton class="w-[100px]" text="CONFIRM" @click="confirmDeleteModal"></FilledButton>
+                    <OutlineButton class="w-[100px]" text="CANCEL" @click="closeDeleteModal"></OutlineButton>
                 </div>
             </template>
         </Modal>
