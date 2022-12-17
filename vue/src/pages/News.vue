@@ -2,7 +2,7 @@
   <div class="font-inter flex flex-col space-y-4">
 
       <div class="">
-        <OutBtn text="BACK" class="w-[100px] ml-[44px] mt-[31.79px]"></OutBtn>
+        <OutBtn text="BACK" class="w-[100px] ml-[44px] mt-[31.79px]" @click="$router.go(-1)"></OutBtn>
       </div>
 
       <div class="flex flex-row items-center justify-between ml-[15%] mr-[20%] mb-[25px]">
@@ -10,8 +10,8 @@
 
           <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
           <div class="flex flex-row gap-4 right-[314.44px]" v-if="true">
-            <OutBtn text="DELETE" class="w-[123px]"></OutBtn>
-            <FilledBtn text="EDIT" class="w-[93px]"></FilledBtn>
+            <OutBtn text="DELETE" class="w-[123px]" @click="showModal"></OutBtn>
+            <router-link :to="'/news/update/'+ id"><FilledBtn text="EDIT" class="w-[93px]"></FilledBtn></router-link>
           </div>
       </div>
 
@@ -23,6 +23,7 @@
               {{news.content}}
           </p>
       </div>
+      <Modal v-show="isModalVisible" @close="closeModal"></Modal>
 
   </div>
 </template>
@@ -31,6 +32,7 @@
 import Navbar from '../components/Navigation/Navbar.vue';
 import FilledBtn from '../components/Buttons/FilledButton.vue';
 import OutBtn from '../components/Buttons/OutlineButton.vue';
+import Modal from "../components/Modal/News Modals/DeleteNews.vue";
 
 import axios from 'axios'
 
@@ -46,6 +48,8 @@ export default {
         created_at: 'July 14, 2022'
       },
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      isModalVisible: false,
+      id: this.$route.params.id
     }
   },
   mounted() {
@@ -58,11 +62,24 @@ export default {
   components: {
       FilledBtn,
       OutBtn,
-      Navbar
+      Navbar,
+      Modal
   },
   computed: {
 
   },
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
+    editNews(){
+      this.$router.redirect(news_update)
+    }
+
+  }
 };
 </script>
 
