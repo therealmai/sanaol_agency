@@ -117,10 +117,10 @@ Requirements
 1. python (latest version) (search in google how to install and verify)
 2. chropath from https://chrome.google.com/webstore/detail/chropath/ljngjbnaijcbncmcnjfhigebomdlkcjo
 3. Robot Code (vs code extension)
-    a. extension id = d-biehl.robotcode
-    b. search id in extension market place
-    c. author is Daniel Biehl 
-    d. extension has check mark
+    1. extension id = d-biehl.robotcode
+    2. search id in extension market place
+    3. author is Daniel Biehl 
+    4. extension has check mark
     
 Installing venv
 From the root foler, do:
