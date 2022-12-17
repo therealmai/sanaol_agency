@@ -49,13 +49,13 @@
             </div>
 
             <!-- Error Modal -->
-            <!-- <errorModal>
+            <errorModal hidden>
               <template v-slot:modal-title> Login </template>
               <template v-slot:modal-content class="justify-center">
                 <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400 text-center">Incorrect username or password.</h3>
                 <p class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400 text-center">Please try again.</p>
               </template>
-            </errorModal> -->
+            </errorModal>
   
             <!-- Login Button -->
             <div class="text-center pt-1 mb-4 pb-1">
@@ -96,7 +96,7 @@
       </div>
   
       <!-- image -->
-      <div class="object-cover h-auto lg:w-screen md:h-auto bg-cover bg-center -mb-8" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
+      <div class="object-cover h-auto lg:w-screen md:h-auto bg-cover bg-center lg:-mb xl:-mb-8" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
   </div>
   </template>
   
