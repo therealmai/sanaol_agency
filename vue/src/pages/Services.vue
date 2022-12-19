@@ -3,11 +3,11 @@
     <!-- MAIN SERVICE PAGE -->
     <div class="pt-[96px] px-[237.5px] mb-[25px] text-[#525252]">
       <!-- TITLE -->
-      <h1 class="text-center text-2xl font-bold">Our Services</h1>
+      <h1 class="text-center text-3xl font-bold">OUR SERVICES</h1>
   
       <!-- INDIVIDUAL SERVICES -->
       <!-- USE LOOP WHEN FETCHING FROM DATABASE -->
-      <Service title="Recreational Acitvity" 
+      <Service title="Management Team" 
                content="A successful competition for me is always going out there and putting 100 percent into whatever I'm doing. 
                         It's not always winning. People, I think, mistake that it's just winning. 
                         Sometimes it could be, but for me, it's hitting the best sets I can, gaining confidence, and having a good time and having fun.
@@ -17,7 +17,7 @@
                image="https://i0.wp.com/www.traveling-up.com/wp-content/uploads/2019/04/COVER-mainstream-beers-in-the-philippines-san-miguel-vintage-bottles.jpg?fit=1200%2C675&ssl=1">
       </Service>
   
-      <Service title="Demolition" 
+      <Service title="Creative Team" 
                content="We clawed, we chained, our hearts in vain.
                         We jumped, never asking why.
                         We kissed, I fell under your spell.
@@ -42,7 +42,7 @@
                image="https://i.ytimg.com/vi/VP8KjbXuP8Y/maxresdefault.jpg">
       </Service>
   
-      <Service title="Lawnmowing" 
+      <Service title="Lawn mowing" 
                content="I walked through the door with you.
                         The air was cold.
                         But something about it felt like home somehow.

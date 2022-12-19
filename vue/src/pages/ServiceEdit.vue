@@ -7,7 +7,7 @@
                 
                 <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
                 <label for="file">
-                    <img id="imgService" v-bind:src="data.image" class="object-cover rounded-[8px] w-[166px] h-[166px]">
+                    <img id="imgService" v-bind:src="data.image" class="object-cover rounded-[8px] w-[220px] h-[210px]">
                 </label>
                 <div>
                     <label for="title">Title</label>

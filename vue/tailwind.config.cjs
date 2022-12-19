@@ -29,6 +29,10 @@ module.exports = {
           inter: ['"Inter"'],
           
       },
+      fontWeight: {
+        bold: 750,
+        extrabold: 750,
+      },
       height:{
         '128': '32rem',
         '220': '39.5rem',
