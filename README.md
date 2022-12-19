@@ -69,12 +69,6 @@ php artisan key:generate
 ```
 
 ```
-php artisan migrate
-```
-
-If you want to refresh the migration/seeder:
-
-```
 php artisan migrate:refresh --seed
 ```
 
