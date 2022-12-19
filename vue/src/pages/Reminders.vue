@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="text-bold mt-10 ml-60">
-            Reminders
-        </div>
         <div class="flex flex-col flex-wrap gap-4 items-center ml-20 mr-20 mt-3 mb-20">
+            <div class="flex text-bold mt-10 mb-2" style="margin-right:53rem">
+                Reminders
+            </div>
             <div class="flex flex-row flex-wrap gap-12 justify-center">
                 <Reminders image = "https://media.philstar.com/photos/2022/05/02/catriona-gray-miss-universe-winner2018-12-1910-04-54_2022-05-02_14-33-17.jpg"
                         width = "115"
