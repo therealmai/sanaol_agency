@@ -17,3 +17,9 @@ yarn-error.log
 /.idea
 /.vscode
 vue/src/assets/css/main.css
+vue/selenium/venv
+vue/selenium/report.html
+vue/selenium/log.html
+vue/selenium/output.xml
+vue/selenium/python
+results
