@@ -66,6 +66,12 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::patch('news/{id}', [NewsController::class, 'update']);
     Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
     Route::post('news/create', [NewsController::class, 'store']);
+
+    //Events
+    Route::post('events/create', [EventsController::class, 'store'])->name('events.create');
+    Route::patch('events/{id}', [EventsController::class, 'update'])->name('events.update');
+    Route::patch('events/delete/{id}', [EventsController::class, 'destroy'])->name('events.delete');
+
 });
 
 //Public Routes
@@ -90,6 +96,7 @@ Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
 
 
+
 //News 
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
@@ -101,9 +108,8 @@ Route::post('user/image/', [UserImageController::class, 'store'])->name('userIma
 Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
 Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
 
+
 //Events
 Route::get('events', [EventsController::class, 'index'])->name('events.get');
 Route::get('events/{id}', [EventsController::class, 'show'])->name('events.getSingle');
-Route::post('events/create', [EventsController::class, 'store'])->name('events.create');
-Route::patch('events/{id}', [EventsController::class, 'update'])->name('events.update');
-Route::patch('events/delete/{id}', [EventsController::class, 'destroy'])->name('events.delete');
+
