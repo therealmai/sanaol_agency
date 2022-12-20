@@ -15,7 +15,7 @@ Title of Service Edit Page
     Click Link          ${services-1}
 
     Element Text Should Be    xpath://h1[contains(text(),'Edit Service')]    Edit Service
-    # Open_browser
+    Element Text Should Be    xpath://label[contains(text(),'Title')]    Title
     
 
 *** Keywords ***
