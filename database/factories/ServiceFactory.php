@@ -20,7 +20,7 @@ class ServiceFactory extends Factory
     {
         $model = Service::class;
         return [
-            'user_id'    => User::all()->random()->id,
+            'user_id'    => User::all()->where('user_type', '=', 'admin')->random()->id,
             'title'      => $this->faker->words(5, true),
             'content'    => $this->faker->sentence(10),
             'image'      => $this->faker->imageUrl(880,495),

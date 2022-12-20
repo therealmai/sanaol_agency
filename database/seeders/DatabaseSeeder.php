@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\HeroBanner;
+use App\Models\Service;
 
 use File;
 
@@ -32,15 +33,17 @@ class DatabaseSeeder extends Seeder
         User::factory(35)
             ->hasUserImages(5)
             ->hasNews(3)
-            ->hasServices(5)
             ->create();
 
         HeroBanner::factory(5)
             ->hasBannerImages(3)
             ->create();
-        
+
         Event::factory(7)
             ->hasInvolvedTalent(3)
+            ->create();
+
+        Service::factory(2)
             ->create();
     }
 }

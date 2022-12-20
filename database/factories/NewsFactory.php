@@ -20,7 +20,7 @@ class NewsFactory extends Factory
         return [
             'user_id'    => User::all()->random()->id,
             'title'      => $this->faker->words(5, true),
-            'content'    => $this->faker->sentence(10),
+            'content'    => $this->faker->words(500, true),
             'image'      => $this->faker->imageUrl(880,495),
             'author'     => $this->faker->name(),
             'ref'        => '#',
