@@ -11,12 +11,13 @@ import Services from "../pages/Services.vue";
 import ServiceEdit from "../pages/ServiceEdit.vue";
 import Events from "../pages/Events.vue";
 import Edit_Events from "../pages/EditEvents.vue";
+import News from "../pages/News.vue";
+import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
 import UserManagement from "../pages/UserManagement.vue";  
 import News_Create from "../pages/News_Create.vue";
 import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
-import store from "../store";
 
 const routes = [
     // {
@@ -71,9 +72,9 @@ const routes = [
                 component: Edit_Events
             },
             {
-                path: "/create_event",
-                name: "createEvent",
-                component: CreateEvent
+                path: "/reminders",
+                name: "reminders",
+                component: Reminders
             },
             {
               path: "/news/:id",

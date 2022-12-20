@@ -192,8 +192,6 @@
 import Navbar from "../components/Navigation/Navbar.vue";
 import Modal from "../components/Modal/Modal.vue";
 import TextInput from "../components/Input/TextInput.vue";
-import PrimaryButton from "../components/Buttons/PrimaryButton.vue";
-import LearnButton from "../components/Buttons/LearnButton.vue";
 import Label from "../components/Label/Label.vue";
 
 export default {
@@ -201,8 +199,6 @@ export default {
     Navbar,
     Modal,
     TextInput,
-    PrimaryButton,
-    LearnButton,
     Label,
   },
   data() {

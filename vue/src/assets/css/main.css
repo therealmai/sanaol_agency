@@ -4177,8 +4177,8 @@ textarea.form-control.is-invalid {
   width: 100vw;
 }
 
-.w-40 {
-  width: 10rem;
+.w-\[100px\] {
+  width: 100px;
 }
 
 .w-full {
@@ -4199,10 +4199,6 @@ textarea.form-control.is-invalid {
 
 .w-48 {
   width: 12rem;
-}
-
-.w-\[100px\] {
-  width: 100px;
 }
 
 .w-\[123px\] {
