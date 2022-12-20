@@ -2,7 +2,7 @@
   <div class="font-inter flex flex-col space-y-4">
 
       <div class="">
-        <OutBtn text="BACK" class="w-[100px] ml-[44px] mt-[31.79px]" @click="$router.go(-1)"></OutBtn>
+        <OutBtn text="BACK" class="w-[100px] ml-[44px] mt-[31.79px]"></OutBtn>
       </div>
 
       <div class="flex flex-row items-center justify-between ml-[12.5%] mr-[12.5%] mb-[25px]">
@@ -23,7 +23,6 @@
               {{news.content}}
           </p>
       </div>
-      <Modal v-show="isModalVisible" @close="closeModal"></Modal>
 
   </div>
 </template>
@@ -32,7 +31,6 @@
 import Navbar from '../components/Navigation/Navbar.vue';
 import FilledBtn from '../components/Buttons/FilledButton.vue';
 import OutBtn from '../components/Buttons/OutlineButton.vue';
-import Modal from "../components/Modal/News Modals/DeleteNews.vue";
 
 import axios from 'axios'
 
@@ -62,8 +60,7 @@ export default {
   components: {
       FilledBtn,
       OutBtn,
-      Navbar,
-      Modal
+      Navbar
   },
   computed: {
 
