@@ -45,7 +45,7 @@ export default {
         created_at: 'January 01, 1700'
       },
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      isAdmin: true,
+      isAdmin: false,
       isModalVisible: false,
       id: this.$route.params.id,
     }
