@@ -83,9 +83,6 @@ Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 
 //HeroBanner Images
 Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
-Route::post('herobanner/image', [BannerImageController::class, 'store']);
-Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
-Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
 
 //News 
 Route::get('news', [NewsController::class, 'index']);
