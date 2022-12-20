@@ -41,6 +41,7 @@ import Divider from '../components/Divider/Divider.vue';
 import Label from '../components/Label/Label.vue';
 import Carousel from '../components/HeroBanner/Carousel.vue';
 import CardCarousel from '../components/HeroBanner/CardCarousel.vue';
+import axios from '../axios';
 export default{
   components: {
     FilledButton,
@@ -53,6 +54,67 @@ export default{
     Carousel,
     CardCarousel
   },
+  data() {
+    return {
+      hero: {},
+      services: [],
+      events: [],
+      news: []
+    }
+  },
+  methods: {
+    getHeroBanner() {
+      const params = 1; // sample params for herobanner
+      axios.get('herobanner/'+params)
+      .then((res) => {
+        this.hero = res.data.data;
+        return axios.get('herobanner/image/'+this.hero.id)
+      })
+      .then((res) => {
+        this.hero['images'] = res.data.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    },
+
+    getServices() {
+      axios.get('services')
+      .then((res) => {
+        this.services = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    },
+
+    getEvents() {
+      axios.get('events')
+      .then((res) => {
+        this.events = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    },
+
+    getNews() {
+      axios.get('news')
+      .then((res) => {
+        this.news = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    },
+
+  },
+  mounted() {
+    this.getHeroBanner();
+    this.getServices();
+    this.getEvents();
+    this.getNews();
+  }
 }
 </script>
 
