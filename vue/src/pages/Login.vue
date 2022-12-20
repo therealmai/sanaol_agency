@@ -1,9 +1,9 @@
 <template> 
-  <div class="flex m-0 ">
+  <div class="flex m-0">
   
-      <div class="flex items-center justify-center container h-fit">
+      <div class="flex justify-center container h-fit">
       <!-- insert log in template here. -->
-        <div class="md:p-4 md:mx-6 m-8">
+        <div class="md:p-4 md:mx-6 m-8 justify-center block">
           <div class="text-center">
             <h4 class="text-2xl font-semibold mt-6 pb-1">Sanaol Agency</h4>
             <img
