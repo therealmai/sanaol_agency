@@ -1,21 +1,23 @@
 <template>
-    <div class="w-full min-w-fit justify-between">
+    <div class="w-full min-w-fit">
       <div class="flex py-4 px-8 bg-white">
-        <span class="w-3/12 text-lg font-bold text-[#393540]">USER</span>
-        <span class="w-4/12 text-lg font-bold text-[#393540]">EMAIL</span>
-        <span class="w-2/12 text-lg font-bold text-[#393540]">ROLE</span>
-        <span class="w-3/12 text-lg font-bold text-[#393540]">ACTIONS</span>
+        <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">USER</span>
+        <span class="w-4/12 min-w-max text-lg font-bold text-[#393540]">EMAIL</span>
+        <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]">ROLE</span>
+        <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
-  
-      <UserItem :key="users.id" v-for="users in users"
-        :id="users.id"
-        :fname="users.fname"
-        :lname="users.lname"
-        :handle="users.insta_handle"
-        :email="users.email"
-        :user_type="users.user_type"
-      />
-      <div class="flex justify-center w-full mt-6">
+      <template v-for="users in users">
+        <UserItem :key="users.id" v-if="users.is_member"
+          :id="users.id"
+          :fname="users.fname"
+          :lname="users.lname"
+          :handle="users.insta_handle"
+          :email="users.email"
+          :user_type="users.user_type"
+        />
+      </template>
+      
+      <div class="flex justify-center w-full my-6">
         <PaginationController :pages="5" />
       </div>
     </div>

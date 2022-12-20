@@ -3730,12 +3730,20 @@ textarea.form-control.is-invalid {
   z-index: 2;
 }
 
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
 
-.col-span-2 {
-  grid-column: span 2 / span 2;
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
+.col-span-5 {
+  grid-column: span 5 / span 5;
 }
 
 .row-span-4 {
@@ -3804,6 +3812,11 @@ textarea.form-control.is-invalid {
 .my-\[10px\] {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .mt-\[76px\] {
@@ -4010,6 +4023,14 @@ textarea.form-control.is-invalid {
   margin-top: 25px;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -4153,6 +4174,22 @@ textarea.form-control.is-invalid {
 
 .h-\[406\.18px\] {
   height: 406.18px;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
+.h-9 {
+  height: 2.25rem;
 }
 
 .max-h-screen {
@@ -4328,6 +4365,34 @@ textarea.form-control.is-invalid {
   width: 176px;
 }
 
+.w-32 {
+  width: 8rem;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
+.w-\[25px\] {
+  width: 25px;
+}
+
+.w-\[28px\] {
+  width: 28px;
+}
+
+.w-9 {
+  width: 2.25rem;
+}
+
+.w-\[120px\] {
+  width: 120px;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -4401,8 +4466,8 @@ textarea.form-control.is-invalid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .grid-rows-4 {
@@ -4423,6 +4488,10 @@ textarea.form-control.is-invalid {
 
 .flex-nowrap {
   flex-wrap: nowrap;
+}
+
+.place-content-center {
+  place-content: center;
 }
 
 .content-center {
@@ -4493,9 +4562,8 @@ textarea.form-control.is-invalid {
   gap: 2%;
 }
 
-.gap-x-5 {
-  -moz-column-gap: 1.25rem;
-       column-gap: 1.25rem;
+.gap-y-5 {
+  row-gap: 1.25rem;
 }
 
 .gap-x-2 {
@@ -4531,6 +4599,10 @@ textarea.form-control.is-invalid {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.self-center {
+  align-self: center;
 }
 
 .justify-self-end {
@@ -4603,6 +4675,26 @@ textarea.form-control.is-invalid {
 
 .rounded-2xl {
   border-radius: 1rem;
+}
+
+.rounded-\[100\%\] {
+  border-radius: 100%;
+}
+
+.rounded-\[25\%\] {
+  border-radius: 25%;
+}
+
+.rounded-\[80\%\] {
+  border-radius: 80%;
+}
+
+.rounded-\[5\%\] {
+  border-radius: 5%;
+}
+
+.rounded-\[15\%\] {
+  border-radius: 15%;
 }
 
 .rounded-l-lg {
@@ -4901,6 +4993,16 @@ textarea.form-control.is-invalid {
   padding-bottom: 4rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .pl-\[15\%\] {
   padding-left: 15%;
 }
@@ -5097,6 +5199,10 @@ textarea.form-control.is-invalid {
   font-size: 28px;
 }
 
+.text-\[15px\] {
+  font-size: 15px;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -5131,6 +5237,10 @@ textarea.form-control.is-invalid {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .leading-tight {
