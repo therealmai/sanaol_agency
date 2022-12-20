@@ -18,6 +18,7 @@ import News_Create from "../pages/News_Create.vue";
 import News_Update from "../pages/News_Update.vue";
 
 
+import EventsManagement from "../pages/EventsManagement.vue";
 
 import store from "../store";
 
@@ -102,6 +103,11 @@ const routes = [
                 path: "/news_update",
                 name: "news_update",
                 component: News_Update
+            },
+            {
+                path: "/events_management",
+                name: "events_management",
+                component: EventsManagement
             },
         ]
 
