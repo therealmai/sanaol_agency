@@ -1,10 +1,11 @@
+import createPersistedState from "vuex-persistedstate"; 
 import { createStore } from "vuex";
 import axios from "../axios";
 
 const store = createStore({
   state: {
-    user:{
-      data:{},
+    user:{      //data about the user and the token will be stored here after user login 
+      data:{},      
       token: {}
     },
   },
@@ -39,12 +40,14 @@ const store = createStore({
       sessionStorage.setItem("TOKEN", userData.token);
   },
     logout : (state) => {
-              state.user.data = {};          //remove user data in state
+        state.user.data = {};          //remove user data in state
         state.user.token = null;             //set token to null
-        sessionStorage.removeItem("TOKEN");  //remove token from session
+        // sessionStorage.removeItem("TOKEN");  //remove token from session
+        // sessionStorage.clear();
     },
   },
-  modules: {}
+  // modules: {},
+  //   plugins: [createPersistedState()]
 })
 
 export default store;
