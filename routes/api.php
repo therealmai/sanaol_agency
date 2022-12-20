@@ -61,6 +61,11 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::post('herobanner/image', [BannerImageController::class, 'store']);
     Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
     Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
+
+    //News
+    Route::patch('news/{id}', [NewsController::class, 'update']);
+    Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
+    Route::post('news/create', [NewsController::class, 'store']);
 });
 
 //Public Routes
@@ -83,16 +88,12 @@ Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 
 //HeroBanner Images
 Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
-Route::post('herobanner/image', [BannerImageController::class, 'store']);
-Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
-Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
+
 
 //News 
 Route::get('news', [NewsController::class, 'index']);
-Route::post('news/create', [NewsController::class, 'store']);
 Route::get('news/{id}', [NewsController::class, 'show']);
-Route::patch('news/{id}', [NewsController::class, 'update']);
-Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
+
 
 //UserImage
 Route::get('user/image/{id}', [UserImageController::class, 'show'])->name('userImage.show');
