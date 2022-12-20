@@ -14,8 +14,14 @@ Title of Service Edit Page
     Click Link          ${link-services}
     Click Link          ${services-1}
 
-    Element Text Should Be    xpath://h1[contains(text(),'Edit Service')]    Edit Service
+    Element Text Should Be    xpath://h1[contains(text(),'Edit Service')]     Edit Service
     Element Text Should Be    xpath://label[contains(text(),'Title')]    Title
+
+# Must not see EDIT SECTION button if user type is general
+
+
+# Must see EDIT SECTION button if user type is admin
+
     
 
 *** Keywords ***
