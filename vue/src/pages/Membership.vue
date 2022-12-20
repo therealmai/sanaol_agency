@@ -16,7 +16,7 @@
               <!-- Form Group -->
               <div class="grid md:grid-cols-1 lg:grid-cols-2 lg:gap-6">
                 <div class="relative z-0 mb-6 w-full group">
-                  <input type="text" name="fname" id="fname" v-model="user.first_name" placeholder=" " required autocomplete="name"
+                  <input type="text" name="fname" id="fname" v-model="user.fname" placeholder=" " required autocomplete="name"
                     class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
                     rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
                     focus:border--indigo-500 peer"/>
@@ -27,7 +27,7 @@
                     peer-focus:scale-75 peer-focus:-translate-y-8">First Name</label>
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
-                  <input type="text" name="lname" id="lname" v-model="user.last_name" placeholder=" " required autocomplete="name"
+                  <input type="text" name="lname" id="lname" v-model="user.lname" placeholder=" " required autocomplete="name"
                     class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
                     rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
                     focus:border--indigo-500 peer"/>
@@ -108,7 +108,7 @@
                 </template>
               </errorModal>
               <!-- Submit Button -->
-              <button type="submit" @click="staticRegister"
+              <button type="submit" @click="register"
                 class="w-full px-6 py-3 mb-6
                 bg-indigo-500 text-white font-medium text-base
                 leading-tight uppercase rounded shadow-md
@@ -143,25 +143,25 @@ import errorModal from '../components/Modal/ErrorModal.vue';
 const toggleModal = errorModal.methods.toggleModal();
 const router = useRouter();
 const user = {
-  first_name: '',
-  last_name: '',
-  insta_handle: '',
+  fname: '',
+  lname: '',
   email: '',
   password: '',
   confirm_password: '',
+  insta_handle: '',
+  user_type: 'general',
   reason: '',
 }
 
 function register(ev) {
-  ev.prevenDefault();
+  ev.preventDefault();
   store.dispatch('register', user)
        .then(() => {
-          router.push({
-            name: 'Hero'
-          })
+        router.push({ name: 'hero' });
        })
        .catch(err => {
-          err.value = toggleModal;
+          // err.value = toggleModal;
+          console.log("Error");
        })
 }
 

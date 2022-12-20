@@ -1,20 +1,49 @@
 import { createStore } from "vuex";
+import axios from "../axios";
 
 const store = createStore({
   state: {
     user:{
-      data: {
-        name: 'WAYNE',
-        role: 'ADMIN',  
-        // role: 'GENERAL', 
-        // role: 'TALENT', 
-        token: null
-      }      
-    }
+      data:{},
+      token: {}
+    },
   },
   getters:  {},
-  actions:{},
-  mutations: {},
+  actions:{
+    register({commit}, user) {
+      return axios.post("auth/register", user)
+          .then(({data}) => {
+              return data;
+          })
+      },
+    login({commit}, user) {
+      return axios.post("auth/login", user)
+          .then(({data}) => {
+              console.log(data);
+              commit("setUser", data)
+              return data;
+          })
+      },
+    logout({commit}) {
+        return axios.post("auth/logout")
+            .then(response => {
+                commit("logout")
+                  return response;
+                })
+        }
+  },
+  mutations: {
+    setUser(state, userData) {
+      state.user.data = userData.user;
+      state.user.token = userData.access_token;
+      sessionStorage.setItem("TOKEN", userData.token);
+  },
+    logout : (state) => {
+              state.user.data = {};          //remove user data in state
+        state.user.token = null;             //set token to null
+        sessionStorage.removeItem("TOKEN");  //remove token from session
+    },
+  },
   modules: {}
 })
 
