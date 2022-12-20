@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\HeroBanner;
 use App\Models\Service;
+use App\Models\News;
 
 use File;
 
@@ -32,7 +33,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory(35)
             ->hasUserImages(5)
-            ->hasNews(3)
             ->create();
 
         HeroBanner::factory(5)
@@ -44,6 +44,9 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         Service::factory(2)
+            ->create();
+
+        News::factory(50)
             ->create();
     }
 }
