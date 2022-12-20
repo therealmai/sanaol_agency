@@ -96,7 +96,7 @@ Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
 
 //UserImage
 Route::get('user/image/{id}', [UserImageController::class, 'show'])->name('userImage.show');
-Route::post('user/image/create', [UserImageController::class, 'store'])->name('userImage.store');
+Route::post('user/image/', [UserImageController::class, 'store'])->name('userImage.store');
 Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
 Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
 

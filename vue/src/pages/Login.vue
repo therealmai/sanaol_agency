@@ -5,12 +5,12 @@
       <!-- insert log in template here. -->
         <div class="md:p-4 md:mx-6 m-8">
           <div class="text-center">
+            <h4 class="text-2xl font-semibold mt-6 pb-1">Sanaol Agency</h4>
             <img
-              class="mx-auto w-48"
+              class="mx-auto w-48 mb-6"
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
               alt="logo"
             />
-            <h4 class="text-2xl font-semibold mt-1 mb-6 pb-1">Sanaol Agency</h4>
           </div>
   
           <form id="login" method="post" @submit="login">
@@ -42,14 +42,14 @@
             </div>
   
             <!-- forgot password -->
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex justify-between items-center mb-6 mt-2">
               <div>
               </div>
-              <a class="text-gray-500" href="#!">Forgot password?</a>
+              <a class="text-gray-500 text-sm" href="#!">Forgot password?</a>
             </div>
 
             <!-- Error Modal -->
-            <errorModal>
+            <errorModal hidden>
               <template v-slot:modal-title> Login </template>
               <template v-slot:modal-content class="justify-center">
                 <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400 text-center">Incorrect username or password.</h3>
@@ -60,15 +60,19 @@
             <!-- Login Button -->
             <div class="text-center pt-1 mb-4 pb-1">
               <button
-                class="inline-block px-6 py-4 text-white bg-indigo-500 font-medium text-base leading-tight
-                uppercase rounded shadow-md focus:shadow-lg
+                class="w-64 px-6 py-3 mb-6
+                bg-indigo-500 text-white font-medium text-base
+                leading-tight uppercase rounded shadow-md
                 hover:bg-indigo-50 hover:shadow-lg hover:text-indigo-500
-                focus:outline-none focus:ring-0 active:shadow-lg transition duration-300 ease-in-out w-full mb-3"
+                focus:bg-indigo-700 focus:shadow-lg focus:outline-none focus:ring-0
+                active:bg-indigo-800 active:shadow-lg
+                transition duration-300
+                ease-in-out"
                 type="submit"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
                 data-model-toggle="popup-modal"
-                @click="staticLogin"
+                @click="login"
               >
                 Log in
               </button>
@@ -77,7 +81,7 @@
             </div>
   
             <!-- Membership Button -->
-            <div class="flex items-center justify-between pb-3">
+            <div class="flex items-center justify-between pb-2">
               <p class="mb-0 mr-2">Don't have an account?
               {{ '' }}
               <!-- <router-link :to="{name: 'Membership'}" class="underline text-indigo-500 hover:text-indigo-400">Apply as a Talent here.</router-link> -->
@@ -92,7 +96,7 @@
       </div>
   
       <!-- image -->
-      <div class="object-cover h-auto lg:w-screen md:h-auto bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
+      <div class="object-cover h-auto lg:w-screen md:h-auto bg-cover bg-center lg:-mb xl:-mb-8" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
   </div>
   </template>
   
@@ -101,26 +105,25 @@
   import errorModal from '../components/Modal/ErrorModal.vue';
   import store from "../store";
   import {useRouter} from "vue-router";
+  import { reactive, computed } from 'vue';
   import Footer from '../components/Footer/Footer.vue';
   
   const toggleModal = errorModal.methods.toggleModal();
   const router = useRouter();
-  const user = {
+  const user = reactive({
     email: '',
     password: '',
-  }
+  })
   
   function login(ev) {
     ev.preventDefault();
   
     store.dispatch('login', user)
       .then(() => {
-        router.push({
-          name:'Hero'
-        })
+        router.push('hero');
       })
       .catch(err => {
-        err.value = toggleModal;
+        // err.value = toggleModal;
       })
   }
   

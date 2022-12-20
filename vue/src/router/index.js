@@ -11,15 +11,13 @@ import Services from "../pages/Services.vue";
 import ServiceEdit from "../pages/ServiceEdit.vue";
 import Events from "../pages/Events.vue";
 import Edit_Events from "../pages/EditEvents.vue";
+import News from "../pages/News.vue";
+import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
-import CreateEvent from "../pages/CreateEvent.vue";
-
-import Sample from "../pages/Sample.vue"
-
-import store from "../store";
-
-import tag from "../components/Input/InputTags.vue"
-
+import UserManagement from "../pages/UserManagement.vue";  
+import News_Create from "../pages/News_Create.vue";
+import News_Update from "../pages/News_Update.vue";
+import EventsManagement from "../pages/EventsManagement.vue";
 
 const routes = [
     // {
@@ -74,14 +72,39 @@ const routes = [
                 component: Edit_Events
             },
             {
-                path: "/create_event",
-                name: "createEvent",
-                component: CreateEvent
+                path: "/reminders",
+                name: "reminders",
+                component: Reminders
             },
             {
-                path: "/sample",
-                name: "Sample",
-                component: Sample
+                path: "/news/:id",
+                name: "news",
+                component: News
+            },
+            {
+                path: "/usermanagement",
+                name: "usermanagement",
+                component: UserManagement
+            },
+            {
+                path: "/Profile",
+                name: "Profile",
+                component: Talent_User
+            }, 
+            {
+                path: "/news_create",
+                name: "news_create",
+                component: News_Create
+            },
+            {
+                path: "/news_update",
+                name: "news_update",
+                component: News_Update
+            },
+            {
+                path: "/events_management",
+                name: "events_management",
+                component: EventsManagement
             },
         ]
 
@@ -103,8 +126,8 @@ const router = createRouter({
 // router.beforeEach((to, from, next) => {
 //     if(to.meta.requiresAuth && !store.state.user.token) {
 //         next({ name: "login" });
-//     }else if(store.state.user.token && to.name === "login") {
-//         next({ name: "navigation" });
+//     }else if(store.state.user.token && to.name === "hero"){
+//         next({ name: "login" });
 //     }else {
 //         next();
 //     }
