@@ -7,17 +7,16 @@
         <span class="w-3/12 text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
   
-      <UserItem :key="user.id" v-for="user in n"
-        :id="user.id"
-        :image="user.image"
-        :fname="user.fname"
-        :lname="user.lname"
-        :handle="user.handle"
-        :email="user.email"
-        :user_type="user.user_type"
+      <UserItem :key="users.id" v-for="users in users"
+        :id="users.id"
+        :fname="users.fname"
+        :lname="users.lname"
+        :handle="users.insta_handle"
+        :email="users.email"
+        :user_type="users.user_type"
       />
       <div class="flex justify-center w-full mt-6">
-        <PaginationController :pages="3" />
+        <PaginationController :pages="5" />
       </div>
     </div>
   </template>
@@ -31,16 +30,15 @@
     components: { UserItem, PaginationController },
     data() {
       return {
-        n:[1,2,3,4,5,6,7,8],
-        User:{},
+        users:[],
       }
     },
     methods: {
       loadUsers(){
-          axiosClient.get("/user").then(({ data }) => (this.user = data.data));
-      }
+          axiosClient.get("/users").then(({ data }) => (this.users = data));
+      },
   },
-  created() {
+  mounted() {
     this.loadUsers();
   }
   };
