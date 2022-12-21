@@ -164,6 +164,10 @@ export default {
       isMatch(){
         return this.user.password === this.user.confirm_password;
       },
+      isEmpty(){
+        return this.user.fname == '' && this.user.lname == '' && this.user.email == '' && this.user.password == '' &&
+        this.user.confirm_password == '' && this.user.insta_handle == '';
+      }, 
       clearFields() {
         this.user.fname = '';
         this.user.lname = '';
@@ -181,26 +185,31 @@ export default {
       register(ev) {
         ev.preventDefault();
       
-        if(this.isMatch()) {
-          store.dispatch('register', this.user)
-            .then(() => {
-              // if(data == undefined) {
-              //   this.errorMessage = 'Error in Creating Account. Please Try Again.'
-              // } else {
-              //   this.$router.push('hero');
-              // }
-              this.$router.push('hero');
-            })
-            .catch(err => {
-              this.errorMessage = 'User already exists. Please try again.'
+        if(!this.isEmpty()) {
+          if(this.isMatch()) {
+            store.dispatch('register', this.user)
+              .then(() => {
+                // if(data == undefined) {
+                //   this.errorMessage = 'Error in Creating Account. Please Try Again.'
+                // } else {
+                //   this.$router.push('hero');
+                // }
+                this.$router.push('hero');
+              })
+              .catch(err => {
+                this.errorMessage = 'User already exists. Please try again.'
+                this.$refs.modal.toggleModal();
+                this.clearFields();
+                console.log(err);
+              })
+            } else {
+              this.errorMessage = 'Password does not match. Please try again.'
               this.$refs.modal.toggleModal();
-              this.clearFields();
-              console.log(err);
-            })
+              this.clearPassword();
+            }
           } else {
-            this.errorMessage = 'Password does not match. Please try again.'
+            this.errorMessage = 'Fields are empty. Please enter your credentials.'
             this.$refs.modal.toggleModal();
-            this.clearPassword();
           }
         }
       },
