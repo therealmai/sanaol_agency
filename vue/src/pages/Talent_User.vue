@@ -13,7 +13,7 @@
               <div class="text-primary space-y-4 font-inter">
                       <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
-                          <p class="font-bold text-[32px] m-0 p-0">{{ form.fname }} {{ form.lname }}</p>
+                          <p class="font-bold text-[32px] m-0 p-0 ">{{ form.fname }} {{ form.lname }}</p>
                           <p class="font-semibold text-[20px] p-0">{{ form.insta_handle }}</p>
                         </div>
                         <div class="flex items-center ">
@@ -25,7 +25,7 @@
 
                         </div>
                       </div>
-                    <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8]"> {{ form.bio }}</p>
+                    <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify"> {{ '@'+ form.bio }}</p>
               </div>
             </div>
         </div>
@@ -138,8 +138,8 @@
   mounted(){
         this.form.fname = this.$store.state.user.data.fname;
         this.form.lname = this.$store.state.user.data.lname;
-        this.form.insta_handle = '@'+ this.$store.state.user.data.insta_handle;
-        this.form.bio = "welcome to my profile";
+        this.form.insta_handle =  this.$store.state.user.data.insta_handle;
+        this.form.bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   },
   methods: {
       showModal() {
@@ -154,11 +154,11 @@
       },
       hideUpdate(){
         this.isUpdated = false;
-        axios.patch('users/'+this.$store.state.user.data.id).then((response)=> {
-                  this.user = response.data
-            }).catch(err => {
-                console.log(err)
-            });
+        // axios.patch('users/'+this.$store.state.user.data.id).then((response)=> {
+        //           this.user = response.data
+        //     }).catch(err => {
+        //         console.log(err)
+        //     });
       },
       loadFile(e) {
                 let imgHtml = document.querySelector('#talentImg');

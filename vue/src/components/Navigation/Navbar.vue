@@ -10,10 +10,11 @@
     <div class="space-x-6 pr-4">
       
       <!-- display if user is admin (go to store/index.js to change role of user) -->
-      <router-link  v-show="user.user_type == 'general' " :to="{ name: 'usermanagement' }">
+      <router-link  v-show="user.user_type == 'admin' " :to="{ name: 'usermanagement' }">
         <span class="font-medium px-2 py-2 rounded-l ">USERS</span>
       </router-link>
-      <router-link  v-show="user.user_type != 'talent' && user.user_type != 'admin'" :to="{ name: 'membership' }">
+      
+      <router-link  v-show="user.user_type == NULL" :to="{ name: 'membership' }">
         <span class="font-medium px-2 py-2 rounded-l ">MEMBERSHIP</span>
       </router-link>
 
@@ -21,13 +22,10 @@
         <span class="font-medium px-2 py-2 rounded-l ">PROFILE</span>
       </router-link>
 
-      <router-link v-show="user.user_type == 'talent' || user.user_type == 'general'" :to="{ name: 'Profile' }">
-        <span class="font-medium px-2 py-2 rounded-l ">PROFILE</span>
-      </router-link>
-
       <router-link :to="{ name: 'talent_list' }">
         <span class="font-medium px-2 py-2 rounded-l ">TALENTS</span>
       </router-link>
+
       <router-link v-show="user.user_type == 'admin' || user.user_type == 'talent'"  :to="{ name: 'reminders' }">
         <span class="font-medium px-2 py-2 rounded-l ">REMINDERS</span>
       </router-link>
@@ -39,13 +37,10 @@
       </router-link>
       
       
-      <span v-if="user.name != null" class="bg-[#F6F5FF] p-2 rounded-[7px] text-primary pr-6 pl-6 cursor-pointer">{{ user.name }}</span>
+      <span v-if="user.fname" class="bg-[#F6F5FF] p-2 rounded-[7px] text-primary pr-6 pl-6 cursor-pointer">{{ user.fname.toUpperCase() }}</span>
       <router-link v-else :to="{ name: 'login' }"> 
         <span class="font-medium px-2 py-2 rounded-l ">LOGIN</span>
       </router-link>
-
-
-
 
     </div>
 </nav>
