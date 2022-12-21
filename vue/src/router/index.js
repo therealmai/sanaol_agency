@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-
+import store from "../store/index.js";
 
 import App from "../App.vue";
 import Login from "../pages/Login.vue";
@@ -121,18 +121,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes: routes,
     linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white"
-});
-
-router.beforeEach((to, from, next) => {
-    if(to.meta.requiresAuth && store.state.user.token == null) {
-        next({ name: "login" });
-    }
-    // else if(store.state.user.token && to.name === "hero"){
-    //     next({ name: "login" });
-    // }
-    else {
-        next();
-    }
 });
 
 export default router;
