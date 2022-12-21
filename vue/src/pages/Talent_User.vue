@@ -28,7 +28,7 @@
                     <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify">{{ user.bio }}</p>
                     <div class="mt-[99px] justify-center container grid grid-cols-3 gap-[21px] w-[970.74px]">
                       <div v-for="image in images" v-bind:key="image.id">
-                        <img class="rounded-[8px] w-[308.65px] h-[235.43px]" :src="image.image"/>
+                        <img class="mt-[15px] rounded-[8px] w-[308.65px] h-[235.43px]" :src="image.image"/>
                       </div>
                     </div>
               </div>
