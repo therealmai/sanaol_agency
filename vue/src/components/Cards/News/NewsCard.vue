@@ -5,7 +5,7 @@
     <!-- Image -->
     <div class="bg-lightgray w-full h-[317.35px] border rounded-[8px]"></div>
         
-    <span class="font-bold leading-1 text-[24px] text-primary pt-4" :class="
+    <span class="font-bold leading-none text-[24px] text-primary pt-4" :class="
       hover != undefined ? `hover:bg-${hover}` : 'hover:bg-primaryHovered'
     ">
           {{ title }}

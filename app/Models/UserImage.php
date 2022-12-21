@@ -12,7 +12,6 @@ class UserImage extends Model
     protected $table = "users_images";
 
     protected $fillable = [
-        'user_id',
         'image',
         'is_deleted'
     ];

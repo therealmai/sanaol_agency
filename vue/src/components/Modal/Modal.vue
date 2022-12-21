@@ -1,82 +1,51 @@
 <template>
-  <transition name="fade">
-    <div
-      class="
-        absolute
-        flex
-        justify-center
-        pt-[140px]
-        w-screen
-        h-screen
-        left-0
-        top-0
-        bg-opacity-50 bg-[#CCCCCC]
-      "
-    >
-      <div
-        class="
-          p
-          relative
-          flex flex-col
-          gap-5
-          h-fit
-          w-fit
-          p-[30px]
-          bg-white
-          rounded-[9px]
-        "
-      >
-        <div
-          class="
-            rounded-full
-            px-2
-            py-0.5
-            h-fit
-            w-fit
-            ml-auto
-            hover:bg-divider hover:cursor-pointer
-          "
-          @click="$emit('close')"
-        >
-          <font-awesome-icon icon="xmark"></font-awesome-icon>
+  <transition name="modal-fade">
+    <div class="flex items-center justify-center w-full h-full fixed top-0 left-0 bg-black  bg-opacity-50 z-[1000]">
+      <div class="flex items-center justify-center flex-col space-y-4 bg-white px-8 py-16 rounded-[12px] w-auto max-h-[50%] sm:max-h-[50%] md:max-h-[100%] sm:max-w-[100%] md:max-w-[50%]relative z-[2] md:m-w-[80%] md:px-8 md:py-4">
+        
+        <!-- to insert custom content use slot="modal_content" in the main page -->
+        
+        <div class="flex flex-col items-center gap-2"
+          :style="{
+            width: width ? width + 'px' : 'auto'
+          }">
+          <slot name="modal_content"/>
         </div>
-        <div
-          class="max-h-[520px] max-w-[458px] overflow-scroll overflow-x-hidden"
-        >
-          <slot name="body"></slot>
-        </div>
-        <div class="flex flex-row justify-between h-fit w-full">
-          <slot name="button-area" class=""></slot>
-        </div>
+        <!-- all contents will be rendered here --> 
+        
+        <!-- close button area-->
+        <slot name="modal_button"/>
+
       </div>
+      <div class="absolute w-full h-full shadow-sm"></div>
     </div>
   </transition>
 </template>
-
 <script>
 export default {
-  name: "Modal",
-  emits: ["close"],
+  name: 'Modal',
+  props:{
+    text: String,
+    fontSize: Number,
+    height: String,
+    width: String,
+  },
+  methods: {
+    // closeModal(){ this.$emit('close'); }
+  },
 };
 </script>
 
-<style lang="postcss" scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+<style>
+.modal-fade-enter,
+  .modal-fade-leave-to {
+    opacity: 0;
+  }
 
-::-webkit-scrollbar {
-  @apply w-[5px];
-}
+  .modal-fade-enter-active,
+  .modal-fade-leave-active {
+    transition: opacity .5s ease;
+  }
 
-::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-divider rounded-lg;
-}
 </style>
