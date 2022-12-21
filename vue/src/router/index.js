@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import store from "../store/index.js";
-
 import App from "../App.vue";
 import Login from "../pages/Login.vue";
 import Hero from "../pages/Hero.vue";
@@ -20,11 +18,6 @@ import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
 
 const routes = [
-    // {
-    //     path: "/",
-    //     name: "home",
-    //     component: App,
-    // },
     {
         path: "/",
         redirect: "/hero",
