@@ -7,9 +7,9 @@
             <div><h1 class="pl-[83px] pt-[53px] font-bold leading-[38.73px] text-[32px] text-[#525252] relative ">Profile</h1></div>
         
             <!-- profile content -->
-            <div class="flex flex-row justify-center items-center relative top-[150px] flex-wrap gap-6 mx-10 ">
+            <div class="flex flex-row justify-center relative top-[150px] flex-wrap gap-6 mx-10 ">
               <!-- image -->
-              <img class="w-[158px] h-[158px] object-cover rounded-[50%]" src="https://pixy.org/src2/573/thumbs350/5733959.jpg" alt="alternatetext">
+              <img class="w-[158px] h-[158px] object-cover rounded-[50%] flex justify-start" src="https://pixy.org/src2/573/thumbs350/5733959.jpg" alt="alternatetext">
               <div class="text-primary space-y-4 font-inter">
                       <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
@@ -26,28 +26,16 @@
                         </div>
                       </div>
                     <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify">{{ user.bio }}</p>
+                    <div class="mt-[99px] justify-center container grid grid-cols-3 gap-[21px] w-[970.74px]">
+                      <div v-for="image in images" v-bind:key="image.id">
+                        <img class="rounded-[8px] w-[308.65px] h-[235.43px]" :src="image.image"/>
+                      </div>
+                    </div>
               </div>
             </div>
         </div>
   
-        <div>
-            <!-- <div class="flex flex-row justify-center md:mt-[120px] sm:mt-[100px]  mb-[250px] ml-[160px] gap-4 h-[667.12px]">
-              <div class="card-zoom">
-                <div class="card-zoom-image" style='background-image: url("https://pixy.org/src2/624/thumbs350/6241751.jpg")'></div>
-              </div>
-                
-                <div class="flex flex-col gap-4">
-                  <div class="card-zoom">
-                    <div class="card-zoom-image h-full w-[468.06px] rounded-[8px]" style="background-image: url('https://pixy.org/src2/624/thumbs350/6241752.jpg')"></div>
-                  </div>
-
-                  <div class="card-zoom">
-                    <div class="card-zoom-image h-full w-[468.06px] rounded-[8px]" style="background-image: url('https://pixy.org/src2/624/thumbs350/6241753.jpg')"></div>
-                  </div>
-
-                </div>
-            </div> -->
-        </div>
+        
         
         <!-- profile modal display here -->
         <ProfileModal v-show="isProfileVisible" text="Profile Modal" @profile="closeModal" @update="showUpdate">
@@ -127,6 +115,7 @@ import { toRaw } from '@vue/reactivity';
       isProfileVisible: false,
       isUpdated: false,
       user: {},
+      images: {},
       form:{
         fname: '',
         lname: '',  
@@ -141,6 +130,12 @@ import { toRaw } from '@vue/reactivity';
         (response) => {
           const user = JSON.parse(JSON.stringify(response.data));
           this.user = user.data;
+        }
+      );
+      axios.get('user/image/'+this.$route.params.id).then(
+        (response) => {
+          this.images = JSON.parse(JSON.stringify(response.data.data));
+          console.log(this.images);
         }
       );
   },

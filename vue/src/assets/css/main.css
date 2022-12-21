@@ -4004,6 +4004,46 @@ textarea.form-control.is-invalid {
   margin-top: 25px;
 }
 
+.mt-\[99px\] {
+  margin-top: 99px;
+}
+
+.ml-\[239\.52px\] {
+  margin-left: 239.52px;
+}
+
+.ml-\[592\.52px\] {
+  margin-left: 592.52px;
+}
+
+.ml-\[630px\] {
+  margin-left: 630px;
+}
+
+.ml-\[660px\] {
+  margin-left: 660px;
+}
+
+.ml-\[670px\] {
+  margin-left: 670px;
+}
+
+.ml-\[675px\] {
+  margin-left: 675px;
+}
+
+.ml-\[677px\] {
+  margin-left: 677px;
+}
+
+.ml-\[680px\] {
+  margin-left: 680px;
+}
+
+.mt-\[\] {
+  margin-top: ;
+}
+
 .block {
   display: block;
 }
@@ -4147,6 +4187,14 @@ textarea.form-control.is-invalid {
 
 .h-\[406\.18px\] {
   height: 406.18px;
+}
+
+.h-\[\] {
+  height: ;
+}
+
+.h-\[235\.43px\] {
+  height: 235.43px;
 }
 
 .max-h-screen {
@@ -4326,6 +4374,14 @@ textarea.form-control.is-invalid {
   width: 176px;
 }
 
+.w-\[308\.65px\] {
+  width: 308.65px;
+}
+
+.w-\[970\.74px\] {
+  width: 970.74px;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -4405,6 +4461,10 @@ textarea.form-control.is-invalid {
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid-rows-4 {
@@ -4493,6 +4553,10 @@ textarea.form-control.is-invalid {
 
 .gap-\[2\%\] {
   gap: 2%;
+}
+
+.gap-\[21px\] {
+  gap: 21px;
 }
 
 .gap-y-5 {
