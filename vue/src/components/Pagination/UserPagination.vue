@@ -6,8 +6,8 @@
         <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]">ROLE</span>
         <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
-      <template v-if="users.data.is_member">
-        <UserItem v-for="(user,index) in users.data" :key="index"
+      <template v-for="(user,page) in users.data" >
+        <UserItem v-if="users.is_member" :key="page"
           :id="user.id"
           :fname="user.fname"
           :lname="user.lname"
@@ -18,7 +18,7 @@
       </template>
       
       <div class="flex justify-center w-full my-6">
-        <pagination :data="users" @pagination-change-page="list"></pagination>
+        <TailwindPagination :data="users" @pagination-change-page="list"></TailwindPagination>
       </div>
     </div>
   </template>
@@ -27,10 +27,10 @@
   import axiosClient from "../../axios";
   import PaginationController from "./PaginationController.vue";
   import UserItem from "./UserItem.vue";
-  import pagination from 'laravel-vue-pagination'
+  import { TailwindPagination } from 'laravel-vue-pagination';
   export default {
     name: "UserPagination",
-    components: { UserItem, PaginationController, pagination },
+    components: { UserItem, PaginationController, TailwindPagination },
     data() {
       return {
         users:{
@@ -41,7 +41,7 @@
     },
     methods: {
             async list(page=1){
-                await axiosClient.get(`/api/users/page?page=${page}`).then(({data})=>{
+                await axiosClient.get(`api/users/page?page=${page}`).then(({data})=>{
                     this.users = data
                 }).catch(({ response })=>{
                     console.error(response)
