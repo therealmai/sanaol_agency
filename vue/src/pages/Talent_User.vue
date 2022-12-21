@@ -14,18 +14,18 @@
                       <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
                           <p class="font-bold text-[32px] m-0 p-0 ">{{ form.fname }} {{ form.lname }}</p>
-                          <p class="font-semibold text-[20px] p-0">{{ form.insta_handle }}</p>
+                          <p class="font-semibold text-[20px] p-0">@{{ form.insta_handle }}</p>
                         </div>
                         <div class="flex items-center ">
                         
                           <!-- edit button will show if the user talent-->
-                          <div v-show="isTalent">  
+                          <div v-show="user_type == 'talent'">  
                             <EditBtn class="w-[150px]" text="Edit Profile" @click='showModal'></EditBtn>
                           </div>
 
                         </div>
                       </div>
-                    <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify"> {{ '@'+ form.bio }}</p>
+                    <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify">{{ form.bio }}</p>
               </div>
             </div>
         </div>
@@ -125,10 +125,11 @@
       text: 'Profile',
       isProfileVisible: false,
       isUpdated: false,
-      isTalent: true,
+      user: Object,
+      user_type: '',
       form:{
         fname: '',
-        lname: '',
+        lname: '',  
         insta_handle:'',
         bio:"",
         image:'https://pixy.org/src2/573/thumbs350/5733959.jpg'
@@ -136,9 +137,12 @@
     }
   },
   mounted(){
-        this.form.fname = this.$store.state.user.data.fname;
-        this.form.lname = this.$store.state.user.data.lname;
-        this.form.insta_handle =  this.$store.state.user.data.insta_handle;
+        this.user = this.$store.state.user.data;
+        this.user_type = this.user.user_type;
+        this.form.fname = this.user.fname;
+        this.form.lname = this.user.lname;
+        this.form.insta_handle =  this.user.insta_handle;
+
         this.form.bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   },
   methods: {

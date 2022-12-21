@@ -18,7 +18,7 @@
         <span class="font-medium px-2 py-2 rounded-l ">MEMBERSHIP</span>
       </router-link>
 
-      <router-link v-show="user.user_type == 'talent'" :to="{ name: 'Profile' }">
+      <router-link v-show="user.user_type == 'talent'" :to="{ name: 'profile', params: user.id}">
         <span class="font-medium px-2 py-2 rounded-l ">PROFILE</span>
       </router-link>
 
