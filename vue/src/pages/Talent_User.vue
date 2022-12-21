@@ -13,8 +13,8 @@
               <div class="text-primary space-y-4 font-inter">
                       <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
-                          <p class="font-bold text-[32px] m-0 p-0">{{ name }}</p>
-                          <p class="font-semibold text-[20px] p-0">@juandelacruz</p>
+                          <p class="font-bold text-[32px] m-0 p-0">{{ form.fname }} {{ form.lname }}</p>
+                          <p class="font-semibold text-[20px] p-0">{{ form.insta_handle }}</p>
                         </div>
                         <div class="flex items-center ">
                         
@@ -25,15 +25,13 @@
 
                         </div>
                       </div>
-                    <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8]"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit aut suscipit eum minus, omnis adipisci dicta molestiae corrupti laudantium exercitationem mollitia ipsa illo cupiditate sunt accusamus maxime nostrum aliquid. Praesentium?</p>
+                    <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8]"> {{ form.bio }}</p>
               </div>
             </div>
         </div>
   
         <div>
-            <div class="flex flex-row justify-center md:mt-[120px] sm:mt-[100px]  mb-[250px] ml-[160px] gap-4 h-[667.12px]">
-              <!-- pictures inserted here -->
-              <!-- <div :style="{ backgroundImage: `url(${post.image})` }"></div> -->
+            <!-- <div class="flex flex-row justify-center md:mt-[120px] sm:mt-[100px]  mb-[250px] ml-[160px] gap-4 h-[667.12px]">
               <div class="card-zoom">
                 <div class="card-zoom-image" style='background-image: url("https://pixy.org/src2/624/thumbs350/6241751.jpg")'></div>
               </div>
@@ -48,7 +46,7 @@
                   </div>
 
                 </div>
-            </div>
+            </div> -->
         </div>
         
         <!-- profile modal display here -->
@@ -73,10 +71,10 @@
                       <div class="h-[450px] w-full flex flex-col">
                               <div>
                                 <div class="flex flex-row gap-4 ">
-                                  <InputField title="First Name" v-model="form.firstname"></InputField>
-                                  <InputField title="Last Name" v-model="form.lastname"></InputField>
+                                  <InputField title="First Name" v-model="form.fname"></InputField>
+                                  <InputField title="Last Name" v-model="form.lname"></InputField>
                                 </div>
-                                <InputField title="Instagram Username" v-model="form.ighandle"></InputField>
+                                <InputField title="Instagram Username" v-model="form.insta_handle"></InputField>
                                 <TextArea title="Biography" v-model="form.bio"></TextArea>
                               </div>
                               
@@ -112,6 +110,7 @@
   import InputField from '../components/Input/InputField.vue';
   import TextArea from '../components/Input/TextArea.vue';
   import UpdateModal from "../components/Modal/UpdateModal.vue";
+  import axios from "../axios";
 
   export default{
     components: {
@@ -126,16 +125,21 @@
       text: 'Profile',
       isProfileVisible: false,
       isUpdated: false,
-      name: 'Juan De La Cruz',
       isTalent: true,
       form:{
-        firstname: '',
-        lastname: '',
-        ighandle:'',
-        bio:'Because I want to be popular',
+        fname: '',
+        lname: '',
+        insta_handle:'',
+        bio:"",
         image:'https://pixy.org/src2/573/thumbs350/5733959.jpg'
       }
     }
+  },
+  mounted(){
+        this.form.fname = this.$store.state.user.data.fname;
+        this.form.lname = this.$store.state.user.data.lname;
+        this.form.insta_handle = '@'+ this.$store.state.user.data.insta_handle;
+        this.form.bio = "welcome to my profile";
   },
   methods: {
       showModal() {
@@ -150,6 +154,11 @@
       },
       hideUpdate(){
         this.isUpdated = false;
+        axios.patch('users/'+this.$store.state.user.data.id).then((response)=> {
+                  this.user = response.data
+            }).catch(err => {
+                console.log(err)
+            });
       },
       loadFile(e) {
                 let imgHtml = document.querySelector('#talentImg');
