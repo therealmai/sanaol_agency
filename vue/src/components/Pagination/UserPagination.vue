@@ -6,19 +6,19 @@
         <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]">ROLE</span>
         <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
-      <template v-for="users in users">
-        <UserItem :key="users.id" v-if="users.is_member"
-          :id="users.id"
-          :fname="users.fname"
-          :lname="users.lname"
-          :handle="users.insta_handle"
-          :email="users.email"
-          :user_type="users.user_type"
+      <template v-if="users.data.is_member">
+        <UserItem v-for="(user,index) in users.data" :key="index"
+          :id="user.id"
+          :fname="user.fname"
+          :lname="user.lname"
+          :handle="user.insta_handle"
+          :email="user.email"
+          :user_type="user.user_type"
         />
       </template>
       
       <div class="flex justify-center w-full my-6">
-        <PaginationController :pages="5" />
+        <pagination :data="users" @pagination-change-page="list"></pagination>
       </div>
     </div>
   </template>
@@ -27,21 +27,29 @@
   import axiosClient from "../../axios";
   import PaginationController from "./PaginationController.vue";
   import UserItem from "./UserItem.vue";
+  import pagination from 'laravel-vue-pagination'
   export default {
     name: "UserPagination",
-    components: { UserItem, PaginationController },
+    components: { UserItem, PaginationController, pagination },
     data() {
       return {
-        users:[],
+        users:{
+          type:Object,
+          default:null
+        },
       }
     },
     methods: {
-      loadUsers(){
-          axiosClient.get("/users").then(({ data }) => (this.users = data));
-      },
-  },
+            async list(page=1){
+                await axiosClient.get(`/api/users/page?page=${page}`).then(({data})=>{
+                    this.users = data
+                }).catch(({ response })=>{
+                    console.error(response)
+                })
+            }
+        },
   mounted() {
-    this.loadUsers();
+    this.list();
   }
   };
   

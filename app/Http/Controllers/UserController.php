@@ -27,6 +27,15 @@ class UserController extends Controller
         }
     }
 
+    public function page()
+    {
+        $user = User::paginate(10);
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
