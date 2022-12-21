@@ -102,7 +102,7 @@ Steps to create a pull request.
 7. Click "Create pull request"
 
 ### SwaggerHub API Documentation Masterboard
-https://app.swaggerhub.com/apis-docs/therealmai/masterboard/1.0.0
+https://app.swaggerhub.com/apis-docs/therealmai/masterboard/2.0.0
 
 
 
