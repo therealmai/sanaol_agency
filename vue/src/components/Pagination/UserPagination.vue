@@ -6,8 +6,8 @@
         <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]">ROLE</span>
         <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
-      <template v-for="(user,page) in users.data" >
-        <UserItem v-if="users.is_member" :key="page"
+      
+        <UserItem v-for="user in members" :key="user.id"
           :id="user.id"
           :fname="user.fname"
           :lname="user.lname"
@@ -15,10 +15,15 @@
           :email="user.email"
           :user_type="user.user_type"
         />
-      </template>
+     
       
       <div class="flex justify-center w-full my-6">
-        <TailwindPagination :data="users" @pagination-change-page="list"></TailwindPagination>
+        <VueTailwindPagination
+      :current="currentPage"
+      :total="total"
+      :per-page="perPage"
+      @page-changed="onPageClick($event)"
+    />
       </div>
     </div>
   </template>
@@ -27,29 +32,48 @@
   import axiosClient from "../../axios";
   import PaginationController from "./PaginationController.vue";
   import UserItem from "./UserItem.vue";
-  import { TailwindPagination } from 'laravel-vue-pagination';
+  import VueTailwindPagination from "@ocrv/vue-tailwind-pagination";
   export default {
     name: "UserPagination",
-    components: { UserItem, PaginationController, TailwindPagination },
+    components: { UserItem, PaginationController, VueTailwindPagination },
     data() {
       return {
+        currentPage: 0,
+        perPage: 0,
+        total: 0,
         users:{
           type:Object,
           default:null
         },
+        members:{},
       }
     },
+    computed: {
+  
+},
     methods: {
-            async list(page=1){
-                await axiosClient.get(`api/users/page?page=${page}`).then(({data})=>{
-                    this.users = data
-                }).catch(({ response })=>{
-                    console.error(response)
-                })
+      checkMember(data) {
+    return data.filter(data => data.is_member == true)
+  },
+            async getData(){
+                var response = axiosClient.get(`users/page?page=${this.currentPage}`)
+                  var responseData = response;
+                  var userData = (await response).data.data;
+                  this.currentPage = responseData.current_page;
+                  this.perPage = responseData.per_page;
+                  this.total = responseData.total;
+                  this.members = this.checkMember(userData);
+                  console.log(members);
+            },
+            onPageClick(event){
+              this.currentPage = event;
+              this.getData(this.currentPage);
             }
+            
         },
   mounted() {
-    this.list();
+    this.currentPage = 1;
+    this.getData();
   }
   };
   
