@@ -21,14 +21,14 @@
   
   <script>
   import Service from '../components/Cards/Service/Service.vue';
-  import axios from 'axios';
+  import axios from '../axios';
 
   export default{
     components: {
       Service
     },
     mounted() {
-      axios.get('http://127.0.0.1:8000/api/services/').then(
+      axios.get('services').then(
         (response) => {
           this.services = response.data,
           console.log("services"),

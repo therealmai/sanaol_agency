@@ -38,33 +38,24 @@
         </thead>
         <tbody>
           <tr
-            v-for="(input, ndx) in list" 
-            :key="ndx"
+            v-for="event in events" 
+            :key="event.id"
           >
             <td>
-              {{input.title}}
+              {{event.title}}
             </td>
             <td>
-              {{input.event_type}}
+              {{event.event_type}}
             </td>
             <td>
-              {{input.date}}
+              {{event.date}}
             </td>
-            <td style="display: flex">
-              <LearnButton
-                text="Edit"
-                :height="20"
-                :width="70"
-                :fontSize="14"
-                class="mr-3"
-              />
-              <LearnButton
-                style="background: white; color: #7367f0; border: 1px solid"
-                text="Delete"
-                :height="20"
-                :width="70"
-                :fontSize="14"
-              />
+            <td style="display: flex ">
+              <router-link :to="'/events/edit/' + event.id">
+                <FilledButton text="Edit" />
+              </router-link>
+              <div class="ml-3"></div>
+                <OutlineButton text="Delete"/>
             </td>
           </tr>
         </tbody>
@@ -194,42 +185,32 @@ import Modal from "../components/Modal/Modal.vue";
 import TextInput from "../components/Input/TextInput.vue";
 import Label from "../components/Label/Label.vue";
 
+import FilledButton from "../components/Buttons/FilledButton.vue"
+import OutlineButton from "../components/Buttons/OutlineButton.vue"
+
+import axios from "../axios"
+
 export default {
   components: {
     Navbar,
     Modal,
     TextInput,
     Label,
+    FilledButton,
+    OutlineButton
   },
+  mounted() {
+      axios.get('events').then(
+        (response) => {
+          this.events = response.data,
+          console.log("events"),
+          console.log(this.events)
+        }
+      )
+    },
   data() {
     return {
-      list: [
-        {
-          title: 'Lorem ipsum dolor sit amet consectetur',
-          event_type: 'Fashion Show',
-          date: 'November 24, 2022'
-        },
-        {
-          title: 'Quod sunt esse officiis, eaque libero labore impedit alias perspiciatis itaque',
-          event_type: 'Fashion Show',
-          date: 'November 25, 2022'
-        },
-        {
-          title: 'Blanditiis quod repellendus praesentium omnis autem officia iusto nemo fugit',
-          event_type: 'Some Event',
-          date: 'November 26, 2022'
-        },
-        {
-          title: 'Auges kileb und scheise ugit',
-          event_type: 'Some Other Event',
-          date: 'December 25, 2022'
-        },
-        {
-          title: 'Lorem timto aselle jufel arkansas',
-          event_type: 'Another Event',
-          date: 'January 1, 2023'
-        }
-      ]
+      events: [],
     }
   }
 };
