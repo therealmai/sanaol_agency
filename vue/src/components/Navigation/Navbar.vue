@@ -4,7 +4,7 @@
 
       <a href="/" class="pl-[27px] flex items-center space-x-3" >
         <img class="w-[37.58px]" src="../../assets/sanaol-logo.png">
-        <p class="text-primary font-bold text-lg">System Name</p>
+        <p class="text-primary font-bold text-lg">Sanaol Agency</p>
       </a>
     
     <div class="space-x-6 pr-4">
