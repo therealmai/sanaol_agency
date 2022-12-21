@@ -10,7 +10,7 @@
 
         <div class="text-center mx-[20%] bg-[#D9D9D9]">
             <!-- use {{ image }} for img src given the filepath -->
-            <img :src="image" alt="">
+            <img :src="rootImgPath+image" alt="">
         </div>
 
         <p class="text-justify my-[10px] mx-[20%]">
@@ -28,13 +28,20 @@
         FilledButton
     },
     props: {
-        id: String,
+        id: Number,
         title: String,
         content: String,
         image: String
     },
     computed: {
     },
+    data() {
+        let prot = this.image.slice(0, 4);
+
+        return {
+            rootImgPath: prot === "http" ? '' : '/src/images/'
+        }
+    }
   };
   </script>
   

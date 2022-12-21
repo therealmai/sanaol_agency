@@ -22,23 +22,33 @@
   <script>
   import Service from '../components/Cards/Service/Service.vue';
   import axios from 'axios';
+  import { computed } from 'vue';
+  import { useStore } from 'vuex'
+
 
   export default{
     components: {
       Service
     },
+    setup() {
+      const store = useStore();
+    
+      return {
+        user: computed(() => store.state.user.data),
+      }
+    },
     mounted() {
       axios.get('http://127.0.0.1:8000/api/services/').then(
         (response) => {
-          this.services = response.data,
-          console.log("services"),
-          console.log(this.services)
+          this.services = response.data
+          // console.log("services"),
+          // console.log(this.services)
         }
       )
     },
     data() {
       return {
-        services: [],
+        services: []
       }
     }
   }
