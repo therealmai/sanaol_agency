@@ -96,7 +96,7 @@
       </div>
   
       <!-- image -->
-      <div class="object-cover h-auto lg:w-screen md:h-auto bg-cover bg-center lg:-mb xl:-mb-8" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
+      <div class="object-cover h-fill sm:h-auto lg:w-screen lg:h-auto md:h-auto bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
   </div>
   </template>
   
