@@ -4008,46 +4008,6 @@ textarea.form-control.is-invalid {
   margin-top: 99px;
 }
 
-.ml-\[239\.52px\] {
-  margin-left: 239.52px;
-}
-
-.ml-\[592\.52px\] {
-  margin-left: 592.52px;
-}
-
-.ml-\[630px\] {
-  margin-left: 630px;
-}
-
-.ml-\[660px\] {
-  margin-left: 660px;
-}
-
-.ml-\[670px\] {
-  margin-left: 670px;
-}
-
-.ml-\[675px\] {
-  margin-left: 675px;
-}
-
-.ml-\[677px\] {
-  margin-left: 677px;
-}
-
-.ml-\[680px\] {
-  margin-left: 680px;
-}
-
-.mt-\[\] {
-  margin-top: ;
-}
-
-.mt-\[143px\] {
-  margin-top: 143px;
-}
-
 .mt-\[15px\] {
   margin-top: 15px;
 }
@@ -4197,10 +4157,6 @@ textarea.form-control.is-invalid {
   height: 406.18px;
 }
 
-.h-\[\] {
-  height: ;
-}
-
 .h-\[235\.43px\] {
   height: 235.43px;
 }
@@ -4215,6 +4171,22 @@ textarea.form-control.is-invalid {
 
 .max-h-\[50\%\] {
   max-height: 50%;
+}
+
+.max-h-\[200px\] {
+  max-height: 200px;
+}
+
+.max-h-\[100px\] {
+  max-height: 100px;
+}
+
+.max-h-\[50px\] {
+  max-height: 50px;
+}
+
+.max-h-\[80px\] {
+  max-height: 80px;
 }
 
 .min-h-\[230\.20px\] {
@@ -4382,12 +4354,12 @@ textarea.form-control.is-invalid {
   width: 176px;
 }
 
-.w-\[308\.65px\] {
-  width: 308.65px;
-}
-
 .w-\[970\.74px\] {
   width: 970.74px;
+}
+
+.w-\[308\.65px\] {
+  width: 308.65px;
 }
 
 .min-w-full {

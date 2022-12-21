@@ -7,7 +7,7 @@
             <div><h1 class="pl-[83px] pt-[53px] font-bold leading-[38.73px] text-[32px] text-[#525252] relative ">Profile</h1></div>
         
             <!-- profile content -->
-            <div class="flex flex-row justify-center relative top-[150px] flex-wrap gap-6 mx-10 ">
+            <div class="flex flex-row justify-center relative top-[150px] flex-wrap gap-6 mx-10">
               <!-- image -->
               <img class="w-[158px] h-[158px] object-cover rounded-[50%] flex justify-start" src="https://pixy.org/src2/573/thumbs350/5733959.jpg" alt="alternatetext">
               <div class="text-primary space-y-4 font-inter">
@@ -26,7 +26,8 @@
                         </div>
                       </div>
                     <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify">{{ user.bio }}</p>
-                    <div class="mt-[99px] justify-center container grid grid-cols-3 gap-[21px] w-[970.74px]">
+                    
+                    <div class="mt-[99px] justify-center container grid grid-cols-3 gap-[21px] w-[970.74px] ">
                       <div v-for="image in images" v-bind:key="image.id">
                         <img class="mt-[15px] rounded-[8px] w-[308.65px] h-[235.43px]" :src="image.image"/>
                       </div>
@@ -71,9 +72,9 @@
                                 <p>Featured Photos</p>
                                  <div class="flex flex-row text-[#A8A8A8] gap-6 w-full">
                                     <!-- v-for loop the images -->
-                                    <img id="imgService" :src="form.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
-                                    <img id="imgService" :src="form.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
-                                    <img id="imgService" :src="form.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
+                                    <div v-for="image in images" v-bind:key="image.id">
+                                      <img id="imgService" :src="image.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
+                                    </div>
                                  </div>
                               </div>
                       </div>
