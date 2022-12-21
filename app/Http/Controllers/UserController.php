@@ -27,9 +27,18 @@ class UserController extends Controller
         }
     }
 
-    public function page()
+    public function memberPage()
     {
-        $user = User::paginate(10);
+        $user = User::where('is_member', true)->paginate(10);
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
+    public function nonMemberPage()
+    {
+        $user = User::where('is_member', false)->paginate(10);
 
         if(isset($user)){
             return response()->json($user, 200, ['application/json']);

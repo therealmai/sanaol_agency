@@ -71,7 +71,8 @@ Route::post('auth/login', [AuthController::class, 'login']);
 
 //Users
 Route::get('users', [UserController::class, 'index'])->name('user.index');
-Route::get('users/page', [UserController::class, 'page'])->name('user.pagination');
+Route::get('users/members', [UserController::class, 'memberPage'])->name('user.members');
+Route::get('users/nonmembers', [UserController::class, 'nonMemberPage'])->name('user.nonmembers');
 Route::get('users/{id}', [UserController::class, 'show'])->name('user.getUser');
 
 
