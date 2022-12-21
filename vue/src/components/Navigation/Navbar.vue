@@ -18,7 +18,7 @@
         <span class="font-medium px-2 py-2 rounded-l ">MEMBERSHIP</span>
       </router-link>
 
-      <router-link v-show="user.user_type == 'talent'" :to="{ name: 'profile', params: user.id}">
+      <router-link v-show="user.user_type == 'talent'" :to="{ name: 'profile', params: {id:`${user.id}`}}">
         <span class="font-medium px-2 py-2 rounded-l ">PROFILE</span>
       </router-link>
 
@@ -26,7 +26,7 @@
         <span class="font-medium px-2 py-2 rounded-l ">TALENTS</span>
       </router-link>
 
-      <router-link v-show="user.user_type == 'admin' || user.user_type == 'talent'"  :to="{ name: 'reminders' }">
+      <router-link v-show="user.user_type == 'talent'"  :to="{ name: 'reminders' }">
         <span class="font-medium px-2 py-2 rounded-l ">REMINDERS</span>
       </router-link>
       <router-link :to="{ name: 'services' }">

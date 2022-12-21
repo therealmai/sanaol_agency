@@ -13,19 +13,19 @@
               <div class="text-primary space-y-4 font-inter">
                       <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
-                          <p class="font-bold text-[32px] m-0 p-0 ">{{ form.fname }} {{ form.lname }}</p>
-                          <p class="font-semibold text-[20px] p-0">@{{ form.insta_handle }}</p>
+                          <p class="font-bold text-[32px] m-0 p-0 ">{{ user.fname }} {{ user.lname }}</p>
+                          <p class="font-semibold text-[20px] p-0">@{{ user.insta_handle }}</p>
                         </div>
                         <div class="flex items-center ">
                         
                           <!-- edit button will show if the user talent-->
-                          <div v-show="user_type == 'talent'">  
+                          <div v-show="user.user_type == 'talent'">  
                             <EditBtn class="w-[150px]" text="Edit Profile" @click='showModal'></EditBtn>
                           </div>
 
                         </div>
                       </div>
-                    <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify">{{ form.bio }}</p>
+                    <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify">{{ user.bio }}</p>
               </div>
             </div>
         </div>
@@ -71,11 +71,11 @@
                       <div class="h-[450px] w-full flex flex-col">
                               <div>
                                 <div class="flex flex-row gap-4 ">
-                                  <InputField title="First Name" v-model="form.fname"></InputField>
-                                  <InputField title="Last Name" v-model="form.lname"></InputField>
+                                  <InputField title="First Name" v-model="user.fname"></InputField>
+                                  <InputField title="Last Name" v-model="user.lname"></InputField>
                                 </div>
-                                <InputField title="Instagram Username" v-model="form.insta_handle"></InputField>
-                                <TextArea title="Biography" v-model="form.bio"></TextArea>
+                                <InputField title="Instagram Username" v-model="user.insta_handle"></InputField>
+                                <TextArea title="Biography" v-model="user.bio"></TextArea>
                               </div>
                               
                               <!-- featured photos -->
@@ -111,6 +111,7 @@
   import TextArea from '../components/Input/TextArea.vue';
   import UpdateModal from "../components/Modal/UpdateModal.vue";
   import axios from "../axios";
+import { toRaw } from '@vue/reactivity';
 
   export default{
     components: {
@@ -125,8 +126,7 @@
       text: 'Profile',
       isProfileVisible: false,
       isUpdated: false,
-      user: Object,
-      user_type: '',
+      user: {},
       form:{
         fname: '',
         lname: '',  
@@ -137,13 +137,12 @@
     }
   },
   mounted(){
-        this.user = this.$store.state.user.data;
-        this.user_type = this.user.user_type;
-        this.form.fname = this.user.fname;
-        this.form.lname = this.user.lname;
-        this.form.insta_handle =  this.user.insta_handle;
-
-        this.form.bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+      axios.get('users/'+this.$route.params.id).then(
+        (response) => {
+          const user = JSON.parse(JSON.stringify(response.data));
+          this.user = user.data;
+        }
+      );
   },
   methods: {
       showModal() {
@@ -158,11 +157,11 @@
       },
       hideUpdate(){
         this.isUpdated = false;
-        // axios.patch('users/'+this.$store.state.user.data.id).then((response)=> {
-        //           this.user = response.data
-        //     }).catch(err => {
-        //         console.log(err)
-        //     });
+        axios.patch('users/'+this.$store.state.user.data.id).then((response)=> {
+                  this.user = response.data
+            }).catch(err => {
+                console.log(err)
+            });
       },
       loadFile(e) {
                 let imgHtml = document.querySelector('#talentImg');
