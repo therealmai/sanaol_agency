@@ -3704,8 +3704,8 @@ textarea.form-control.is-invalid {
   grid-column: span 1 / span 1;
 }
 
-.col-span-2 {
-  grid-column: span 2 / span 2;
+.col-span-5 {
+  grid-column: span 5 / span 5;
 }
 
 .row-span-4 {
@@ -3812,9 +3812,6 @@ textarea.form-control.is-invalid {
   margin-right: 15%;
 }
 
-.mb-\[\] {
-  margin-bottom: ;
-}
 
 .mb-\[2px\] {
   margin-bottom: 2px;
@@ -3996,8 +3993,12 @@ textarea.form-control.is-invalid {
   margin-left: 655px;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .ml-\[60\%\] {
@@ -4135,6 +4136,10 @@ textarea.form-control.is-invalid {
 
 .h-8 {
   height: 2rem;
+}
+
+.h-9 {
+  height: 2.25rem;
 }
 
 .h-11 {
@@ -4290,6 +4295,10 @@ textarea.form-control.is-invalid {
   width: 25%;
 }
 
+.w-9 {
+  width: 2.25rem;
+}
+
 .w-4\/12 {
   width: 33.333333%;
 }
@@ -4298,8 +4307,12 @@ textarea.form-control.is-invalid {
   width: 16.666667%;
 }
 
-.w-\[38px\] {
-  width: 38px;
+.w-\[120px\] {
+  width: 120px;
+}
+
+.w-\[28px\] {
+  width: 28px;
 }
 
 .w-\[277px\] {
@@ -4338,14 +4351,14 @@ textarea.form-control.is-invalid {
   min-width: 100%;
 }
 
-.min-w-max {
-  min-width: -moz-max-content;
-  min-width: max-content;
-}
-
 .min-w-fit {
   min-width: -moz-fit-content;
   min-width: fit-content;
+}
+
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
 
 .max-w-\[880px\] {
@@ -4415,8 +4428,8 @@ textarea.form-control.is-invalid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .grid-rows-4 {
@@ -4507,9 +4520,8 @@ textarea.form-control.is-invalid {
   gap: 2%;
 }
 
-.gap-x-5 {
-  -moz-column-gap: 1.25rem;
-       column-gap: 1.25rem;
+.gap-y-5 {
+  row-gap: 1.25rem;
 }
 
 .gap-x-2 {
@@ -4619,6 +4631,10 @@ textarea.form-control.is-invalid {
 
 .rounded-\[6px\] {
   border-radius: 6px;
+}
+
+.rounded-\[15\%\] {
+  border-radius: 15%;
 }
 
 .rounded-2xl {
@@ -4961,12 +4977,9 @@ textarea.form-control.is-invalid {
   padding-bottom: 4rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
-}
-
-.pr-4 {
-  padding-right: 1rem;
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .pl-\[15\%\] {
@@ -5149,6 +5162,15 @@ textarea.form-control.is-invalid {
   font-size: 18px;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-\[16px\] {
+  font-size: 16px;
+}
+
 .text-\[30px\] {
   font-size: 30px;
 }
@@ -5203,6 +5225,10 @@ textarea.form-control.is-invalid {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .leading-tight {

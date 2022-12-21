@@ -1,15 +1,15 @@
 <template>
     <div
       class="
-        text-[20px]
+        text-[16px]
         flex
         items-center
         justify-center
-        w-[38px]
-        uppercase
+        w-[28px]
+        px-0
         font-bold
         hover:cursor-pointer
-        rounded-[50%]
+        rounded-[15%]
       "
       :class="[selected ? 'bg-primary text-white' : 'bg-white text-secondary']"
       @click="$emit('updatePage', page)"
