@@ -1,9 +1,9 @@
 <template>
 
-    <div class="flex justify-center gap-10">
-      <div class="bg-lightgray w-[387.77px] h-[221.47px] border rounded-[8px]"></div>
-      
-      <div class=" w-[700px] h-[221.47px] flex flex-col justify-center items-start p-4">
+    <div class="flex justify-center gap-10 w-[1327px] h-[408px] ml-auto mr-auto border rounded-[7px] border border-gray-400 ">
+      <div class="bg-lightgray w-[387.77px] h-[221.47px] border rounded-[7px] mt-auto mb-auto ml-auto "></div>
+
+      <div class=" w-[700px] h-[221.47px] flex flex-col justify-center items-start p-4 mt-auto mb-auto mr-auto">
           <!-- label -->
           <!-- <Label class="" :fontSize="16" :height="33" :width="102" text="EVENTS"></Label> -->
           <!-- subtitle -->
@@ -11,7 +11,7 @@
             Lorem ipsum dolor sit amet
           </span>
           <!-- details -->
-          <p class="font-medium text-[16px] text-detailText pt-0">
+          <p class="font-medium text-[15.4px] text-detailText pt-0">
             <span>November 15, 2022</span> | <span>University of San Carlos - Talamban Campus</span>
           </p>
           <!-- description -->
@@ -23,13 +23,13 @@
             <FilledButton text="Edit" class="w-[93px]"></FilledButton>
 
         </div>
-            
+
       </div>
-     
+
     </div>
-    
+
   </template>
-  
+
   <script>
   import Label from '../../Label/Label.vue';
   import OutlineButton from '../../Buttons/OutlineButton.vue';
@@ -44,7 +44,6 @@
     },
   };
   </script>
-  
+
   <style>
   </style>
-  
