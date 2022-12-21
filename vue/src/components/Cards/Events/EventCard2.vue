@@ -3,7 +3,7 @@
     <div class="flex justify-center gap-10">
       <div class="bg-lightgray w-[387.77px] h-[221.47px] border rounded-[8px]"></div>
       
-      <div class=" w-[700px] h-[221.47px] flex flex-col justify-center items-start p-4">
+      <div class=" w-[650px] h-[200.47px] flex flex-col justify-center items-start p-4">
           <!-- label -->
           <!-- <Label class="" :fontSize="16" :height="33" :width="102" text="EVENTS"></Label> -->
           <!-- subtitle -->
