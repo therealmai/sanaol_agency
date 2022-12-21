@@ -22,6 +22,7 @@ class User extends Authenticatable
         'lname',
         'email',
         'password',
+        'bio',
         'insta_handle',
         'user_type',
         'is_deleted',
