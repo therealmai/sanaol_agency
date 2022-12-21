@@ -87,8 +87,8 @@ const routes = [
                 component: UserManagement
             },
             {
-                path: "/Profile",
-                name: "Profile",
+                path: "/profile",
+                name: "profile",
                 component: Talent_User
             }, 
             {
@@ -123,14 +123,16 @@ const router = createRouter({
     linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white"
 });
 
-// router.beforeEach((to, from, next) => {
-//     if(to.meta.requiresAuth && !store.state.user.token) {
-//         next({ name: "login" });
-//     }else if(store.state.user.token && to.name === "hero"){
-//         next({ name: "login" });
-//     }else {
-//         next();
-//     }
-// });
+router.beforeEach((to, from, next) => {
+    if(to.meta.requiresAuth && store.state.user.token == null) {
+        next({ name: "login" });
+    }
+    // else if(store.state.user.token && to.name === "hero"){
+    //     next({ name: "login" });
+    // }
+    else {
+        next();
+    }
+});
 
 export default router;

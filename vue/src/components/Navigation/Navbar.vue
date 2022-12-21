@@ -2,10 +2,10 @@
 
   <nav class=" bg-white drop-shadow-lg flex sticky top-0 z-50 justify-between items-center space-x-4 h-[77px] min-h-[77px] w-full">
 
-    <div class="pl-[27px] flex items-center space-x-3">
-      <img class="w-[37.58px]" src="../../assets/sanaol-logo.png">
-      <p class="text-primary font-bold text-lg">System Name</p>
-    </div>
+      <a href="/" class="pl-[27px] flex items-center space-x-3" >
+        <img class="w-[37.58px]" src="../../assets/sanaol-logo.png">
+        <p class="text-primary font-bold text-lg">System Name</p>
+      </a>
     
     <div class="space-x-6 pr-4">
       
@@ -17,7 +17,7 @@
       <router-link v-show="user.user_type == 'GENERAL' " :to="{ name: 'membership' }">
         <span class="font-medium px-2 py-2 rounded-l ">MEMBERSHIP</span>
       </router-link>
-      <router-link v-show="user.user_type == 'TALENT'" :to="{ name: 'Profile' }">
+      <router-link v-show="user.user_type == 'TALENT'" :to="{ name: 'profile' }">
         <span class="font-medium px-2 py-2 rounded-l ">PROFILE</span>
       </router-link>
 
