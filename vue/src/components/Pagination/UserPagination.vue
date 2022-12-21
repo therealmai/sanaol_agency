@@ -6,24 +6,19 @@
         <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]">ROLE</span>
         <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
-      
-        <UserItem v-for="user in members" :key="user.id"
-          :id="user.id"
-          :fname="user.fname"
-          :lname="user.lname"
-          :handle="user.insta_handle"
-          :email="user.email"
-          :user_type="user.user_type"
+      <template v-for="users in users">
+        <UserItem :key="users.id" v-if="users.is_member"
+          :id="users.id"
+          :fname="users.fname"
+          :lname="users.lname"
+          :handle="users.insta_handle"
+          :email="users.email"
+          :user_type="users.user_type"
         />
-     
-      
+      </template>
+
       <div class="flex justify-center w-full my-6">
-        <VueTailwindPagination
-      :current="currentPage"
-      :total="total"
-      :per-page="perPage"
-      @page-changed="onPageClick($event)"
-    />
+        <PaginationController :pages="3" />
       </div>
     </div>
   </template>
@@ -32,48 +27,21 @@
   import axiosClient from "../../axios";
   import PaginationController from "./PaginationController.vue";
   import UserItem from "./UserItem.vue";
-  import VueTailwindPagination from "@ocrv/vue-tailwind-pagination";
   export default {
     name: "UserPagination",
-    components: { UserItem, PaginationController, VueTailwindPagination },
+    components: { UserItem, PaginationController },
     data() {
       return {
-        currentPage: 0,
-        perPage: 0,
-        total: 0,
-        users:{
-          type:Object,
-          default:null
-        },
-        members:{},
+        users:[],
       }
     },
-    computed: {
-  
-},
     methods: {
-      checkMember(data) {
-    return data.filter(data => data.is_member == true)
+      loadUsers(){
+          axiosClient.get("/users").then(({ data }) => (this.users = data));
+      }
   },
-            async getData(){
-                var response = axiosClient.get(`users/page?page=${this.currentPage}`)
-                  var responseData = response;
-                  var userData = (await response).data.data;
-                  this.currentPage = responseData.current_page;
-                  this.perPage = responseData.per_page;
-                  this.total = responseData.total;
-                  this.members = this.checkMember(userData);
-                  console.log(members);
-            },
-            onPageClick(event){
-              this.currentPage = event;
-              this.getData(this.currentPage);
-            }
-            
-        },
   mounted() {
-    this.currentPage = 1;
-    this.getData();
+    this.loadUsers();
   }
   };
   
