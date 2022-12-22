@@ -9,7 +9,7 @@
             <!-- profile content -->
             <div class="flex flex-row justify-center relative top-[150px] flex-wrap gap-6 mx-10 ">
               <!-- image -->
-              <img class="w-[158px] h-[158px] object-cover rounded-[50%] flex justify-start" src="https://pixy.org/src2/573/thumbs350/5733959.jpg" alt="alternatetext">
+              <img class="w-[158px] h-[158px] object-cover rounded-[50%] flex justify-start" src="../assets/dp.jpg" alt="alternatetext">
               <div class="text-primary space-y-4 font-inter">
                       <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
@@ -51,9 +51,8 @@
                   <input type="file" accept="image/*" name="file" id="file" @change="loadFile" style="display:none;"/>
                   <label for="file">
                     <div>
-                      <!-- <div class="bg-black bg-opacity-0 p-4 hover:bg-opacity-50 transition-all duration-1000"> -->
-                        <img id="talentImg" class=" hover:bg-black hover:bg-opacity-90 hover:cursor-pointer w-[160px] h-[130px] object-cover rounded-[50%]" :src="form.image" alt="alternatetext">
-                      <!-- </div> -->
+                        <!-- :src="form.image" -->
+                        <img id="talentImg" class=" hover:bg-black hover:bg-opacity-90 hover:cursor-pointer w-[160px] h-[120px] object-cover rounded-[50%]"  src="../assets/dp.jpg" alt="alternatetext">
                     </div>
                   </label>
                 
@@ -63,7 +62,10 @@
                                   <InputField title="First Name" v-model="form.fname" ></InputField>
                                   <InputField title="Last Name" v-model="form.lname"></InputField>
                                 </div>
-                                <InputField title="Instagram Username" v-model="form.insta_handle"></InputField>
+                                <div class="flex flex-row gap-4 ">
+                                  <InputField title="Email" v-model="form.email"></InputField>
+                                  <InputField title="Instagram Username" v-model="form.insta_handle"></InputField>
+                                </div>
                                 <TextArea title="Biography" v-model="form.bio"></TextArea>
                               </div>
                               

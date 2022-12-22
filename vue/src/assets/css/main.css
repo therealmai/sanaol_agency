@@ -4161,6 +4161,26 @@ textarea.form-control.is-invalid {
   height: 900px;
 }
 
+.h-\[500px\] {
+  height: 500px;
+}
+
+.h-\[160px\] {
+  height: 160px;
+}
+
+.h-\[100px\] {
+  height: 100px;
+}
+
+.h-\[140px\] {
+  height: 140px;
+}
+
+.h-\[120px\] {
+  height: 120px;
+}
+
 .max-h-screen {
   max-height: 100vh;
 }
