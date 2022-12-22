@@ -99,11 +99,6 @@
                 this.isModalVisible = false;
             },
             updateService() {
-                // let data = {
-                //     title: this.service.title,
-                //     content: this.service.content,
-                //     image: this.service.image
-                // }
                 let data = new FormData;
                 data.set('image', this.service.image);
                 data.set('title', this.service.title);

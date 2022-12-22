@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth:admins']], function() {
     //Services
     Route::post('/services/create', 'ServiceController@store');
     Route::patch('/services/delete/{id}', 'ServiceController@destroy');
+    Route::post('/services/{id}', 'ServiceController@update');
 
     //HeroBanner
     Route::post('herobanner/create', [HeroBannerController::class, 'store']);
@@ -86,7 +87,6 @@ Route::get('users/{id}', [UserController::class, 'show'])->name('user.getUser');
 //Services
 Route::get('/services', 'ServiceController@index');
 Route::get('/services/{id}', 'ServiceController@show');
-Route::post('/services/{id}', 'ServiceController@update');
 
 //HeroBanner
 Route::get('herobanner', [HeroBannerController::class, 'index']);
