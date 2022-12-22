@@ -3608,6 +3608,10 @@ textarea.form-control.is-invalid {
   top: 150px;
 }
 
+.top-\[10px\] {
+  top: 10px;
+}
+
 .top-5 {
   top: 1.25rem;
 }
@@ -3678,6 +3682,10 @@ textarea.form-control.is-invalid {
 
 .-z-10 {
   z-index: -10;
+}
+
+.z-\[4px\] {
+  z-index: 4px;
 }
 
 .z-50 {
@@ -3960,6 +3968,10 @@ textarea.form-control.is-invalid {
   margin-top: 30px;
 }
 
+.ml-\[159px\] {
+  margin-left: 159px;
+}
+
 .ml-0 {
   margin-left: 0px;
 }
@@ -4002,10 +4014,6 @@ textarea.form-control.is-invalid {
 
 .mt-\[25px\] {
   margin-top: 25px;
-}
-
-.mb-\[100px\] {
-  margin-bottom: 100px;
 }
 
 .block {
@@ -4077,6 +4085,10 @@ textarea.form-control.is-invalid {
   height: 221px;
 }
 
+.h-\[900px\] {
+  height: 900px;
+}
+
 .h-\[321px\] {
   height: 321px;
 }
@@ -4089,12 +4101,16 @@ textarea.form-control.is-invalid {
   height: 235.43px;
 }
 
-.h-\[130px\] {
-  height: 130px;
+.h-\[120px\] {
+  height: 120px;
 }
 
 .h-\[450px\] {
   height: 450px;
+}
+
+.h-\[66\.31px\] {
+  height: 66.31px;
 }
 
 .h-\[36px\] {
@@ -4119,10 +4135,6 @@ textarea.form-control.is-invalid {
 
 .h-\[47px\] {
   height: 47px;
-}
-
-.h-\[66\.31px\] {
-  height: 66.31px;
 }
 
 .h-\[84px\] {
@@ -4151,34 +4163,6 @@ textarea.form-control.is-invalid {
 
 .h-\[406\.18px\] {
   height: 406.18px;
-}
-
-.h-\[\] {
-  height: ;
-}
-
-.h-\[900px\] {
-  height: 900px;
-}
-
-.h-\[500px\] {
-  height: 500px;
-}
-
-.h-\[160px\] {
-  height: 160px;
-}
-
-.h-\[100px\] {
-  height: 100px;
-}
-
-.h-\[140px\] {
-  height: 140px;
-}
-
-.h-\[120px\] {
-  height: 120px;
 }
 
 .max-h-screen {
@@ -4277,6 +4261,10 @@ textarea.form-control.is-invalid {
   width: 160px;
 }
 
+.w-\[66\.31px\] {
+  width: 66.31px;
+}
+
 .w-4 {
   width: 1rem;
 }
@@ -4304,10 +4292,6 @@ textarea.form-control.is-invalid {
 
 .w-auto {
   width: auto;
-}
-
-.w-\[66\.31px\] {
-  width: 66.31px;
 }
 
 .w-\[84px\] {
@@ -4582,12 +4566,6 @@ textarea.form-control.is-invalid {
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-y-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
-}
-
 .justify-self-end {
   justify-self: end;
 }
@@ -4785,11 +4763,6 @@ textarea.form-control.is-invalid {
   background-color: rgb(248 248 255 / var(--tw-bg-opacity));
 }
 
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
 .bg-primary {
   --tw-bg-opacity: 1;
   background-color: rgb(115 103 240 / var(--tw-bg-opacity));
@@ -4815,6 +4788,11 @@ textarea.form-control.is-invalid {
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-lightgray {
   --tw-bg-opacity: 1;
   background-color: rgb(217 217 217 / var(--tw-bg-opacity));
@@ -4838,10 +4816,6 @@ textarea.form-control.is-invalid {
 .bg-\[\#D9D9D9\] {
   --tw-bg-opacity: 1;
   background-color: rgb(217 217 217 / var(--tw-bg-opacity));
-}
-
-.bg-opacity-0 {
-  --tw-bg-opacity: 0;
 }
 
 .bg-opacity-50 {
@@ -4877,10 +4851,6 @@ textarea.form-control.is-invalid {
   padding: 0px;
 }
 
-.p-4 {
-  padding: 1rem;
-}
-
 .p-6 {
   padding: 1.5rem;
 }
@@ -4899,6 +4869,10 @@ textarea.form-control.is-invalid {
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .py-\[14px\] {
@@ -5165,6 +5139,10 @@ textarea.form-control.is-invalid {
   font-size: 16px;
 }
 
+.text-\[18px\] {
+  font-size: 18px;
+}
+
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -5177,10 +5155,6 @@ textarea.form-control.is-invalid {
 
 .text-textInput {
   font-size: 1.25rem;
-}
-
-.text-\[18px\] {
-  font-size: 18px;
 }
 
 .text-\[30px\] {
@@ -5223,16 +5197,16 @@ textarea.form-control.is-invalid {
   font-weight: 200;
 }
 
-.font-\[20px\] {
-  font-weight: 20px;
-}
-
 .font-\[700\] {
   font-weight: 700;
 }
 
 .font-\[400\] {
   font-weight: 400;
+}
+
+.font-\[20px\] {
+  font-weight: 20px;
 }
 
 .uppercase {
@@ -5478,10 +5452,6 @@ textarea.form-control.is-invalid {
   transition-duration: 300ms;
 }
 
-.duration-1000 {
-  transition-duration: 1000ms;
-}
-
 .duration-150 {
   transition-duration: 150ms;
 }
@@ -5649,10 +5619,6 @@ body {
 .hover\:bg-primaryHovered:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(115 103 240 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-opacity-50:hover {
-  --tw-bg-opacity: 0.5;
 }
 
 .hover\:bg-opacity-90:hover {
