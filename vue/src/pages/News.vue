@@ -1,6 +1,6 @@
 <template>
   <div class="font-inter flex flex-col space-y-4">
-
+    <div class="font-inter flex flex-col space-y-4" v-show="!news.is_deleted">
       <div class="">
         <OutBtn text="BACK" class="w-[95px] ml-[44px] mt-[31.79px]" @click="$router.back()"></OutBtn>
       </div>
@@ -9,7 +9,7 @@
           <div class="font-bold text-[32px] mb-[8px] text-[#525252]"> News </div>
 
           <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
-          <div class="flex flex-row gap-4 right-[314.44px]" v-if="isAdmin">
+          <div class="flex flex-row gap-4 right-[314.44px]" v-show="userType == 'admin'">
             <OutBtn text="DELETE" class="w-[123px]" @click="showModal"></OutBtn>
             <FilledBtn text="EDIT" class="w-[93px]" @click="this.$router.push('/news/edit/'+id)"></FilledBtn>
           </div>
@@ -24,7 +24,10 @@
           </p>
       </div>
       <Modal v-show="isModalVisible" @close="closeModal"></Modal>
-
+    </div>
+    <div class="font-inter flex flex-col space-y-4" v-show="news.is_deleted">
+      <h1>News Not Found!</h1>
+    </div>
   </div>
 </template>
 
@@ -34,7 +37,10 @@ import OutBtn from '../components/Buttons/OutlineButton.vue';
 
 import Modal from '../components/Modal/News Modals/DeleteNews.vue'
 
-import axios from 'axios';
+import axios from '../axios';
+
+import { useStore } from 'vuex'
+import { computed } from 'vue'
 
 export default {
   name: 'News',
@@ -50,6 +56,7 @@ export default {
       isAdmin: true,
       isModalVisible: false,
       id: this.$route.params.id,
+      userType: ''
     }
   },
   mounted() {
@@ -58,6 +65,8 @@ export default {
     }).catch((err) => {
       console.log(err)
     })
+    this.userType = this.user['user_type']
+    console.log(this.userType);
   },
   components: {
       FilledBtn,
@@ -74,7 +83,14 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
-  }
+  },
+  setup() {
+    const store = useStore();
+
+    return {
+      user: computed(() => store.state.user.data),
+    }
+  },
 };
 </script>
 
