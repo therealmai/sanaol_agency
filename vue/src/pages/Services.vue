@@ -11,7 +11,8 @@
         <Service :id="service.id"
                  :title="service.title"
                  :content="service.content"
-                 :image="service.image">
+                 :image="service.image"
+                 :role="userType">
         </Service>
       </div>
     </div>
@@ -38,7 +39,8 @@
       }
     },
     mounted() {
-      axios.get('http://127.0.0.1:8000/api/services/').then(
+      this.userType = this.user['user_type']
+      axios.get('http://127.0.0.1:8000/api/services').then(
         (response) => {
           this.services = response.data
           // console.log("services"),
@@ -48,7 +50,8 @@
     },
     data() {
       return {
-        services: []
+        services: [],
+        userType: ''
       }
     }
   }

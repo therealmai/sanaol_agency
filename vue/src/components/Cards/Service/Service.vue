@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between ml-[15%] mr-[20%] mt-[25px] mb-[25px]">
             <div class="text-[20px] font-bold mb-[8px]"> {{ title }} </div>
              <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
-            <div class="flex w-fit">
+            <div class="flex w-fit" v-if="role == 'admin'">
                 <router-link :to="'/services/edit/'+ id"><FilledButton text="Edit Section" class="w-[150px] " color="white"  ></FilledButton></router-link>
             </div>
         </div>
@@ -31,7 +31,8 @@
         id: Number,
         title: String,
         content: String,
-        image: String
+        image: String,
+        role: String
     },
     computed: {
     },
