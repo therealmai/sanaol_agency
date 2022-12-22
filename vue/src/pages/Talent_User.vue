@@ -239,9 +239,6 @@
         }).catch(err => {
             console.log(err)
         });
-
-
-
       },
       loadFile(e) {
               let imgHtml = document.querySelector('#talentImg');

@@ -4,11 +4,12 @@ import axios from "../axios";
 
 const store = createStore({
   state: {
-    user:{  
-      data: {},      
-      token: {}
-      // data: JSON.parse(sessionStorage.getItem("USER")),   
-      // token: sessionStorage.getItem("TOKEN"),
+    isLoggedIn: false,
+    user:{
+      data: JSON.parse(sessionStorage.getItem("USER")),   
+      token: sessionStorage.getItem("TOKEN"),
+      // data: {},      
+      // token: null
     },
   },
   getters:  {},
@@ -49,16 +50,20 @@ const store = createStore({
       sessionStorage.setItem("USER", JSON.stringify(userData.data));
   },
     setUser(state, userData) {
+      sessionStorage.setItem("LOG", true);
+      sessionStorage.setItem("USER", JSON.stringify(userData.user));
+      sessionStorage.setItem("TOKEN", userData.access_token);
+      state.isLoggedIn = true;
       state.user.data = userData.user;
       state.user.token = userData.access_token;
-      // sessionStorage.setItem("USER", JSON.stringify(userData.user));
-      // sessionStorage.setItem("TOKEN", userData.access_token);
   },
     logout : (state) => {
+        state.isLoggedIn = false;
         state.user.data = {};
         state.user.token = {};
-        // sessionStorage.removeItem("USER");  //remove token from session
-        // sessionStorage.removeItem("TOKEN");  //remove token from session
+        sessionStorage.removeItem("USER");   //remove token from session
+        sessionStorage.removeItem("TOKEN");  //remove token from session
+        sessionStorage.removeItem("LOG");    //remove token from session
     },
   },
   modules: {},
