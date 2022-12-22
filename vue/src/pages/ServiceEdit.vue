@@ -56,6 +56,7 @@
     import UpdateModal from '../components/Modal/UpdateModal.vue';
     import Modal from '../components/Modal/Modal.vue';
     import Info from '../components/Others/Info.vue';
+    import axios from 'axios';
 
     const cssFormInputsStr = "border-2 rounded-lg p-3 form__inputs  ";    
 
@@ -63,6 +64,7 @@
         data() {
             return {
                 data: {
+                    id: "",
                     title: "title",
                     content: "content",
                     image: "https://i0.wp.com/www.vortexmag.net/wp-content/uploads/2017/12/JMbN5hW.jpg?fit=1800%2C1200&ssl=1",
@@ -103,7 +105,16 @@
             Confirmation,
             Modal,
             Info
-        }
+        },
+        mounted () {
+            axios.get('http://127.0.0.1:8000/api/services/id', this.$route.params.id).then((response)=> {
+                console.log(this.$route.params.id)
+                  this.data = response.data
+                  console.warn(this.data);
+            }).catch(err => {
+                console.log(err)
+            })
+        },
     }
 </script>
 

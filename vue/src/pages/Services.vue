@@ -21,7 +21,7 @@
   
   <script>
   import Service from '../components/Cards/Service/Service.vue';
-  import axios from 'axios';
+  import axios from '../axios';
 
   export default{
     components: {
