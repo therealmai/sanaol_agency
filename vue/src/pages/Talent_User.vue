@@ -1,13 +1,13 @@
 <template>
 
-      <div class="w-full">
+      <div class="w-full h-[900px]">
         <!-- background cover -->
         <div class="bg-background2 relative h-[321px]">
             <!-- profile title-->
             <div><h1 class="pl-[83px] pt-[53px] font-bold leading-[38.73px] text-[32px] text-[#525252] relative ">Profile</h1></div>
         
             <!-- profile content -->
-            <div class="flex flex-row justify-center relative top-[150px] flex-wrap gap-6 mx-10">
+            <div class="flex flex-row justify-center relative top-[150px] flex-wrap gap-6 mx-10 ">
               <!-- image -->
               <img class="w-[158px] h-[158px] object-cover rounded-[50%] flex justify-start" src="https://pixy.org/src2/573/thumbs350/5733959.jpg" alt="alternatetext">
               <div class="text-primary space-y-4 font-inter">
@@ -67,11 +67,9 @@
                                 <TextArea title="Biography" v-model="form.bio"></TextArea>
                               </div>
                               
-                              <!-- featured photos -->
                               <div>
                                 <p>Featured Photos</p>
                                  <div class="flex flex-row text-[#A8A8A8] gap-6 w-full">
-                                    <!-- v-for loop the images -->
                                     <div v-for="image in images" v-bind:key="image.id">
                                       <img id="imgService" :src="image.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
                                     </div>
