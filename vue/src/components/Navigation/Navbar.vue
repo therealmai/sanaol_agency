@@ -37,7 +37,7 @@
       </router-link>
       
       
-      <span v-if="user.fname" class="bg-[#F6F5FF] p-2 rounded-[7px] text-primary pr-6 pl-6 cursor-pointer">{{ user.fname.toUpperCase() }}</span>
+      <span @click="logout" v-if="user.fname" class="bg-[#F6F5FF] p-2 rounded-[7px] text-primary pr-6 pl-6 cursor-pointer">{{ user.fname.toUpperCase() }}</span>
       <router-link v-else :to="{ name: 'login' }"> 
         <span class="font-medium px-2 py-2 rounded-l ">LOGIN</span>
       </router-link>
@@ -63,6 +63,15 @@ export default {
     return {
       user: computed(() => store.state.user.data),
     }
+  },
+  methods:{
+    logout(){
+        this.$store.dispatch('logout').then((response)=> {
+             console.log(response)
+        }).catch(err => {
+            console.log(err)
+        });
+      }
   }
 }
 </script>

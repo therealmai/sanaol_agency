@@ -4,9 +4,11 @@ import axios from "../axios";
 
 const store = createStore({
   state: {
-    user:{      //data about the user and the token will be stored here after user login 
-      data:{},      
-      token: {}
+    user:{  
+      data: JSON.parse(sessionStorage.getItem("USER")),   
+      token: sessionStorage.getItem("TOKEN"),
+      // data: {},      
+      // token: {}
     },
   },
   getters:  {},
@@ -44,21 +46,23 @@ const store = createStore({
   mutations: {
     setProfile(state, userData) {
       state.user.data = userData.data;
+      sessionStorage.setItem("USER", JSON.stringify(userData.data));
   },
     setUser(state, userData) {
       state.user.data = userData.user;
       state.user.token = userData.access_token;
-      sessionStorage.setItem("TOKEN", userData.token);
+      sessionStorage.setItem("USER", JSON.stringify(userData.user));
+      sessionStorage.setItem("TOKEN", userData.access_token);
   },
     logout : (state) => {
-        state.user.data = {};          //remove user data in state
-        state.user.token = null;             //set token to null
+        state.user.data = {};
+        state.user.token = null;
+        // sessionStorage.removeItem("USER");  //remove token from session
         // sessionStorage.removeItem("TOKEN");  //remove token from session
-        // sessionStorage.clear();
     },
   },
-  // modules: {},
-  //   plugins: [createPersistedState()]
+  modules: {},
+  // plugins: [createPersistedState()]
 })
 
 export default store;
