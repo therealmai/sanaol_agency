@@ -9,19 +9,19 @@
       </a>
     </li>
     <li>
-      <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 rounded-[100%] gray:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+      <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 rounded-[100%] gray:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ml-[1px] mr-[1px]">1</a>
     </li>
     <li>
-      <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 rounded-[100%] gray:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+      <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 rounded-[100%] gray:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ml-[1px] mr-[1px]">2</a>
     </li>
     <li>
-      <a href="#" aria-current="page" class="z-10 px-3 py-2 leading-tight text-gray-500 bg-indigo-70 rounded-[100%] bg-blue-50 hover:bg-indigo-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+      <a href="#" aria-current="page" class="z-10 px-3 py-2 leading-tight text-gray-500 bg-indigo-70 rounded-[100%] bg-indigo-100 hover:bg-indigo-200 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white ml-[1px] mr-[1px]">3</a>
     </li>
     <li>
-      <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 gray:bg-gray-800 rounded-[100%] dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+      <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 gray:bg-gray-800 rounded-[100%] dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ml-[1px] mr-[1px]">4</a>
     </li>
     <li>
-      <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 gray:bg-gray-800 rounded-[100%] dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+      <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 gray:bg-gray-800 rounded-[100%] dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ml-[1px] mr-[1px]">5</a>
     </li>
     <li>
       <a href="#" class="block px-3 py-2 leading-tight text-gray-500 bg-white  rounded-r-lg hover:bg-gray-100 hover:text-gray-700 gray:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
