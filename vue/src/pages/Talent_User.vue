@@ -144,6 +144,7 @@
             const user = JSON.parse(JSON.stringify(response.data));
             this.user = user.data;
             this.form = user.data;
+
           }
       );
       axios.get('user/image/'+this.$route.params.id).then(
