@@ -6,15 +6,15 @@
         <p1 style="font-weight: bold; font-size: 30px;">Edit Events</p1><br><br><br><br>
        
         <div style="margin-left: 100px; margin-top: 30px;">
-            <!-- <input type="file" @change="handleFileUpload" id="upload-file" style="z-index: ;" hidden/>
-            <img  v-if="post.image" :src="post.image" style="height:184px;width:170px; position: absolute; z-index: 3" />
-            <! <input type="file" id="upload-file" name="upload-file" >
-            <! <label class="upload-box" for="upload-file" refs="upload-file">+</label> -->
+            
             <form>
                 <div class="file-upload-section">
                     
                     <div class="file-upload">
-                    <label class="upload-box" for="file-upload" >+</label>
+                        <div >
+                            <label class="upload-box" for="file-upload" >+</label>
+                            <img :src="events.image" alt="User Photo" style="position: absolute;width: 170px;top: 110px;height: 177px;">
+                        </div>
                     <input type="file" id="file-upload" @change="onFileChange" hidden/>
 
                     <label id="preview" for="file-upload">
@@ -42,13 +42,14 @@
             
 
 <br><br><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Title" v-model="title"></titled-input><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Date" v-model="date"></titled-input><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Location" v-model="location"></titled-input><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model="type" ></titled-input><br><br>
-            <input-tags text="Talents Involved" :width="528" :height=" 49"/>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model="description"></titled-input><br><br>
-            
+            <div >
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Title" v-model="events.title"></titled-input><br>
+        
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Date" v-model="events.date"></titled-input><br>
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Location" v-model="events.location"></titled-input><br>
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model="events.event_type" ></titled-input><br><br>
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model="events.content"></titled-input><br><br>
+            </div>
         <div class="flex gap-4">
             <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
             <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36" @click="showDeleteModal"/>
@@ -67,7 +68,7 @@
                 <p class="modal-paragraph">Are you sure you want to save the changes<br>made on this service? Please confirm.</p>
                 <Info text="Saving the changes will change what the public sees on the services page."></Info>
                 <div class="flex gap-10 mt-5 mb-5">
-                    <FilledButton class="w-[100px]" text="CONFIRM" @click="confirmUpdateModal"></FilledButton>
+                    <FilledButton class="w-[100px]" text="CONFIRM" @click="sendPatchRequest"></FilledButton>
                     <OutlineButton class="w-[100px]" text="CANCEL" @click="closeUpdateModal"></OutlineButton>
                 </div>
             </template>
@@ -111,6 +112,7 @@ import UpdateModal from '../components/Modal/UpdateModal.vue'
 import Warning from '../components/Others/Warning.vue'
 import DeletedModal from '../components/Modal/DeletedModal.vue'
 
+import axios from 'axios'
 export default {
   components: { 
     FilledButton,
@@ -123,7 +125,35 @@ export default {
     Warning,
     DeletedModal 
     },
+    data() {
+        return {
+            events: {},
+            url: null,
+            isUpdateModalVisible: false,
+            isDeleteModalVisible: false,
+        }
+    },
+    mounted() {
+        axios.get('http://127.0.0.1:8000/api/events/' + this.$route.params.id).then(
+            (response) => {
+            this.events = response.data.data,
+            console.log("event"),
+            console.log(this.events)
+            }
+        )
+    },
     methods: {
+        // sendPatchRequest() {
+        //     axios.patch('http://127.0.0.1:8000/api/events/' + this.$route.params.id, {
+        //        title: 
+        //     })
+        //         .then(function (response) {
+        //         console.log(response);
+        //         })
+        //         .catch(function (error) {
+        //         console.log(error);
+        //         });
+        // },
         onFileChange (e) {
             let file = e.target.files[0]
             this.url = URL.createObjectURL(file)
@@ -155,18 +185,7 @@ export default {
             this.isConfirmDeleteModal = true;
         }
     },
-    data() {
-        return {
-            title: "Lorem Ipsum",
-            date: "November 18, 2022",
-            location: "Hong Kong Disneyland",
-            type: "Beerfest",
-            description: "1",
-            url: null,
-            isUpdateModalVisible: false,
-            isDeleteModalVisible: false,
-        }
-    }
+    
  };
 </script>
 
