@@ -1,28 +1,45 @@
 <template>
-<body>
- <div style="padding-top: 96px; padding-left: 237.5px; padding-right: 237.5px; margin-bottom: 18px;color: #525252;">
-  <h1 style=" font-weight: 700; text-align: center;font-size: x-large; ">Our Services</h1>
-  <div style="font-size: large; margin-bottom: 8px; font-weight: 500;"> Management Team </div> 
+  <div>
+    <!-- MAIN SERVICE PAGE -->
+    <div class="pt-[96px] px-[237.5px] mb-[25px] text-[#525252]">
+      <!-- TITLE -->
+      <h1 class="text-center text-2xl font-bold">Our Services</h1>
+  
+      <!-- INDIVIDUAL SERVICES -->
+      <!-- USE LOOP WHEN FETCHING FROM DATABASE -->
+      <div v-for="service in services" v-bind:key="service.id">
+        <Service :id="service.id"
+                 :title="service.title"
+                 :content="service.content"
+                 :image="service.image">
+        </Service>
+      </div>
+    </div>
+  </div>
+  </template>
+  
+  
+  <script>
+  import Service from '../components/Cards/Service/Service.vue';
+  import axios from 'axios';
 
-  <div style="padding-bottom: 150px;padding-top: 100px; background-color: #D9D9D9; text-align:center; margin-left: 20%; margin-right: 20%; ">Insert Photo</div>
-  <p style="text-align: justify; margin-top: 10px;margin-left: 20%; margin-right: 20%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et commodi modi velit incidunt aut suscipit, atque necessitatibus quae laudantium minima doloribus! Itaque consequuntur aspernatur et eaque quisquam laudantium aperiam minima.orem ipsum dolor sit amet consectetur adipisicing elit. Et commodi modi velit incidunt aut suscipit, atque necessitatibus quae laudantium minima doloribus! Itaque consequuntur aspernatur et eaque quisquam laudantium aperiam minima.orem ipsum dolor sit amet consectetur adipisicing elit. Et commodi modi velit incidunt aut suscipit, atque necessitatibus quae laudantium minima doloribus! Itaque consequuntur aspernatur et eaque quisquam laudantium aperiam minima.orem ipsum dolor sit amet consectetur adipisicing elit. Et commodi modi velit incidunt aut suscipit, atque necessitatibus quae laudantium minima doloribus! Itaque consequuntur aspernatur et eaque quisquam laudantium aperiam minima.orem ipsum dolor sit amet consectetur adipisicing elit. Et commodi modi velit incidunt aut suscipit, atque necessitatibus quae laudantium minima doloribus! Itaque consequuntur aspernatur et eaque quisquam laudantium aperiam minima.orem ipsum dolor sit amet consectetur adipisicing elit. Et commodi modi velit incidunt aut suscipit, atque necessitatibus quae laudantium minima doloribus! Itaque consequuntur aspernatur et eaque quisquam laudantium aperiam minima.orem ipsum dolor sit amet consectetur adipisicing elit. Et commodi modi velit incidunt aut suscipit, atque necessitatibus quae laudantium minima doloribus! Itaque consequuntur aspernatur et eaque quisquam laudantium aperiam minima.
-
-  </p>
-</div>
-</body>
-</template>
-
-
-<script>
-import Navbar from '../components/Navigation/Navbar.vue';
-import Footer from '../components/Footer/Footer.vue'
-export default{
-  components: {
-    Navbar,
-    Footer
-  },
-}
+  export default{
+    components: {
+      Service
+    },
+    mounted() {
+      axios.get('http://127.0.0.1:8000/api/services/').then(
+        (response) => {
+          this.services = response.data,
+          console.log("services"),
+          console.log(this.services)
+        }
+      )
+    },
+    data() {
+      return {
+        services: [],
+      }
+    }
+  }
 </script>
-
-<style>
-</style>
