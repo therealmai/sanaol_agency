@@ -8,7 +8,6 @@
     </div>
     
     <div class="space-x-6 pr-4">
-      
       <!-- display if user is admin (go to store/index.js to change role of user) -->
       <router-link  v-show="user.user_type == 'admin' " :to="{ name: 'usermanagement' }">
         <span class="font-medium px-2 py-2 rounded-l ">USERS</span>
@@ -55,7 +54,6 @@ export default {
   name: "Navbar",
   data() {
     return {
-      
     }
   },
   setup () {

@@ -5,10 +5,10 @@ import axios from "../axios";
 const store = createStore({
   state: {
     user:{  
-      data: JSON.parse(sessionStorage.getItem("USER")),   
-      token: sessionStorage.getItem("TOKEN"),
-      // data: {},      
-      // token: {}
+      // data: JSON.parse(sessionStorage.getItem("USER")),   
+      // token: sessionStorage.getItem("TOKEN"),
+      data: {},      
+      token: {}
     },
   },
   getters:  {},
@@ -56,9 +56,9 @@ const store = createStore({
   },
     logout : (state) => {
         state.user.data = {};
-        state.user.token = null;
-        // sessionStorage.removeItem("USER");  //remove token from session
-        // sessionStorage.removeItem("TOKEN");  //remove token from session
+        state.user.token = {};
+        sessionStorage.removeItem("USER");  //remove token from session
+        sessionStorage.removeItem("TOKEN");  //remove token from session
     },
   },
   modules: {},
