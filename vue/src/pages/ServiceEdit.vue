@@ -99,6 +99,12 @@
                 this.isModalVisible = false;
             },
             updateService() {
+                if(this.service.title == '' || this.service.content == '') {
+                    alert('All fields must be filled.');
+                    this.isModalVisible = false;
+                    return;
+                }
+
                 let data = new FormData;
                 data.set('image', this.service.image);
                 data.set('title', this.service.title);
