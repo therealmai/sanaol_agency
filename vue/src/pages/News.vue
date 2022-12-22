@@ -1,10 +1,9 @@
 <template>
   <div class="font-inter flex flex-col space-y-4">
+    <div class="">
+      <OutBtn text="BACK" class="w-[95px] ml-[44px] mt-[31.79px]" @click="$router.back()"></OutBtn>
+    </div>
     <div class="font-inter flex flex-col space-y-4" v-show="!news.is_deleted">
-      <div class="">
-        <OutBtn text="BACK" class="w-[95px] ml-[44px] mt-[31.79px]" @click="$router.back()"></OutBtn>
-      </div>
-
       <div class="flex flex-row items-center justify-between ml-[12.5%] mr-[12.5%] mb-[25px]">
           <div class="font-bold text-[32px] mb-[8px] text-[#525252]"> News </div>
 
@@ -25,8 +24,14 @@
       </div>
       <Modal v-show="isModalVisible" @close="closeModal"></Modal>
     </div>
-    <div class="font-inter flex flex-col space-y-4" v-show="news.is_deleted">
-      <h1>News Not Found!</h1>
+    <div class="font-inter flex flex-col space-y-4 items-center" v-show="news.is_deleted">
+      <div class="items-center">
+      <center><h1>Error 404!</h1>
+      <h1>The news article you have been looking for seems to</h1>
+      <h1>have been deleted or moved to another location.</h1>
+      <br /><br />
+      <h1>Please go back!</h1></center>
+      </div>
     </div>
   </div>
 </template>
