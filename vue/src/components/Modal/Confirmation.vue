@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal>
+    <Modal >
       <template #modal_content>
           <slot name="confirm_body"/>
       </template>
@@ -8,16 +8,12 @@
       <!-- buttons here -->
       <template #modal_button>
         <div class="flex flex-row space-x-6 ">
-          <ConfirmButton text="CONFIRM" @click="update"></ConfirmButton>
-          <CancelButton text="CANCEL" @click="closeModal"></CancelButton>
+          <FilledButton text="CONFIRM" @click="update" class="w-[100px]"> </FilledButton>
+          <OutlineButton text="CANCEL" @click="closeModal" class="w-[100px]"></OutlineButton>
         </div>
       </template>
 
     </Modal>
-
-    <UpdateModal v-show="isUpdated" :text="text" @close="closeModal">
-
-    </UpdateModal>
 
   </div>
 
@@ -25,8 +21,8 @@
 <script>
 
 import Modal from "../Modal/Modal.vue";
-import ConfirmButton from "../Buttons/ConfirmButton.vue";
-import CancelButton from "../Buttons/CancelButton.vue";
+import FilledButton from "../Buttons/FilledButton.vue";
+import OutlineButton from "../Buttons/OutlineButton.vue";
 import UpdateModal from "../Modal/UpdateModal.vue";
 
 export default {
@@ -41,17 +37,16 @@ export default {
   },
   components: {
     Modal,
-    ConfirmButton,
-    CancelButton,
+    FilledButton,
+    OutlineButton,
     UpdateModal
   },
   methods:{
      closeModal(){ 
-      this.isUpdated = false;
       this.$emit('close');
     },
      update(){
-       this.isUpdated = true;
+      this.$emit('update');
      }
   },
 };

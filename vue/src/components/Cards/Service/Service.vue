@@ -1,11 +1,10 @@
 <template>
-
     <div>
         <div class="flex items-center justify-between ml-[15%] mr-[20%] mt-[25px] mb-[25px]">
-            <div style="font-size: large; margin-bottom: 8px; font-weight: 500;"> {{ title }} </div>
+            <div class="text-[20px] font-bold mb-[8px]"> {{ title }} </div>
              <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
             <div class="flex w-fit">
-                <PrimaryButton text="Edit Section" color="white" width="100" fontSize="12" class="float-right"></PrimaryButton>
+                <router-link :to="'/services/edit/'+ id"><FilledButton text="Edit Section" class="w-[150px] " color="white"  ></FilledButton></router-link>
             </div>
         </div>
 
@@ -18,17 +17,18 @@
             {{ content }}
         </p>
     </div>
-  
-  </template>
+
+</template>
   
   <script>
-  import PrimaryButton from '../../Buttons/PrimaryButton.vue';
+  import FilledButton from '../../Buttons/FilledButton.vue';
   export default {
     name: 'Service',
     components: {
-        PrimaryButton
+        FilledButton
     },
     props: {
+        id: String,
         title: String,
         content: String,
         image: String
