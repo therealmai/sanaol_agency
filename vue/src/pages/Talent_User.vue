@@ -76,7 +76,7 @@
                                     <div v-for="image in images" v-bind:key="image.id">
                                       <img id="imgService" :src="image.image" class="object-cover rounded-[8px] w-[166px] h-[166px] mt-4">
                                     <div v-if="image.id">
-                                        <span class=" absolute cursor-pointer z-[4px] top-[10px] ml-[159px]" @click="confirmDelete">
+                                        <span class=" absolute cursor-pointer z-[4px] top-[10px] ml-[159px]" @click="confirmDelete(image.id)">
                                             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <g clip-path="url(#clip0_326_3033)">
                                                 <path d="M9.43848 16.5938C13.5806 16.5938 16.9385 13.2359 16.9385 9.09375C16.9385 4.95161 13.5806 1.59375 9.43848 1.59375C5.29634 1.59375 1.93848 4.95161 1.93848 9.09375C1.93848 13.2359 5.29634 16.5938 9.43848 16.5938Z" fill="white" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -165,6 +165,7 @@
       isDeleteVisible: false,
       isProfileVisible: false,
       isUpdated: false,
+      img_id:'',
       user: {},
       images: {},
       form:{
@@ -201,12 +202,22 @@
       closeDeleteModal(){
         this.isDeleteVisible = false;
       },
-      confirmDelete(){
+      confirmDelete(id){
+        this.img_id = id;
         this.isDeleteVisible = true;
       },
       updateImage(){
         this.isDeleted= false;
-        //axios call to update image
+        axios.patch('user/image/delete/'+this.img_id).then(
+        (response) => {
+          console.log(response);
+        });
+        axios.get('user/image/'+this.$route.params.id).then(
+        (response) => {
+          this.images = JSON.parse(JSON.stringify(response.data.data));
+          console.log(this.images);
+        }
+      );
       },
 
       showModal() {
