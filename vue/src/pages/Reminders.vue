@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div class="text-bold mt-10 ml-60">
-            Reminders
-        </div>
         <div class="flex flex-col flex-wrap gap-4 items-center ml-20 mr-20 mt-3 mb-20">
             <div class="flex text-bold mt-10 mb-2" style="margin-right:53rem">
                 Reminders
