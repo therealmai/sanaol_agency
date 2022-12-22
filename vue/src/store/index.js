@@ -11,6 +11,14 @@ const store = createStore({
   },
   getters:  {},
   actions:{
+    update_profile({commit}, user){
+      return  axios.patch('users/'+ user.id,user).then((data)=> {
+          // console.log(data.data);
+          commit("setProfile", data.data);
+      }).catch(err => {
+          console.log(err)
+      });
+    },
     register({commit}, user) {
       return axios.post("auth/register", user)
           .then(({data}) => {
@@ -34,6 +42,9 @@ const store = createStore({
         }
   },
   mutations: {
+    setProfile(state, userData) {
+      state.user.data = userData.data;
+  },
     setUser(state, userData) {
       state.user.data = userData.user;
       state.user.token = userData.access_token;

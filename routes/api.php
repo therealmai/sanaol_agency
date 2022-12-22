@@ -41,10 +41,11 @@ Route::group(['middleware' => ['auth:talents']], function() {
 });
 
 //For admins
+Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
 Route::group(['middleware' => ['auth:admins']], function() {
     //Users
     Route::post('users/create', [UserController::class, 'store'])->name('user.create');
-    Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
+    Route::post('users/create', [UserController::class, 'store'])->name('user.create');
     Route::patch('users/delete/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
 
     //Services

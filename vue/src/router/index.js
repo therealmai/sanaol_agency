@@ -120,7 +120,14 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes: routes,
-    linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white"
+    linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white",
+    scrollBehavior(to, from, savedPosition) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve({ left: 0, top: 0 })
+          }, 500)
+        })
+      },
 });
 
 // router.beforeEach((to, from, next) => {

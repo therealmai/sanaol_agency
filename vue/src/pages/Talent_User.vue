@@ -42,7 +42,7 @@
         <ProfileModal v-show="isProfileVisible" text="Profile Modal" @profile="closeModal" @update="showUpdate">
           <template v-slot:profile_body>
             <!-- content here -->
-            <form action="">
+            <form id="edit" @submit="updateProfile" method="post">
               <div class="flex flex-col w-[800px] max-h-[756px] mt-[30px] space-y-4">  
 
                 <span class="text-[32px] font-bold text-[#525252]">Edit Profile</span>
@@ -60,11 +60,23 @@
                       <div class="h-[450px] w-full flex flex-col">
                               <div>
                                 <div class="flex flex-row gap-4 ">
-                                  <InputField title="First Name" v-model="user.fname"></InputField>
-                                  <InputField title="Last Name" v-model="user.lname"></InputField>
+                                  <!-- <InputField title="First Name" v-model="form.fname" ></InputField> -->
+                                  <div class="relative z-0 mb-6 w-full group">
+                                    <input    type="text" name="text" id="text" placeholder=" "
+                                              class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
+                                              rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
+                                              focus:border--indigo-500 peer" 
+                                              v-model="form.fname"/>
+                                    <label for="text"
+                                              class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
+                                              px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
+                                              peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+                                              peer-focus:scale-75 peer-focus:-translate-y-8">Firstname</label>
+                                    </div>
+                                  <InputField title="Last Name" v-model="form.lname"></InputField>
                                 </div>
-                                <InputField title="Instagram Username" v-model="user.insta_handle"></InputField>
-                                <TextArea title="Biography" v-model="user.bio"></TextArea>
+                                <InputField title="Instagram Username" v-model="form.insta_handle"></InputField>
+                                <TextArea title="Biography" v-model="form.bio"></TextArea>
                               </div>
                               
                               <!-- featured photos -->
@@ -86,7 +98,7 @@
         </ProfileModal>
         
         <!-- only show when confirm is clicked and isUpdated is true -->
-        <UpdateModal v-show="isUpdated" :text="text" @click="hideUpdate">
+        <UpdateModal v-show="isUpdated" :text="text" @click="updateProfile">
         </UpdateModal>
       </div>
 
@@ -100,7 +112,6 @@
   import TextArea from '../components/Input/TextArea.vue';
   import UpdateModal from "../components/Modal/UpdateModal.vue";
   import axios from "../axios";
-import { toRaw } from '@vue/reactivity';
 
   export default{
     components: {
@@ -118,20 +129,22 @@ import { toRaw } from '@vue/reactivity';
       user: {},
       images: {},
       form:{
-        fname: '',
-        lname: '',  
-        insta_handle:'',
-        bio:"",
-        image:'https://pixy.org/src2/573/thumbs350/5733959.jpg'
+        id:'',
+        fname:'',
+        lname:'',
+        email:'',
+        bio:'',
+        insta_handle:''
       }
     }
   },
   mounted(){
-      axios.get('users/'+this.$route.params.id).then(
-        (response) => {
-          const user = JSON.parse(JSON.stringify(response.data));
-          this.user = user.data;
-        }
+        axios.get('users/'+this.$route.params.id).then(
+          (response) => {
+            const user = JSON.parse(JSON.stringify(response.data));
+            this.user = user.data;
+            this.form = user.data;
+          }
       );
       axios.get('user/image/'+this.$route.params.id).then(
         (response) => {
@@ -151,18 +164,22 @@ import { toRaw } from '@vue/reactivity';
         this.isProfileVisible = false;
         this.isUpdated = true;
       },
-      hideUpdate(){
+      updateProfile(ev){
         this.isUpdated = false;
-        axios.patch('users/'+this.$store.state.user.data.id).then((response)=> {
-                  this.user = response.data
-            }).catch(err => {
-                console.log(err)
-            });
+        ev.preventDefault();
+        this.$store.dispatch('update_profile',this.form).then((response)=> {
+          this.user = this.$store.state.user.data;
+        }).catch(err => {
+            console.log(err)
+        });
+
+
+
       },
       loadFile(e) {
-                let imgHtml = document.querySelector('#talentImg');
-                imgHtml.src = URL.createObjectURL(e.target.files[0]);
-            },
+              let imgHtml = document.querySelector('#talentImg');
+              imgHtml.src = URL.createObjectURL(e.target.files[0]);
+          },
     },
    
  };
