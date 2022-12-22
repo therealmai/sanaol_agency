@@ -4,45 +4,47 @@
             <div class="flex text-bold mt-10 mb-2" style="margin-right:53rem">
                 Reminders
             </div>
-            <div class="flex flex-row flex-wrap gap-12 justify-center">
-                <Reminders image = "https://media.philstar.com/photos/2022/05/02/catriona-gray-miss-universe-winner2018-12-1910-04-54_2022-05-02_14-33-17.jpg"
-                        width = "115"
-                        label = "ENTERTAINMENT"
+            <div v-for="event in events.sort((a,b)=>(a.date>b.date)?1:-1).slice(0,5)"
+                 v-bind:key="event.id"
+                 class="flex flex-row flex-wrap gap-12 justify-center">
+                <Reminders :image = "event.image"
+                        width = "70"
+                        :label = "event.event_type"
                         link = "Talent_list"
-                        title = "Jastine Guzman emerges as Ms. International Queen 2022"
-                        date = "November 01, 2022"
-                        location = "IMPACT Arena, Nonthaburi Province, Thailand"
-                        content = "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo">
-                </Reminders>
-                <Reminders image = "https://www.asianacademycreativeawards.com/wp-content/uploads/2022/07/3D-BG-Blue-Gradient_2000px-scaled-728x485.jpg"
-                        width = "80"
-                        label = "AWARDS"
-                        link = "Events"
-                        title = "System bags multiple awards in Asian Content Creation Awards 2021"
-                        date = "November 15, 2022"
-                        location = "University of San Carlos - Talamban Campus"
-                        content = "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo">
-                </Reminders>
-                <Reminders image = "https://imgnew.outlookindia.com/uploadimage/library/16_9/16_9_5/Facial_Recognition_1640922171.jpg"
-                        width = "80"
-                        label = "BUSINESS"
-                        title = "Introducing the New Face of System: Kathleen Iza Monzales"
-                        link = "Hero"
-                        date = "November 26, 2022"
-                        location = "University of San Carlos - Talamban Campus"
-                        content = "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo">
+                        :title = "event.title"
+                        :date = "months[new Date(event.date).getMonth()]+' '+new Date(event.date).getDate()+', '+new Date(event.date).getFullYear()"
+                        :location = "event.location"
+                        :content = "event.content">
                 </Reminders>
             </div>
-        </div>   
+        </div>
     </div>
 </template>
 
 <script>
 import Reminders from '../components/Cards/Reminders/Reminderscard.vue';
+import axios from "../axios";
 
 export default{
     components: {
         Reminders
+    },
+
+    mounted() {
+        axios.get('events').then(
+            (response) => {
+                this.events = response.data,
+                console.log("events"),
+                console.log(this.events)
+            }
+        )
+    },
+
+    data() {
+        return {
+            events: [],
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        }
     },
 }
 </script>
@@ -69,7 +71,7 @@ export default{
                     <p class="font-normal leading-normal text-[16px] text-secondary pt-0">
                         Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     </p>
-                
+
             </div>
         </div>
     </body>
@@ -80,7 +82,7 @@ export default{
 
 export default({
     setup() {
-        
+
     },
 })
 </script> -->
