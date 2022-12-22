@@ -60,7 +60,6 @@ export default {
   },
   setup () {
     const store = useStore();
-    
     return {
       user: computed(() => store.state.user.data),
     }

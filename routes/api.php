@@ -37,11 +37,10 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
 //For talents
 Route::group(['middleware' => ['auth:talents']], function() {
-    //
+    Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
 });
 
 //For admins
-Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
 Route::group(['middleware' => ['auth:admins']], function() {
     //Users
     Route::post('users/create', [UserController::class, 'store'])->name('user.create');
