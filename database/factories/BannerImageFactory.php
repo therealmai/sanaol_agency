@@ -19,7 +19,7 @@ class BannerImageFactory extends Factory
     {
         return [
             'hero_id'    => HeroBanner::all()->random()->id,
-            'image'      => $this->faker->imageUrl(880,495),
+            'image'      => $this->faker->imageUrl(1920,892),
             'is_deleted' => rand(0,1)
         ];
     }
