@@ -11,7 +11,7 @@
                 </label>
                 <div>
                     <label for="title">Title</label>
-                    <input v-bind:class="[cssFormInputs]" v-model.trim="data.title" type="text">
+                    <input v-bind:class="[cssFormInputs]" v-bind:value="data.title" type="text">
                 </div>
                 <div>
                     <label for="content">Content</label>
@@ -64,12 +64,7 @@
         data() {
             return {
                 data: {
-                    id: "",
-                    title: "title",
-                    content: "content",
-                    image: "https://i0.wp.com/www.vortexmag.net/wp-content/uploads/2017/12/JMbN5hW.jpg?fit=1800%2C1200&ssl=1",
-                    ref: "",
-                    updated_at: "", 
+                    
                 },
                 cssFormInputs: cssFormInputsStr,
                 isModalVisible: false,
@@ -107,10 +102,10 @@
             Info
         },
         mounted () {
-            axios.get('http://127.0.0.1:8000/api/services/id', this.$route.params.id).then((response)=> {
+            axios.get('http://127.0.0.1:8000/api/services/'+ this.$route.params.id).then((response)=> {
                 console.log(this.$route.params.id)
                   this.data = response.data
-                  console.warn(this.data);
+                  console.log(this.data)
             }).catch(err => {
                 console.log(err)
             })
