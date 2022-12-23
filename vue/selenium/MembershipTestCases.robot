@@ -29,7 +29,7 @@ ${test_password}    testtest
 ${test_fname}    test
 
 *** Test Cases ***
-Check If All Fields Are Clickable
+Check Membership Functionalities
     Open Browser        ${url_membership}    ${browser}
     Check If All Fields Are Inputable
     Check If All Password Fields Are Of Type Password
