@@ -5,6 +5,7 @@ Library    SeleniumLibrary
 ${browser}             Chrome
 ${url_base}                 http://127.0.0.1:5173/
 ${url_membership}                 http://127.0.0.1:5173/Membership
+${url_login}                 http://127.0.0.1:5173/login
 ${speed-slow}          0.25 seconds
 
 ${nav_login}    xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[5]/span[1]
@@ -19,6 +20,7 @@ ${email}    xpath://input[@id='email']
 ${password}    xpath://input[@id='password']
 ${confirm_password}    xpath://input[@id='confirm_password']    
 ${reason}    xpath://textarea[@id='reason']
+${apply}    xpath://button[contains(text(),'APPLY AS A MEMBER')]
 
 ${login_email_field}    xpath://input[@id='email']
 ${login_password_field}    xpath://input[@id='password']
@@ -34,6 +36,12 @@ Check Membership Functionalities
     Set Selenium Speed    ${speed-slow}
     Check If All Fields Are Inputable
     Check If All Password Fields Are Of Type Password
+    Click Button    ${apply}
+    ${current_link}    Get Location
+    IF  ${current_link} != ${url_login}
+        FAIL
+    END
+    
 
 Check If Logins Works
     Open Browser        ${url_base}    ${browser}
@@ -68,6 +76,7 @@ Test Login
 
     ${x}    Get Text    ${nav_user}
     Should Be Equal As Strings    ${x}    ${test_fname}
-    
+
+Create An Account    
 
 # Must not see EDIT SECTION button if user type is general
