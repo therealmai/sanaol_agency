@@ -1,8 +1,14 @@
 <template>
   <div class="font-inter flex flex-col space-y-4">
+<<<<<<< HEAD
 
       <div class="">
         <OutBtn text="BACK" class="w-[100px] ml-[44px] mt-[31.79px]"></OutBtn>
+=======
+    <div class="font-inter flex flex-col space-y-4" v-show="!news.is_deleted">
+      <div class="">
+        <OutBtn text="BACK" class="w-[95px] ml-[44px] mt-[31.79px]" @click="$router.back()"></OutBtn>
+>>>>>>> parent of 35153fe (refactor: updated error message for deleted news)
       </div>
 
       <div class="flex flex-row items-center justify-between ml-[12.5%] mr-[12.5%] mb-[25px]">
@@ -23,7 +29,15 @@
               {{news.content}}
           </p>
       </div>
+<<<<<<< HEAD
 
+=======
+      <Modal v-show="isModalVisible" @close="closeModal"></Modal>
+    </div>
+    <div class="font-inter flex flex-col space-y-4" v-show="news.is_deleted">
+      <h1>News Not Found!</h1>
+    </div>
+>>>>>>> parent of 35153fe (refactor: updated error message for deleted news)
   </div>
 </template>
 
