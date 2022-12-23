@@ -37,20 +37,20 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
 //For talents
 Route::group(['middleware' => ['auth:talents']], function() {
-    //
+    Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
 });
 
 //For admins
 Route::group(['middleware' => ['auth:admins']], function() {
     //Users
     Route::post('users/create', [UserController::class, 'store'])->name('user.create');
-    Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
+    Route::post('users/create', [UserController::class, 'store'])->name('user.create');
     Route::patch('users/delete/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
 
     //Services
-    Route::patch('/services/{id}', 'ServiceController@update');
     Route::post('/services/create', 'ServiceController@store');
     Route::patch('/services/delete/{id}', 'ServiceController@destroy');
+    Route::post('/services/{id}', 'ServiceController@update');
 
     //HeroBanner
     Route::post('herobanner/create', [HeroBannerController::class, 'store']);
