@@ -3,8 +3,14 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${browser}             Chrome
-${url}                 http://127.0.0.1:5173/Membership
-${speed-slow}          0.65 seconds*** Test Cases ***
+${url_base}                 http://127.0.0.1:5173/
+${url_membership}                 http://127.0.0.1:5173/Membership
+${speed-slow}          0.65 seconds
+
+${nav_login}    xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[5]/span[1]
+${nav_user}    xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/span[1]
+
+${x}
 
 ${fname}    xpath://input[@id='fname']
 ${lname}    xpath://input[@id='lname']
@@ -14,13 +20,26 @@ ${password}    xpath://input[@id='password']
 ${confirm_password}    xpath://input[@id='confirm_password']    
 ${reason}    xpath://textarea[@id='reason']
 
+${login_email_field}    xpath://input[@id='email']
+${login_password_field}    xpath://input[@id='password']
+${login_submit_button}    xpath://button[contains(text(),'Log in')]
 
+${test_email}    test@test.com
+${test_password}    testtest
+${test_fname}    test
 
 *** Test Cases ***
 Check If All Fields Are Clickable
-    Open Browser        ${url}    ${browser}
+    Open Browser        ${url_membership}    ${browser}
     Check If All Fields Are Inputable
     Check If All Password Fields Are Of Type Password
+
+Check If Logins Works
+    Open Browser        ${url_base}    ${browser}
+    Set Selenium Speed    ${speed-slow}
+    Test Login
+    Sleep    5 seconds
+    
 
 # Must not see EDIT SECTION button if user type is general
     
@@ -40,6 +59,14 @@ Check If All Password Fields Are Of Type Password
     Element Attribute Value Should Be    ${password}    type    password
     Element Attribute Value Should Be    ${confirm_password}    type    password
 
+Test Login
+    Click Element    ${nav_login}
+    Input Text        ${login_email_field}        ${test_email}            clear=true
+    Input Password    ${login_password_field}     ${test_password}         clear=true
+    Click Button      ${login_submit_button}
 
+    ${x}    Get Text    ${nav_user}
+    Should Be Equal As Strings    ${x}    ${test_fname}
+    
 
 # Must not see EDIT SECTION button if user type is general
