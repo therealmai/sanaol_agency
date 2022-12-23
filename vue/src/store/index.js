@@ -4,7 +4,7 @@ import axios from "../axios";
 
 const store = createStore({
   state: {
-    isLoggedIn: false,
+    isLoggedIn: sessionStorage.getItem("LOG"),
     user:{
       data: JSON.parse(sessionStorage.getItem("USER")),   
       token: sessionStorage.getItem("TOKEN"),
@@ -67,7 +67,7 @@ const store = createStore({
     },
   },
   modules: {},
-  // plugins: [createPersistedState()]
+  plugins: [createPersistedState()]
 })
 
 export default store;
