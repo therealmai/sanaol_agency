@@ -87,10 +87,8 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $service = Service::find($id);
-        $input = $request->input();
         $msg = '';
         $status = '';
-        $err = false;
 
         if($service == NULL) {
             $msg = $this->MSG_ERR_ID_NOT_FOUND;
@@ -103,18 +101,18 @@ class ServiceController extends Controller
             'image'    => 'required'
         ]);
 
-        $pathToFile = $request->file('image')
-            ->store('Service', 'vue');
-
+        if($request->hasFile('image')) {
+            $pathToFile = $request->file('image')
+                ->store('Service', 'vue');
+            $service->image = $pathToFile;
+        }
         $service->title = $request->input('title');
         $service->content = $request->input('content');
-        $service->image = $pathToFile;
         $service->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
         $service->save();
         
-        $msg = $pathToFile;
+        $msg = $this->MSG_SUC_UPDATE;
         $status = 200;
-
         return response($this->generateRes($service, $status, $msg), 200);
 
         // if($service != NULL) {
