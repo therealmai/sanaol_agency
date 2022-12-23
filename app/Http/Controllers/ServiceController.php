@@ -97,30 +97,51 @@ class ServiceController extends Controller
             $status = 404;
         } 
 
-        if($service != NULL) {
-            foreach($input as $key => $val) {
-                if(isset($service[$key])) {
-                    $service[$key] = $val;
-                } 
-                else {
-                    $err = true;
-                    break;
-                }
-            }  
-        }
+        $request->validate([
+            'title'    => 'required',
+            'content'  => 'required',
+            'image'    => 'required'
+        ]);
 
-        if($err) {
-            $msg = $this->MSG_ERR_ADDITIONAL_PROPS;
-            $status = 500;
-            $service = null;
-        } else {
-            $msg = $this->MSG_SUC_UPDATE;
-            $status = 204;
-            $service->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
-            $service->save();
-        }
+        $pathToFile = $request->file('image')
+            ->store('Service', 'vue');
 
-        return response($this->generateRes($service, $status, $msg), 200, ['application/json']);
+        $service->title = $request->input('title');
+        $service->content = $request->input('content');
+        $service->image = $pathToFile;
+        $service->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+        $service->save();
+        
+        $msg = $pathToFile;
+        $status = 200;
+
+        return response($this->generateRes($service, $status, $msg), 200);
+
+        // if($service != NULL) {
+        //     foreach($input as $key => $val) {
+        //         if(isset($service[$key])) {
+        //             $service[$key] = $val;
+        //         } 
+        //         else {
+        //             $err = true;
+        //             break;
+        //         }
+        //     }  
+        // }
+
+        // if($err) {
+        //     $msg = $this->MSG_ERR_ADDITIONAL_PROPS;
+        //     $status = 500;
+        //     $service = null;
+        // } else {
+        //     $msg = $this->MSG_SUC_UPDATE;
+        //     $status = 204;
+        //     $service->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+        //     $service->image = $pathToFile;
+        //     $service->save();
+        // }
+
+        // $status = $pathToFile;
     }
 
     /**
