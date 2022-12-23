@@ -57,7 +57,7 @@ const routes = [
                 meta: { title: 'Talents' }
             },
             {
-                path: "/profile",
+                path: "/profile/:id",
                 name: "profile",
                 component: Talent_User,
                 meta: { title: 'Profile' }
@@ -137,14 +137,16 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes: routes,
-    linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white"
+    linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white",
+    scrollBehavior(to, from, savedPosition) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve({ left: 0, top: 0 })
+          }, 500)
+        })
+      },
 });
+//https://router.vuejs.org/guide/advanced/scroll-behavior.html
 
-const DEFAULT_TITLE = 'Sanaol Agency';
-router.afterEach((to, from) => {
-    Vue.nextTick(() => {
-        document.title = (to.meta.title + ' | Sanaol Agency') || DEFAULT_TITLE;
-    });
-});
 
 export default router;
