@@ -58,9 +58,10 @@ const store = createStore({
         state.isLoggedIn = false;
         state.user.data = {};
         state.user.token = {};
-        sessionStorage.removeItem("USER");   //remove user data from the session storage
-        sessionStorage.removeItem("TOKEN");  //remove token from session
-        sessionStorage.removeItem("LOG");    //reset isloggedin to false
+        sessionStorage.clear();
+        // sessionStorage.removeItem("USER");   //remove user data from the session storage
+        // sessionStorage.removeItem("TOKEN");  //remove token from session
+        // sessionStorage.removeItem("LOG");    //reset isloggedin to false
     },
   },
   modules: {},

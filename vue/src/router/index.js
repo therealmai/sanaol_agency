@@ -146,7 +146,6 @@ const router = createRouter({
         })
       },
 });
+
 //https://router.vuejs.org/guide/advanced/scroll-behavior.html
-
-
 export default router;
