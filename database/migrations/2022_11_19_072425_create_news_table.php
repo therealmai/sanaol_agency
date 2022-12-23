@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('content');
             $table->string('image')->nullable();
             $table->string('author');
+            $table->string('location');
+            $table->dateTime('date');
             $table->string('ref')->nullable();
             $table->boolean('is_deleted')->default(false);
             $table->timestamps();

@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-row flex-nowrap text-secondary">
+  <div class="flex flex-row flex-nowrap text-secondary sm:scale-75 md:scale-100 lg:scale-100 items-center justify-center">
     <!-- Image -->
-    <div class="w-full object-cover h-72 lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
+    <div class="hidden w-full object-cover sm:hidden md:flex lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80); display: hidden;"></div>
     
       <!-- Form Container -->
-      <div class="flex items-center justify-center container max-h-screen">
-          <div class=" md:mx-6 align-middle flex items-center justify-center">
+      <div class="flex scale-75 items-center justify-center container max-h-screen lg:p-8 sm:scale-75 md:scale-75 lg:scale-100 xl:scale-100 xl:w-full 2xl:scale-100">
+          <div class=" md:mx-2 align-middle flex items-center justify-center lg:mx-6 md:w-full">
     
             <!-- Form -->
             <form id="register" @submit="register" method="post">
@@ -14,9 +14,9 @@
                 <h1 class="text-4xl font-bold">Become a Rising Star</h1>
               </div>
               <!-- Form Group -->
-              <div class="grid md:grid-cols-2 md:gap-6">
+              <div class="grid md:grid-cols-1 lg:grid-cols-2 lg:gap-6">
                 <div class="relative z-0 mb-6 w-full group">
-                  <input type="text" name="fname" id="fname" v-model="user.first_name" placeholder=" " required autocomplete="name"
+                  <input type="text" name="fname" id="fname" v-model="user.fname" placeholder=" " required autocomplete="name"
                     class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
                     rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
                     focus:border--indigo-500 peer"/>
@@ -27,7 +27,7 @@
                     peer-focus:scale-75 peer-focus:-translate-y-8">First Name</label>
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
-                  <input type="text" name="lname" id="lname" v-model="user.last_name" placeholder=" " required autocomplete="name"
+                  <input type="text" name="lname" id="lname" v-model="user.lname" placeholder=" " required autocomplete="name"
                     class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
                     rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
                     focus:border--indigo-500 peer"/>
@@ -101,14 +101,14 @@
                   peer-focus:scale-75 peer-focus:-translate-y-8">Why do you want to join Sanaol Agency</label>
               </div>
               <!-- Error Modal -->
-              <errorModal>
+              <errorModal hidden>
                 <template v-slot:modal-title> Registration </template>
                 <template v-slot:modal-content>
                   <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400">User already exists. Enter different credentials.</h3>
                 </template>
               </errorModal>
               <!-- Submit Button -->
-              <button type="submit" @click="staticRegister"
+              <button type="submit" @click="register"
                 class="w-full px-6 py-3 mb-6
                 bg-indigo-500 text-white font-medium text-base
                 leading-tight uppercase rounded shadow-md
@@ -143,25 +143,25 @@ import errorModal from '../components/Modal/ErrorModal.vue';
 const toggleModal = errorModal.methods.toggleModal();
 const router = useRouter();
 const user = {
-  first_name: '',
-  last_name: '',
-  insta_handle: '',
+  fname: '',
+  lname: '',
   email: '',
   password: '',
   confirm_password: '',
+  insta_handle: '',
+  user_type: 'general',
   reason: '',
 }
 
 function register(ev) {
-  ev.prevenDefault();
+  ev.preventDefault();
   store.dispatch('register', user)
        .then(() => {
-          router.push({
-            name: 'Hero'
-          })
+        router.push({ name: 'hero' });
        })
        .catch(err => {
-          err.value = toggleModal;
+          // err.value = toggleModal;
+          console.log("Error");
        })
 }
 
