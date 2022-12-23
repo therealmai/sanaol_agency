@@ -107,6 +107,11 @@ const routes = [
                 name: "events_management",
                 component: EventsManagement
             },
+            {
+                path: "/herobannerMG",
+                name: "Herobanner MG",
+                component: HerobannerMG
+            }
         ]
 
     },
