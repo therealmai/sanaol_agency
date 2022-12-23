@@ -87,8 +87,8 @@ const routes = [
                 component: UserManagement
             },
             {
-                path: "/Profile",
-                name: "Profile",
+                path: "/profile/:id",
+                name: "profile",
                 component: Talent_User
             }, 
             {
