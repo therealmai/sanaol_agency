@@ -120,17 +120,23 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes: routes,
-    linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white"
+    linkActiveClass: "py-2 bg-primary rounded-lg drop-shadow-lg text-white",
+    scrollBehavior(to, from, savedPosition) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve({ left: 0, top: 0 })
+          }, 500)
+        })
+      },
 });
 
 // router.beforeEach((to, from, next) => {
-//     if(to.meta.requiresAuth && !store.state.user.token) {
-//         next({ name: "login" });
-//     }else if(store.state.user.token && to.name === "hero"){
-//         next({ name: "login" });
-//     }else {
-//         next();
-//     }
-// });
+//     const token = sessionStorage.getItem('TOKEN')
+//     //if not logged in, redirect to Login page
+//     if (!token) next ({ name: 'membership' });
+//     //else continue
+//     else next();
+//   });
+
 
 export default router;

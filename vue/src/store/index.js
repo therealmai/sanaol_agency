@@ -4,13 +4,24 @@ import axios from "../axios";
 
 const store = createStore({
   state: {
-    user:{      //data about the user and the token will be stored here after user login 
-      data:{},      
-      token: {}
+    isLoggedIn: sessionStorage.getItem("LOG"),
+    user:{
+      data: JSON.parse(sessionStorage.getItem("USER")),   
+      token: sessionStorage.getItem("TOKEN"),
+      // data: {},      
+      // token: null
     },
   },
   getters:  {},
   actions:{
+    update_profile({commit}, user){
+      return  axios.patch('users/'+ user.id,user).then((data)=> {
+          // console.log(data.data);
+          commit("setProfile", data.data);
+      }).catch(err => {
+          console.log(err)
+      });
+    },
     register({commit}, user) {
       return axios.post("auth/register", user)
           .then((data) => {
@@ -35,20 +46,29 @@ const store = createStore({
         }
   },
   mutations: {
+    setProfile(state, userData) {
+      state.user.data = userData.data;
+      sessionStorage.setItem("USER", JSON.stringify(userData.data));
+  },
     setUser(state, userData) {
+      sessionStorage.setItem("LOG", true);
+      sessionStorage.setItem("USER", JSON.stringify(userData.user));
+      sessionStorage.setItem("TOKEN", userData.access_token);
+      state.isLoggedIn = true;
       state.user.data = userData.user;
       state.user.token = userData.access_token;
-      sessionStorage.setItem("TOKEN", userData.token);
   },
     logout : (state) => {
-        state.user.data = {};          //remove user data in state
-        state.user.token = null;             //set token to null
-        // sessionStorage.removeItem("TOKEN");  //remove token from session
-        // sessionStorage.clear();
+        state.isLoggedIn = false;
+        state.user.data = {};
+        state.user.token = {};
+        sessionStorage.removeItem("USER");   //remove token from session
+        sessionStorage.removeItem("TOKEN");  //remove token from session
+        sessionStorage.removeItem("LOG");    //remove token from session
     },
   },
-  // modules: {},
-  //   plugins: [createPersistedState()]
+  modules: {},
+  plugins: [createPersistedState()]
 })
 
 export default store;
