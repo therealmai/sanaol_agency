@@ -5,7 +5,7 @@ Library    SeleniumLibrary
 ${browser}             Chrome
 ${url_base}                 http://127.0.0.1:5173/
 ${url_membership}                 http://127.0.0.1:5173/Membership
-${speed-slow}          0.65 seconds
+${speed-slow}          0.25 seconds
 
 ${nav_login}    xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[5]/span[1]
 ${nav_user}    xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/span[1]
@@ -31,6 +31,7 @@ ${test_fname}    test
 *** Test Cases ***
 Check Membership Functionalities
     Open Browser        ${url_membership}    ${browser}
+    Set Selenium Speed    ${speed-slow}
     Check If All Fields Are Inputable
     Check If All Password Fields Are Of Type Password
 
