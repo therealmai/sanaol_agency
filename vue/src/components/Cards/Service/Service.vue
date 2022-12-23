@@ -24,11 +24,15 @@
   import FilledButton from '../../Buttons/FilledButton.vue';
   export default {
     name: 'Service',
+    data() {
+        return {
+            id: 1
+        }
+    },
     components: {
         FilledButton
     },
     props: {
-        id: String,
         title: String,
         content: String,
         image: String

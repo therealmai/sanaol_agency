@@ -57,10 +57,7 @@ class UserImageController extends Controller
      */
     public function show($id)
     {
-        $userImage = UserImage::where('user_id', $id)
-                                ->where('is_deleted', 0)
-                                ->limit(3)
-                                ->get();
+        $userImage = UserImage::where('user_id', $id)->get();
 
         if(!$userImage->isEmpty()) {
             return response($this->generateRes($userImage, 200, $this->MSG_SUC_ID_FOUND), 200, ['application/json']);

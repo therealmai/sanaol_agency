@@ -26,8 +26,7 @@ class UserFactory extends Factory
             'password'          => Hash::make('password'), // password
             'user_type'         => $user_types[rand(0,2)],
             'insta_handle'      => $this->faker->userName(),
-            'is_member'         => rand(0,1),
-            'bio'               => $this->faker->sentence(10)
+            'is_member'         => rand(0,1)
         ];
     }
 

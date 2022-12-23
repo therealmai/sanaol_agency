@@ -22,8 +22,6 @@ class NewsFactory extends Factory
             'title'      => $this->faker->words(5, true),
             'content'    => $this->faker->sentence(10),
             'image'      => $this->faker->imageUrl(880,495),
-            'location'   => $this->faker->address(),
-            'date'       => $this->faker->dateTimeBetween(now(), '+1 year'),
             'author'     => $this->faker->name(),
             'ref'        => '#',
             'is_deleted' => rand(0,1)

@@ -2,7 +2,7 @@
 
 <body class="flex flex-col">
 
-  <div class="flex items-center justify-between pl-[15%] pr-[10%] mt-[76px] mb-[-100px] w-full">
+  <div class="flex items-center justify-between pl-[15%] pr-[10%] mt-[76px] mb-[-100px] w-full">  
     <h1 class="font-bold text-3xl mb-[20%] pb-[15%]">Events</h1>
     <div class="float-right pl-[47%] ml-[8%]  mb-[17%] w-full">
         <FilledButton text="Edit Events" class="w-[177px]"></FilledButton>
@@ -49,10 +49,6 @@ import PaginationButtonVue from '../components/Buttons/PaginationButton.vue';
 import OutlineButton from '../components/Buttons/OutlineButton.vue';
 import FilledButton from '../components/Buttons/FilledButton.vue';
 import CardCarousel from '../components/HeroBanner/CardCarousel.vue';
-
-import { useStore } from 'vuex'
-import { computed } from 'vue'
-
 export default{
   components: {
     Navbar,
@@ -65,24 +61,8 @@ export default{
     FilledButton,
     OutlineButton,
     CardCarousel
-  },
-  setup() {
-    const store = useStore();
-
-    return {
-      user: computed(() => store.state.user.data),
-    }
-  },
-  mounted() {
-    this.userType = this.user['user_type']
-    console.log(this.userType);
-  },
-  data() {
-    return {
-      userType: '',
-      isModalVisible: false,
-    }
-  }
+    
+},
 }
 </script>
 
