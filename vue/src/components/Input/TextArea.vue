@@ -5,7 +5,7 @@
                    @input="$emit('update:modelValue', $event.target.value)"
                   class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
                   rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
-                  focus:border--indigo-500 peer"/>
+                  focus:border--indigo-500 peer max-h-[80px]"/>
               
                   <label for="txtarea"
                   class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
