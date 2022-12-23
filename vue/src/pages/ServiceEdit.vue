@@ -55,14 +55,14 @@
     import UpdateModal from '../components/Modal/UpdateModal.vue';
     import Modal from '../components/Modal/Modal.vue';
     import Info from '../components/Others/Info.vue';
-    import axios from 'axios';
+    import axios from '../axios';
 
     const cssFormInputsStr = "border-2 rounded-lg p-3 form__inputs  ";    
 
     export default {
         mounted() {
             let id = this.$route.params.id;
-            axios.get('http://127.0.0.1:8000/api/services/' + id).then(
+            axios.get('/services/' + id).then(
                 (response) => {
                     if(response.status == 200) {
                         this.service = response.data.data;
@@ -99,6 +99,12 @@
                 this.isModalVisible = false;
             },
             updateService() {
+                if(this.service.title == '' || this.service.content == '') {
+                    alert('All fields must be filled.');
+                    this.isModalVisible = false;
+                    return;
+                }
+
                 let data = new FormData;
                 data.set('image', this.service.image);
                 data.set('title', this.service.title);
@@ -107,7 +113,7 @@
                 console.log(...data)
 
                 let id = this.$route.params.id;
-                axios.post('http://127.0.0.1:8000/api/services/' + id, data, {
+                axios.post('/services/' + id, data, {
                     headers: {
                         'Content-type': 'multipart/form-data'
                     }

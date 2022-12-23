@@ -6,7 +6,7 @@ Task Teardown    Teardown
 *** Variables ***
 ${browser}             Chrome
 ${url}                 http://127.0.0.1:5173/hero
-${speed-slow}          0.65 seconds
+${speed-slow}          0.75 seconds
 
 ${link-services}       xpath://body/div[@id='app']/div[1]/div[1]/nav[1]/div[2]/a[6]
 ${link-login}          xpath://body/div[@id='app']/div[1]/div[1]/nav[1]/div[2]/a[8]
