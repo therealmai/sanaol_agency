@@ -4,55 +4,51 @@
   <!-- <button class="mt-6 ml-6 text-[#7367F0] w-16 text-center border rounded-lg" style="background: #F6F5FF;"><a href="../pages/Hero.vue">Back</a></button> -->
 
 
-
-
-
- 
-
-
-<div class="mt-10 ml-80 mb-1 w-3/4 flex flex-col flex-row"><h1 class="font-bold text-xl flex-row">Edit Hero Banner</h1><br></div>
-<div class="ml-32 mb-10 w-3/4 flex flex-col flex-row justify-center items-center">
-  
-  
-   <div class="ml-6 flex-auto">
-          <p style="color:#A8A8A8; font-family:Inter; font-size:24px; font-weight: 500;">I. Welcome Banner</p>
-        <div class="ml-6 p-1">
-          <p style="color:#A8A8A8; font-family:Inter; font-size:20px; font-weight: 400;">Header Photos (1920 x 892, MAX 5)</p>
+        <div class="mt-10 ml-80 mb-1 w-3/4 flex flex-col flex-row">
+              <h1 class="font-bold text-xl flex-row">Edit Hero Banner</h1><br>
+        </div>
+        <div class="ml-32 mb-10 w-3/4 flex flex-col flex-row justify-center items-center">
           
-          <!-- header photo from file. haven't set the size and choosing multiple times,, -->
+  
+          <div class="ml-6 flex-auto">
+                  <p style="color:#A8A8A8; font-family:Inter; font-size:24px; font-weight: 500;">I. Welcome Banner</p>
+                <div class="ml-6 p-1">
+                  <p style="color:#A8A8A8; font-family:Inter; font-size:20px; font-weight: 400;">Header Photos (1920 x 892, MAX 5)</p>
+                  
+                  <!-- header photo from file. haven't set the size and choosing multiple times,, -->
 
-          <form>
-                <div class="file-upload-section">
-                    
-                    <div class="file-upload">
-                        <div >
-                            <label class="upload-box" for="file-upload" >+</label>
-                            <!-- <img :src="events.image" alt="User Photo" style="position: absolute;width: 170px;top: 110px;height: 177px;"> -->
+                  <form>
+                        <div class="file-upload-section">
+                            
+                            <div class="file-upload">
+                                <div >
+                                    <label class="upload-box" for="file-upload" >+</label>
+                                    <!-- <img :src="events.image" alt="User Photo" style="position: absolute;width: 170px;top: 110px;height: 177px;"> -->
+                                </div>
+                            <input type="file" id="file-upload" @change="onFileChange" hidden/>
+
+                            <label id="preview" for="file-upload">
+                                <img style="height:184px;width:170px;position: absolute;margin-top: -101px; z-index: 3" :key="url" v-if="url" :src="url" />
+                            </label>
+                            </div>
+                            <div v-if="url">
+                                <button style="position: absolute;z-index: 4;top: 10.8%;margin-left: 159px;" @click="removeImage()">
+                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_326_3033)">
+                                        <path d="M9.43848 16.5938C13.5806 16.5938 16.9385 13.2359 16.9385 9.09375C16.9385 4.95161 13.5806 1.59375 9.43848 1.59375C5.29634 1.59375 1.93848 4.95161 1.93848 9.09375C1.93848 13.2359 5.29634 16.5938 9.43848 16.5938Z" fill="white" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M11.6885 6.84375L7.18848 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.18848 6.84375L11.6885 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                        <clipPath id="clip0_326_3033">
+                                        <rect width="18" height="18" fill="white" transform="translate(0.438477 0.09375)"/>
+                                        </clipPath>
+                                        </defs>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                    <input type="file" id="file-upload" @change="onFileChange" hidden/>
-
-                    <label id="preview" for="file-upload">
-                        <img style="height:184px;width:170px;position: absolute;margin-top: -101px; z-index: 3" :key="url" v-if="url" :src="url" />
-                    </label>
-                    </div>
-                    <div v-if="url">
-                        <button style="position: absolute;z-index: 4;top: 10.8%;margin-left: 159px;" @click="removeImage()">
-                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_326_3033)">
-                                <path d="M9.43848 16.5938C13.5806 16.5938 16.9385 13.2359 16.9385 9.09375C16.9385 4.95161 13.5806 1.59375 9.43848 1.59375C5.29634 1.59375 1.93848 4.95161 1.93848 9.09375C1.93848 13.2359 5.29634 16.5938 9.43848 16.5938Z" fill="white" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M11.6885 6.84375L7.18848 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7.18848 6.84375L11.6885 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </g>
-                                <defs>
-                                <clipPath id="clip0_326_3033">
-                                <rect width="18" height="18" fill="white" transform="translate(0.438477 0.09375)"/>
-                                </clipPath>
-                                </defs>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </form>
+                </form>
           
           <!-- text-input. class didn't work,, -->
           <TitledInput :fontSize="18" :width="525" :height="53" title="Welcome Banner Header - Talent/Admin"/><br>
@@ -65,9 +61,23 @@
   <!-- select option (manual) -->
   <div class="ml-6 flex-auto">
       <p style="color:#A8A8A8; font-family:Inter; font-size:24px; font-weight: 500;">II. Featured Events</p>
+                    <div>
+                      
+                            <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_1880_110)">
+                            <path d="M4.67112 9.99632C5.02268 10.3137 5.59362 10.3137 5.94518 9.99632L9.54518 6.74632C9.80393 6.51273 9.87987 6.16487 9.73924 5.86019C9.59862 5.5555 9.27237 5.35745 8.90674 5.35745L1.70674 5.35999C1.34393 5.35999 1.01487 5.55804 0.874241 5.86273C0.733616 6.16741 0.812366 6.51527 1.0683 6.74886L4.6683 9.99886L4.67112 9.99632Z" fill="#979797"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_1880_110">
+                            <rect width="9" height="13" fill="white" transform="translate(0.806641 0.484985)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
       <select v-model="newsSetting" class="w-[529px] h-[53px] 
           outline outline-gray-400 outline-2 rounded-md ml-5">
           <option value="" selected disabled>Show 3 of most recent news</option>
+          
           <!-- selecting news -->
           <option value="">A</option>
           <option value="">B</option>
