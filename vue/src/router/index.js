@@ -7,14 +7,14 @@ import Hero from "../pages/Hero.vue";
 import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
-import Services from "../pages/Services.vue";   
+import Services from "../pages/Services.vue";
 import ServiceEdit from "../pages/ServiceEdit.vue";
 import Events from "../pages/Events.vue";
 import Edit_Events from "../pages/EditEvents.vue";
 import News from "../pages/News.vue";
 import Reminders from "../pages/Reminders.vue";
 import MainLayout from "../components/Layout/MainLayout.vue";
-import UserManagement from "../pages/UserManagement.vue";  
+import UserManagement from "../pages/UserManagement.vue";
 import News_Create from "../pages/News_Create.vue";
 import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
@@ -87,10 +87,10 @@ const routes = [
                 component: UserManagement
             },
             {
-                path: "/Profile",
+                path: "/Profile/:id",
                 name: "Profile",
                 component: Talent_User
-            }, 
+            },
             {
                 path: "/news_create",
                 name: "news_create",
