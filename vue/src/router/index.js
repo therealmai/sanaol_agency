@@ -130,13 +130,7 @@ const router = createRouter({
       },
 });
 
-// router.beforeEach((to, from, next) => {
-//     const token = sessionStorage.getItem('TOKEN')
-//     //if not logged in, redirect to Login page
-//     if (!token) next ({ name: 'membership' });
-//     //else continue
-//     else next();
-//   });
+//https://router.vuejs.org/guide/advanced/scroll-behavior.html
 
 
 export default router;
