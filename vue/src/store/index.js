@@ -8,15 +8,12 @@ const store = createStore({
     user:{
       data: JSON.parse(sessionStorage.getItem("USER")),   
       token: sessionStorage.getItem("TOKEN"),
-      // data: {},      
-      // token: null
     },
   },
   getters:  {},
   actions:{
     update_profile({commit}, user){
       return  axios.patch('users/'+ user.id,user).then((data)=> {
-          // console.log(data.data);
           commit("setProfile", data.data);
       }).catch(err => {
           console.log(err)
@@ -61,7 +58,7 @@ const store = createStore({
         state.isLoggedIn = false;
         state.user.data = {};
         state.user.token = {};
-        sessionStorage.removeItem("USER");   //remove token from session
+        sessionStorage.removeItem("USER");   //remove user data from the session storage
         sessionStorage.removeItem("TOKEN");  //remove token from session
         sessionStorage.removeItem("LOG");    //remove token from session
     },
@@ -71,3 +68,6 @@ const store = createStore({
 })
 
 export default store;
+
+// https://forum.vuejs.org/t/persist-state-when-refreshing-the-browser/21505/2
+// https://stackoverflow.com/questions/43027499/vuex-state-on-page-refresh

@@ -4016,6 +4016,14 @@ textarea.form-control.is-invalid {
   margin-top: 25px;
 }
 
+.mb-\[250px\] {
+  margin-bottom: 250px;
+}
+
+.ml-\[160px\] {
+  margin-left: 160px;
+}
+
 .block {
   display: block;
 }
@@ -4163,6 +4171,14 @@ textarea.form-control.is-invalid {
 
 .h-\[406\.18px\] {
   height: 406.18px;
+}
+
+.h-\[667\.12px\] {
+  height: 667.12px;
+}
+
+.h-\[130px\] {
+  height: 130px;
 }
 
 .max-h-screen {
@@ -4348,6 +4364,14 @@ textarea.form-control.is-invalid {
 
 .w-\[176px\] {
   width: 176px;
+}
+
+.w-\[37\.58px\] {
+  width: 37.58px;
+}
+
+.w-\[468\.06px\] {
+  width: 468.06px;
 }
 
 .min-w-full {
@@ -4564,6 +4588,12 @@ textarea.form-control.is-invalid {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .justify-self-end {
@@ -4822,6 +4852,10 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 0.5;
 }
 
+.bg-opacity-0 {
+  --tw-bg-opacity: 0;
+}
+
 .bg-cover {
   background-size: cover;
 }
@@ -5071,6 +5105,10 @@ textarea.form-control.is-invalid {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pl-\[27px\] {
+  padding-left: 27px;
 }
 
 .text-center {
@@ -5456,6 +5494,10 @@ textarea.form-control.is-invalid {
   transition-duration: 150ms;
 }
 
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -5623,6 +5665,10 @@ body {
 
 .hover\:bg-opacity-90:hover {
   --tw-bg-opacity: 0.9;
+}
+
+.hover\:bg-opacity-50:hover {
+  --tw-bg-opacity: 0.5;
 }
 
 .hover\:text-indigo-500:hover {
@@ -5851,6 +5897,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:mt-\[100px\] {
+    margin-top: 100px;
+  }
+
   .sm\:flex {
     display: flex;
   }
@@ -5900,6 +5950,10 @@ body {
   .md\:mx-2 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+  }
+
+  .md\:mt-\[120px\] {
+    margin-top: 120px;
   }
 
   .md\:block {
