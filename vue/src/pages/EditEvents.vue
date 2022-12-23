@@ -68,8 +68,8 @@
                 <p class="modal-paragraph">Are you sure you want to save the changes<br>made on this service? Please confirm.</p>
                 <Info text="Saving the changes will change what the public sees on the services page."></Info>
                 <div class="flex gap-10 mt-5 mb-5">
-                    <FilledButton class="w-[100px]" text="CONFIRM" @click="sendPatchRequest"></FilledButton>
-                    <OutlineButton class="w-[100px]" text="CANCEL" @click="closeUpdateModal"></OutlineButton>
+                    <FilledButton id="updateButton" class="w-[100px]" text="CONFIRM" @click="sendPatchRequest(), confirmUpdateModal()"></FilledButton>
+                    <OutlineButton class="w-[100px]" text="CANCEL" @click="closeUpdateModal()"></OutlineButton>
                 </div>
             </template>
         </Modal>
@@ -112,7 +112,8 @@ import UpdateModal from '../components/Modal/UpdateModal.vue'
 import Warning from '../components/Others/Warning.vue'
 import DeletedModal from '../components/Modal/DeletedModal.vue'
 
-import axios from 'axios'
+import axios from '../axios'
+
 export default {
   components: { 
     FilledButton,
@@ -134,7 +135,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/events/' + this.$route.params.id).then(
+        axios.get('events/' + this.$route.params.id).then(
             (response) => {
             this.events = response.data.data,
             console.log("event"),
@@ -143,17 +144,28 @@ export default {
         )
     },
     methods: {
-        // sendPatchRequest() {
-        //     axios.patch('http://127.0.0.1:8000/api/events/' + this.$route.params.id, {
-        //        title: 
-        //     })
-        //         .then(function (response) {
-        //         console.log(response);
-        //         })
-        //         .catch(function (error) {
-        //         console.log(error);
-        //         });
-        // },
+        async sendPatchRequest() {
+            axios.patch('events/' + this.$route.params.id, {
+                user_id: this.events.user_id,
+                title : this.events.title,
+                content : this.events.content,
+                image : this.events.image,
+                author : this.events.author,
+                event_type : this.events.event_type,
+                location : this.events.location,
+                date : this.events.date,
+                ref : this.events.ref
+            })
+            .then(response => {
+                console.log("event"),
+                console.log(this.events.title)
+                console.log(response)
+                
+            })
+            .catch(error => {
+                console.log(error)
+            });
+        },
         onFileChange (e) {
             let file = e.target.files[0]
             this.url = URL.createObjectURL(file)
