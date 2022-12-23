@@ -108,7 +108,7 @@ const routes = [
                 component: EventsManagement
             },
             {
-                path: "/herobannerMG",
+                path: "/herobannerMG/:id",
                 name: "Herobanner MG",
                 component: HerobannerMG
             }

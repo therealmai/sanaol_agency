@@ -3,7 +3,7 @@
   <!-- <button class="mt-6 ml-6" @click="$router.go(-1)">Back</button> -->
   <!-- <button class="mt-6 ml-6 text-[#7367F0] w-16 text-center border rounded-lg" style="background: #F6F5FF;"><a href="../pages/Hero.vue">Back</a></button> -->
 
-
+  <div>
         <div class="mt-10 ml-80 mb-1 w-3/4 flex flex-col flex-row">
               <h1 class="font-bold text-xl flex-row">Edit Hero Banner</h1><br>
         </div>
@@ -51,12 +51,13 @@
                 </form>
           
           <!-- text-input. class didn't work,, -->
-          <TitledInput :fontSize="18" :width="525" :height="53" title="Welcome Banner Header - Talent/Admin"/><br>
-          <TitledInput :fontSize="18" :width="525" :height="120" title="Welcome Banner Header - General"/><br>
-          <TitledInput :fontSize="18" :width="525" :height="53" title= "Welcome Banner Subheader - Talent/Admin"/><br>
-          <TitledInput :fontSize="18" :width="525" :height="120" title= "Welcome Banner Subheader - General"/><br>    
+          <TitledInput :fontSize="18" :width="525" :height="53" title="Welcome Banner Header - Admin" v-model="herobanner.header_tal"/><br>
+          <TitledInput :fontSize="18" :width="525" :height="120" title="Welcome Banner Subheader - Admin" v-model="herobanner.subheader_tal"/><br>
+          <TitledInput :fontSize="18" :width="525" :height="53" title= "Welcome Banner Header - General" v-model="herobanner.header_gen"/><br>
+          <TitledInput :fontSize="18" :width="525" :height="120" title= "Welcome Banner Subheader - General" v-model="herobanner.subheader_gen"/><br>    
          </div><br>
   </div>
+  
 
   <!-- select option (manual) -->
   <div class="ml-6 flex-auto">
@@ -90,21 +91,21 @@
       <p style="color:#A8A8A8; font-family:Inter; font-size:24px; font-weight: 500;">III. Featured Services</p>
       <div class="ml-6 p-1 ml-5">
           <p style="color:#A8A8A8; font-family:Inter; font-size:20px; font-weight: 400;">Service Header 1</p>
-          <img src="url(https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)" width="167px" height="167px" style="object-fit: none;" class="rounded-lg" alt="service header">
-          <TitledInput :fontSize="18" :width="525" :height="53" class="w-4/5 h-[30px]"  title= "Service Header"/><br>
-          <TitledInput :fontSize="18" :width="525" :height="120" class="w-4/5 h-[100px]" title="Short Service Description"/><br>
+          <img src="url{{services.image}}" width="167px" height="167px" style="object-fit: none;" class="rounded-lg" alt="service header">
+          <TitledInput :fontSize="18" :width="525" :height="53" class="w-4/5 h-[30px]"  title= "Service Header" v-model="services.title"/><br>
+          <TitledInput :fontSize="18" :width="525" :height="120" class="w-4/5 h-[100px]" title="Short Service Description" v-model="services.content"/><br>
 
           <p style="color:#A8A8A8; font-family:Inter; font-size:20px; font-weight: 400;">Service Header 2</p>
-          <img src="url(https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)" width="167px" height="167px" style="object-fit: none;" class="rounded-lg" alt="service header">
-          <TitledInput :fontSize="18" :width="525" :height="53" class="w-4/5 h-[30px]"  title= "Service Header"/><br>
-          <TitledInput :fontSize="18" :width="525" :height="120" class="w-4/5 h-[100px]" title="Short Service Description"/><br>
+          <img src="url{{services.image}}" width="167px" height="167px" style="object-fit: none;" class="rounded-lg" alt="service header">
+          <TitledInput :fontSize="18" :width="525" :height="53" class="w-4/5 h-[30px]"  title= "Service Header" v-model="services.title"/><br>
+          <TitledInput :fontSize="18" :width="525" :height="120" class="w-4/5 h-[100px]" title="Short Service Description" v-model="services.content"/><br>
       </div>
   </div>
 
   <!-- select option (manual) -->
   <div class="ml-6 flex-auto">
       <p style="color:#A8A8A8; font-family:Inter; font-size:24px; font-weight: 500;">IV. Featured News</p>
-      <select v-model="newsSetting" class="w-[527px] h-[30px] 
+      <select v-model="herobanner.preview_news" class="w-[527px] h-[30px] 
           outline outline-gray-400 outline-2 rounded-md ml-5">
              <option value="" selected disabled>Show 3 of most recent news</option>
           <!-- selecting news -->
@@ -123,7 +124,6 @@
       text="Save" @click="showModal"/>  
     <OutlineButton class="flex-auto" text="Cancel" @click="$router.go(-1)"/>
 
-    <!-- Each modal must have a v-show property and close method to toggle its visibility  -->
     <Modal v-show="isModalVisible">
       <template #modal_content>
           <span class="pr-2"><br>
@@ -132,7 +132,6 @@
           Are you sure you want to save the changes made on the hero banner? Please confirm.
       </template>
 
-      <!-- buttons here -->
       <template #modal_button>
           <Info text="Saving the changes will change what the public sees on the hero banner."/>
         <div class="flex flex-row space-x-6 ">
@@ -146,6 +145,7 @@
       
   </div>
 </div>
+</div>
 
 </template>
 
@@ -156,6 +156,8 @@ import UpdateModal from "../components/Modal/UpdateModal.vue";
 import Info from "../components/Others/Info.vue"
 import FilledButton from "../components/Buttons/FilledButton.vue"
 import OutlineButton from "../components/Buttons/OutlineButton.vue"
+import axios from "../axios"
+
 export default {
 components: {
   Modal,
@@ -163,18 +165,36 @@ components: {
   TitledInput,
   UpdateModal,
   Info,
-  OutlineButton,
+  OutlineButton
 },
 data() {
     return {
       text: 'Cancel',
       isUpdated: false,
       isModalVisible: false,
-      url:""
+      url:"",
+      herobanner: {},
+      services: {}
     };
   },
   props: {
     text: String
+  },
+  mounted() {
+        axios.get('herobanner/' + this.$route.params.id).then(
+            (response) => {
+            this.herobanner = response.data.data,
+            console.log("herobanner"),
+            console.log(this.herobenner)
+            }
+        ),
+        axios.get('services/' + this.$route.params.id).then(
+            (response) => {
+            this.services = response.data.data,
+            console.log("service"),
+            console.log(this.services)
+            }
+        )
   },
   methods: {
     showModal() {
