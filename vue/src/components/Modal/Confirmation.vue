@@ -1,12 +1,13 @@
 <template>
   <div>
-    <Modal>
+    <Modal >
       <template #modal_content>
         <slot name="confirm_body" />
       </template>
 
       <!-- buttons here -->
       <template #modal_button>
+
         <div class="flex flex-row space-x-6">
           <ConfirmButton
             v-if="confirmationType === 'denied'"
@@ -25,9 +26,15 @@
           ></ConfirmButton>
           <ConfirmButton v-else text="CONFIRM" @click="update"></ConfirmButton>
           <CancelButton text="CANCEL" @click="closeModal"></CancelButton>
+
+        <div class="flex flex-row space-x-6 ">
+          <FilledButton text="CONFIRM" @click="update" class="w-[100px]"> </FilledButton>
+          <OutlineButton text="CANCEL" @click="closeModal" class="w-[100px]"></OutlineButton>
+
         </div>
       </template>
     </Modal>
+
 
     <ApprovedModal v-show="isApproved" :text="text" @close="closeModal">
     </ApprovedModal>
@@ -40,12 +47,14 @@
       text="text"
       @close="closeModal"
     ></DeniedModal>
+
+
   </div>
 </template>
 <script>
 import Modal from "../Modal/Modal.vue";
-import ConfirmButton from "../Buttons/ConfirmButton.vue";
-import CancelButton from "../Buttons/CancelButton.vue";
+import FilledButton from "../Buttons/FilledButton.vue";
+import OutlineButton from "../Buttons/OutlineButton.vue";
 import UpdateModal from "../Modal/UpdateModal.vue";
 import DeniedModal from "../Modal/DeniedModal.vue";
 import DeletedModal from "../Modal/DeletedModal.vue";
@@ -67,6 +76,7 @@ export default {
   },
   components: {
     Modal,
+
     ConfirmButton,
     CancelButton,
     UpdateModal,
@@ -94,6 +104,19 @@ export default {
     approved() {
       this.isApproved = true;
     },
+
+    FilledButton,
+    OutlineButton,
+    UpdateModal
+  },
+  methods:{
+     closeModal(){ 
+      this.$emit('close');
+    },
+     update(){
+      this.$emit('update');
+     }
+
   },
 };
 </script>

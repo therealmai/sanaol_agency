@@ -5,7 +5,12 @@
         
         <!-- to insert custom content use slot="modal_content" in the main page -->
         
-        <slot name="modal_content"/>
+        <div class="flex flex-col items-center gap-2"
+          :style="{
+            width: width ? width + 'px' : 'auto'
+          }">
+          <slot name="modal_content"/>
+        </div>
         <!-- all contents will be rendered here --> 
         
         <!-- close button area-->
@@ -22,8 +27,8 @@ export default {
   props:{
     text: String,
     fontSize: Number,
-    height: Number,
-    width: Number,
+    height: String,
+    width: String,
   },
   methods: {
     // closeModal(){ this.$emit('close'); }
@@ -33,7 +38,6 @@ export default {
 
 
 <style>
-
 .modal-fade-enter,
   .modal-fade-leave-to {
     opacity: 0;

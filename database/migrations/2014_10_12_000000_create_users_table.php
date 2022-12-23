@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('insta_handle');
             $table->enum('user_type', ['general', 'admin', 'talent'])->default('general');
             $table->boolean('is_member')->default(true);
+            $table->string('bio');
             $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });

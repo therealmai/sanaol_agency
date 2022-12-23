@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HeroBannerController;
 use App\Http\Controllers\BannerImageController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UserImageController;
+use App\Http\Controllers\EventsController;
 
 
 /*
@@ -51,7 +53,7 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::patch('/services/delete/{id}', 'ServiceController@destroy');
 
     //HeroBanner
-    Route::post('herobanner', [HeroBannerController::class, 'store']);
+    Route::post('herobanner/create', [HeroBannerController::class, 'store']);
     Route::patch('herobanner/{id}', [HeroBannerController::class, 'update']);
     Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
 
@@ -85,10 +87,22 @@ Route::post('herobanner/image', [BannerImageController::class, 'store']);
 Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
 Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
 
-
 //News 
 Route::get('news', [NewsController::class, 'index']);
 Route::post('news/create', [NewsController::class, 'store']);
 Route::get('news/{id}', [NewsController::class, 'show']);
 Route::patch('news/{id}', [NewsController::class, 'update']);
 Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
+
+//UserImage
+Route::get('user/image/{id}', [UserImageController::class, 'show'])->name('userImage.show');
+Route::post('user/image/', [UserImageController::class, 'store'])->name('userImage.store');
+Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
+Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
+
+//Events
+Route::get('events', [EventsController::class, 'index'])->name('events.get');
+Route::get('events/{id}', [EventsController::class, 'show'])->name('events.getSingle');
+Route::post('events/create', [EventsController::class, 'store'])->name('events.create');
+Route::patch('events/{id}', [EventsController::class, 'update'])->name('events.update');
+Route::patch('events/delete/{id}', [EventsController::class, 'destroy'])->name('events.delete');
