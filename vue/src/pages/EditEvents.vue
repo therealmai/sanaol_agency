@@ -8,20 +8,18 @@
         <div style="margin-left: 100px; margin-top: 30px;">
             
             <form>
-                <div class="file-upload-section">
+                    <div class="file-upload-section">
                     
                     <div class="file-upload">
-                        <div >
-                            <label class="upload-box" for="file-upload" >+</label>
-                            <img :src="events.image" alt="User Photo" style="position: absolute;width: 170px;top: 110px;height: 177px;">
-                        </div>
-                    <input type="file" id="file-upload" @change="onFileChange" hidden/>
-
+                    <label class="upload-box" for="file-upload" >+</label>
                     <label id="preview" for="file-upload">
-                        <img style="height:184px;width:170px;position: absolute;margin-top: -101px; z-index: 3" :key="url" v-if="url" :src="url" />
-                    </label>
+                        <img style="height:184px;width:170px;position: absolute;margin-top: -101px; z-index: 3" :key="events.image" v-if="events.image" :src="events.image" />
+                        </label>
+                    <input type="file" id="file-upload" @change="onFileChange" hidden/>
+                        
                     </div>
                     <div v-if="url">
+                        
                         <button style="position: absolute;z-index: 4;top: 10.8%;margin-left: 159px;" @click="removeImage()">
                             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_326_3033)">
@@ -52,7 +50,7 @@
             </div>
         <div class="flex gap-4">
             <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
-            <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36" @click="showDeleteModal"/>
+            <!-- <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36" @click="showDeleteModal"/> -->
             <OutlineButton fontSize="12" color="white" text="Cancel" width="99" height="36" @click="goBackToEvents"/>
         </div><br><br><br>
         </div>
@@ -79,7 +77,7 @@
          </UpdateModal>
 
          <!-- Modal appears after you click the DELETE button -->   
-        <Modal v-show="isDeleteModalVisible">
+        <!-- <Modal v-show="isDeleteModalVisible">
             <template v-slot:modal_content>
             <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
             <path d="M28.7109 28.7109C30.2531 27.1852 32.7469 27.1852 34.1414 28.7109L41.8523 36.4383L49.7109 28.7109C51.2531 27.1852 53.7469 27.1852 55.1414 28.7109C56.8148 30.2531 56.8148 32.7469 55.1414 34.1414L47.5617 41.8523L55.1414 49.7109C56.8148 51.2531 56.8148 53.7469 55.1414 55.1414C53.7469 56.8148 51.2531 56.8148 49.7109 55.1414L41.8523 47.5617L34.1414 55.1414C32.7469 56.8148 30.2531 56.8148 28.7109 55.1414C27.1852 53.7469 27.1852 51.2531 28.7109 49.7109L36.4383 41.8523L28.7109 34.1414C27.1852 32.7469 27.1852 30.2531 28.7109 28.7109ZM84 42C84 65.1984 65.1984 84 42 84C18.8016 84 0 65.1984 0 42C0 18.8016 18.8016 0 42 0C65.1984 0 84 18.8016 84 42ZM42 7.875C23.1492 7.875 7.875 23.1492 7.875 42C7.875 60.8508 23.1492 76.125 42 76.125C60.8508 76.125 76.125 60.8508 76.125 42C76.125 23.1492 60.8508 7.875 42 7.875Z" fill="#FF7878"/>
@@ -88,11 +86,11 @@
                 <p class="modal-paragraph">Are you sure you want to delete this<br>event? Please confirm.</p>
                 <Warning text="Deleting this will also delete information pertaining to the event."></Warning>
                 <div class="flex gap-10 mt-5 mb-5">
-                    <FilledButton class="w-[100px]" text="CONFIRM" @click="confirmDeleteModal"></FilledButton>
+                    <FilledButton class="w-[100px]" text="CONFIRM" @click="deleteRequest(),confirmDeleteModal()"></FilledButton>
                     <OutlineButton class="w-[100px]" text="CANCEL" @click="closeDeleteModal"></OutlineButton>
                 </div>
             </template>
-        </Modal>
+        </Modal> -->
         
         <!-- Modal appears after you click the CONFIRM button -->
         <DeletedModal text="events" v-show="isConfirmDeleteModal">
@@ -129,7 +127,8 @@ export default {
     data() {
         return {
             events: {},
-            url: null,
+            url: '',
+            prev:'',
             isUpdateModalVisible: false,
             isDeleteModalVisible: false,
         }
@@ -144,6 +143,19 @@ export default {
         )
     },
     methods: {
+        async deleteRequest() {
+            axios.delete('events/' + this.$route.params.id, {
+                params: {
+                    id: this.$route.params.id
+                }
+            })
+            .then(function(response){
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
         async sendPatchRequest() {
             axios.patch('events/' + this.$route.params.id, {
                 user_id: this.events.user_id,
@@ -169,12 +181,15 @@ export default {
         onFileChange (e) {
             let file = e.target.files[0]
             this.url = URL.createObjectURL(file)
+            this.prev = this.events.image
+            this.events.image = this.url
         },
         removeImage: function () {
             this.url = null
+            this.events.image = this.prev
         },
         goBackToEvents() {
-            this.$router.push('/events');
+            this.$router.push('/events_management');
         },
         showUpdateModal() {
             this.isUpdateModalVisible = true;
@@ -189,13 +204,13 @@ export default {
         showDeleteModal(){
             this.isDeleteModalVisible = true;
         }, 
-        closeDeleteModal() {
-            this.isDeleteModalVisible = false;
-        },
-        confirmDeleteModal() {
-            this.isDeleteModalVisible = false;
-            this.isConfirmDeleteModal = true;
-        }
+        // closeDeleteModal() {
+        //     this.isDeleteModalVisible = false;
+        // },
+        // confirmDeleteModal() {
+        //     this.isDeleteModalVisible = false;
+        //     this.isConfirmDeleteModal = true;
+        // }
     },
     
  };
