@@ -3,8 +3,6 @@
   <div class="flex gap-10">
     <div class="bg-lightgray w-[387.77px] h-[221.47px] border rounded-[8px]"></div>
     <div class="w-[1000px]">
-      
-    
       <div class="w-[800px] h-[221.47px] flex flex-col items-start p-2">
           <!-- label -->
           <Label class="" :fontSize="16" :height="33" :width="102" text="EVENTS"></Label>

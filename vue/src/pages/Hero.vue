@@ -1,10 +1,9 @@
 <template>
-<div>
-  <div class="flex flex-col">
+  <div class="flex-col">
     <!-- <div class="w-full object-cover h-screen lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div> -->
     <Carousel></Carousel>
   <!-- Service Container -->
-  <div class="flex flex-row flex-wrap gap-4 justify-center ml-28 mt-16">
+  <div class="flex-row flex-wrap gap-4 justify-center ml-28 mt-16">
     <CardCarousel></CardCarousel>
   </div>
   <Divider></Divider>
@@ -26,7 +25,6 @@
     <Divider></Divider>
   </div>
   
-</div>
 </div>
 </template>
 
