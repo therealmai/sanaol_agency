@@ -4455,6 +4455,10 @@ textarea.form-control.is-invalid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .grid-rows-4 {
   grid-template-rows: repeat(4, minmax(0, 1fr));
 }
@@ -4584,6 +4588,12 @@ textarea.form-control.is-invalid {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .justify-self-end {
@@ -5095,6 +5105,10 @@ textarea.form-control.is-invalid {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pl-\[27px\] {
+  padding-left: 27px;
 }
 
 .text-center {

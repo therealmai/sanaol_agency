@@ -117,9 +117,8 @@
   
   function login(ev) {
     ev.preventDefault();
-  
     store.dispatch('login', user)
-      .then(() => {
+    .then(() => {
         router.push('hero');
       })
       .catch(err => {
