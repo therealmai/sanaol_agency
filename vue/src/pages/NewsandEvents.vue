@@ -6,7 +6,7 @@
     <h1 class="font-bold text-3xl mb-[20%] pb-[15%]" style="color: #525252;">Events</h1>
     <div class="float-right pl-[47%] ml-[8%]  mb-[17%] w-full">
         <FilledButton text="Edit Events" class="w-[177px]"></FilledButton>
-      <div class="float-right mr-[15%]" >
+      <div class="float-right mr-[3%]" style="align-content: center;">
         <CardCarousel ></CardCarousel>
       </div>
     </div>
