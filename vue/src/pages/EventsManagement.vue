@@ -177,6 +177,7 @@
       </div>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -184,6 +185,7 @@ import Navbar from "../components/Navigation/Navbar.vue";
 import Modal from "../components/Modal/Modal.vue";
 import TextInput from "../components/Input/TextInput.vue";
 import Label from "../components/Label/Label.vue";
+import titledInput from "../components/Input/TitledInput.vue"
 
 import FilledButton from "../components/Buttons/FilledButton.vue"
 import OutlineButton from "../components/Buttons/OutlineButton.vue"
@@ -197,7 +199,8 @@ export default {
     TextInput,
     Label,
     FilledButton,
-    OutlineButton
+    OutlineButton,
+    titledInput,
   },
   mounted() {
       axios.get('events').then(
