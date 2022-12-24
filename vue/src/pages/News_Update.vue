@@ -3,33 +3,53 @@
       <div id="div-Back">
         <BackButton id="btn-Back" text="Back"></BackButton>
       </div>
-      <h1 style="padding-left:178px; font-weight: 700; text-align: left; font-size: x-large">Edit News</h1>
+      <h1 style="font-weight: 700; text-align: left; font-size: x-large">Edit News</h1>
   
       <!-- Edit Photo Label-->
-      <div id="div-img" style="padding-left:233px">
-        <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
-                <label for="file">
-                    <img id="imgService" v-bind:src="data.image" class="object-cover rounded-[8px] w-[166px] h-[166px]">
-                </label>
+      <div id="div-img">
+        <label for="myfile">
+          <svg
+            style="cursor: pointer"
+            width="166.83"
+            height="166.83"
+            viewBox="0 0 168 168"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.279297"
+              y="0.736328"
+              width="166.826"
+              height="166.826"
+              rx="8"
+              fill="#D9D9D9"
+            />
+            <path
+              d="M85.5497 72.7266C85.5497 71.6895 84.7198 70.8516 83.6925 70.8516C82.6653 70.8516 81.8354 71.6895 81.8354 72.7266V81.1641H73.4782C72.451 81.1641 71.6211 82.002 71.6211 83.0391C71.6211 84.0762 72.451 84.9141 73.4782 84.9141H81.8354V93.3516C81.8354 94.3887 82.6653 95.2266 83.6925 95.2266C84.7198 95.2266 85.5497 94.3887 85.5497 93.3516V84.9141H93.9068C94.934 84.9141 95.764 84.0762 95.764 83.0391C95.764 82.002 94.934 81.1641 93.9068 81.1641H85.5497V72.7266Z"
+              fill="#525252"
+            /></svg
+          ><input type="file" id="myfile" name="myfile" hidden />
+        </label>
       </div>
   
       <!-- News Title Div -->
   
-      <div style="padding-left: 233px">
-        <textarea
-            id="title-area"
-            class="border-2 rounded-lg p-3 form__inputs"
-            rows="1"
-            placeholder="News Title" 
-            ></textarea>
+      <div style="padding-left: 82px">
+        <TitledInput title="News Title" width="525" height="53"></TitledInput>
       </div>
   
       <!-- News Content Div -->
   
-      <div
+      <label class="text-textInput font-normal" aria-placeholder="News Content">
+        <div
+          style="position: absolute; margin-top: 35px; margin-left: 96px; font-size: 14px"
+        >
+          News Content
+        </div>
+        <div
           style="
-            padding-top: 20px;
-            padding-left: 233px;
+            padding-top: 30px;
+            padding-left: 82px;
             padding-right: 50px;
             margin-bottom: 18px;
             color: #525252;
@@ -37,16 +57,16 @@
           "
         >
           <textarea
-            id="content-area"
-            class="border-2 rounded-lg p-3 pr-10 "
+            id="txt-area"
+            class="pl-4 pr-4 py-[14px] bg-inputField rounded-[2px] text-inputText outline outline-inputOutline box-outline text-color pb-5 pt-10"
             rows="15"
-            cols="70"
-            placeholder="News Content"
+            cols="100"
           ></textarea>
         </div>
+      </label>
   
       <!-- Buttons Div -->
-      
+  
       <div style="display: flex; width: 40%">
         <ConfirmButton
           id="btn-Save"
@@ -89,12 +109,8 @@
   
     data() {
       return {
-        data: {
-          image: "https://cdn.thewirecutter.com/wp-content/media/2022/10/chromebook-2048-7190.jpeg",
-        },
         isModalVisible: false,
         isDelVisible: false,
-       
       };
     },
     methods: {
@@ -109,10 +125,6 @@
       },
       closeDelModal() {
         this.isDelVisible = false;
-      },
-      loadFile(e) {
-        let imgHtml = document.querySelector('#imgService');
-        imgHtml.src = URL.createObjectURL(e.target.files[0]);
       },
     },
   };
@@ -143,8 +155,10 @@
     padding-left: 76px;
   }
   
-  #imgService {
-    cursor: pointer;
+  #btn-Save {
+    margin-left: 80px;
+    width: 103px;
+    height: 37px;
   }
 
   #btn-Back{
@@ -153,23 +167,18 @@
     margin-right: 159px;
   }
 
-  #btn-Save {
-    margin-left: 234px;
-    width: 119px;
-    height: 38px;
-  }
   
   #btn-Delete {
-    margin-left: 11px;
-    margin-right: 26px;
+    margin-left: 12px;
+    margin-right: 93px;
     margin-bottom: 10px;
-    width: 145px;
+    width: 117px;
   
   }
   #btn-Cancel {
-    margin-left: -12px;
-    margin-right: -2px;
-    width: 149px;
+    margin-left: -83px;
+    margin-right: 122px;
+    width: 129px;
   }
   
   #photo-label {

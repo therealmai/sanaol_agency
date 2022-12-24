@@ -4,8 +4,7 @@
     <br />
       <!-- TODO: When verification is set up, bind padding-right to state to accomodate Password eye icon. -->
       <input
-      :value="modelValue"
-      @input="$emit('update:modelValue',$event.target.value)"
+        v-model="input"
         type="text"
         :maxlength="limit"
         class="
@@ -65,7 +64,6 @@ export default {
     width: Number,
     height: Number,
     fontSize: Number,
-    modelValue: String,
   },
   data() {
     return {

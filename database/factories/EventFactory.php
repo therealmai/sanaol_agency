@@ -26,7 +26,7 @@ class EventFactory extends Factory
             'content'    => $this->faker->sentence(15),
             'image'      => $this->faker->imageUrl(388, 222),
             'author'     => $this->faker->name(),
-            'event_type'       => $this->faker->word(1),
+            'event_type' => $this->faker->word(1),
             'location'   => $this->faker->address(),
             'date'       => $this->faker->dateTimeBetween(now(), '+1 year'),
             'ref'        => '#',

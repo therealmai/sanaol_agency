@@ -1,13 +1,13 @@
 <template>
-<div class="mx-6 my-2 gap-y-5">
-  <div class=" overflow-auto flex flex-col gap-2 items-start space-y-2">
+<div class="grid grid-cols-2 mx-6 my-2 gap-x-5">
+  <div class="col-span-1 overflow-auto flex flex-col gap-2 items-start space-y-2">
     <div class="flex justify-between min-w-full items-center ">
       <div class="text-3xl font-sans text-[#525252] font-bold">Current Users</div>
       <div class="justify-self-end"><Search :height="44" :width="100" /></div>
     </div>
     <UserPagination />
   </div>
-  <div class=" overflow-auto flex flex-col gap-2 items-start space-y-2">
+  <div class="col-span-1 overflow-auto flex flex-col gap-2 items-start space-y-2">
     <div class="flex justify-between min-w-full items-center ">
       <div class="text-3xl font-sans text-[#525252] font-bold">Applications</div>
       <div class="justify-self-end"><Search :height="44" :width="100" /></div>

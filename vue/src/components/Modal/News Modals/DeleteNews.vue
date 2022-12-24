@@ -28,7 +28,7 @@
         <!-- buttons here -->
         <template #modal_button>
           <div class="flex flex-row space-x-6 ">
-            <ConfirmButton style="margin-right: 10px; padding-left:30px; padding-right:30px" text="CONFIRM" @click="deleted"></ConfirmButton>
+            <ConfirmButton style="margin-right: 10px; padding-left:30px; padding-right:30px" text="CONFIRM" @click="update"></ConfirmButton>
             <CancelButton style="margin-right: 20px; padding-left:30px; padding-right:30px" text="CANCEL" @click="closeModal"></CancelButton>
           </div>
         </template>

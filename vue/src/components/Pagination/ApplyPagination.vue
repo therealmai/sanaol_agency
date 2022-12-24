@@ -32,12 +32,12 @@
     data() {
       return {
         n:[1,2,3,4,5,6,7,8],
-        user:{},
+        User:{},
       }
     },
     methods: {
       loadUsers(){
-          axiosClient.get("/user").then(({ data }) => (this.user = data));
+          axiosClient.get("/user").then(({ data }) => (this.user = data.data));
       }
   },
   created() {

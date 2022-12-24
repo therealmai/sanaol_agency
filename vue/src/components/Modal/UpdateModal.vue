@@ -7,8 +7,7 @@
               </svg>
               </span>
               <h2 class="font-[700] text-[32px] text-secondary ">Updated</h2>
-              <p class="font-[400] text-[18px] text-secondary text-center leading-[21.78px] max-w-[70%]">Successfully</p>
-              <p class="font-[400] text-[18px] text-secondary text-center leading-[21px] py-0.5 pb-6">{{ text }}</p>
+              <p class="font-[400] text-[18px] text-secondary text-center leading-[21.78px] max-w-[70%] py-2 pb-6">Successfully {{ text }}</p>
 
               <!-- <FilledButton text="OK" @click="close"></FilledButton> -->
             </div>
