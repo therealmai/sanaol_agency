@@ -6,7 +6,7 @@ ${browser}             Chrome
 ${url_base}                 http://127.0.0.1:5173/
 ${url_membership}                 http://127.0.0.1:5173/Membership
 ${url_login}                 http://127.0.0.1:5173/login
-${speed-slow}          0.25 seconds
+${speed-slow}          0.10 seconds
 
 ${nav_login}    xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[5]/span[1]
 ${nav_user}    xpath:/html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/span[1]
@@ -30,6 +30,8 @@ ${test_email}    test@test.com
 ${test_password}    testtest
 ${test_fname}    test
 
+${temp}
+
 *** Test Cases ***
 Check Membership Functionalities
     Open Browser        ${url_membership}    ${browser}
@@ -37,10 +39,15 @@ Check Membership Functionalities
     Check If All Fields Are Inputable
     Check If All Password Fields Are Of Type Password
     Click Button    ${apply}
+    Sleep    5 seconds
     ${current_link}    Get Location
-    IF  ${current_link} != ${url_login}
-        FAIL
-    END
+    LOG   Current link is: ${current_link}    console=yes
+    LOG   Actual link should be: ${url_login}        console=yes
+    ${current_link}    Convert To String    ${current_link}
+    ${temp}    Convert To String    ${url_login}
+    Should Be Equal As Strings    ${current_link}    ${temp}
+    Test Login
+    Sleep     5 seconds
     
 
 Check If Logins Works
