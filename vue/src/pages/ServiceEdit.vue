@@ -1,21 +1,21 @@
-<template>
-    <div>
+<template v-if="data">
+    <div>s
         <OutlineButton v-on:click="goBack" text="BACK" class="h-[33px] w-[100px] mt-10 ml-10"/>
         <h1 class="mb-10 text-secondary" style="font-weight: 700; text-align: center; font-size: xx-large; ">Edit Service</h1>
         <div class="flex flex-col items-start form-cont gap-8">
-            <form class="flex flex-col items-start gap-5" action="">
+            <form class="flex flex-col items-start gap-5" method="POST">
                 
                 <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
                 <label for="file">
-                    <img id="imgService" v-bind:src="data.image" class="object-cover rounded-[8px] w-[220px] h-[210px]">
+                    <img id="imgService" placeholder="Image" v-bind:src="data?.['data']?.['image']" class="object-cover rounded-[8px] w-[220px] h-[210px]">
                 </label>
                 <div>
                     <label for="title">Title</label>
-                    <input v-bind:class="[cssFormInputs]" v-bind:value="data.title" type="text">
+                    <input v-bind:class="[cssFormInputs]" v-bind:placeholder="data?.['data']?.['title']" v-model.trim="data.title" type="text">
                 </div>
                 <div>
                     <label for="content">Content</label>
-                    <textarea v-bind:class="[cssFormInputs]" class="h-[221px]" v-model.trim="data.content" type="text"></textarea>
+                    <textarea v-bind:class="[cssFormInputs]" class="h-[221px]" v-bind:placeholder="data?.['data']?.['content']" v-model.trim="data.content" type="text"></textarea>
                 </div>
             </form>
             <Modal v-show="isModalVisible" width="380">
@@ -63,8 +63,12 @@
     export default {
         data() {
             return {
-                data: {
-                    
+                data : {
+                    title: '',
+                    content: '',
+                    image: '',
+                    ref: '',
+                    updated_at: '', 
                 },
                 cssFormInputs: cssFormInputsStr,
                 isModalVisible: false,
@@ -85,9 +89,20 @@
             closeModal() {
                 this.isModalVisible = false;
             },
-            updateService() {
+            async updateService() {
                 this.isModalVisible = false;
                 this.isSucModalVisible = true;
+
+                console.log(this.data);
+                const result = await axios.patch('http://127.0.0.1:8000/api/services/'+this.$route.params.id, {
+                    title: this.data.title,
+                    content: this.data.content,
+                    image: this.data.image
+                });
+                if(result.status){
+                    console.log("Update");
+                    console.log(result.data);
+                }
             },  
             closeSucModal() {
                 this.isSucModalVisible = false;
@@ -101,11 +116,9 @@
             Modal,
             Info
         },
-        mounted () {
+        async mounted () {
             axios.get('http://127.0.0.1:8000/api/services/'+ this.$route.params.id).then((response)=> {
-                console.log(this.$route.params.id)
                   this.data = response.data
-                  console.log(this.data)
             }).catch(err => {
                 console.log(err)
             })
