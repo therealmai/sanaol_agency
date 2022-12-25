@@ -179,7 +179,7 @@
     }
   },
   mounted(){
-        axios.get('users/'+this.$route.params.id).then(
+        axios.get('/users/'+this.$route.params.id).then(
           (response) => {
             const user = JSON.parse(JSON.stringify(response.data));
             this.user = user.data;
@@ -187,7 +187,7 @@
 
           }
       );
-      axios.get('user/image/'+this.$route.params.id).then(
+      axios.get('/user/image/'+this.$route.params.id).then(
         (response) => {
           this.images = JSON.parse(JSON.stringify(response.data.data));
           console.log(this.images);
@@ -208,11 +208,11 @@
       },
       updateImage(){
         this.isDeleted= false;
-        axios.patch('user/image/delete/'+this.img_id).then(
+        axios.patch('/user/image/delete/'+this.img_id).then(
         (response) => {
           console.log(response);
         });
-        axios.get('user/image/'+this.$route.params.id).then(
+        axios.get('/user/image/'+this.$route.params.id).then(
         (response) => {
           this.images = JSON.parse(JSON.stringify(response.data.data));
           console.log(this.images);

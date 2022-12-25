@@ -157,10 +157,9 @@ function register(ev) {
   ev.preventDefault();
   store.dispatch('register', user)
        .then(() => {
-        router.push({ name: 'hero' });
+        router.push({ name: 'login' });
        })
        .catch(err => {
-          // err.value = toggleModal;
           console.log("Error");
        })
 }

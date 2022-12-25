@@ -57,7 +57,7 @@
 <script>
 // import TalentCard from '../components/Cards/Talents/TalentCards.vue';
 import TalentCard from "../components/TalentCards/TalentCards.vue";
-import axios from "axios";
+import axios from "../axios";
 export default {
   components: {
     TalentCard,
@@ -68,7 +68,7 @@ export default {
     };
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/users/").then((response) => {
+    axios.get("/users/").then((response) => {
       (this.talents = response.data),
         (this.talents = this.talents.filter((user) => {
           return user.user_type == "talent";
@@ -78,7 +78,7 @@ export default {
       console.log(this.talents.length)
       for (let x = 0; x < this.talents.length; x++) {
         axios
-          .get("http://127.0.0.1:8000/api/user/image/" + this.talents[x].id)
+          .get("/user/image/" + this.talents[x].id)
           .then((response) => {
             console.log(response.data.data[0].image)
             this.talents[x].image = response.data.data[0].image;
