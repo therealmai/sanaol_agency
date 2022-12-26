@@ -55,7 +55,9 @@
                 <FilledButton text="Edit" />
               </router-link>
               <div class="ml-3"></div>
+              <router-link :to="'/events/create'">
                 <OutlineButton text="Delete"/>
+              </router-link>
             </td>
           </tr>
         </tbody>
