@@ -5,8 +5,6 @@
       <img :src="image" alt=""/>
     </div>
     <div class="w-[1000px]">
-      
-    
       <div class="w-[800px] h-[221.47px] flex flex-col items-start p-2">
           <!-- label -->
           <Label class="" :fontSize="16" :height="33" :width="102" text="EVENTS"></Label>
