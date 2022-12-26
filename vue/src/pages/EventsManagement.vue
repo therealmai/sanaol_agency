@@ -185,11 +185,11 @@ import Navbar from "../components/Navigation/Navbar.vue";
 import Modal from "../components/Modal/Modal.vue";
 import TextInput from "../components/Input/TextInput.vue";
 import Label from "../components/Label/Label.vue";
-import titledInput from "../components/Input/TitledInput.vue"
 
 import FilledButton from "../components/Buttons/FilledButton.vue"
 import OutlineButton from "../components/Buttons/OutlineButton.vue"
 
+import EditEvents from "../pages/EditEvents.vue"
 import axios from "../axios"
 
 export default {
@@ -200,7 +200,7 @@ export default {
     Label,
     FilledButton,
     OutlineButton,
-    titledInput,
+    EditEvents
   },
   mounted() {
       axios.get('events').then(
