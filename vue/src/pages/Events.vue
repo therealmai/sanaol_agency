@@ -5,7 +5,9 @@
   <div class="flex items-center justify-between pl-[15%] pr-[10%] mt-[76px] mb-[-100px] w-full">  
     <h1 class="font-bold text-3xl mb-[20%] pb-[15%]">Events</h1>
     <div class="float-right pl-[47%] ml-[8%]  mb-[17%] w-full">
+      <router-link :to="'/events_management'">
         <FilledButton text="Edit Events" class="w-[177px]"></FilledButton>
+      </router-link>
       <div class="float-right mr-[15%]" >
         <CardCarousel ></CardCarousel>
       </div>

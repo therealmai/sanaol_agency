@@ -18,6 +18,7 @@ import UserManagement from "../pages/UserManagement.vue";
 import News_Create from "../pages/News_Create.vue";
 import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
+import createEvent from "../pages/CreateEvent.vue";
 
 const routes = [
     // {
@@ -65,6 +66,11 @@ const routes = [
                 path: "/events",
                 name: "events",
                 component: Events
+            },
+            {
+                path: "/events/create",
+                name: "createEvents",
+                component: createEvent
             },
             {
                 path: "/events/edit/:id",

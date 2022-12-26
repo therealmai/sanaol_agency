@@ -31,9 +31,15 @@ const store = createStore({
                 commit("logout")
                   return response;
                 })
-        }
+        },
+    updateAuthor(context, author) {
+      context.commit('updateAuthor', author)
+    }
   },
   mutations: {
+    updateAuthor(state, author){
+      state.events.author = author
+    },
     setUser(state, userData) {
       state.user.data = userData.user;
       state.user.token = userData.access_token;
