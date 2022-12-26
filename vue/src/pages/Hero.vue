@@ -15,28 +15,28 @@
   </div>
   <Divider></Divider>
   
-  <div class="flex flex-row flex-wrap gap-16 justify-center ml-20 mr-20 mt-14 ">
-    <ServiceCard v-if="!isLoading.services" v-for="index in 2"
+  <div v-if="!isLoading.services"  class="flex flex-row flex-wrap gap-16 justify-center ml-20 mr-20 mt-14 ">
+    <ServiceCard v-for="index in 2"
     :key="index"
     :title="services[index].title"
     :content="services[index].content"
     :image="services[index].image"/>
-    <div v-else>Insert loading overlay here</div>
     <Divider></Divider>
   </div>
+  <div v-else>Insert loading overlay here</div>
 
   <div class="flex flex-col flex-wrap gap-4 items-center mx-16 mt-16">
     <Label text="NEWS AND ARTICLES" :fontSize="16" :height="29" :width="252" :padding="2" :margin="16"></Label>
-    <div class="flex flex-row flex-wrap gap-10 justify-center">
+    <div  v-if="!isLoading.news" class="flex flex-row flex-wrap gap-10 justify-center">
       <!-- for v-for it should be v-for="index in hero.preview_news" during production -->
-      <NewsCard v-if="!isLoading.news" v-for="index in 3"
+      <NewsCard  v-for="index in 3"
       :key="index"
       :title="news[index].title"
       :content="news[index].content"
       :image="news[index].image"
       hover="lightgray"/>
-      <div v-else>Insert loading overlay here</div>
     </div>
+    <div v-else>Insert loading overlay here</div>
     <Divider></Divider>
   </div>
   
