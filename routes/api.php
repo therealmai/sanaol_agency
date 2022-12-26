@@ -48,7 +48,6 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::patch('users/delete/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
 
     //Services
-    Route::patch('/services/{id}', 'ServiceController@update');
     Route::post('/services/create', 'ServiceController@store');
     Route::patch('/services/delete/{id}', 'ServiceController@destroy');
 
@@ -87,6 +86,7 @@ Route::get('users/{id}', [UserController::class, 'show'])->name('user.getUser');
 //Services
 Route::get('/services', 'ServiceController@index');
 Route::get('/services/{id}', 'ServiceController@show');
+Route::patch('/services/{id}', 'ServiceController@update');
 
 //HeroBanner
 Route::get('herobanner', [HeroBannerController::class, 'index']);
