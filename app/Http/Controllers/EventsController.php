@@ -31,17 +31,9 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-       
+       \Log::info(json_encode($request->all()));
         $request->validate([
-            'user_id' => 'required',
-            'title' => 'required',
-            'content' => 'required',
-            'image' => 'required',
-            'author' => 'required',
-            'event_type' => 'required',
-            'location' => 'required',
-            'date' => 'required',
-            'ref' => 'required'
+            
         ]);
 
         $event = new Event;
