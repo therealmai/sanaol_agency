@@ -189,11 +189,6 @@ export default {
           if(this.isMatch()) {
             store.dispatch('register', this.user)
               .then(() => {
-                // if(data == undefined) {
-                //   this.errorMessage = 'Error in Creating Account. Please Try Again.'
-                // } else {
-                //   this.$router.push('hero');
-                // }
                 this.$router.push('hero');
               })
               .catch(err => {

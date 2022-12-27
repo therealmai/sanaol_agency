@@ -1,12 +1,10 @@
 <template>
 
   <nav class=" bg-white drop-shadow-lg flex sticky top-0 z-50 justify-between items-center space-x-4 h-[77px] min-h-[77px] w-full">
-
-    <div class="flex items-center ">
-      <span class="p-6 m-6 bg-lightgray"></span>
-      <p class="text-primary font-bold text-lg">System Name</p>
-    </div>
-    
+      <a href="/" class="pl-[27px] flex items-center space-x-3" >
+        <img class="w-[37.58px]" src="../../assets/sanaol-logo.png">
+        <p class="text-primary font-bold text-lg">Sanaol Agency</p>
+      </a>
     <div class="space-x-6 pr-4">
       <!-- display if user is admin (go to store/index.js to change role of user) -->
       <span v-if="isLog == true">
@@ -48,9 +46,6 @@
           <span class="font-medium px-2 py-2 rounded-l ">LOGIN</span>
         </router-link>
       </span>
-      
-      
-      
     </div>
     
 </nav>
