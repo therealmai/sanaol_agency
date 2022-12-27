@@ -21,7 +21,7 @@ ${news}                xpath://span[contains(text(),'NEWS & EVENTS')]
 ${msg-alert}           Failed to 
 *** Test Cases ***
 if user is admin set btns as visible
-    Login as Guest
+    login as admin
 
     Set Selenium Speed    ${speed-slow}
     
