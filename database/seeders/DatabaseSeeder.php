@@ -8,6 +8,8 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\HeroBanner;
+use App\Models\PreviewEvent;
+use App\Models\PreviewNews;
 
 use File;
 
@@ -36,11 +38,13 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         HeroBanner::factory(5)
-            ->hasBannerImages(3)
             ->create();
         
         Event::factory(7)
             ->hasInvolvedTalent(3)
             ->create();
+        
+        PreviewEvent::factory(5)->create();
+        PreviewNews::factory(5)->create();
     }
 }

@@ -1,7 +1,7 @@
 <template>
 
    <div class="bg-white border rounded-2xl shadow-sm w-[277px]" v-bind:id="id">
-    <router-link :to="'/Profile/'+ id">
+    <router-link :to="'/profile/'+ id">
         <a href="#">
             <img class="rounded-t-2xl " :src="image" alt="" />
         </a>
