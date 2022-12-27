@@ -51,13 +51,11 @@
               {{event.date}}
             </td>
             <td style="display: flex ">
-              <router-link :to="'/events/edit/' + event.id">
-                <FilledButton text="Edit" />
+              <router-link :to="'/events/edit/' + event.id" >
+                <FilledButton text="Edit" class="pl-5 pr-5" />
               </router-link>
               <div class="ml-3"></div>
-              <router-link :to="'/events/create'">
-                <OutlineButton text="Delete"/>
-              </router-link>
+                <OutlineButton text="Delete" class="pl-4 pr-4"/>
             </td>
           </tr>
         </tbody>
@@ -179,7 +177,6 @@
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
