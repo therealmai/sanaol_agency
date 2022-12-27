@@ -73,28 +73,14 @@
         </Modal>
         
          <!-- Modal appears after you click the CONFIRM button -->
-         <UpdateModal text="events" v-show="isConfirmUpdateModal">
+         <UpdateModal id="myupdatemodal" text="events" v-show="isConfirmUpdateModal" @click="closeModal">
          </UpdateModal>
 
-         <!-- Modal appears after you click the DELETE button -->   
-        <!-- <Modal v-show="isDeleteModalVisible">
-            <template v-slot:modal_content>
-            <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
-            <path d="M28.7109 28.7109C30.2531 27.1852 32.7469 27.1852 34.1414 28.7109L41.8523 36.4383L49.7109 28.7109C51.2531 27.1852 53.7469 27.1852 55.1414 28.7109C56.8148 30.2531 56.8148 32.7469 55.1414 34.1414L47.5617 41.8523L55.1414 49.7109C56.8148 51.2531 56.8148 53.7469 55.1414 55.1414C53.7469 56.8148 51.2531 56.8148 49.7109 55.1414L41.8523 47.5617L34.1414 55.1414C32.7469 56.8148 30.2531 56.8148 28.7109 55.1414C27.1852 53.7469 27.1852 51.2531 28.7109 49.7109L36.4383 41.8523L28.7109 34.1414C27.1852 32.7469 27.1852 30.2531 28.7109 28.7109ZM84 42C84 65.1984 65.1984 84 42 84C18.8016 84 0 65.1984 0 42C0 18.8016 18.8016 0 42 0C65.1984 0 84 18.8016 84 42ZM42 7.875C23.1492 7.875 7.875 23.1492 7.875 42C7.875 60.8508 23.1492 76.125 42 76.125C60.8508 76.125 76.125 60.8508 76.125 42C76.125 23.1492 60.8508 7.875 42 7.875Z" fill="#FF7878"/>
-            </svg>
-                <h1 class="modal-heading">Delete Confirmation</h1>
-                <p class="modal-paragraph">Are you sure you want to delete this<br>event? Please confirm.</p>
-                <Warning text="Deleting this will also delete information pertaining to the event."></Warning>
-                <div class="flex gap-10 mt-5 mb-5">
-                    <FilledButton class="w-[100px]" text="CONFIRM" @click="deleteRequest(),confirmDeleteModal()"></FilledButton>
-                    <OutlineButton class="w-[100px]" text="CANCEL" @click="closeDeleteModal"></OutlineButton>
-                </div>
-            </template>
-        </Modal> -->
         
         <!-- Modal appears after you click the CONFIRM button -->
-        <DeletedModal text="events" v-show="isConfirmDeleteModal">
+        <DeletedModal id="mydeletemodal" text="events" v-show="isConfirmDeleteModal" @click="closeDeleteModal">
         </DeletedModal>
+
     </div>
 </body>
 </template>
@@ -203,14 +189,16 @@ export default {
         },
         showDeleteModal(){
             this.isDeleteModalVisible = true;
-        }, 
-        // closeDeleteModal() {
-        //     this.isDeleteModalVisible = false;
-        // },
-        // confirmDeleteModal() {
-        //     this.isDeleteModalVisible = false;
-        //     this.isConfirmDeleteModal = true;
-        // }
+        },
+        closeModal(){
+            var modal = document.getElementById("myupdatemodal");
+            modal.style.display = "none";
+        },
+        closeDeleteModal(){
+            var modal = document.getElementById("mydeletemodal");
+            modal.style.display = "none";
+        }
+
     },
     
  };
