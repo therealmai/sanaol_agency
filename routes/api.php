@@ -9,6 +9,8 @@ use App\Http\Controllers\BannerImageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserImageController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\PreviewEventController;
+use App\Http\Controllers\PreviewNewsController;
 
 
 /*
@@ -33,6 +35,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:sanctum']], function() {
     //Auth
     Route::post('auth/logout', [AuthController::class, 'logout']);
+
+    //User Images
+    Route::post('user/image/', [UserImageController::class, 'store'])->name('userImage.store');
+    Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
+    Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
 });
 
 //For talents
@@ -44,7 +51,9 @@ Route::group(['middleware' => ['auth:talents']], function() {
 Route::group(['middleware' => ['auth:admins']], function() {
     //Users
     Route::post('users/create', [UserController::class, 'store'])->name('user.create');
-    Route::post('users/create', [UserController::class, 'store'])->name('user.create');
+    Route::get('users/currentUsers', [UserController::class, 'currentUsers'])->name('user.currentUsers');
+    Route::get('users/applications', [UserController::class, 'applications'])->name('user.applications');
+    Route::patch('users/approve/{id}', [UserController::class, 'approve'])->name('user.approve');
     Route::patch('users/delete/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
 
     //Services
@@ -57,11 +66,6 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::patch('herobanner/{id}', [HeroBannerController::class, 'update']);
     Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
 
-    //HeroBanner Images
-    Route::post('herobanner/image', [BannerImageController::class, 'store']);
-    Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
-    Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
-
     //News
     Route::patch('news/{id}', [NewsController::class, 'update']);
     Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
@@ -72,6 +76,15 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::patch('events/{id}', [EventsController::class, 'update'])->name('events.update');
     Route::patch('events/delete/{id}', [EventsController::class, 'destroy'])->name('events.delete');
 
+    //Preview Events
+    Route::post('preview/events', [PreviewEventController::class, 'store']);
+    Route::patch('preview/events/{id}', [PreviewEventController::class, 'update']);
+    Route::patch('preview/events/delete/{id}', [PreviewEventController::class, 'destroy']);
+
+    //Preview News
+    Route::post('preview/news', [PreviewNewsController::class, 'store']);
+    Route::patch('preview/news/{id}', [PreviewNewsController::class, 'update']);
+    Route::patch('preview/news/delete/{id}', [PreviewNewsController::class, 'destroy']);
 });
 
 //Public Routes
@@ -92,20 +105,23 @@ Route::get('/services/{id}', 'ServiceController@show');
 Route::get('herobanner', [HeroBannerController::class, 'index']);
 Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 
-//HeroBanner Images
-Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
-
-//News 
+//News
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
 
 //UserImage
 Route::get('user/image/{id}', [UserImageController::class, 'show'])->name('userImage.show');
-Route::post('user/image/', [UserImageController::class, 'store'])->name('userImage.store');
-Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
-Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
 
 //Events
 Route::get('events', [EventsController::class, 'index'])->name('events.get');
 Route::get('events/{id}', [EventsController::class, 'show'])->name('events.getSingle');
+
+//Preview Events
+Route::get('preview/events', [PreviewEventController::class, 'index']);
+Route::get('preview/events/{id}', [PreviewEventController::class, 'show']);
+
+//Preview Events
+Route::get('preview/news', [PreviewNewsController::class, 'index']);
+Route::get('preview/news/{id}', [PreviewNewsController::class, 'show']);
+
 

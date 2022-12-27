@@ -4,9 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\BannerImage;
 
-class BannerImageSeeder extends Seeder
+use App\Models\PreviewEvent;
+
+class PreviewEventSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +16,6 @@ class BannerImageSeeder extends Seeder
      */
     public function run()
     {
-        BannerImage::factory(12)->create();
+        PreviewEvent::factory(5)->create();
     }
 }
