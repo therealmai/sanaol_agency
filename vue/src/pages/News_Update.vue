@@ -6,16 +6,20 @@
       <h1 style="padding-left:178px; font-weight: 700; text-align: left; font-size: x-large">Edit News</h1>
   
       <!-- Edit Photo Label-->
+      <form enctype="multipart/form-data" method="patch" class="flex flex-col items-start gap-5" action="">
+                
+     
       <div id="div-img" style="padding-left:233px">
         <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
-                <label for="file">
+                <label for="image">
                     <img id="imgService" v-bind:src="data.image" class="object-cover rounded-[8px] w-[166px] h-[166px]">
                 </label>
       </div>
   
       <!-- News Title Div -->
-  
+      
       <div style="padding-left: 233px">
+        <label for="title"></label>
         <textarea
             id="title-area"
             class="border-2 rounded-lg p-3 form__inputs"
@@ -36,6 +40,7 @@
             align: center;
           "
         >
+        <label for="content"></label>
           <textarea
             id="content-area"
             class="border-2 rounded-lg p-3 pr-10 "
@@ -58,6 +63,7 @@
         <DeleteModal v-show="isDelVisible" @close="closeDelModal"></DeleteModal>
         <CancelButton id="btn-Cancel" text="Cancel"></CancelButton>
       </div>
+      </form>
     </div>
   </template>
   
@@ -113,7 +119,34 @@
       loadFile(e) {
         let imgHtml = document.querySelector('#imgService');
         imgHtml.src = URL.createObjectURL(e.target.files[0]);
-      },
+      }, 
+      updateNews() {
+                if(this.news.title == '' || this.news.content == '') {
+                    alert('All fields must be filled.');
+                    this.isModalVisible = false;
+                    return;
+                }
+
+                let data = new FormData;
+                data.set('image', this.news.image);
+                data.set('title', this.news.title);
+                data.set('content', this.news.content);
+
+                console.log(...data)
+
+                let id = this.$route.params.id;
+                axios.post('/news/' + id, data, {
+                    headers: {
+                        'Content-type': 'multipart/form-data'
+                    }
+                }).then(
+                    (response) => {
+                        console.log(response.data)
+                    }
+                )
+                this.isModalVisible = false;
+                this.isSucModalVisible = true;
+            },  
     },
   };
   </script>

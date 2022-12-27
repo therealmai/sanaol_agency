@@ -8,11 +8,11 @@
       <h1 style="padding-left:150px;  font-weight: 700; text-align: left; font-size: x-large">Create News</h1>
   
       <!-- Edit Photo Label-->
-
+      <form enctype="multipart/form-data" method="patch" class="flex flex-col items-start gap-5" action="">
 
 
       <div id="div-img" style="padding-left:233px">
-     
+        <label for="title"></label>
           
         <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
         <label for="file">
@@ -21,8 +21,10 @@
       </div>
   
       <!-- News Title Div -->
-  
+      
       <div style="padding-left: 233px">
+       >
+        <label for="content"></label>
         <textarea
             id="title-area"
             class="border-2 rounded-lg p-3 form__inputs"
@@ -67,6 +69,7 @@
         <CancelButton id="btn-cancel"
           text="Cancel"></CancelButton>
       </div>
+      </form>
     </div>
   </template>
   
@@ -109,6 +112,33 @@
         let imgHtml = document.querySelector('#imgService');
         imgHtml.src = URL.createObjectURL(e.target.files[0]);
       },
+      updateNews() {
+                if(this.news.title == '' || this.news.content == '') {
+                    alert('All fields must be filled.');
+                    this.isModalVisible = false;
+                    return;
+                }
+
+                let data = new FormData;
+                data.set('image', this.news.image);
+                data.set('title', this.news.title);
+                data.set('content', this.news.content);
+
+                console.log(...data)
+
+               
+                axios.post('/news/' + data, {
+                    headers: {
+                        'Content-type': 'multipart/form-data'
+                    }
+                }).then(
+                    (response) => {
+                        console.log(response.data)
+                    }
+                )
+                this.isModalVisible = false;
+                this.isSucModalVisible = true;
+            },  
     },
   };
   </script>
