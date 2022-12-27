@@ -3,7 +3,7 @@
     <h1 class="text-3xl font-bold text-gray-600 mt-8 mr-[1070px]">
       Our Talents
     </h1>
-    <div class="grid grid-cols-4 gap-12 mt-10">
+    <div class="grid grid-cols-4 gap-12 mt-10 mb-10">
       <!-- Talent Card -->
       <ul :key="item.id" v-for="item in talents">
         <TalentCard
