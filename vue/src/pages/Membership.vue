@@ -11,6 +11,13 @@
         </template>
       </errorModal>
 
+      <SuccessModal ref="sucmodal">
+        <template v-slot:modal-title> Registration </template>
+        <template v-slot:modal-content>
+          <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400">{{ successMessage }}</h3>
+        </template>
+      </SuccessModal>
+
       <!-- Form Container -->
       <div class="flex scale-75 justify-center container max-h-screen lg:p-8 sm:scale-75 md:scale-75 lg:scale-100 xl:scale-100 xl:w-full 2xl:scale-100">
           <div class=" md:mx-2 align-middle flex xl:items-center justify-center lg:mx-6 md:w-full">
@@ -141,6 +148,7 @@
 import { useRouter } from 'vue-router';
 import store from "../store";
 import errorModal from '../components/Modal/ErrorModal.vue';
+import SuccessModal from '../components/Modal/SuccessModal.vue';
 
 const router = useRouter();
 
@@ -158,6 +166,7 @@ export default {
           reason: '',
         },
         errorMessage: '',
+        successMessage:''
       }
     },
     methods: {
@@ -165,8 +174,8 @@ export default {
         return this.user.password === this.user.confirm_password;
       },
       isEmpty(){
-        return this.user.fname == '' && this.user.lname == '' && this.user.email == '' && this.user.password == '' &&
-        this.user.confirm_password == '' && this.user.insta_handle == '';
+        return this.user.fname == '' || this.user.lname == '' || this.user.email == '' || this.user.password == '' ||
+        this.user.confirm_password == '' || this.user.insta_handle == '';
       }, 
       clearFields() {
         this.user.fname = '';
@@ -189,7 +198,8 @@ export default {
           if(this.isMatch()) {
             store.dispatch('register', this.user)
               .then(() => {
-                this.$router.push('login');
+                this.successMessage = "Successfully registered!"
+                this.$refs.sucmodal.toggleModal();
               })
               .catch(err => {
                 this.errorMessage = 'User already exists. Please try again.'
@@ -209,7 +219,8 @@ export default {
         }
       },
       components: {
-        errorModal
+        errorModal,
+        SuccessModal
       }
 }
 </script>
