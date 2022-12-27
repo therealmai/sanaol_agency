@@ -33,6 +33,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:sanctum']], function() {
     //Auth
     Route::post('auth/logout', [AuthController::class, 'logout']);
+
+    //User Images
+    Route::post('user/image/', [UserImageController::class, 'store'])->name('userImage.store');
+    Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
+    Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
 });
 
 //For talents
@@ -56,11 +61,6 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::post('herobanner/create', [HeroBannerController::class, 'store']);
     Route::patch('herobanner/{id}', [HeroBannerController::class, 'update']);
     Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
-
-    //HeroBanner Images
-    Route::post('herobanner/image', [BannerImageController::class, 'store']);
-    Route::patch('herobanner/image/{id}', [BannerImageController::class, 'update']);
-    Route::patch('herobanner/image/delete/{id}', [BannerImageController::class, 'destroy']);
 
     //News
     Route::patch('news/{id}', [NewsController::class, 'update']);
@@ -92,18 +92,12 @@ Route::get('/services/{id}', 'ServiceController@show');
 Route::get('herobanner', [HeroBannerController::class, 'index']);
 Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 
-//HeroBanner Images
-Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
-
 //News 
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
 
 //UserImage
 Route::get('user/image/{id}', [UserImageController::class, 'show'])->name('userImage.show');
-Route::post('user/image/', [UserImageController::class, 'store'])->name('userImage.store');
-Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
-Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
 
 //Events
 Route::get('events', [EventsController::class, 'index'])->name('events.get');
