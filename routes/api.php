@@ -37,20 +37,20 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
 //For talents
 Route::group(['middleware' => ['auth:talents']], function() {
-    //
+    Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
 });
 
 //For admins
 Route::group(['middleware' => ['auth:admins']], function() {
     //Users
     Route::post('users/create', [UserController::class, 'store'])->name('user.create');
-    Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
+    Route::post('users/create', [UserController::class, 'store'])->name('user.create');
     Route::patch('users/delete/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
 
     //Services
-    Route::patch('/services/{id}', 'ServiceController@update');
     Route::post('/services/create', 'ServiceController@store');
     Route::patch('/services/delete/{id}', 'ServiceController@destroy');
+    Route::post('/services/{id}', 'ServiceController@update');
 
     //HeroBanner
     Route::post('herobanner/create', [HeroBannerController::class, 'store']);
@@ -95,19 +95,15 @@ Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 //HeroBanner Images
 Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
 
-
-
 //News 
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
-
 
 //UserImage
 Route::get('user/image/{id}', [UserImageController::class, 'show'])->name('userImage.show');
 Route::post('user/image/', [UserImageController::class, 'store'])->name('userImage.store');
 Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
 Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
-
 
 //Events
 Route::get('events', [EventsController::class, 'index'])->name('events.get');

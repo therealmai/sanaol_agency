@@ -16,6 +16,8 @@ class News extends Model
         'content',
         'image',
         'author',
+        'location',
+        'date',
         'ref',
         'is_deleted'
     ];

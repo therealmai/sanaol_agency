@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Reminders from '../components/Cards/Reminders/Reminderscard.vue';
+import Reminders from '../components/Cards/Reminders/RemindersCard.vue';
 
 export default{
     components: {
