@@ -26,7 +26,16 @@
       />
     </span>
   </div>
-    <EditUserModal v-show="isEditModalVisible"/>
+  <EditUserModal
+    v-show="isEditModalVisible"
+    @close="closeEditModal"
+    :id="id"
+    :fname="fname"
+    :lname="lname"
+    :handle="handle"
+    :email="email"
+    :user_type="user_type"
+  />
   <DeleteUserConfirmationModal
     :name="fname"
     v-show="isDeleteModalVisible"
@@ -39,7 +48,7 @@
 import axios from "../../axios";
 import FilledButton from "../Buttons/FilledButton.vue";
 import OutlineButton from "../Buttons/OutlineButton.vue";
-import EditUserModal from "../Modal/UserManagementModals/UserManagementModals/EditUserModal.vue";
+import EditUserModal from "../Modal/UserManageModals/EditUserModal.vue";
 import DeleteUserConfirmationModal from "../Modal/UserManageModals/DeleteUserConfirmationModal.vue";
 
 export default {
@@ -48,8 +57,8 @@ export default {
     FilledButton,
     OutlineButton,
     DeleteUserConfirmationModal,
-    EditUserModal
-},
+    EditUserModal,
+  },
   data() {
     return {
       isDeleteModalVisible: false,
@@ -76,20 +85,23 @@ export default {
         }
       });
     },
+    showEditModal() {
+      this.isEditModalVisible = true;
+    },
+    closeEditModal() {
+      this.isEditModalVisible = false;
+    },
     showDeleteModal() {
       this.isDeleteModalVisible = true;
     },
     closeDeleteModal() {
-      console.log("BEFORE", this.isDeleteModalVisible);
       this.isDeleteModalVisible = false;
-      console.log("AFTER", this.isDeleteModalVisible);
     },
     deleteUser() {
       console.log("Testing emit");
       axios.patch(`users/delete/${this.id}`).then((res) => {
         if (res.status == 200) {
-          this.isDeleteModalVisible = false;
-          console.log(res);
+          this.$emit("close");
         }
       });
     },
