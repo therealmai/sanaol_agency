@@ -55,7 +55,7 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        $event = Event::find($id);
+        $event = Events::find($id);
 
         if($event) {
             return response($this->generateRes($event, 200, $this->MSG_SUC_ID_FOUND), 200, ['application/json']);
