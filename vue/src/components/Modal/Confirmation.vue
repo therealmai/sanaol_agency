@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-show="open">
     <Modal >
       <template #modal_content>
           <slot name="confirm_body"/>
@@ -33,7 +33,11 @@ export default {
     }
   },
   props: {
-    text: String
+    text: String,
+    open:{
+      type: Boolean,
+      required: true
+    }
   },
   components: {
     Modal,
