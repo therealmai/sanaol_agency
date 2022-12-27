@@ -16,15 +16,17 @@
           Events Management
         </h1>
       </div>
-      <div>
-        <LearnButton
-          style="right: 5%; position: absolute"
-          :text="'ADD EVENT'"
-          :height="35"
-          :width="120"
-          :fontSize="15"
-        />
-      </div>
+      <router-link :to="'/event/create'">
+          <div >
+            <FilledButton
+              class="pl-5 pr-5" style="margin-left: 850px;"
+              :text="'ADD EVENT'"
+              :height="35"
+              :width="120"
+              :fontSize="15"
+            />
+          </div>
+      </router-link>
     </div>
     <div id="table" style="margin-top: 20px; width: 100%">
       <table class="styled-table">
