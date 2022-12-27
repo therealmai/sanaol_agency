@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Task Setup    Open Browser    ${url}    ${browser}
 Task Teardown    Teardown
 *** Variables ***
 ${browser}             Chrome
