@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::where('is_deleted', 0)->get();
 
         if(isset($user)){
             return response()->json($user, 200, ['application/json']);
