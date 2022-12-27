@@ -16,8 +16,8 @@
           Events Management
         </h1>
       </div>
-      <router-link :to="'/event/create'">
-          <div >
+      <router-link :to="'/events/create'">
+          <div>
             <FilledButton
               class="pl-5 pr-5" style="margin-left: 850px;"
               :text="'ADD EVENT'"
