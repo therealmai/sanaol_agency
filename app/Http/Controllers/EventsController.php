@@ -19,7 +19,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $events = Event::where('is_deleted', 0)->get();
         return response()->json($events, 200, ['application/json']);
     }
 
