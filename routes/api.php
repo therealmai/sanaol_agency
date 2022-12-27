@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::post('users/create', [UserController::class, 'store'])->name('user.create');
     Route::get('users/currentUsers', [UserController::class, 'currentUsers'])->name('user.currentUsers');
     Route::get('users/applications', [UserController::class, 'applications'])->name('user.applications');
+    Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
     Route::patch('users/approve/{id}', [UserController::class, 'approve'])->name('user.approve');
     Route::patch('users/delete/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
 
