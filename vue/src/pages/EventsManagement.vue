@@ -57,7 +57,6 @@
                 <FilledButton text="Edit" class="pl-5 pr-5 " />
               </router-link>
               <div class="ml-3"></div>
-              <p>{{event.id}}</p>
                 <OutlineButton text="Delete" class="pl-4 pr-4 " @click="deleteEvent(event.id)"/>
             </td>
           </tr>
@@ -222,7 +221,7 @@ export default {
     deleteEvent(id) {
       axios.patch(`events/delete/${id}`)
         .then(response => {
-          console.log(response.data);
+          console.log('Nothing to see here');
         })
         .catch(error => {
           console.log(error);
