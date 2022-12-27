@@ -10,7 +10,7 @@ ${Delete-news}         xpath://body/div[3]/div[1]/div[2]/div[1]/button[1]
 ${Edit-news}           xpath://body/div[3]/div[1]/div[2]/div[1]/button[2]
 ${msg-alert}           Unexpected error.
 ${speed-slow}          0.75 seconds
-${link-login}          xpath://body/div[@id='app']/div[1]/div[1]/nav[1]/div[2]/a[8]
+${link-login}          xpath://html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[5]/span[1]
 ${input-email}         xpath://input[@id='email']
 ${input-pass}          xpath://input[@id='password']
 ${admin-email}         Marcus_aureliues@example.net
@@ -18,8 +18,9 @@ ${admin-pass}          password
 ${btn-login}           xpath://button[contains(text(),'Log in')]
 ${guest-email}         Julius.caesar@example.com
 ${guest-pass}          password
-${news}                xpath://span[contains(text(),'NEWS & EVENTS')]
-${msg-alert}           Failed to 
+${news}                xpath://html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[4]
+${msg-alert}           Failed to do task.
+
 *** Test Cases ***
 if user is admin set btns as visible
     login as admin
@@ -37,7 +38,7 @@ if add articles failed
     
     Go to News
 
-    Alert Should Be Present    ${msg-alert} + "add articles"
+    Alert Should Be Present    ${msg-alert}
 
 if delete news failed
     login as admin
@@ -46,7 +47,7 @@ if delete news failed
     
     Go to News
 
-    Alert Should Be Present    ${msg-alert} + "Delete"
+    Alert Should Be Present    ${msg-alert}
 
 
 if edit news failed 
@@ -56,7 +57,7 @@ if edit news failed
     
     Go to News
 
-    Alert Should Be Present    ${msg-alert} + "edit news"
+    Alert Should Be Present    ${msg-alert}
 
 if user is not admin set btns as invisible
     Login as Guest
@@ -71,13 +72,16 @@ if user is not admin set btns as invisible
 # open_Browser
     # Open Browser    ${url}    ${browser}
 login as admin
-    Click link        ${link-login}
+    Click Element     ${link-login}
+    # Sleep              5 seconds
     Input Text        ${input-email}    ${admin-email}
+    # Sleep              5 seconds
     Input Text        ${input-pass}     ${admin-pass}
+    # Sleep              5 seconds
     Click Button      ${btn-login}
 
 Login as Guest
-    Click link        ${link-login}
+    Click Element     ${link-login}
     Input Text        ${input-email}    ${guest-email}
     Input Text        ${input-pass}     ${guest-pass}
     Click Button      ${btn-login}
