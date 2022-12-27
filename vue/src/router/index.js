@@ -19,6 +19,7 @@ import EventsManagement from "../pages/EventsManagement.vue";
 import EventsCreate from "../pages/CreateEvent.vue";
 
 import UserMgmtModalTester from "../pages/UserManagementTester.vue";
+import EditUserModal from "../components/Modal/UserManageModals/EditUserModal.vue"
 
 const routes = [
     {
@@ -127,6 +128,11 @@ const routes = [
                 path: "/user_test",
                 name: "user_test",
                 component: UserMgmtModalTester,
+            },
+            {
+                path: "/modal_test",
+                name: "modal_test",
+                component: EditUserModal,
             },
         ],
     },
