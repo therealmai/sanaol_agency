@@ -13,7 +13,7 @@
       </span>
     </div>
   </template>
-  
+
   <script>
   import axiosClient from "../../axios";
   import FilledButton from '../Buttons/FilledButton.vue';
@@ -27,7 +27,7 @@
       }
     },
     props: {
-      id: String,
+      id: Number,
       fname: String,
       lname: String,
       handle: String,
@@ -44,6 +44,6 @@
   }
   };
   </script>
-  
+
   <style lang="postcss" scoped>
   </style>

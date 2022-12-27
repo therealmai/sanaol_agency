@@ -51,7 +51,9 @@ Route::group(['middleware' => ['auth:talents']], function() {
 Route::group(['middleware' => ['auth:admins']], function() {
     //Users
     Route::post('users/create', [UserController::class, 'store'])->name('user.create');
-    Route::post('users/create', [UserController::class, 'store'])->name('user.create');
+    Route::get('users/currentUsers', [UserController::class, 'currentUsers'])->name('user.currentUsers');
+    Route::get('users/applications', [UserController::class, 'applications'])->name('user.applications');
+    Route::patch('users/approve/{id}', [UserController::class, 'approve'])->name('user.approve');
     Route::patch('users/delete/{id}', [UserController::class, 'destroy'])->name('user.deleteUser');
 
     //Services
@@ -103,7 +105,7 @@ Route::get('/services/{id}', 'ServiceController@show');
 Route::get('herobanner', [HeroBannerController::class, 'index']);
 Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 
-//News 
+//News
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
 
