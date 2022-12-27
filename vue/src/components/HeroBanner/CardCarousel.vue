@@ -1,15 +1,20 @@
 <template>
   <div id="carouselControls" class="carousel slide relative" data-bs-ride="carousel">
     <div class="carousel-inner justify-center relative overflow-hidden">
-      <div class="carousel-item justify-center active relative float-left w-full">
-        <HeroEventCard></HeroEventCard>
+      <div class="carousel-item justify-center float-left w-full"
+      v-for="index in preview"
+      v-bind:class="{'active relative': (index === 1)}"
+      :key="index"
+      >
+        <HeroEventCard
+        :title="events[index].title"
+        :content="events[index].content"
+        :date="events[index].date"
+        :location="events[index].location"
+        :image="events[index].image"
+        />
       </div>
-      <div class="carousel-item relative float-left w-full">
-        <HeroEventCard ></HeroEventCard>
-      </div>
-      <div class="carousel-item relative float-left w-full">
-        <HeroEventCard></HeroEventCard>
-      </div>
+      
     </div>
     <button
       class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline -left-36"
@@ -38,6 +43,13 @@ export default {
   name: "CardCarousel",
   components: {
     HeroEventCard
+  },
+  props: {
+    events: Array,
+    preview: {
+      type: Number,
+      default: 3
+    }
   }
 };
 </script>

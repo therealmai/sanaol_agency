@@ -28,41 +28,18 @@
   <!-- Inner -->
   <div class="carousel-inner relative w-full overflow-hidden">
     <!-- Single item -->
-    <div class="carousel-item active relative float-left w-full h-220">
+    <div class="carousel-item float-left w-full h-220"
+    v-for="({id, image}, index) in images"
+    :key="id"
+    v-bind:class="{'active relative': index === 1}">
       <img
-        src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+        :src="image"
         class="block w-full"
-        alt="Motorbike Smoke"
+        alt="image"
       />
       <div class="carousel-caption hidden md:block absolute text-right top-64">
-        <h5 class="text-xl">First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item relative float-left w-full h-220">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(19).webp"
-        class="block w-full"
-        alt="Mountaintop"
-      />
-      <div class="carousel-caption hidden md:block absolute text-right top-64">
-        <h5 class="text-xl">Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item relative float-left w-full h-220">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp"
-        class="block w-full"
-        alt="Woman Reading a Book"
-      />
-      <div class="carousel-caption hidden md:block absolute text-right top-64">
-        <h5 class="text-xl">Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <h5 class="text-xl">{{ header }}</h5>
+        <p>{{ subheader }}</p>
       </div>
     </div>
   </div>
@@ -93,6 +70,24 @@
 <script>
 export default {
   name: "Carousel",
+  props: {
+    images: {
+      type: Array,
+      default: [
+        {id: 1, image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80'},
+        {id: 2, image: 'https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(19).webp'},
+        {id: 3, image: 'https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp'}
+      ]
+    },
+    header: {
+      type: String,
+      default: 'Welcome'
+    },
+    subheader: {
+      type: String,
+      default: 'Apply as talent'
+    },
+  },
 };
 </script>
 
