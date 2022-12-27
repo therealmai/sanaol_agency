@@ -2,16 +2,16 @@
   <div id="carouselControls" class="carousel slide relative" data-bs-ride="carousel">
     <div class="carousel-inner justify-center relative overflow-hidden">
       <div class="carousel-item justify-center float-left w-full"
-      v-for="index in preview"
+      v-for="event, index in events"
       v-bind:class="{'active relative': (index === 1)}"
-      :key="index"
+      :key="event.id"
       >
         <HeroEventCard
-        :title="events[index].title"
-        :content="events[index].content"
-        :date="events[index].date"
-        :location="events[index].location"
-        :image="events[index].image"
+        :title="event.title"
+        :content="event.content"
+        :date="event.date"
+        :location="event.location"
+        :image="event.image"
         />
       </div>
       
@@ -46,10 +46,6 @@ export default {
   },
   props: {
     events: Array,
-    preview: {
-      type: Number,
-      default: 3
-    }
   }
 };
 </script>

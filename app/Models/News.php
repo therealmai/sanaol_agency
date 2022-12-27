@@ -26,4 +26,8 @@ class News extends Model
     public function User(){
         return $this->belongsTo(User::class);
     }
+
+    public function PreviewNews(){
+        return $this->hasOne(PreviewNews::class, 'news_id');
+    }
 }

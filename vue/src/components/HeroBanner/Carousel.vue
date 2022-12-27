@@ -16,12 +16,12 @@
     <button
       data-bs-target="#carouselDarkVariant"
       data-bs-slide-to="1"
-      aria-label="Slide 1"
+      aria-label="Slide 2"
     ></button>
     <button
       data-bs-target="#carouselDarkVariant"
       data-bs-slide-to="2"
-      aria-label="Slide 1"
+      aria-label="Slide 3"
     ></button>
   </div>
 
@@ -29,17 +29,17 @@
   <div class="carousel-inner relative w-full overflow-hidden">
     <!-- Single item -->
     <div class="carousel-item float-left w-full h-220"
-    v-for="({id, image}, index) in images"
-    :key="id"
+    v-for="herobanner, index in herobanners"
+    :key="herobanner.id"
     v-bind:class="{'active relative': index === 1}">
       <img
-        :src="image"
+        :src="herobanner.image"
         class="block w-full"
         alt="image"
       />
       <div class="carousel-caption hidden md:block absolute text-right top-64">
-        <h5 class="text-xl">{{ header }}</h5>
-        <p>{{ subheader }}</p>
+        <h5 class="text-xl">{{ userExist ? herobanner.header_gen :herobanner.header_tal }}</h5>
+        <p>{{ userExist ?herobanner.subheader_gen : herobanner.subheader_tal }}</p>
       </div>
     </div>
   </div>
@@ -68,26 +68,19 @@
 </template>
 
 <script>
+import store from '../../store';
+
 export default {
   name: "Carousel",
   props: {
-    images: {
-      type: Array,
-      default: [
-        {id: 1, image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80'},
-        {id: 2, image: 'https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(19).webp'},
-        {id: 3, image: 'https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp'}
-      ]
-    },
-    header: {
-      type: String,
-      default: 'Welcome'
-    },
-    subheader: {
-      type: String,
-      default: 'Apply as talent'
-    },
+    herobanners: Array,
   },
+  computed: {
+    userExist() {
+      return store.state.user !== null;
+    },
+
+  }
 };
 </script>
 
