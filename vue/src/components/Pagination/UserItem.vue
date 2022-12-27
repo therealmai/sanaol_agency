@@ -18,9 +18,11 @@
   import axiosClient from "../../axios";
   import FilledButton from '../Buttons/FilledButton.vue';
   import OutlineButton from '../Buttons/OutlineButton.vue';
+  import EditUserModal from "../Modal/UserManagementModals/UserManagementModals/EditUserModal.vue";
+
   export default {
     name: "UserItem",
-    components: { FilledButton, OutlineButton },
+    components: { FilledButton, OutlineButton, EditUserModal },
     data() {
       return {
         data:[],
