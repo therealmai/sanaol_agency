@@ -1,21 +1,22 @@
+Service Edit
+
 <template>
     <div>
         <OutlineButton v-on:click="goBack" text="BACK" class="h-[33px] w-[100px] mt-10 ml-10"/>
         <h1 class="mb-10 text-secondary" style="font-weight: 700; text-align: center; font-size: xx-large; ">Edit Service</h1>
         <div class="flex flex-col items-start form-cont gap-8">
-            <form class="flex flex-col items-start gap-5" action="">
-                
+            <form enctype="multipart/form-data" method="patch" class="flex flex-col items-start gap-5" action="">
                 <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
                 <label for="file">
-                    <img id="imgService" v-bind:src="data.image" class="object-cover rounded-[8px] w-[166px] h-[166px]">
+                    <img id="imgService" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
                 </label>
                 <div>
                     <label for="title">Title</label>
-                    <input v-bind:class="[cssFormInputs]" v-model.trim="data.title" type="text">
+                    <input v-bind:class="[cssFormInputs]" v-model.trim="service.title" type="text">
                 </div>
                 <div>
                     <label for="content">Content</label>
-                    <textarea v-bind:class="[cssFormInputs]" class="h-[221px]" v-model.trim="data.content" type="text"></textarea>
+                    <textarea v-bind:class="[cssFormInputs]" class="h-[221px]" v-model.trim="service.content" type="text"></textarea>
                 </div>
             </form>
             <Modal v-show="isModalVisible" width="380">
@@ -56,19 +57,29 @@
     import UpdateModal from '../components/Modal/UpdateModal.vue';
     import Modal from '../components/Modal/Modal.vue';
     import Info from '../components/Others/Info.vue';
+    import axios from '../axios';
 
     const cssFormInputsStr = "border-2 rounded-lg p-3 form__inputs  ";    
 
     export default {
+        mounted() {
+            let id = this.$route.params.id;
+            axios.get('/services/' + id).then(
+                (response) => {
+                    if(response.status == 200) {
+                        this.service = response.data.data;
+                        this.previewImg = this.service.image;
+                        let prot = this.service.image.slice(0, 4);
+                        this.rootImgPath = prot === "http" ? '' : '/src/images/';             
+                    }
+                }
+            )
+        },
         data() {
             return {
-                data: {
-                    title: "title",
-                    content: "content",
-                    image: "https://i0.wp.com/www.vortexmag.net/wp-content/uploads/2017/12/JMbN5hW.jpg?fit=1800%2C1200&ssl=1",
-                    ref: "",
-                    updated_at: "", 
-                },
+                service: {},
+                previewImg: '',
+                rootImgPath: '',
                 cssFormInputs: cssFormInputsStr,
                 isModalVisible: false,
                 isSucModalVisible: false
@@ -80,7 +91,8 @@
             },
             loadFile(e) {
                 let imgHtml = document.querySelector('#imgService');
-                imgHtml.src = URL.createObjectURL(e.target.files[0]);
+                this.service.image = e.target.files[0];
+                imgHtml.src = URL.createObjectURL(this.service.image);
             },
             openModal() {
                 this.isModalVisible = true;
@@ -89,6 +101,29 @@
                 this.isModalVisible = false;
             },
             updateService() {
+                if(this.service.title == '' || this.service.content == '') {
+                    alert('All fields must be filled.');
+                    this.isModalVisible = false;
+                    return;
+                }
+
+                let data = new FormData;
+                data.set('image', this.service.image);
+                data.set('title', this.service.title);
+                data.set('content', this.service.content);
+
+                console.log(...data)
+
+                let id = this.$route.params.id;
+                axios.post('/services/' + id, data, {
+                    headers: {
+                        'Content-type': 'multipart/form-data'
+                    }
+                }).then(
+                    (response) => {
+                        console.log(response.data)
+                    }
+                )
                 this.isModalVisible = false;
                 this.isSucModalVisible = true;
             },  

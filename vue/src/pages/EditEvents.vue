@@ -7,7 +7,7 @@
        
         <div style="margin-left: 100px; margin-top: 30px;">
             
-            <form>
+            <!-- <form>
                     <div class="file-upload-section">
                     
                     <div class="file-upload">
@@ -36,23 +36,29 @@
                         </button>
                     </div>
                 </div>
-            </form>
-            
+            </form> -->
 
-<br><br><br>
+            <form enctype="multipart/form-data" method="patch" class="flex flex-col items-start gap-5" action="">
+                <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
+                <label for="file">
+                    <img id="imgEvents" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
+                </label>
+            <br><br><br>
             <div >
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Title" v-model="events.title"></titled-input><br>
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Title" v-model.trim="events.title"></titled-input><br>
         
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Date" v-model="events.date"></titled-input><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Location" v-model="events.location"></titled-input><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model="events.event_type" ></titled-input><br><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model="events.content"></titled-input><br><br>
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Date" v-model.trim="events.date"></titled-input><br>
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Location" v-model.trim="events.location"></titled-input><br>
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model.trim="events.event_type" ></titled-input><br><br>
+            <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model.trim="events.content"></titled-input><br><br>
             </div>
+     
+        </form>
         <div class="flex gap-4">
             <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
             <!-- <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36" @click="showDeleteModal"/> -->
             <OutlineButton fontSize="12" color="white" text="Cancel" width="99" height="36" @click="goBackToEvents"/>
-        </div><br><br><br>
+            </div><br><br><br>
         </div>
 
         <!-- Modal appears after you click the SAVE button -->
@@ -63,10 +69,10 @@
                 <path d="M62.2746 2.58296C59.4087 -0.282861 54.7763 -0.282861 51.9105 2.58296L47.9716 6.50874L60.7828 19.3199L64.7216 15.381C67.5874 12.5152 67.5874 7.88276 64.7216 5.01694L62.2746 2.58296ZM23.1214 31.372C22.3232 32.1703 21.7082 33.1517 21.3548 34.2378L17.4814 45.8582C17.1019 46.9835 17.4029 48.2267 18.2404 49.0773C19.0779 49.9279 20.321 50.2158 21.4595 49.8363L33.0798 45.9628C34.1529 45.5964 35.1343 44.9945 35.9457 44.1962L57.8384 22.2904L45.0142 9.46616L23.1214 31.372V31.372ZM13.1238 8.11831C6.18823 8.11831 0.561279 13.7453 0.561279 20.6808V54.1808C0.561279 61.1164 6.18823 66.7433 13.1238 66.7433H46.6238C53.5593 66.7433 59.1863 61.1164 59.1863 54.1808V41.6183C59.1863 39.3021 57.315 37.4308 54.9988 37.4308C52.6826 37.4308 50.8113 39.3021 50.8113 41.6183V54.1808C50.8113 56.497 48.94 58.3683 46.6238 58.3683H13.1238C10.8076 58.3683 8.93628 56.497 8.93628 54.1808V20.6808C8.93628 18.3646 10.8076 16.4933 13.1238 16.4933H25.6863C28.0025 16.4933 29.8738 14.622 29.8738 12.3058C29.8738 9.9896 28.0025 8.11831 25.6863 8.11831H13.1238Z" fill="#8075F1"/>
                 </svg>
                 <h1 class="modal-heading">Update Confirmation</h1>
-                <p class="modal-paragraph">Are you sure you want to save the changes<br>made on this service? Please confirm.</p>
-                <Info text="Saving the changes will change what the public sees on the services page."></Info>
+                <p class="modal-paragraph">Are you sure you want to save the changes<br>made on this event? Please confirm.</p>
+                <Info text="Saving the changes will change what the public sees on the events page."></Info>
                 <div class="flex gap-10 mt-5 mb-5">
-                    <FilledButton id="updateButton" class="w-[100px]" text="CONFIRM" @click="sendPatchRequest(), confirmUpdateModal()"></FilledButton>
+                    <FilledButton id="updateButton" class="w-[100px]" text="CONFIRM" @click="updateEvent(), confirmUpdateModal()"></FilledButton>
                     <OutlineButton class="w-[100px]" text="CANCEL" @click="closeUpdateModal()"></OutlineButton>
                 </div>
             </template>
@@ -97,6 +103,7 @@ import Warning from '../components/Others/Warning.vue'
 import DeletedModal from '../components/Modal/DeletedModal.vue'
 
 import axios from '../axios'
+import {mapState} from 'vuex'
 
 export default {
   components: { 
@@ -112,19 +119,41 @@ export default {
     },
     data() {
         return {
-            events: {},
-            url: '',
-            prev:'',
+            events: {
+                user_id: this.$store.state.user.data.id,
+                title : '',
+                content : '',
+                image : '',
+                author : this.$store.state.user.data.insta_handle,
+                event_type : '',
+                location : '',
+                date : '',
+                ref : ''
+            },
+            previewImg: '',
+            rootImgPath: '',
             isUpdateModalVisible: false,
             isDeleteModalVisible: false,
         }
     },
+    computed: {
+        author() {
+            return this.$store.state.user.data.insta_handle
+        },
+        userID() {
+            return this.$store.state.user.data.id
+        }
+    },
     mounted() {
-        axios.get('events/' + this.$route.params.id).then(
+        let id = this.$route.params.id;
+        axios.get('events/' + id).then(
             (response) => {
-            this.events = response.data.data,
-            console.log("event"),
-            console.log(this.events)
+                if(response.status == 200) {
+                    this.events = response.data.data,
+                    this.previewImg = this.events.image;
+                    let prot = this.events.image.slice(0, 4);
+                    this.rootImgPath = prot === "http" ? '' : '/src/images/'; 
+                }
             }
         )
     },
@@ -142,34 +171,72 @@ export default {
                 console.log(error);
             });
         },
-        async sendPatchRequest() {
-            axios.patch('events/' + this.$route.params.id, {
-                user_id: this.events.user_id,
-                title : this.events.title,
-                content : this.events.content,
-                image : this.events.image,
-                author : this.events.author,
-                event_type : this.events.event_type,
-                location : this.events.location,
-                date : this.events.date,
-                ref : this.events.ref
-            })
-            .then(response => {
-                console.log("event"),
-                console.log(this.events.title)
-                console.log(response)
+        // async sendPatchRequest() {
+        //     axios.patch('events/' + this.$route.params.id, {
+        //         user_id: this.events.user_id,
+        //         title : this.events.title,
+        //         content : this.events.content,
+        //         image : this.events.image,
+        //         author : this.events.author,
+        //         event_type : this.events.event_type,
+        //         location : this.events.location,
+        //         date : this.events.date,
+        //         ref : this.events.ref
+        //     })
+        //     .then(response => {
+        //         console.log("event"),
+        //         console.log(this.events.title)
+        //         console.log(response)
                 
-            })
-            .catch(error => {
-                console.log(error)
-            });
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     });
+        updateEvent() {
+                if(this.events.title == '' 
+                    || this.events.date == '' 
+                    || this.events.location == ''
+                    || this.events.event_type == ''
+                    || this.events.content == '') {
+                    alert('All fields must be filled.');
+                    this.isModalVisible = false;
+                    return;
+                }
+
+                let data = new FormData;
+                data.set('image', this.events.image);
+                data.set('title', this.events.title);
+                data.set('date', this.events.date);
+                data.set('location', this.events.location);
+                data.set('event_type', this.events.event_type);
+                data.set('content', this.events.content);
+                data.set('user_id', this.events.user_id);
+                data.set('author', this.events.author);
+
+                console.log(...data)
+
+                let id = this.$route.params.id;
+                axios.post('/events/' + id, data, {
+                    headers: {
+                        'Content-type': 'multipart/form-data'
+                    }
+                }).then(
+                    (response) => {
+                        console.log(response.data)
+                    }
+                )
         },
-        onFileChange (e) {
-            let file = e.target.files[0]
-            this.url = URL.createObjectURL(file)
-            this.prev = this.events.image
-            this.events.image = this.url
-        },
+        loadFile(e) {
+                let imgHtml = document.querySelector('#imgEvents');
+                this.events.image = e.target.files[0];
+                imgHtml.src = URL.createObjectURL(this.events.image);
+            },
+        // onFileChange (e) {
+        //     let file = e.target.files[0]
+        //     this.url = URL.createObjectURL(file)
+        //     this.prev = this.events.image
+        //     this.events.image = this.url
+        // },
         removeImage: function () {
             this.url = null
             this.events.image = this.prev
@@ -197,7 +264,8 @@ export default {
         closeDeleteModal(){
             var modal = document.getElementById("mydeletemodal");
             modal.style.display = "none";
-        }
+        },
+        
 
     },
     

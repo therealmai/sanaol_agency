@@ -87,40 +87,59 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $service = Service::find($id);
-        $input = $request->input();
         $msg = '';
         $status = '';
-        $err = false;
 
         if($service == NULL) {
             $msg = $this->MSG_ERR_ID_NOT_FOUND;
             $status = 404;
         } 
 
-        if($service != NULL) {
-            foreach($input as $key => $val) {
-                if(isset($service[$key])) {
-                    $service[$key] = $val;
-                } 
-                else {
-                    $err = true;
-                    break;
-                }
-            }  
-        }
+        $request->validate([
+            'title'    => 'required',
+            'content'  => 'required',
+            'image'    => 'required'
+        ]);
 
-        if($err) {
-            $msg = $this->MSG_ERR_ADDITIONAL_PROPS;
-            $status = 500;
-            $service = null;
-        } else {
-            $msg = $this->MSG_SUC_UPDATE;
-            $status = 204;
-            $service->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
-            $service->save();
+        if($request->hasFile('image')) {
+            $pathToFile = $request->file('image')
+                ->store('Service', 'vue');
+            $service->image = $pathToFile;
         }
+        $service->title = $request->input('title');
+        $service->content = $request->input('content');
+        $service->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+        $service->save();
+        
+        $msg = $this->MSG_SUC_UPDATE;
+        $status = 200;
+        return response($this->generateRes($service, $status, $msg), 200);
 
-        return response($this->generateRes($service, $status, $msg), 200, ['application/json']);
+        // if($service != NULL) {
+        //     foreach($input as $key => $val) {
+        //         if(isset($service[$key])) {
+        //             $service[$key] = $val;
+        //         } 
+        //         else {
+        //             $err = true;
+        //             break;
+        //         }
+        //     }  
+        // }
+
+        // if($err) {
+        //     $msg = $this->MSG_ERR_ADDITIONAL_PROPS;
+        //     $status = 500;
+        //     $service = null;
+        // } else {
+        //     $msg = $this->MSG_SUC_UPDATE;
+        //     $status = 204;
+        //     $service->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+        //     $service->image = $pathToFile;
+        //     $service->save();
+        // }
+
+        // $status = $pathToFile;
     }
 
     /**
