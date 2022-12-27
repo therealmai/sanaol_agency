@@ -8,29 +8,19 @@
       <span class="text-[#3a3541] opacity-70 w-4/12 font-normal text-base mt-2">{{email}}</span>
       <span class="text-[#3a3541] opacity-70 w-2/12 font-normal text-base capitalize mt-2">Application</span>
       <span class="flex flex-row justify-center flex-nowrap text-[#696969] gap-x-2">
-        <FilledButton class="w-[120px]" @click="aModal = true" text="APPROVE" />
-        <OutlineButton class="w-[100px]" @click="dModal = true" text="DENY" />
+        <FilledButton class="w-[120px]" text="APPROVE" />
+        <OutlineButton class="w-[100px]" text="DENY" />
       </span>
-      <ApprovedConfirmModal :open="aModal" :id="id" @close="aModal = !aModal"></ApprovedConfirmModal>
-      <DeniedConfirmationModal :open="dModal" :id="id" @close="dModal = !dModal"></DeniedConfirmationModal>
     </div>
   </template>
   
   <script>
   import axiosClient from "../../axios";
-  import ApprovedConfirmModal from '../Modal/UserManagementModals/UserManagementModals/ApprovedConfirmModal.vue';
-  import DeniedConfirmationModal from '../Modal/UserManagementModals/UserManagementModals/DeniedConfirmationModal.vue';
   import FilledButton from '../Buttons/FilledButton.vue';
   import OutlineButton from '../Buttons/OutlineButton.vue';
-  import { ref } from "vue";
   export default {
     name: "ApplyItem",
-    components: { FilledButton, OutlineButton, ApprovedConfirmModal, DeniedConfirmationModal },
-    setup(){
-      const aModal = ref(false);
-      const dModal = ref(false);
-      return { aModal, dModal }
-    },
+    components: { FilledButton, OutlineButton },
     data() {
       return {
         data:[],

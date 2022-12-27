@@ -8,29 +8,19 @@
       <span class="text-[#3a3541] opacity-70 w-4/12 font-normal text-base mt-2">{{email}}</span>
       <span class="text-[#3a3541] opacity-70 w-2/12 font-normal text-base capitalize mt-2">{{user_type}}</span>
       <span class="flex flex-row justify-center flex-nowrap text-[#696969] gap-x-2">
-        <FilledButton class="w-[100px]" @click="eModal = true" text="EDIT" />
-        <OutlineButton class="w-[100px]" @click="dModal = true" text="DELETE" />
+        <FilledButton class="w-[100px]" text="EDIT" />
+        <OutlineButton class="w-[100px]" text="DELETE" />
       </span>
-      <EditUserModal :open="eModal" :id="id" @close="eModal = !eModal"></EditUserModal>
-      <DeletedConfirmationModal :open="dModal" :id="id" @close="dModal = !dModal"></DeletedConfirmationModal>
     </div>
   </template>
   
   <script>
   import axiosClient from "../../axios";
-  import EditUserModal from '../Modal/UserManagementModals/UserManagementModals/EditUserModal.vue';
-  import DeletedConfirmationModal from '../Modal/UserManagementModals/UserManagementModals/DeletedConfirmationModal.vue';
   import FilledButton from '../Buttons/FilledButton.vue';
   import OutlineButton from '../Buttons/OutlineButton.vue';
-  import { ref } from "vue";
   export default {
     name: "UserItem",
-    components: { FilledButton, OutlineButton, EditUserModal, DeletedConfirmationModal },
-    setup(){
-      const eModal = ref(false);
-      const dModal = ref(false);
-      return { eModal, dModal }
-    },
+    components: { FilledButton, OutlineButton },
     data() {
       return {
         data:[],
