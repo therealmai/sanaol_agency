@@ -1,5 +1,5 @@
 <template>
-  <Confirmation :text="text" confirmationType="deleted">
+  <Confirmation v-show="open" :text="text" confirmationType="deleted">
     <template #confirm_body>
       <svg
         class="h-[84px] fill-error-light"
@@ -48,7 +48,11 @@ import Confirmation from "../Confirmation.vue";
 export default {
   name: "DeletedConfirmationModal",
   props : {
-    text: String
+    text: String,
+    open: {
+      type: Boolean,
+      required: true
+    }
   },
   components: {
     Confirmation,

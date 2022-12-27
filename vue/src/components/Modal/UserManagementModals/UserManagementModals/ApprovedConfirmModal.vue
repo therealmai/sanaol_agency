@@ -1,5 +1,5 @@
 <template>
-  <Confirmation confirmationType="approved">
+  <Confirmation v-show="open" confirmationType="approved">
     <template #confirm_body>
       <svg
         width="84"
@@ -49,10 +49,16 @@
 <script>
 import Confirmation from "../Confirmation.vue";
 export default {
-  name: "DeniedConfirmationModal",
+  name: "ApprovedConfirmModal",
   components: {
     Confirmation,
   },
+  props: {
+    open: {
+      type: Boolean,
+      required: true
+    }
+  }
 };
 </script>
 

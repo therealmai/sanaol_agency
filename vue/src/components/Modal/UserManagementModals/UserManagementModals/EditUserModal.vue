@@ -1,5 +1,5 @@
 <template>
-  <transition name="modal-fade">
+  <transition v-show="open" name="modal-fade">
     <div
       class="flex items-center justify-center w-full h-full fixed top-0 left-0 bg-black bg-opacity-50 z-[1000]"
     >
@@ -261,6 +261,10 @@ export default {
     fontSize: Number,
     height: Number,
     width: Number,
+    open: {
+      type: Boolean,
+      required: true
+    }
   },
   data() {
     return {

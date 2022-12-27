@@ -1,5 +1,5 @@
 <template>
-  <Confirmation confirmationType="denied">
+  <Confirmation v-show="open" confirmationType="denied">
     <template #confirm_body>
       <svg
         class="h-[84px] fill-error-light"
@@ -49,6 +49,12 @@ export default {
   components: {
     Confirmation,
   },
+  props: {
+    open: {
+      type: Boolean,
+      required: true
+    }
+  }
 };
 </script>
 
