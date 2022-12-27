@@ -7,53 +7,22 @@
        
         <div style="margin-left: 100px; margin-top: 30px;">
             
-            <!-- <form>
-                    <div class="file-upload-section">
-                    
-                    <div class="file-upload">
-                    <label class="upload-box" for="file-upload" >+</label>
-                    <label id="preview" for="file-upload">
-                        <img style="height:184px;width:170px;position: absolute;margin-top: -101px; z-index: 3" :key="events.image" v-if="events.image" :src="events.image" />
-                        </label>
-                    <input type="file" id="file-upload" @change="onFileChange" hidden/>
-                        
-                    </div>
-                    <div v-if="url">
-                        
-                        <button style="position: absolute;z-index: 4;top: 10.8%;margin-left: 159px;" @click="removeImage()">
-                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_326_3033)">
-                                <path d="M9.43848 16.5938C13.5806 16.5938 16.9385 13.2359 16.9385 9.09375C16.9385 4.95161 13.5806 1.59375 9.43848 1.59375C5.29634 1.59375 1.93848 4.95161 1.93848 9.09375C1.93848 13.2359 5.29634 16.5938 9.43848 16.5938Z" fill="white" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M11.6885 6.84375L7.18848 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7.18848 6.84375L11.6885 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </g>
-                                <defs>
-                                <clipPath id="clip0_326_3033">
-                                <rect width="18" height="18" fill="white" transform="translate(0.438477 0.09375)"/>
-                                </clipPath>
-                                </defs>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </form> -->
 
             <form enctype="multipart/form-data" method="patch" class="flex flex-col items-start gap-5" action="">
                 <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
                 <label for="file">
                     <img id="imgEvents" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
                 </label>
-            <br><br><br>
-            <div >
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Title" v-model.trim="events.title"></titled-input><br>
-        
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Date" v-model.trim="events.date"></titled-input><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Location" v-model.trim="events.location"></titled-input><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model.trim="events.event_type" ></titled-input><br><br>
-            <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model.trim="events.content"></titled-input><br><br>
-            </div>
+                <br><br><br>
+                <div >
+                <titled-input width="528" height="49.6" fontSize="16" title="Event Title" v-model.trim="events.title"></titled-input><br>
+                <titled-input width="528" height="49.6" fontSize="16" title="Event Date" v-model.trim="events.date"></titled-input><br>
+                <titled-input width="528" height="49.6" fontSize="16" title="Event Location" v-model.trim="events.location"></titled-input><br>
+                <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model.trim="events.event_type" ></titled-input><br><br>
+                <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model.trim="events.content"></titled-input><br><br>
+                </div>
      
-        </form>
+            </form>
         <div class="flex gap-4">
             <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
             <!-- <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36" @click="showDeleteModal"/> -->
@@ -158,40 +127,7 @@ export default {
         )
     },
     methods: {
-        async deleteRequest() {
-            axios.delete('events/' + this.$route.params.id, {
-                params: {
-                    id: this.$route.params.id
-                }
-            })
-            .then(function(response){
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        },
-        // async sendPatchRequest() {
-        //     axios.patch('events/' + this.$route.params.id, {
-        //         user_id: this.events.user_id,
-        //         title : this.events.title,
-        //         content : this.events.content,
-        //         image : this.events.image,
-        //         author : this.events.author,
-        //         event_type : this.events.event_type,
-        //         location : this.events.location,
-        //         date : this.events.date,
-        //         ref : this.events.ref
-        //     })
-        //     .then(response => {
-        //         console.log("event"),
-        //         console.log(this.events.title)
-        //         console.log(response)
-                
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     });
+        
         updateEvent() {
                 if(this.events.title == '' 
                     || this.events.date == '' 

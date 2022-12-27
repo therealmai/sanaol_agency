@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth:admins']], function() {
 
     //Events
     Route::post('events/create', [EventsController::class, 'store'])->name('events.create');
-    Route::patch('events/{id}', [EventsController::class, 'update'])->name('events.update');
+    Route::post('events/{id}', [EventsController::class, 'update'])->name('events.update');
     Route::patch('events/delete/{id}', [EventsController::class, 'destroy'])->name('events.delete');
 
 });

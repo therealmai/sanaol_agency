@@ -105,13 +105,13 @@ const routes = [
                 meta: { title: 'Manage Events' }
             },
             {
-                path: "/event_create",
+                path: "/events/create",
                 name: "event_create",
                 component: EventsCreate,
                 meta: { title: 'Create Event' }
             },
             {
-                path: "/edit_events",
+                path: "/events/edit/:id",
                 name: "edit_events",
                 component: Edit_Events,
                 meta: { title: 'Edit Event' }
