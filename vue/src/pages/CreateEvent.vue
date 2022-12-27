@@ -50,9 +50,9 @@
             <!-- <input v-model="title" type="text"  class=" pl-4 pr-4 py-[14px] bg-inputField rounded-[2px] text-inputText outline outline-inputOutline box-outline text-color" placeholder="Event Title" style = "color: #525252;width: 528px; height: 49.6; fontSize: 16;"  />
          -->
         <div class="flex gap-4">
-            <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
+            <FilledButton class="mr-9 pl-5 pr-5" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
             <!-- <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36" @click="showDeleteModal"/> -->
-            <OutlineButton fontSize="12" color="white" text="Cancel" width="99" height="36" @click="goBackToEvents"/>
+            <OutlineButton class=" pl-4 pr-4" fontSize="12" color="white" text="Cancel" width="99" height="36" @click="goBackToEvents"/>
         </div><br><br><br>
         
     </div>
