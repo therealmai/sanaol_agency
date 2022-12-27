@@ -189,7 +189,7 @@ export default {
           if(this.isMatch()) {
             store.dispatch('register', this.user)
               .then(() => {
-                this.$router.push('hero');
+                this.$router.push('login');
               })
               .catch(err => {
                 this.errorMessage = 'User already exists. Please try again.'

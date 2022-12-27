@@ -5,10 +5,10 @@
       <!-- insert log in template here. -->
         <div class="md:p-4 md:mx-6 m-8 justify-center block">
           <div class="text-center">
-            <h4 class="text-2xl font-semibold mt-6 pb-1">Sanaol Agency</h4>
+            <h4 class="text-2xl font-semibold mt-6 pb-1 text-primary">Sanaol Agency</h4>
             <img
               class="mx-auto w-48 mb-6"
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+              src="../assets/sanaol-logo.png"
               alt="logo"
             />
           </div>
@@ -121,7 +121,7 @@
         this.user.password = '';
       },
       isEmpty(){
-        return this.user.email == '' && this.user.password == '';
+        return this.user.email == '' || this.user.password == '';
       },
       login(ev) {
         ev.preventDefault();

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center w-full">
+  <div class="flex flex-col justify-center items-center w-full mb-14">
     <h1 class="text-3xl font-bold text-gray-600 mt-8 mr-[1070px]">
       Our Talents
     </h1>
@@ -74,8 +74,8 @@ export default {
           return user.user_type == "talent";
         }));
       console.log("users - filtered"), console.log(this.talents);
-
       console.log(this.talents.length)
+
       for (let x = 0; x < this.talents.length; x++) {
         axios
           .get("/user/image/" + this.talents[x].id)
