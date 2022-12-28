@@ -18,39 +18,36 @@
                   <!-- header photo from file. haven't set the size and choosing multiple times,, -->
 
                   <form>
-                        <div class="file-upload-section">
-                            
-                            <div class="file-upload">
-                                <div >
-                                    <label class="upload-box" for="file-upload" >+</label>
-                                    <!-- <img :src="events.image" alt="User Photo" style="position: absolute;width: 170px;top: 110px;height: 177px;"> -->
-                                </div>
-                            <input type="file" id="file-upload" @change="onFileChange" hidden/>
+                    <div class="file-upload-section">
+                      <div class="file-upload">
+                      <label class="upload-box" for="file-upload" >+</label>
+                      </div>
 
-                            <label id="preview" for="file-upload">
-                                <img style="height:184px;width:170px;position: absolute;margin-top: -101px; z-index: 3" :key="url" v-if="url" :src="url" />
-                            </label>
-                            </div>
-                            <div v-if="url">
-                                <button style="position: absolute;z-index: 4;top: 10.8%;margin-left: 159px;" @click="removeImage()">
-                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_326_3033)">
-                                        <path d="M9.43848 16.5938C13.5806 16.5938 16.9385 13.2359 16.9385 9.09375C16.9385 4.95161 13.5806 1.59375 9.43848 1.59375C5.29634 1.59375 1.93848 4.95161 1.93848 9.09375C1.93848 13.2359 5.29634 16.5938 9.43848 16.5938Z" fill="white" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M11.6885 6.84375L7.18848 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M7.18848 6.84375L11.6885 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_326_3033">
-                                        <rect width="18" height="18" fill="white" transform="translate(0.438477 0.09375)"/>
-                                        </clipPath>
-                                        </defs>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+                      <input type="file" accept="image/*" name="file" id="file" @change="loadFile" style="display:none;"/>
+                      <label for="file">
+                      <div>
+                        <!-- <div class="bg-black bg-opacity-0 p-4 hover:bg-opacity-50 transition-all duration-1000"> -->
+                          <img id="bannerIMG" class="w-[184px] h-[170px]" :src="form.image" alt="banner image">
+                        <!-- </div> -->
+                      </div>
+                      </label>
+                        <button style="position: absolute;z-index: 4;top: 18%;margin-left: 180px;" @click="deletePreview()">
+                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_326_3033)">
+                                <path d="M9.43848 16.5938C13.5806 16.5938 16.9385 13.2359 16.9385 9.09375C16.9385 4.95161 13.5806 1.59375 9.43848 1.59375C5.29634 1.59375 1.93848 4.95161 1.93848 9.09375C1.93848 13.2359 5.29634 16.5938 9.43848 16.5938Z" fill="white" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.6885 6.84375L7.18848 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.18848 6.84375L11.6885 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_326_3033">
+                                <rect width="18" height="18" fill="white" transform="translate(0.438477 0.09375)"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                       </button>
+                  </div>
                 </form>
           
-          <!-- text-input. class didn't work,, -->
           <TitledInput :fontSize="18" :width="525" :height="53" title="Welcome Banner Header - Admin" v-model="herobanner.header_tal"/><br>
           <TitledInput :fontSize="18" :width="525" :height="120" title="Welcome Banner Subheader - Admin" v-model="herobanner.subheader_tal"/><br>
           <TitledInput :fontSize="18" :width="525" :height="53" title= "Welcome Banner Header - General" v-model="herobanner.header_gen"/><br>
@@ -122,9 +119,13 @@ data() {
       text: 'Cancel',
       isUpdated: false,
       isModalVisible: false,
-      url:"",
+      url: "",
       herobanner: {},
-      services: {}
+      services: {},
+      images: {},
+      form:{
+        image:'https://pixy.org/src2/607/thumbs350/6079302.jpg'
+      }
     };
   },
   props: {
@@ -136,6 +137,12 @@ data() {
             this.herobanner = response.data.data,
             console.log("herobanner"),
             console.log(this.herobenner)
+            }
+        ),
+        axios.get('herobanner/image' + this.$route.params.id).then(
+            (response) => {
+            this.images = JSON.parse(JSON.stringify(response.data.data));
+            console.log(this.images)
             }
         ),
         axios.get('services/' + this.$route.params.id).then(
@@ -165,7 +172,7 @@ data() {
      update(){
        this.isUpdated = true;
      },
-    uploadFile(){
+    onFileChange(){
       const file = this.$refs.preview.files[0];
       this.url = URL.createObjectURL(file);
       this.$refs.preview.value = "";
@@ -173,6 +180,10 @@ data() {
     deletePreview(){
       this.url = '';
       URL.revokeObjectURL(this.url);
+    },
+    loadFile(e) {
+      let imgHtml = document.querySelector('#bannerIMG');
+      imgHtml.src = URL.createObjectURL(e.target.files[0]);
     }
   }
 }
