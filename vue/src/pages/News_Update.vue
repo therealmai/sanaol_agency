@@ -65,6 +65,7 @@
   import Navbar from "../components/Navigation/Navbar.vue";
   import ConfirmButton from "../components/Buttons/FilledButton.vue";
   import CancelButton from "../components/Buttons/OutlineButton.vue";
+  import OutBtn from "../components/Buttons/OutlineButton.vue";
   import BackButton from "../components/Buttons/BackButton.vue";
   import TextInput from "../components/Input/TextInput.vue";
   import Modal from "../components/Modal/News Modals/UpdateNews.vue";
@@ -84,6 +85,7 @@
     DeleteModal,
     TitledInput,
     Label,
+    OutBtn,
     BackButton
 },
   

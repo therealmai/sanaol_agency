@@ -1,5 +1,4 @@
 <template>
-
     <div class="flex flex-row gap-10 ml-[100px] space-y-16 justify-center" >
      <img :src="image" alt="" class="w-[500px] rounded-[8px] bg-cover cursor-pointer" @click="this.$router.push('/news/'+id)">
 
@@ -17,8 +16,8 @@
             {{ content }}
           </p>
         <div v-show="islog==true && usertype=='admin'" class="flex items-center  ml-[60%] gap-[2%] mt-[25px] mb-[25px]" >
-            <OutlineButton text="Delete" class="w-[123px]"></OutlineButton>
-            <FilledButton text="Edit" class="w-[123px]"></FilledButton>
+            <OutlineButton text="Delete" class="w-[123px]"  @click='deleteNews'></OutlineButton>
+            <FilledButton text="Edit" class="w-[123px]" @click='editNews'></FilledButton>
         </div>
       </div>
      
@@ -30,6 +29,7 @@
   import Label from '../../Label/Label.vue';
   import OutlineButton from '../../Buttons/OutlineButton.vue';
   import FilledButton from '../../Buttons/FilledButton.vue';
+  import axios from '../../../axios';
   export default {
     name: 'EventCard2',
     components: {
@@ -47,6 +47,17 @@
       image: String,
       islog:Boolean,
       usertype: String
+    },
+    methods: {
+      editNews(){
+        this.$router.push('/news_update/'+ this.id);
+      },
+      deleteNews() {
+        axios.patch('news/delete/'+ this.id).then((response) =>{
+          console.log(response.data);
+        });
+        this.$emit('news_del')
+      }
     },
   };
   </script>

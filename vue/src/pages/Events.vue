@@ -28,7 +28,9 @@
       :location="item.location"
       :image="item.image"
       :islog="islog"
-      :usertype="usertype">
+      :usertype="usertype"
+      @news_del="getNews"
+      >
     </EventCard2Vue>
     </div>
   </div>
