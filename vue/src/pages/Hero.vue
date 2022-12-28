@@ -3,6 +3,7 @@
     <!-- <div class="w-full object-cover h-screen lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div> -->
     <Carousel
     :herobanners="hero"
+    :role="userType"
     />
   <!-- Service Container -->
   
@@ -50,6 +51,9 @@ import Label from '../components/Label/Label.vue';
 import Carousel from '../components/HeroBanner/Carousel.vue';
 import CardCarousel from '../components/HeroBanner/CardCarousel.vue';
 import axios from '../axios';
+import { computed, toRaw } from 'vue';
+import { useStore } from 'vuex';
+
 
 export default{
   components: {
@@ -63,18 +67,11 @@ export default{
     Carousel,
     CardCarousel
   },
-  data() {
+  setup() {
+    const store = useStore();
+
     return {
-      hero: [],
-      services: [],
-      events: [],
-      news: [],
-      isLoading: {
-        hero: true,
-        services: true,
-        events: true,
-        news: true
-      }
+      user: computed(() => store.state.user.data)
     }
   },
   methods: {
@@ -82,8 +79,8 @@ export default{
       axios.get('herobanner')
       .then((res) => {
         this.hero = res.data.slice(0,3); // only 3 herobanners to display
-        console.log(this.hero);
         this.isLoading.hero = false;
+        this.hero = this.__prependImages(this.hero);
       })
       .catch((err) => {
         console.log(err);
@@ -94,6 +91,8 @@ export default{
       .then((res) => {
         this.services = res.data.slice(0,2); // only 2 services to display
         this.isLoading.services = false;
+        this.services = this.__prependImages(this.services);
+        // console.log(this.services)
       })
       .catch((err) => {
         console.log(err);
@@ -135,13 +134,37 @@ export default{
         console.log(err);
       })
     },
-
+    __prependImages(arr) {
+      let result = arr.slice();
+      for(var obj of result) {
+        let prot = obj.image.slice(0, 4);
+        let base = prot === "http" ? '' : '/src/images/';  
+        obj.image = base + obj.image; 
+      }
+      return result;
+    }
   },
   mounted() {
+    this.userType = this.user != null ? this.user['user_type'] : null;
     this.getHeroBanner();
     this.getServices();
     this.getEvents();
     this.getNews();
+  },
+  data() {
+    return {
+      hero: [],
+      services: [],
+      events: [],
+      news: [],
+      isLoading: {
+        hero: true,
+        services: true,
+        events: true,
+        news: true
+      },
+      userType: ''
+    }
   }
 }
 </script>

@@ -63,7 +63,7 @@ Route::group(['middleware' => ['auth:admins']], function() {
 
     //HeroBanner
     Route::post('herobanner/create', [HeroBannerController::class, 'store']);
-    Route::patch('herobanner/{id}', [HeroBannerController::class, 'update']);
+    Route::post('herobanners/{id}', [HeroBannerController::class, 'update']);
     Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
 
     //News
