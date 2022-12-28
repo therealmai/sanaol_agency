@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex flex-row gap-10 ml-[100px] space-y-16 justify-center">
+    <div class="flex flex-row gap-10 ml-[100px] space-y-16 justify-center" @click="this.$router.push('/news/'+id)">
      <img :src="image" alt="" class="w-[500px] rounded-[8px] bg-cover">
 
       <div class=" flex flex-col w-[500px] items-start p-4">
