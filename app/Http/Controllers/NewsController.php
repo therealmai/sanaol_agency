@@ -88,6 +88,20 @@ class NewsController extends Controller
             $status = 500;
             $news = null;
         }
+        if($request->hasFile('image')){
+            $pathToFile = $request->file('image')
+                ->store('Event', 'vue');
+            $event->image = $pathToFile;
+        }
+        $event->title = $request->input('title');
+        $event->date = $request->input('date');
+        $event->event_type = $request->input('event_type');
+        $event->location = $request->input('location');
+        $event->content = $request->input('content');
+        $event->user_id = $request->input('user_id');
+        $event->author = $request->input('author');
+        $event->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+        $event->save();
         
         return response($this->generateRes($news, $status, $msg), 200, ['application/json']);
     }

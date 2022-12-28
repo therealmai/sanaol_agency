@@ -1,39 +1,61 @@
 <template>
-
-  <div class="flex flex-col justify-center content-center w-[440px] space-y-2 cursor-pointer" >
     
-    <!-- Image -->
-    <div class="bg-lightgray w-full h-[317.35px] border rounded-[8px]"></div>
-        
-    <span class="font-bold leading-none text-[24px] text-primary pt-4" :class="
-      hover != undefined ? `hover:bg-${hover}` : 'hover:bg-primaryHovered'
-    ">
-          {{ title }}
-        </span>
-        <!-- description -->
-        <p class="font-mediem leading-none text-[16px] text-secondary w-full">
-          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        </p>
-  </div>
-  <!-- </div> -->
+    <div class="flex flex-row gap-10 ml-[100px] space-y-16 justify-center" >
+     <img :src="image" alt="" class="w-[500px] rounded-[8px] bg-cover cursor-pointer" @click="this.$router.push('/news/'+id)">
+      <div class=" flex flex-col w-[500px] items-start p-4">
+          <!-- subtitle -->
+          <span class="font-bold text-[30px] text-primary pt-4 cursor-pointer" @click="this.$router.push('/news/'+id)">
+            {{ title }}
+          </span>
+          <!-- details -->
+          <p class="font-medium text-[16px] text-detailText pt-0">
+            <span>{{ date }}</span> | <span>{{ location }}</span>
+          </p>
+          <!-- description -->
+          <p class="font-normal leading-normal text-[16px] text-secondary pt-0 text-justify">
+            {{ content }}
+          </p>
+        <div v-show="islog==true && usertype=='admin'" class="flex items-center  ml-[60%] gap-[2%] mt-[25px] mb-[25px]" >
+            <router-link :to="'/news/edit/' + id">
+            <OutlineButton text="Delete" class="w-[123px]"  @click='deleteNews'></OutlineButton>
+            </router-link>
+            <router-link :to="'/news/' + id">
+            <FilledButton text="Edit" class="w-[123px]" @click='editNews'></FilledButton>
+            </router-link>
+        </div>
+      </div>
+     
+    </div>
+    
+  </template>
+  
+  <script>
+  import OutlineButton from '../../Buttons/OutlineButton.vue';
+  import FilledButton from '../../Buttons/FilledButton.vue';
 
-</template>
+  export default {
+    name: 'NewsCard',
+    components: {
+      OutlineButton,
+      FilledButton,
 
-<script>
+    },
+  
+    props: {
+      title: String,
+      date: Number,
+      location: String,
+      content: String,
+      id: Number,
+      image: String,
+      author: String,
+      islog: String,
+      usertype: String,
 
-
-export default {
-  name: 'NewsCard',
-  components: {
-  },
-  props: {
-    title: String,
-    hover: String
-  },
-  computed: {
-  },
-};
-</script>
-
-<style>
-</style>
+    },
+  };
+  </script>
+  
+  <style>
+  </style>
+  

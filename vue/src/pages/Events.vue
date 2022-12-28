@@ -19,7 +19,7 @@
 
   <div class="flex flex-col space-y-6">
     <div v-for="item in News" :key="item.id">
-      <EventCard2Vue 
+      <Newscard 
       :id="item.id"
       :title="item.title"
       :author="item.author"
@@ -31,7 +31,7 @@
       :usertype="usertype"
       @news_del="getNews"
       >
-    </EventCard2Vue>
+    </Newscard>
     </div>
   </div>
 
@@ -48,7 +48,7 @@ import Navbar from '../components/Navigation/Navbar.vue';
 import Modal from '../components/Modal/Modal.vue';
 import TextInput from '../components/Input/TextInput.vue';
 import SearchButton from '../components/Buttons/SearchButton.vue';
-import EventCard2Vue from '../components/Cards/Events/EventCard2.vue';
+import Newscard from '../components/Cards/News/NewsCard.vue';
 import EventCard from '../components/Cards/Events/EventCard.vue';
 import PaginationButtonVue from '../components/Buttons/PaginationButton.vue';
 import OutlineButton from '../components/Buttons/OutlineButton.vue';
@@ -61,7 +61,7 @@ export default{
     return {
       islog:'',
       usertype:'',
-      News: []
+      News: [],
     }
   },
   components: {
@@ -69,7 +69,7 @@ export default{
     Modal,
     TextInput,
     SearchButton,
-    EventCard2Vue,
+    Newscard,
     EventCard,
     PaginationButtonVue,
     FilledButton,

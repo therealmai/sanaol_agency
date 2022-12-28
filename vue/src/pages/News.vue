@@ -11,7 +11,7 @@
           <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
           <div class="flex flex-row gap-4 right-[314.44px]" v-if="isAdmin">
             <OutBtn text="DELETE" class="w-[123px]" @click="showModal"></OutBtn>
-            <router-link :to="'/news_update/'+ id"><FilledBtn text="EDIT" class="w-[93px]"></FilledBtn></router-link>
+            <router-link :to="'/news/edit/'+ id"><FilledBtn text="EDIT" class="w-[93px]"></FilledBtn></router-link>
           </div>
       </div>
 
