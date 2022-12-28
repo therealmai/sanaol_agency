@@ -3,7 +3,7 @@
     <div style= "position: absolute;margin-top:35px;margin-left:15px; font-size: 14px;">{{ title }} </div>
     <br />
       <!-- TODO: When verification is set up, bind padding-right to state to accomodate Password eye icon. -->
-      <input
+      <input 
       :value="modelValue"
       @input="$emit('update:modelValue',$event.target.value)"
         type="text"
@@ -11,7 +11,6 @@
         class="
           pl-4
           pr-4
-          py-[14px]
           bg-inputField
           rounded-[2px]
           text-inputText
@@ -22,7 +21,7 @@
           pb-5
           pt-10
         "
-        style = "color: #525252;"
+        style = "color: #525252; white-space: pre-wrap; "
         :style ="{ width: width + 'px', height: height + 'px', fontSize: fontSize + 'px' }"
 
 

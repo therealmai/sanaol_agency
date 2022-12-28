@@ -3,7 +3,7 @@
     
     <primary-button  text="cancel" height="25" width="100" color="White" fontSize="12" @click="$router.push('Events')"></primary-button>
     <div style="margin-left: 320px; margin-top: 20px;">
-        <p1 style="font-weight: bold; font-size: 30px;">Edit Events</p1><br><br><br><br>
+        <p1 style="font-weight: bold; font-size: 30px;">Edit Events</p1><br><br>
        
         <div style="margin-left: 100px; margin-top: 30px;">
             
@@ -13,20 +13,21 @@
                 <label for="file">
                     <img id="imgEvents" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
                 </label>
-                <br><br><br>
                 <div >
                 <titled-input width="528" height="49.6" fontSize="16" title="Event Title" v-model.trim="events.title"></titled-input><br>
                 <titled-input width="528" height="49.6" fontSize="16" title="Event Date" v-model.trim="events.date"></titled-input><br>
                 <titled-input width="528" height="49.6" fontSize="16" title="Event Location" v-model.trim="events.location"></titled-input><br>
-                <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model.trim="events.event_type" ></titled-input><br><br>
+                <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model.trim="events.event_type" ></titled-input><br>
                 <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model.trim="events.content"></titled-input><br><br>
-                </div>
+        
+                
+            </div>
      
             </form>
         <div class="flex gap-4">
-            <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
+            <FilledButton class="mr-9 pl-5 pr-5" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
             <!-- <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36" @click="showDeleteModal"/> -->
-            <OutlineButton fontSize="12" color="white" text="Cancel" width="99" height="36" @click="goBackToEvents"/>
+            <OutlineButton class=" pl-4 pr-4" fontSize="12" color="white" text="Cancel" width="99" height="36" @click="goBackToEvents"/>
             </div><br><br><br>
         </div>
 
@@ -74,6 +75,7 @@ import DeletedModal from '../components/Modal/DeletedModal.vue'
 import axios from '../axios'
 import {mapState} from 'vuex'
 
+ const cssFormInputsStr = "border-1 rounded-lg p-3 form__inputs  ";     
 export default {
   components: { 
     FilledButton,
@@ -103,6 +105,7 @@ export default {
             rootImgPath: '',
             isUpdateModalVisible: false,
             isDeleteModalVisible: false,
+            cssFormInputs: cssFormInputsStr,
         }
     },
     computed: {
@@ -229,4 +232,9 @@ export default {
     font-size: 18px;
     text-align: center;
 }
+
+.form__inputs {
+        width: 528px;
+}
+
 </style>

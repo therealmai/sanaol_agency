@@ -3,73 +3,45 @@
     
     <primary-button  text="cancel" height="25" width="100" color="White" fontSize="12" @click="$router.push('Events')"></primary-button>
     <div style="margin-left: 320px; margin-top: 20px;">
-        <p1 style="font-weight: bold; font-size: 30px;">Create Events {{author}}</p1><br><br><br><br>
+        <p1 style="font-weight: bold; font-size: 30px;">Edit Events</p1><br><br>
        
         <div style="margin-left: 100px; margin-top: 30px;">
             
-            <form method='post'  >
-                    <div class="file-upload-section">
-                    
-                    <div class="file-upload">
-                    <label class="upload-box" for="file-upload" >+</label>
-                    <label id="preview" for="file-upload">
-                        <img style="height:184px;width:170px;position: absolute;margin-top: -101px; z-index: 3" :key="url" v-if="url" :src="url" />
-                    </label>
-                    <input type="file" id="file-upload" @change="onFileChange" hidden/>
-                        
-                    </div>
-                    <div v-if="url">
-                        
-                        <button style="position: absolute;z-index: 4;top: 10.8%;margin-left: 159px;" @click="removeImage()">
-                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_326_3033)">
-                                <path d="M9.43848 16.5938C13.5806 16.5938 16.9385 13.2359 16.9385 9.09375C16.9385 4.95161 13.5806 1.59375 9.43848 1.59375C5.29634 1.59375 1.93848 4.95161 1.93848 9.09375C1.93848 13.2359 5.29634 16.5938 9.43848 16.5938Z" fill="white" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M11.6885 6.84375L7.18848 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7.18848 6.84375L11.6885 11.3438" stroke="#525252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </g>
-                                <defs>
-                                <clipPath id="clip0_326_3033">
-                                <rect width="18" height="18" fill="white" transform="translate(0.438477 0.09375)"/>
-                                </clipPath>
-                                </defs>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            
 
-<br><br><br>
-            <div >
-            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Title" v-model="events.title"></eventsInput><br>
-            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Date" v-model="events.date"></eventsInput><br>
-            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Location" v-model="events.location"></eventsInput><br>
-            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Type"  v-model="events.event_type"></eventsInput><br><br>
-            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Description" v-model="events.content"></eventsInput><br><br>
+            <form enctype="multipart/form-data" method="patch" class="flex flex-col items-start gap-5" action="">
+                <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
+                <label for="file">
+                    <img id="imgEvents" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
+                </label>
+                <div >
+                <eventsInput width="528" height="49.6" fontSize="16" holder="Event Title" v-model.trim="events.title"></eventsInput><br>
+            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Date" v-model.trim="events.date"></eventsInput><br>
+            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Location" v-model.trim="events.location"></eventsInput><br>
+            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Type"  v-model.trim="events.event_type"></eventsInput><br><br>
+            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Description" v-model.trim="events.content"></eventsInput><br><br>
+          
             </div>
-            <!-- <input v-model="title" type="text"  class=" pl-4 pr-4 py-[14px] bg-inputField rounded-[2px] text-inputText outline outline-inputOutline box-outline text-color" placeholder="Event Title" style = "color: #525252;width: 528px; height: 49.6; fontSize: 16;"  />
-         -->
+     
+            </form>
         <div class="flex gap-4">
-            <FilledButton class="mr-9" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
+            <FilledButton class="mr-9 pl-5 pr-5" fontSize="12" color="white" text="Save" width="99" height="36" @click="showUpdateModal"/>
             <!-- <OutlineButton class="mr-9" fontSize="12" color="white" text="Delete" width="99" height="36" @click="showDeleteModal"/> -->
-            <OutlineButton fontSize="12" color="white" text="Cancel" width="99" height="36" @click="goBackToEvents"/>
-        </div><br><br><br>
-        
-    </div>
-        
+            <OutlineButton class=" pl-4 pr-4" fontSize="12" color="white" text="Cancel" width="99" height="36" @click="goBackToEvents"/>
+            </div><br><br><br>
+        </div>
 
         <!-- Modal appears after you click the SAVE button -->
         
-        <Modal v-show="isUpdateModalVisible" >
+        <Modal v-show="isUpdateModalVisible">
             <template v-slot:modal_content>
                 <svg xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 67 67" fill="none">
                 <path d="M62.2746 2.58296C59.4087 -0.282861 54.7763 -0.282861 51.9105 2.58296L47.9716 6.50874L60.7828 19.3199L64.7216 15.381C67.5874 12.5152 67.5874 7.88276 64.7216 5.01694L62.2746 2.58296ZM23.1214 31.372C22.3232 32.1703 21.7082 33.1517 21.3548 34.2378L17.4814 45.8582C17.1019 46.9835 17.4029 48.2267 18.2404 49.0773C19.0779 49.9279 20.321 50.2158 21.4595 49.8363L33.0798 45.9628C34.1529 45.5964 35.1343 44.9945 35.9457 44.1962L57.8384 22.2904L45.0142 9.46616L23.1214 31.372V31.372ZM13.1238 8.11831C6.18823 8.11831 0.561279 13.7453 0.561279 20.6808V54.1808C0.561279 61.1164 6.18823 66.7433 13.1238 66.7433H46.6238C53.5593 66.7433 59.1863 61.1164 59.1863 54.1808V41.6183C59.1863 39.3021 57.315 37.4308 54.9988 37.4308C52.6826 37.4308 50.8113 39.3021 50.8113 41.6183V54.1808C50.8113 56.497 48.94 58.3683 46.6238 58.3683H13.1238C10.8076 58.3683 8.93628 56.497 8.93628 54.1808V20.6808C8.93628 18.3646 10.8076 16.4933 13.1238 16.4933H25.6863C28.0025 16.4933 29.8738 14.622 29.8738 12.3058C29.8738 9.9896 28.0025 8.11831 25.6863 8.11831H13.1238Z" fill="#8075F1"/>
                 </svg>
                 <h1 class="modal-heading">Update Confirmation</h1>
-                <p class="modal-paragraph">Are you sure you want to save the changes<br>made on this service? Please confirm.</p>
-                <Info text="Saving the changes will change what the public sees on the services page."></Info>
+                <p class="modal-paragraph">Are you sure you want to save the changes<br>made on this event? Please confirm.</p>
+                <Info text="Saving the changes will change what the public sees on the events page."></Info>
                 <div class="flex gap-10 mt-5 mb-5">
-                    <FilledButton id="updateButton" class="w-[100px]" text="CONFIRM" @click="sendPatchRequest(), confirmUpdateModal()"></FilledButton>
+                    <FilledButton id="updateButton" class="w-[100px]" text="CONFIRM" @click="updateEvent(), confirmUpdateModal()"></FilledButton>
                     <OutlineButton class="w-[100px]" text="CANCEL" @click="closeUpdateModal()"></OutlineButton>
                 </div>
             </template>
@@ -83,13 +55,14 @@
         <!-- Modal appears after you click the CONFIRM button -->
         <DeletedModal id="mydeletemodal" text="events" v-show="isConfirmDeleteModal" @click="closeDeleteModal">
         </DeletedModal>
+
     </div>
 </body>
 </template>
 
 <script>
 import FilledButton from '../components/Buttons/FilledButton.vue'
-import TextInput from '../components/Input/TextInput.vue'
+import TitledInput from '../components/Input/TitledInput.vue'
 import InputTags from '../components/Input/InputTags.vue'
 import OutlineButton from '../components/Buttons/OutlineButton.vue'
 import Modal from '../components/Modal/Modal.vue'
@@ -99,32 +72,26 @@ import Warning from '../components/Others/Warning.vue'
 import DeletedModal from '../components/Modal/DeletedModal.vue'
 import eventsInput from '../components/Input/EventsInput/modelValueInput.vue'
 
-import {mapState} from 'vuex'
 import axios from '../axios'
+import {mapState} from 'vuex'
+
+ const cssFormInputsStr = "border-1 rounded-lg p-3 form__inputs  ";     
 export default {
   components: { 
     FilledButton,
-    TextInput,
+    TitledInput,
     InputTags,
     OutlineButton,
     Modal,
     Info,
     UpdateModal,
     Warning,
-    DeletedModal,
-    eventsInput,
-    },
-    computed: {
-        author() {
-            return this.$store.state.user.data.insta_handle
-        },
-        userID() {
-            return this.$store.state.user.data.id
-        }
+    DeletedModal, 
+    eventsInput
     },
     data() {
         return {
-            events : {
+            events: {
                 user_id: this.$store.state.user.data.id,
                 title : '',
                 content : '',
@@ -135,30 +102,79 @@ export default {
                 date : '',
                 ref : ''
             },
-            url: '',
+            previewImg: '',
+            rootImgPath: '',
             isUpdateModalVisible: false,
             isDeleteModalVisible: false,
+            cssFormInputs: cssFormInputsStr,
+        }
+    },
+    computed: {
+        author() {
+            return this.$store.state.user.data.insta_handle
+        },
+        userID() {
+            return this.$store.state.user.data.id
         }
     },
     
     methods: {
-        updateAuthor() {
-            this.$store.dispatch('updateAuthor', this.author)
+        
+        updateEvent() {
+                if(this.events.title == '' 
+                    || this.events.date == '' 
+                    || this.events.location == ''
+                    || this.events.event_type == ''
+                    || this.events.content == '') {
+                    alert('All fields must be filled.');
+                    this.isModalVisible = false;
+                    return;
+                }
+
+                let data = new FormData;
+                data.set('image', this.events.image);
+                data.set('title', this.events.title);
+                data.set('date', this.events.date);
+                data.set('location', this.events.location);
+                data.set('event_type', this.events.event_type);
+                data.set('content', this.events.content);
+                data.set('user_id', this.events.user_id);
+                data.set('author', this.events.author);
+
+                console.log(...data)
+                
+
+                
+                axios.post('/events/create', data, {
+                    headers: {
+                        'Content-type': 'multipart/form-data'
+                    }
+                }).then(
+                    (response) => {
+                        console.log(data)
+                        console.log(response.data)
+                    }
+                )
         },
-        sendPatchRequest() {
-            axios.post('events/create', this.events)
-            .then(response =>{
-                console.log(response)
-            })
-        },
-        onFileChange (e) {
-            let file = e.target.files[0]
-            this.url = URL.createObjectURL(file)
-            this.events.image = this.url
-        },
+        loadFile(e) {
+                let imgHtml = document.querySelector('#imgEvents');
+                this.events.image = e.target.files[0];
+                imgHtml.src = URL.createObjectURL(this.events.image);
+                
+                
+                
+
+            },
+            
+        // onFileChange (e) {
+        //     let file = e.target.files[0]
+        //     this.url = URL.createObjectURL(file)
+        //     this.prev = this.events.image
+        //     this.events.image = this.url
+        // },
         removeImage: function () {
             this.url = null
-            this.events.image = null
+            this.events.image = this.prev
         },
         goBackToEvents() {
             this.$router.push('/events_management');
@@ -175,7 +191,7 @@ export default {
         },
         showDeleteModal(){
             this.isDeleteModalVisible = true;
-        }, 
+        },
         closeModal(){
             var modal = document.getElementById("myupdatemodal");
             modal.style.display = "none";
@@ -183,7 +199,9 @@ export default {
         closeDeleteModal(){
             var modal = document.getElementById("mydeletemodal");
             modal.style.display = "none";
-        }
+        },
+        
+
     },
     
  };
@@ -210,4 +228,9 @@ export default {
     font-size: 18px;
     text-align: center;
 }
+
+.form__inputs {
+        width: 528px;
+}
+
 </style>

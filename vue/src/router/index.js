@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import App from "../App.vue";
 import Login from "../pages/Login.vue";
 import Hero from "../pages/Hero.vue";
+import HerobannerMG from "../pages/herobannerMG.vue";
 import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
@@ -16,6 +17,7 @@ import UserManagement from "../pages/UserManagement.vue";
 import News_Create from "../pages/News_Create.vue";
 import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
+import herobannerMG2 from "../pages/herobannerMG2.vue";
 import EventsCreate from "../pages/CreateEvent.vue";
 
 const routes = [
@@ -87,7 +89,7 @@ const routes = [
                 meta: { title: 'Create News' }
             },
             {
-                path: "/news_update/:id",
+                path: "/news/edit/:id",
                 name: "news_update",
                 component: News_Update,
                 meta: { title: 'Edit News' }
@@ -122,6 +124,16 @@ const routes = [
                 component: Reminders,
                 meta: { title: 'Reminders' }
             },
+            {
+                path: "/herobannerMG",
+                name: "Herobanner MG",
+                component: HerobannerMG
+            },
+            {
+                path: "/herobannerMG2",
+                name: "Herobanner MG2",
+                component: herobannerMG2
+            }
         ]
 
     },

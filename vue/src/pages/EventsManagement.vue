@@ -16,15 +16,17 @@
           Events Management
         </h1>
       </div>
-      <div>
-        <LearnButton
-          style="right: 5%; position: absolute"
-          :text="'ADD EVENT'"
-          :height="35"
-          :width="120"
-          :fontSize="15"
-        />
-      </div>
+      <router-link :to="'/events/create'">
+          <div>
+            <FilledButton
+              class="pl-5 pr-5" style="margin-left: 850px;"
+              :text="'ADD EVENT'"
+              :height="35"
+              :width="120"
+              :fontSize="15"
+            />
+          </div>
+      </router-link>
     </div>
     <div id="table" style="margin-top: 20px; width: 100%">
       <table class="styled-table">
@@ -51,11 +53,11 @@
               {{event.date}}
             </td>
             <td style="display: flex ">
-              <router-link :to="'/events/edit/' + event.id" >
-                <FilledButton text="Edit" class="pl-5 pr-5" />
+              <router-link :to="'/events/edit/' + event.id">
+                <FilledButton text="Edit" class="pl-5 pr-5 " />
               </router-link>
               <div class="ml-3"></div>
-                <OutlineButton text="Delete" class="pl-4 pr-4"/>
+                <OutlineButton text="Delete" class="pl-4 pr-4 " @click="deleteEvent(event.id)"/>
             </td>
           </tr>
         </tbody>
@@ -214,8 +216,19 @@ export default {
     return {
       events: [],
     }
+  },
+  methods: {
+    deleteEvent(id) {
+      axios.patch(`events/delete/${id}`)
+        .then(response => {
+          console.log('Nothing to see here');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
-};
+}
 </script>
 
 <style>
