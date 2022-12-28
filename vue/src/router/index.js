@@ -89,7 +89,7 @@ const routes = [
                 meta: { title: 'Create News' }
             },
             {
-                path: "/news_update",
+                path: "/news/edit/:id",
                 name: "news_update",
                 component: News_Update,
                 meta: { title: 'Edit News' }

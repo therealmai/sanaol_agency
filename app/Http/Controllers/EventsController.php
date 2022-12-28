@@ -33,12 +33,28 @@ class EventsController extends Controller
     {
        \Log::info(json_encode($request->all()));
         $request->validate([
-            
         ]);
 
         $event = new Event;
         $event->fill($request->except(['user_id']));
         $event->user_id = $request->user_id;
+
+         if($request->hasFile('image')){
+            $pathToFile = $request->file('image')
+                ->store('Event', 'vue');
+            $event->image = $pathToFile;
+        }
+        $event->title = $request->input('title');
+        $event->date = $request->input('date');
+        $event->event_type = $request->input('event_type');
+        $event->location = $request->input('location');
+        $event->content = $request->input('content');
+        $event->user_id = $request->input('user_id');
+        $event->author = $request->input('author');
+        $event->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+        $event->save();
+
+        
 
         if($event->save()) {
             return response($event, 200, ['application/json']);
