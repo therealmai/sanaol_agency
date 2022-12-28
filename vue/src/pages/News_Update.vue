@@ -1,7 +1,7 @@
 <template>
     <div id="main-div" style="color: #525252">
-      <div id="div-Back">
-        <BackButton id="btn-Back" text="Back"></BackButton>
+      <div class="">
+        <OutBtn text="BACK" class="w-[95px] ml-[44px] mt-[31.79px]" @click="$router.back()"></OutBtn>
       </div>
       <h1 style="padding-left:178px; font-weight: 700; text-align: left; font-size: x-large">Edit News</h1>
   
@@ -65,6 +65,7 @@
   import Navbar from "../components/Navigation/Navbar.vue";
   import ConfirmButton from "../components/Buttons/FilledButton.vue";
   import CancelButton from "../components/Buttons/OutlineButton.vue";
+  import OutBtn from "../components/Buttons/OutlineButton.vue";
   import BackButton from "../components/Buttons/BackButton.vue";
   import TextInput from "../components/Input/TextInput.vue";
   import Modal from "../components/Modal/News Modals/UpdateNews.vue";
@@ -84,6 +85,7 @@
     DeleteModal,
     TitledInput,
     Label,
+    OutBtn,
     BackButton
 },
   
@@ -98,6 +100,9 @@
       };
     },
     methods: {
+      goBack() {
+                this.$router.push('/News/'+this.$route.params.id);
+            },
       showModal() {
         this.isModalVisible = true;
       },
