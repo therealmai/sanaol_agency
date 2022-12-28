@@ -6,7 +6,7 @@
             <form enctype="multipart/form-data" method="patch" class="flex flex-col items-start gap-5" action="">
                 <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
                 <label for="file">
-                    <img id="imgService" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
+                    <img id="imgNews" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
                 </label>
                 <div>
                     <label for="title">Title</label>
@@ -31,10 +31,10 @@
                     </svg>
                     <h1 class="modal__title">Update Confirmation</h1>
                     <span class="modal__content">Are you sure you want to save the changes made on this news? Please confirm.</span>
-                    <Info text="Saving the changes will change what the public sees on the services page."/>
+                    <Info text="Saving the changes will change what the public sees on the news page."/>
         
                     <div class="flex gap-10 mt-4">
-                        <FilledButton v-on:click="updateService" class="w-[141px] h-[33px]" text="CONFIRM" />
+                        <FilledButton v-on:click="updateNews" class="w-[141px] h-[33px]" text="CONFIRM" />
                         <OutlineButton v-on:click="closeModal"  class="w-[141px] h-[33px]" text="CANCEL" />
                     </div>
                 </template>
@@ -62,7 +62,7 @@
     export default {
         mounted() {
             let id = this.$route.params.id;
-            axios.get('/services/' + id).then(
+            axios.get('/news/' + id).then(
                 (response) => {
                     if(response.status == 200) {
                         this.news = response.data.data;
@@ -75,7 +75,14 @@
         },
         data() {
             return {
-                news: {},
+                news: {
+                  user_id: this.$store.state.user.data.id,
+                  title : '',
+                  content : '',
+                  image : '',
+                  author : this.$store.state.user.data.insta_handle,
+                  ref : '#',
+                },
                 previewImg: '',
                 rootImgPath: '',
                 cssFormInputs: cssFormInputsStr,
@@ -85,10 +92,10 @@
         }, 
         methods: {
             goBack() {
-                this.$router.push('/services');
+                this.$router.push('/news');
             },
             loadFile(e) {
-                let imgHtml = document.querySelector('#imgService');
+                let imgHtml = document.querySelector('#imgNews');
                 this.news.image = e.target.files[0];
                 imgHtml.src = URL.createObjectURL(this.news.image);
             },
@@ -98,7 +105,7 @@
             closeModal() {
                 this.isModalVisible = false;
             },
-            updateService() {
+            updateNews() {
                 if(this.news.title == '' || this.news.content == '') {
                     alert('All fields must be filled.');
                     this.isModalVisible = false;
@@ -109,11 +116,13 @@
                 data.set('image', this.news.image);
                 data.set('title', this.news.title);
                 data.set('content', this.news.content);
+                data.set('user_id', this.news.user_id);
+                data.set('author', this.news.author);
 
                 console.log(...data)
 
                 let id = this.$route.params.id;
-                axios.post('/services/' + id, data, {
+                axios.post('/news/' + id, data, {
                     headers: {
                         'Content-type': 'multipart/form-data'
                     }
