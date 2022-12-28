@@ -14,7 +14,7 @@
   </div>
     <div class="flex flex-row justify-between mb-[50px]">
       <h1 class="font-bold text-3xl text-secondary ml-[15%]">News articles</h1>
-      <FilledButton v-show="islog==true && usertype == 'admin'"  text="Add Articles" class="w-[179px] mr-[13%]"></FilledButton>
+      <FilledButton v-show="islog==true && usertype == 'admin'"  text="Add Articles" class="w-[179px] mr-[13%]" @click="this.$router.push('/news/create')"></FilledButton>
    </div>
 
   <div class="flex flex-col space-y-6">

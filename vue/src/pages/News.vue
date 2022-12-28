@@ -10,7 +10,7 @@
 
           <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
           <div class="flex flex-row gap-4 right-[314.44px]" v-if="isAdmin">
-            <OutBtn text="DELETE" class="w-[123px]" @click="showModal"></OutBtn>
+            <OutBtn text="DELETE" class="w-[123px]" @click="deleteEvent(news.id)"></OutBtn>
             <router-link :to="'/news/edit/'+ id"><FilledBtn text="EDIT" class="w-[93px]"></FilledBtn></router-link>
           </div>
       </div>
@@ -58,7 +58,7 @@ export default {
         this.news = response.data.data
         let prot = this.news.image.slice(0, 4);
         this.rootImgPath = prot === "http" ? '' : '/src/images/'
-        console.log()
+        
       }
     )
   },
@@ -74,6 +74,19 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    getBack(){
+      this.$router.push('/news');
+    },
+    deleteEvent(id) {
+      axios.patch(`news/delete/${id}`)
+        .then(response => {
+          console.log('Nothing to see here');
+          this.$router.push('/events');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>

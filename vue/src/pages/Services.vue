@@ -43,8 +43,6 @@
       axios.get('http://127.0.0.1:8000/api/services').then(
         (response) => {
           this.services = response.data
-          // console.log("services"),
-          // console.log(this.services)
         }
       )
     },

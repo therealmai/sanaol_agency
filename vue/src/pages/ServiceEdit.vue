@@ -1,5 +1,3 @@
-Service Edit
-
 <template>
     <div>
         <OutlineButton v-on:click="goBack" text="BACK" class="h-[33px] w-[100px] mt-10 ml-10"/>

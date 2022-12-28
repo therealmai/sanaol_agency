@@ -3,7 +3,7 @@
     
     <primary-button  text="cancel" height="25" width="100" color="White" fontSize="12" @click="$router.push('Events')"></primary-button>
     <div style="margin-left: 320px; margin-top: 20px;">
-        <p1 style="font-weight: bold; font-size: 30px;">Edit Events</p1><br><br>
+        <p1 style="font-weight: bold; font-size: 30px;">Create Events</p1><br><br>
        
         <div style="margin-left: 100px; margin-top: 30px;">
             
@@ -165,13 +165,7 @@ export default {
                 
 
             },
-            
-        // onFileChange (e) {
-        //     let file = e.target.files[0]
-        //     this.url = URL.createObjectURL(file)
-        //     this.prev = this.events.image
-        //     this.events.image = this.url
-        // },
+
         removeImage: function () {
             this.url = null
             this.events.image = this.prev
