@@ -19,6 +19,7 @@ import UserManagement from "../pages/UserManagement.vue";
 import News_Create from "../pages/News_Create.vue";
 import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
+import herobannerMG2 from "../pages/herobannerMG2.vue";
 
 const routes = [
     // {
@@ -108,9 +109,14 @@ const routes = [
                 component: EventsManagement
             },
             {
-                path: "/herobannerMG/:id",
+                path: "/herobannerMG",
                 name: "Herobanner MG",
                 component: HerobannerMG
+            },
+            {
+                path: "/herobannerMG2",
+                name: "Herobanner MG2",
+                component: herobannerMG2
             }
         ]
 

@@ -60,60 +60,10 @@
   
 
   <!-- select option (manual) -->
-  <div class="ml-6 flex-auto">
-      <p style="color:#A8A8A8; font-family:Inter; font-size:24px; font-weight: 500;">II. Featured Events</p>
-                    <div>
-                      
-                            <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1880_110)">
-                            <path d="M4.67112 9.99632C5.02268 10.3137 5.59362 10.3137 5.94518 9.99632L9.54518 6.74632C9.80393 6.51273 9.87987 6.16487 9.73924 5.86019C9.59862 5.5555 9.27237 5.35745 8.90674 5.35745L1.70674 5.35999C1.34393 5.35999 1.01487 5.55804 0.874241 5.86273C0.733616 6.16741 0.812366 6.51527 1.0683 6.74886L4.6683 9.99886L4.67112 9.99632Z" fill="#979797"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1880_110">
-                            <rect width="9" height="13" fill="white" transform="translate(0.806641 0.484985)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-                    </div>
-      <select v-model="newsSetting" class="w-[529px] h-[53px] 
-          outline outline-gray-400 outline-2 rounded-md ml-5">
-          <option value="" selected disabled>Show 3 of most recent news</option>
-          
-          <!-- selecting news -->
-          <option value="">A</option>
-          <option value="">B</option>
-          <option value="">C</option>
-      </select>
-  </div><br>
 
-  <!-- changing picture (manual) -->
-  <div class="ml-7 flex-auto">
-      <p style="color:#A8A8A8; font-family:Inter; font-size:24px; font-weight: 500;">III. Featured Services</p>
-      <div class="ml-6 p-1 ml-5">
-          <p style="color:#A8A8A8; font-family:Inter; font-size:20px; font-weight: 400;">Service Header 1</p>
-          <img src="url{{services.image}}" width="167px" height="167px" style="object-fit: none;" class="rounded-lg" alt="service header">
-          <TitledInput :fontSize="18" :width="525" :height="53" class="w-4/5 h-[30px]"  title= "Service Header" v-model="services.title"/><br>
-          <TitledInput :fontSize="18" :width="525" :height="120" class="w-4/5 h-[100px]" title="Short Service Description" v-model="services.content"/><br>
-
-          <p style="color:#A8A8A8; font-family:Inter; font-size:20px; font-weight: 400;">Service Header 2</p>
-          <img src="url{{services.image}}" width="167px" height="167px" style="object-fit: none;" class="rounded-lg" alt="service header">
-          <TitledInput :fontSize="18" :width="525" :height="53" class="w-4/5 h-[30px]"  title= "Service Header" v-model="services.title"/><br>
-          <TitledInput :fontSize="18" :width="525" :height="120" class="w-4/5 h-[100px]" title="Short Service Description" v-model="services.content"/><br>
-      </div>
-  </div>
 
   <!-- select option (manual) -->
-  <div class="ml-6 flex-auto">
-      <p style="color:#A8A8A8; font-family:Inter; font-size:24px; font-weight: 500;">IV. Featured News</p>
-      <select v-model="herobanner.preview_news" class="w-[527px] h-[30px] 
-          outline outline-gray-400 outline-2 rounded-md ml-5">
-             <option value="" selected disabled>Show 3 of most recent news</option>
-          <!-- selecting news -->
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
-      </select>
-  </div><br><br>
+  
 
   <!-- Save and Cancel buttons -->
   <div class="grid gap-2 sm:grid-cols-2 flex">
@@ -122,7 +72,7 @@
           hover:shadow-lg hover:text-indigo-500 hover:bg-gray-50 outline-primary outline-1 outline
            focus:ring-0 active:shadow-lg transition duration-300 fontsize:20px" 
       text="Save" @click="showModal"/>  
-    <OutlineButton class="flex-auto" text="Cancel" @click="$router.go(-1)"/>
+    <OutlineButton class="flex-auto" text="Cancel" @click="$router.push('/hero')"/>
 
     <Modal v-show="isModalVisible">
       <template #modal_content>
