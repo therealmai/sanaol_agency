@@ -1,7 +1,6 @@
 <template>
 
 <div class="flex flex-col w-full ">
-
   <div class="mb-10">
     <div class="flex flex-col mt-[76px]">
       <div class="flex flex-row justify-between">
@@ -13,7 +12,6 @@
     </div>
     <CardCarousel class="flex justify-center ml-[150px]"></CardCarousel>
   </div>
-
     <div class="flex flex-row justify-between mb-[50px]">
       <h1 class="font-bold text-3xl text-secondary ml-[15%]">News articles</h1>
       <FilledButton v-show="islog==true && usertype == 'admin'"  text="Add Articles" class="w-[179px] mr-[13%]"></FilledButton>
@@ -79,8 +77,9 @@ export default{
   methods: {
     getNews() {
       axios.get('/news').then((response)=>{
-        this.News = response.data;
-        console.log(this.News);
+        this.News = response.data.filter((news) => {
+          return news.is_deleted == 0;
+        });
       })
     }
   },
