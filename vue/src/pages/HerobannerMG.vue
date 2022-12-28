@@ -140,13 +140,13 @@ data() {
             console.log(this.images)
             }
         ),
-        // axios.get('services/' + this.$route.params.id).then(
-        //     (response) => {
-        //     this.services = response.data.data,
-        //     console.log("service"),
-        //     console.log(this.services)
-        //     }
-        // )
+        axios.get('services/' + this.$route.params.id).then(
+            (response) => {
+            this.services = response.data.data,
+            console.log("service"),
+            console.log(this.services)
+            }
+        )
   },
   methods: {
     showModal() {
