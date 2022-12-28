@@ -40,6 +40,10 @@
       <div class="carousel-caption hidden md:block absolute text-right top-64">
         <h5 class="text-xl">{{ userExist ? herobanner.header_gen :herobanner.header_tal }}</h5>
         <p>{{ userExist ?herobanner.subheader_gen : herobanner.subheader_tal }}</p>
+        <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
+        <div class="btn-edit" v-if="role == 'admin'">
+            <router-link :to="'/hero/edit/'+ herobanner.id"><FilledButton text="Edit Hero Banner" class="w-[176px] " color="white"  ></FilledButton></router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -69,21 +73,25 @@
 
 <script>
 import store from '../../store';
+import FilledButton from '../Buttons/FilledButton.vue';
 
 export default {
   name: "Carousel",
+  components: {
+    FilledButton
+  },
   props: {
     herobanners: Array,
+    role: String
   },
   computed: {
     userExist() {
       return store.state.user !== null;
-    },
-
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>
