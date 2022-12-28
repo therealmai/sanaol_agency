@@ -16,7 +16,7 @@
       </div>
 
       <div class="text-center mx-[20%] flex flex-col justify-center items-center">
-          <img class="w-[770px]" :src="news.image"/>
+          <img class="w-[770px]" :src="rootImgPath+this.news.image" alt=""/>
           <div class="text-[32px] font-bold text-secondary"> {{news.title}} </div>
           <div class="text-[#989898] text-[20px] font-extralight"> {{ months[new Date(news.created_at).getMonth()-1]+' '+new Date(news.created_at).getDate()+', '+new Date(news.created_at).getFullYear() }} </div>
           <p class="text-justify max-w-[880px] mb-[50px] mt-[20px] text-secondary">
@@ -37,28 +37,28 @@ import Navbar from '../components/Navigation/Navbar.vue';
 import FilledBtn from '../components/Buttons/FilledButton.vue';
 import OutBtn from '../components/Buttons/OutlineButton.vue';
 
-import axios from 'axios'
+import axios from '../axios'
 
 export default {
   name: 'News',
   data () {
+    
     return {
-      news: {
-        title: 'Loading...',
-        content: 'Loading...',
-        image: 'https://www.solidbackgrounds.com/images/3840x2160/3840x2160-dark-gray-solid-color-background.jpg',
-        created_at: 'January 01, 1700'
-      },
+      news: {},
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       isAdmin: true,
       isModalVisible: false,
       id: this.$route.params.id,
+      rootImgPath: '',
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:8000/api/news/'+this.$route.params.id).then(
+    axios.get('news/'+this.$route.params.id).then(
       (response) => {
         this.news = response.data.data
+        let prot = this.news.image.slice(0, 4);
+        this.rootImgPath = prot === "http" ? '' : '/src/images/'
+        console.log()
       }
     )
   },
@@ -66,9 +66,6 @@ export default {
       FilledBtn,
       OutBtn,
       Navbar
-  },
-  computed: {
-
   },
   methods: {
     showModal() {

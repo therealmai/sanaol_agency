@@ -42,7 +42,9 @@
             <UpdateModal v-show="isSucModalVisible" @close="closeSucModal" />
             <div class="flex gap-4">
                 <FilledButton v-on:click="openModal" text="SAVE" class="h-[33px] w-[100px]"/>
+                
                 <OutlineButton v-on:click="goBack" text="CANCEL" class="h-[33px] w-[100px]"/>
+                
             </div>
         </div>
     </div>
@@ -92,7 +94,7 @@
         }, 
         methods: {
             goBack() {
-                this.$router.push('/news');
+                this.$router.push('/news/' + this.$route.params.id);
             },
             loadFile(e) {
                 let imgHtml = document.querySelector('#imgNews');
