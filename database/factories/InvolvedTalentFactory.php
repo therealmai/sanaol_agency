@@ -22,7 +22,7 @@ class InvolvedTalentFactory extends Factory
         $user->is_member = true;
         $user->save();
         return [
-            'events_id'  => Event::all()->random()->id,
+            'events_id'  => Event::all()->where('is_deleted', 0)->random()->id,
             'user_id'    => $user->id,
             'is_deleted' => rand(0,1)
         ];
