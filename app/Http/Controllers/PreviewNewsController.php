@@ -34,8 +34,8 @@ class PreviewNewsController extends Controller
         }
 
         $data = [
-            "previewNews" => $previewNews,
-            "news" => $news
+            "previewData" => $previewNews,
+            "data" => $news
         ];
 
         return response($data, 200, ['application/json']);
