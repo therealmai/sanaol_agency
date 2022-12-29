@@ -14,32 +14,42 @@ class NewsController extends Controller
 
     public function index()
     {
-        $news = News::all();
-
+        $news = News::where('is_deleted', 0)->get();
         return response()->json($news, 200, ['application/json']);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    
     public function store(Request $request)
     {
+        \Log::info(json_encode($request->all()));
         $request->validate([
-            'user_id'   => 'required',
-            'title'     => 'required',
-            'content'   => 'required',
-            'image'     => 'required|image',
-            'author'    => 'required',
-            'ref'       => 'required'
         ]);
-      
-        $news = News::create([
-            'user_id'   => $request->user_id,
-            'title'     => $request->title,
-            'content'   => $request->content,
-            'image'     => $request->image,
-            'author'    => $request->author,
-            'ref'       => $request->ref
-        ]);
+        $news = new News;
+        $news->fill($request->except(['user_id']));
+        $news->user_id = $request->user_id;
 
-        return response("News stored successfully", 200, ['application/json']);
+        if($request->hasFile('image')){
+            $pathToFile = $request->file('image')
+                ->store('News', 'vue');
+            $news->image = $pathToFile;
+        }
+        $news->title = $request->input('title');
+        $news->content = $request->input('content');
+        $news->user_id = $request->input('user_id');
+        $news->author = $request->input('author');
+        $news->save();
+
+        if($news->save()) {
+            return response($news, 200, ['application/json']);
+        } else {
+            return response("Error in saving data", 400, ['application/json']);
+        }
     }
 
     public function show($id)
@@ -77,7 +87,6 @@ class NewsController extends Controller
                 'content'   => 'required',
                 'image'     => 'required',
                 'author'    => 'required',
-                'ref'       => 'required'
             ]);
 
             $news->fill($request->except(['user_id']));
@@ -88,6 +97,16 @@ class NewsController extends Controller
             $status = 500;
             $news = null;
         }
+        if($request->hasFile('image')){
+            $pathToFile = $request->file('image')
+                ->store('News', 'vue');
+            $news->image = $pathToFile;
+        }
+        $news->title = $request->input('title');
+        $news->content = $request->input('content');
+        $news->user_id = $request->input('user_id');
+        $news->author = $request->input('author');
+        $news->save();
         
         return response($this->generateRes($news, $status, $msg), 200, ['application/json']);
     }

@@ -10,13 +10,13 @@
 
           <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
           <div class="flex flex-row gap-4 right-[314.44px]" v-if="isAdmin">
-            <OutBtn text="DELETE" class="w-[123px]" @click="showModal"></OutBtn>
-            <router-link :to="'/news_update/'+ id"><FilledBtn text="EDIT" class="w-[93px]"></FilledBtn></router-link>
+            <OutBtn text="DELETE" class="w-[123px]" @click="deleteEvent(news.id)"></OutBtn>
+            <router-link :to="'/news/edit/'+ id"><FilledBtn text="EDIT" class="w-[93px]"></FilledBtn></router-link>
           </div>
       </div>
 
       <div class="text-center mx-[20%] flex flex-col justify-center items-center">
-          <img class="w-[770px]" :src="news.image"/>
+          <img class="w-[770px]" :src="rootImgPath+this.news.image" alt=""/>
           <div class="text-[32px] font-bold text-secondary"> {{news.title}} </div>
           <div class="text-[#989898] text-[20px] font-extralight"> {{ months[new Date(news.created_at).getMonth()-1]+' '+new Date(news.created_at).getDate()+', '+new Date(news.created_at).getFullYear() }} </div>
           <p class="text-justify max-w-[880px] mb-[50px] mt-[20px] text-secondary">
@@ -37,28 +37,28 @@ import Navbar from '../components/Navigation/Navbar.vue';
 import FilledBtn from '../components/Buttons/FilledButton.vue';
 import OutBtn from '../components/Buttons/OutlineButton.vue';
 
-import axios from 'axios'
+import axios from '../axios'
 
 export default {
   name: 'News',
   data () {
+    
     return {
-      news: {
-        title: 'Loading...',
-        content: 'Loading...',
-        image: 'https://www.solidbackgrounds.com/images/3840x2160/3840x2160-dark-gray-solid-color-background.jpg',
-        created_at: 'January 01, 1700'
-      },
+      news: {},
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       isAdmin: true,
       isModalVisible: false,
       id: this.$route.params.id,
+      rootImgPath: '',
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:8000/api/news/'+this.$route.params.id).then(
+    axios.get('news/'+this.$route.params.id).then(
       (response) => {
         this.news = response.data.data
+        let prot = this.news.image.slice(0, 4);
+        this.rootImgPath = prot === "http" ? '' : '/src/images/'
+        
       }
     )
   },
@@ -67,9 +67,6 @@ export default {
       OutBtn,
       Navbar
   },
-  computed: {
-
-  },
   methods: {
     showModal() {
       this.isModalVisible = true;
@@ -77,6 +74,19 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    getBack(){
+      this.$router.push('/news');
+    },
+    deleteEvent(id) {
+      axios.patch(`news/delete/${id}`)
+        .then(response => {
+          console.log('Nothing to see here');
+          this.$router.push('/events');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>
