@@ -4378,6 +4378,10 @@ textarea.form-control.is-invalid {
   width: 176px;
 }
 
+.w-\[220px\] {
+  width: 220px;
+}
+
 .w-\[546px\] {
   width: 546px;
 }
