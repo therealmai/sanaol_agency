@@ -78,7 +78,7 @@ Route::group(['middleware' => ['auth:admins']], function() {
 
     //Preview Events
     Route::post('preview/events', [PreviewEventController::class, 'store']);
-    Route::patch('preview/events/{id}', [PreviewEventController::class, 'update']);
+    Route::patch('preview/events', [PreviewEventController::class, 'update']);
     Route::patch('preview/events/delete/{id}', [PreviewEventController::class, 'destroy']);
 
     //Preview News
@@ -118,6 +118,7 @@ Route::get('events/{id}', [EventsController::class, 'show'])->name('events.getSi
 
 //Preview Events
 Route::get('preview/events', [PreviewEventController::class, 'index']);
+Route::get('preview/featured-events', [PreviewEventController::class, 'getFeaturedEvents']);
 Route::get('preview/events/{id}', [PreviewEventController::class, 'show']);
 
 //Preview News
