@@ -3,6 +3,7 @@ import App from "../App.vue";
 import Login from "../pages/Login.vue";
 import Hero from "../pages/Hero.vue";
 import HeroEdit from "../pages/HeroEdit.vue"
+import HeroEditPreview from "../pages/HeroEditPreview.vue"
 import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
@@ -50,6 +51,12 @@ const routes = [
                 name: "heroEdit",
                 component: HeroEdit,
                 meta: {title: 'Edit Hero'}
+            },
+            {
+                path: "/hero/edit/prev/:cat",
+                name: "heroEditPreview",
+                component: HeroEditPreview,
+                meta: {title: 'Edit Hero Preview'}
             },
             {
                 path: "/usermanagement",
