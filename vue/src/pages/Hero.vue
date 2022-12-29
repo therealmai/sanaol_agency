@@ -1,19 +1,23 @@
 <template>
   <div class="flex-col">
     <!-- <div class="w-full object-cover h-screen lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div> -->
+    
+  <!-- Hero Banner -->
     <Carousel
     :herobanners="hero"
     :role="userType"
     />
-  <!-- Service Container -->
-  
+
+  <!-- Events -->
   <div class="flex flex-row flex-wrap gap-4 justify-center ml-28 mt-16">
     <CardCarousel v-if="!isLoading.events"
     :events="events"
+    :role="userType"
     />
   </div>
   <Divider></Divider>
   
+  <!-- Services -->
   <div class="flex flex-row flex-wrap gap-16 justify-center ml-20 mr-20 mt-14 ">
     <ServiceCard v-for="service in services" v-if="!isLoading.services"
     :key="service.id"
@@ -23,11 +27,16 @@
     <Divider></Divider>
   </div>
 
+  <!-- News -->
+  <div class="btn-edit" v-if="userType == 'admin'">
+      <router-link :to="'/hero/edit/prev/news'"><FilledButton text="Edit Previous News" class="w-[220px]" color="white"></FilledButton></router-link>
+  </div>
   <div class="flex flex-col flex-wrap gap-4 items-center mx-16 mt-16">
     <Label text="NEWS AND ARTICLES" :fontSize="16" :height="29" :width="252" :padding="2" :margin="16"></Label>
-    <div class="flex flex-row flex-wrap gap-10 justify-center">
+    <div id="section-news" class="flex flex-row flex-wrap gap-10 justify-center">
       <NewsCard  v-for="news in news" v-if="!isLoading.news"
       :key="news.id"
+      :id="news.id"
       :title="news.title"
       :content="news.content"
       :image="news.image"
@@ -117,17 +126,11 @@ export default{
       })
     },
     getNews() {
-      axios.get('preview/news')
+      axios.get('preview/featured-news')
       .then((res) => {
-        return Promise.all(res.data.slice(0,3).map(element => { // only 3 news to display
-            axios.get('news/'+element.news_id)
-            .then((res) => {
-              this.news.push(res.data.data);
-            })
-          })
-        )
+        this.news = res.data;
       })
-      .then(() => {
+      .finally(() => {
         this.isLoading.news = false;
       })
       .catch((err) => {
@@ -144,7 +147,7 @@ export default{
       return result;
     }
   },
-  mounted() {
+  created() {
     this.userType = this.user != null ? this.user['user_type'] : null;
     this.getHeroBanner();
     this.getServices();
