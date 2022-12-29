@@ -103,23 +103,18 @@ export default{
         this.services = this.__prependImages(this.services);
         // console.log(this.services)
       })
+      .then(() => {
+        this.isLoading.events = false;
+      })
       .catch((err) => {
         console.log(err);
       })
     },
     getEvents() {
-      axios.get('preview/events')
+      axios.get('preview/featured-events')
       .then((res) => {
-        return Promise.all(res.data.slice(0,3).map(element => { // only 3 events to display
-            axios.get('events/'+element.events_id)
-            .then((res) => {
-              this.events.push(res.data.data);
-            })
-          })
-        )
-      })
-      .then(() => {
-        this.isLoading.events = false;
+        this.events = res.data;
+        console.log(this.events)
       })
       .catch((err) => {
         console.log(err);

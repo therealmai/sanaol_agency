@@ -65,7 +65,7 @@
                 events: {
                     title: "Previous Events",
                     url: 'preview/events',
-                    id: 'events_id'
+                    id: 'events_id',
                 },
                 news: {
                     title: "Previous News",
@@ -75,17 +75,16 @@
             }   
             axios.get(this.categories[this.cat].url)
                 .then((res) => {
-                    let news = res.data.news;
-                    let prevNews = res.data.previewNews;
-                    let x = 0;
-                    for(let elem of prevNews) {
-                        for(let elem2 of news) {
+                    let data = res.data.data;
+                    let prevData = res.data.previewData;
+                    for(let elem of prevData) {
+                        for(let elem2 of data) {
                             if(elem.news_id == elem2.id) {
                                 this.newPrevIds.push(elem2.id);
                             }
                         }
                     }
-                    this.prevData = news;
+                    this.prevData = data;
                     console.log(this.prevData);
                     console.log(this.newPrevIds);
                 })
