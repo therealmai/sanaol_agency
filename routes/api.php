@@ -95,19 +95,15 @@ Route::get('herobanner/{id}', [HeroBannerController::class, 'show']);
 //HeroBanner Images
 Route::get('herobanner/image/{id}', [BannerImageController::class, 'show']);
 
-
-
 //News 
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
-
 
 //UserImage
 Route::get('user/image/{id}', [UserImageController::class, 'show'])->name('userImage.show');
 Route::post('user/image/', [UserImageController::class, 'store'])->name('userImage.store');
 Route::patch('user/image/{id}', [UserImageController::class, 'update'])->name('userImage.update');
 Route::patch('user/image/delete/{id}', [UserImageController::class, 'destroy'])->name('userImage.delete');
-
 
 //Events
 Route::get('events', [EventsController::class, 'index'])->name('events.get');

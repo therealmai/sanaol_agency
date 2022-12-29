@@ -102,7 +102,7 @@ Steps to create a pull request.
 7. Click "Create pull request"
 
 ### SwaggerHub API Documentation Masterboard
-https://app.swaggerhub.com/apis-docs/therealmai/masterboard/1.0.0
+https://app.swaggerhub.com/apis-docs/therealmai/masterboard/2.0.0
 
 
 
@@ -117,7 +117,7 @@ Requirements
     2. search id in extension market place
     3. author is Daniel Biehl 
     4. extension has check mark
-4. web driver (check the first part of sir's video)
+4. web driver (check the 36 min mark of sir's video) https://drive.google.com/drive/folders/1CuoVoHoWkfOV8d2p1tBF9uRr1Zt8OAzF
     
 Creating venv
 From the root foler, do:
