@@ -20,8 +20,9 @@ class PreviewNewsController extends Controller
     public function index()
     {
         $news = DB::table('news')
-                    ->leftJoin('preview_news', 'news.id', '!=', 'preview_news.news_id')
+                    ->leftJoin('preview_news', 'news.id', '=', 'preview_news.news_id')
                     ->where('news.is_deleted', '!=', 1)
+                    ->where('preview_news.news_id', '=', null)
                     ->limit(3)
                     ->get(['news.id', 'news.title']);
 
