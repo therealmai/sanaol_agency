@@ -12,7 +12,6 @@
 
               <!-- <FilledButton text="OK" @click="close"></FilledButton> -->
             </div>
-
         </template>
     </Modal>
 

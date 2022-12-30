@@ -1,20 +1,28 @@
 <template>
     <div>
         <OutlineButton v-on:click="goBack" text="BACK" class="h-[33px] w-[100px] mt-10 ml-10"/>
-        <h1 class="mb-10 text-secondary" style="font-weight: 700; text-align: center; font-size: xx-large; ">Edit Service</h1>
+        <h1 class="mb-10 text-secondary" style="font-weight: 700; text-align: center; font-size: xx-large; ">Edit Hero Banner</h1>
         <div class="flex flex-col items-start form-cont gap-8">
             <form enctype="multipart/form-data" method="patch" class="flex flex-col items-start gap-5" action="">
                 <input type="file" accept="image/*" name="file" id="file" v-on:change="loadFile" style="display:none;"/>
                 <label for="file">
-                    <img id="imgService" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
+                    <img id="imgherobanner" :src="rootImgPath+previewImg" class="object-cover rounded-[8px] w-[166px] h-[166px]">
                 </label>
                 <div>
-                    <label for="title">Title</label>
-                    <input v-bind:class="[cssFormInputs]" v-model.trim="service.title" type="text">
+                    <label for="title">Header - Talent/Admin</label>
+                    <input v-bind:class="[cssFormInputs]" v-model.trim="herobanner.header_tal" type="text">
                 </div>
                 <div>
-                    <label for="content">Content</label>
-                    <textarea v-bind:class="[cssFormInputs]" class="h-[221px]" v-model.trim="service.content" type="text"></textarea>
+                    <label for="content">Subheader - Talent/Admin</label>
+                    <textarea v-bind:class="[cssFormInputs]" class="h-[221px]" v-model.trim="herobanner.subheader_tal" type="text"></textarea>
+                </div>
+                <div>
+                    <label for="title">Header - General</label>
+                    <input v-bind:class="[cssFormInputs]" v-model.trim="herobanner.header_gen" type="text">
+                </div>
+                <div>
+                    <label for="content">Subheader - General</label>
+                    <textarea v-bind:class="[cssFormInputs]" class="h-[221px]" v-model.trim="herobanner.subheader_gen" type="text"></textarea>
                 </div>
             </form>
             <Modal v-show="isModalVisible" width="380">
@@ -30,11 +38,11 @@
                         </defs>
                     </svg>
                     <h1 class="modal__title">Update Confirmation</h1>
-                    <span class="modal__content">Are you sure you want to save the changes made on this service? Please confirm.</span>
-                    <Info text="Saving the changes will change what the public sees on the services page."/>
+                    <span class="modal__content">Are you sure you want to save the changes made on this herobanner? Please confirm.</span>
+                    <Info text="Saving the changes will change what the public sees on the herobanners page."/>
         
                     <div class="flex gap-10 mt-4">
-                        <FilledButton v-on:click="updateService" class="w-[141px] h-[33px]" text="CONFIRM" />
+                        <FilledButton v-on:click="updateherobanner" class="w-[141px] h-[33px]" text="CONFIRM" />
                         <OutlineButton v-on:click="closeModal"  class="w-[141px] h-[33px]" text="CANCEL" />
                     </div>
                 </template>
@@ -62,12 +70,12 @@
     export default {
         mounted() {
             let id = this.$route.params.id;
-            axios.get('/services/' + id).then(
+            axios.get('/herobanner/' + id).then(
                 (response) => {
                     if(response.status == 200) {
-                        this.service = response.data.data;
-                        this.previewImg = this.service.image;
-                        let prot = this.service.image.slice(0, 4);
+                        this.herobanner = response.data.data;
+                        this.previewImg = this.herobanner.image;
+                        let prot = this.herobanner.image.slice(0, 4);
                         this.rootImgPath = prot === "http" ? '' : '/src/images/';             
                     }
                 }
@@ -75,7 +83,7 @@
         },
         data() {
             return {
-                service: {},
+                herobanner: {},
                 previewImg: '',
                 rootImgPath: '',
                 cssFormInputs: cssFormInputsStr,
@@ -85,12 +93,12 @@
         }, 
         methods: {
             goBack() {
-                this.$router.push('/services');
+                this.$router.push('/hero');
             },
             loadFile(e) {
-                let imgHtml = document.querySelector('#imgService');
-                this.service.image = e.target.files[0];
-                imgHtml.src = URL.createObjectURL(this.service.image);
+                let imgHtml = document.querySelector('#imgherobanner');
+                this.herobanner.image = e.target.files[0];
+                imgHtml.src = URL.createObjectURL(this.herobanner.image);
             },
             openModal() {
                 this.isModalVisible = true;
@@ -98,22 +106,28 @@
             closeModal() {
                 this.isModalVisible = false;
             },
-            updateService() {
-                if(this.service.title == '' || this.service.content == '') {
+            updateherobanner() {
+                if(this.herobanner.header_tal == '' || 
+                    this.herobanner.header_gen == '' ||
+                    this.herobanner.subheader_gen == '' ||
+                    this.herobanner.subheader_tal == '') 
+                {
                     alert('All fields must be filled.');
                     this.isModalVisible = false;
                     return;
                 }
 
                 let data = new FormData;
-                data.set('image', this.service.image);
-                data.set('title', this.service.title);
-                data.set('content', this.service.content);
+                data.set('image', this.herobanner.image);
+                data.set('header_tal', this.herobanner.header_tal);
+                data.set('subheader_tal', this.herobanner.subheader_tal);
+                data.set('header_gen', this.herobanner.header_gen);
+                data.set('subheader_gen', this.herobanner['subheader_gen']);
 
                 console.log(...data)
 
                 let id = this.$route.params.id;
-                axios.post('/services/' + id, data, {
+                axios.post('herobanners/' + id, data, {
                     headers: {
                         'Content-type': 'multipart/form-data'
                     }

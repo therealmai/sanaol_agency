@@ -23,3 +23,9 @@ vue/selenium/log.html
 vue/selenium/output.xml
 vue/selenium/python
 results
+
+vue/src/images/Event/*
+vue/src/images/HeroBanner/*
+vue/src/images/News/*
+vue/src/images/Service/*
+vue/src/images/User/*

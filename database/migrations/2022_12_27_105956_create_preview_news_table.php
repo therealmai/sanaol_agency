@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('banner_images', function (Blueprint $table) {
+        Schema::create('preview_news', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hero_id');
-            $table->foreign('hero_id')->references('id')->on('hero_banners')->onDelete('cascade');
-            $table->string('image')->nullable();
-            $table->boolean('is_deleted')->default(false);
+            $table->foreignId('news_id');
+            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banner_images');
+        Schema::dropIfExists('preview_news');
     }
 };

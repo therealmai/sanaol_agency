@@ -4,41 +4,54 @@
     <div class="pt-[96px] px-[237.5px] mb-[25px] text-[#525252]">
       <!-- TITLE -->
       <h1 class="text-center text-2xl font-bold">Our Services</h1>
-  
+
       <!-- INDIVIDUAL SERVICES -->
       <!-- USE LOOP WHEN FETCHING FROM DATABASE -->
       <div v-for="service in services" v-bind:key="service.id">
         <Service :id="service.id"
                  :title="service.title"
                  :content="service.content"
-                 :image="service.image">
+                 :image="service.image"
+                 :role="userType">
         </Service>
       </div>
     </div>
   </div>
   </template>
-  
-  
+
+
   <script>
   import Service from '../components/Cards/Service/Service.vue';
   import axios from 'axios';
+  import { computed } from 'vue';
+  import { useStore } from 'vuex'
+
 
   export default{
     components: {
       Service
     },
+    setup() {
+      const store = useStore();
+    
+      return {
+        user: computed(() => store.state.user.data),
+      }
+    },
     mounted() {
-      axios.get('http://127.0.0.1:8000/api/services/').then(
+      this.userType = this.user != null ? this.user['user_type'] : null;
+      axios.get('http://127.0.0.1:8000/api/services').then(
         (response) => {
-          this.services = response.data,
-          console.log("services"),
-          console.log(this.services)
+          this.services = response.data
+          // console.log("services"),
+          // console.log(this.services)
         }
       )
     },
     data() {
       return {
         services: [],
+        userType: ''
       }
     }
   }
