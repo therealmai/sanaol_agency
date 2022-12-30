@@ -22,12 +22,12 @@
       <OutlineButton class="w-[100px]" text="DENY" @click="showDenyModal" />
     </span>
   </div>
-  <!-- <ApproveApplicationModal -->
-  <!--   v-show="isApproveModalVisible" -->
-  <!--   @close="closeApproveModal" -->
-  <!--   @confirm="approve" -->
-  <!-- /> -->
-  <!-- <ApprovedModal v-show="isApprovedModal" /> -->
+  <ApproveApplicationModal
+    v-show="isApproveModalVisible"
+    @close="closeApproveModal"
+    @confirm="approve"
+  />
+  <ApprovedModal v-show="isApprovedModal" />
   <DenyApplicationModal
     v-show="isDenyModalVisible"
     @close="closeDenyModal"
