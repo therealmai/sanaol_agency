@@ -17,9 +17,9 @@
         />
       </template>
 
-      <div class="flex justify-center w-full my-6">
+      <!-- <div class="flex justify-center w-full my-6">
         <PaginationController :pages="3" />
-      </div>
+      </div> -->
     </div>
   </template>
   
