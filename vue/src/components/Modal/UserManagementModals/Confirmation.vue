@@ -51,19 +51,24 @@ import DeniedModal from "./DeniedModal.vue";
 import DeletedModal from "./DeletedModal.vue";
 import ApprovedModal from "./ApprovedModal.vue";
 
+import axios from '../../../axios'
+
 export default {
   name: "Confirmation",
+
   data() {
     return {
       isUpdated: false,
       isApproved: false,
       isDenied: false,
       isDeleted: false,
+      user: {},
     };
   },
   props: {
     confirmationType: String,
     text: String,
+    id: String,
   },
   components: {
     Modal,
@@ -93,7 +98,24 @@ export default {
     },
     approved() {
       this.isApproved = true;
-    },
+        console.log(this.id)
+      axios.patch(`/users/approve/${this.id}`, {
+        })
+        .then((res) => {
+          console.log(res)
+          if (res.status == 200) {
+            this.isSuccessfulModalVisible = true;
+            setTimeout(() => {
+              console.log("A4");
+              this.isSuccessfulModalVisible = false;
+              this.$emit("close");
+              this.$router.go();
+            }, 3000);
+          }
+        }).catch((err)=>{
+            console.log(err)
+        });
+    },  
   },
 };
 </script>

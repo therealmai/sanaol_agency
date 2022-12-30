@@ -1,27 +1,28 @@
 <template>
-    <div class="w-full min-w-fit justify-between">
+    <div class="w-full min-w-fit">
       <div class="flex py-4 px-8 bg-white">
-        <span class="w-3/12 text-lg font-bold text-[#393540]">USER</span>
-        <span class="w-4/12 text-lg font-bold text-[#393540]">EMAIL</span>
-        <span class="w-2/12 text-lg font-bold text-[#393540]">ROLE</span>
-        <span class="w-3/12 text-lg font-bold text-[#393540]">ACTIONS</span>
+        <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">USER</span>
+        <span class="w-4/12 min-w-max text-lg font-bold text-[#393540]">EMAIL</span>
+        <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]">ROLE</span>
+        <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
 
-      <ApplyItem :key="user.id" v-for="user in users"
-        :id="user.id"
-        :image="user.image"
-        :fname="user.fname"
-        :lname="user.lname"
-        :handle="user.handle"
-        :email="user.email"
-        :user_type="user.user_type"
-      />
-      <!-- <div class="flex justify-center w-full mt-6">
+      <template v-for="users in users">
+        <ApplyItem :key="users.id" v-if="!users.is_member"
+          :id="users.id"
+          :fname="users.fname"
+          :lname="users.lname"
+          :handle="users.insta_handle"
+          :email="users.email"
+        />
+      </template>
+
+      <!-- <div class="flex justify-center w-full my-6">
         <PaginationController :pages="3" />
       </div> -->
     </div>
   </template>
-
+  
   <script>
   import axiosClient from "../../axios";
   import PaginationController from "./PaginationController.vue";
@@ -31,20 +32,20 @@
     components: { ApplyItem, PaginationController },
     data() {
       return {
-        users:[]
+        users:[],
       }
     },
     methods: {
       loadUsers(){
-          axiosClient.get("/users/applications").then(({ data }) => (this.user = data));
+          axiosClient.get("/users").then(({ data }) => (this.users = data));
       }
   },
-  created() {
+  mounted() {
     this.loadUsers();
   }
   };
-
+  
   </script>
-
+  
   <style lang="postcss" scoped>
   </style>
