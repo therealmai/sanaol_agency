@@ -142,7 +142,7 @@ export default {
                 data.set('author', this.events.author);
 
                 console.log(...data)
-                
+                console.log(this.events.image)
 
                 
                 axios.post('/events/create', data, {
