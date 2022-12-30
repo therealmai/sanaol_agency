@@ -154,6 +154,7 @@ class UserController extends Controller
 
         //approve user
         $user->user_type = 'talent';
+        $user->is_member = true;
 
         if($user){
             $msg = $this->MSG_SUC_UPDATE;
