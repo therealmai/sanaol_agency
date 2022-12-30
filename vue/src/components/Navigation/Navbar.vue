@@ -1,5 +1,4 @@
 <template>
-
   <nav class=" bg-white drop-shadow-lg flex sticky top-0 z-50 justify-between items-center space-x-4 h-[77px] min-h-[77px] w-full">
       <a href="/" class="pl-[27px] flex items-center space-x-3" >
         <img class="w-[37.58px]" src="../../assets/sanaol-logo.png">
@@ -26,7 +25,7 @@
         <router-link :to="{ name: 'events' }">
           <span class="font-medium px-2 py-2 rounded-l ">NEWS & EVENTS</span>
         </router-link>
-        <span @click="logout" class="bg-[#F6F5FF] p-2 rounded-[7px] text-primary pr-6 pl-6 cursor-pointer">{{ user.fname }}</span>
+        <span @click="logout" class="bg-[#F6F5FF] p-2 rounded-[7px] text-primary pr-6 pl-6 cursor-pointer">{{ user.fname.toUpperCase() }}</span>
       </span>
       <span v-else>
         <!-- for users that are not logged in the system -->

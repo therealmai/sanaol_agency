@@ -19,7 +19,7 @@
   
   <!-- Services -->
   <div class="flex flex-row flex-wrap gap-16 justify-center ml-20 mr-20 mt-14 ">
-    <ServiceCard v-for="service in services" v-if="!isLoading.services"
+    <ServiceCard v-for="service in services" v-if="!isLoading.services"\
     :key="service.id"
     :title="service.title"
     :content="service.content"
@@ -33,6 +33,7 @@
   </div>
   <div class="flex flex-col flex-wrap gap-4 items-center mx-16 mt-16">
     <Label text="NEWS AND ARTICLES" :fontSize="16" :height="29" :width="252" :padding="2" :margin="16"></Label>
+
     <div id="section-news" class="flex flex-row flex-wrap gap-10 justify-center">
       <NewsCard  v-for="news in news" v-if="!isLoading.news"
       :key="news.id"
@@ -44,7 +45,6 @@
     </div>
     <Divider></Divider>
   </div>
-  
 </div>
 </template>
 
@@ -165,8 +165,10 @@ export default{
     }
   }
 }
+
 </script>
-
-<style>
-</style>
-
+  
+  <style>
+  </style>
+  
+  
