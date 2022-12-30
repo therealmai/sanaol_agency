@@ -33,7 +33,7 @@
     @close="closeDenyModal"
     @confirm="deny"
   />
-  <DeniedModal  v-show="isDeniedModal"/>
+  <DeniedModal v-show="isDeniedModal" />
 </template>
 
 <script>
@@ -72,7 +72,7 @@ export default {
     user_type: String,
   },
 
-  emits: ["close", "confirm"],
+  emits: ["reload"],
   methods: {
     approve() {
       axiosClient.patch(`users/approve/${this.id}`).then((res) => {
@@ -80,7 +80,7 @@ export default {
         this.isApprovedModal = true;
         setTimeout(() => {
           this.isApprovedModal = false;
-          this.$emit("reload")
+          this.$emit("reload");
           // this.$router.go();
         }, 3000);
       });
@@ -92,7 +92,7 @@ export default {
         setTimeout(() => {
           this.isDeniedMModal = false;
           // this.$router.go();
-          this.$emit("reload")
+          this.$emit("reload");
         }, 3000);
       });
     },
