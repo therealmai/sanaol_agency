@@ -137,16 +137,16 @@ const routes = [
                 component: Reminders,
                 meta: { title: 'Reminders' }
             },
-            {
-                path: "/herobannerMG",
-                name: "Herobanner MG",
-                component: HerobannerMG
-            },
-            {
-                path: "/herobannerMG2",
-                name: "Herobanner MG2",
-                component: herobannerMG2
-            }
+            // {
+            //     path: "/herobannerMG",
+            //     name: "Herobanner MG",
+            //     component: HerobannerMG
+            // },
+            // {
+            //     path: "/herobannerMG2",
+            //     name: "Herobanner MG2",
+            //     component: herobannerMG2
+            // }
         ]
 
     },

@@ -67,9 +67,10 @@ Route::group(['middleware' => ['auth:admins']], function() {
     Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
 
     //News
+    Route::post('news/create', [NewsController::class, 'store'])->name('news.create');
     Route::post('news/{id}', [NewsController::class, 'update']);
     Route::patch('news/delete/{id}', [NewsController::class, 'destroy']);
-    Route::post('news/create', [NewsController::class, 'store']);
+    
 
     //Events
     Route::post('events/create', [EventsController::class, 'store'])->name('events.create');
