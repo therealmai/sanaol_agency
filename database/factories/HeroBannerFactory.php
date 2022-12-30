@@ -23,8 +23,7 @@ class HeroBannerFactory extends Factory
             'subheader_tal'   => $this->faker->sentence(7),
             'header_gen'      => $this->faker->words(5, true),
             'subheader_gen'   => $this->faker->sentence(7),
-            'preview_events'  => rand(0,10),
-            'preview_news'    => rand(0,10),
+            'image'           => $this->faker->imageUrl(880,495),
         ];
     }
 }

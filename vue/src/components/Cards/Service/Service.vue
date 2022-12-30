@@ -39,6 +39,7 @@
     },
     data() {
         let prot = this.image.slice(0, 4);
+        console.log(this.role)
 
         return {
             rootImgPath: prot === "http" ? '' : '/src/images/'

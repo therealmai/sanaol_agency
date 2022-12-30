@@ -39,7 +39,7 @@
       }
     },
     mounted() {
-      this.userType = this.user['user_type']
+      this.userType = this.user != null ? this.user['user_type'] : null;
       axios.get('http://127.0.0.1:8000/api/services').then(
         (response) => {
           this.services = response.data

@@ -16,53 +16,34 @@
     <button
       data-bs-target="#carouselDarkVariant"
       data-bs-slide-to="1"
-      aria-label="Slide 1"
+      aria-label="Slide 2"
     ></button>
     <button
       data-bs-target="#carouselDarkVariant"
       data-bs-slide-to="2"
-      aria-label="Slide 1"
+      aria-label="Slide 3"
     ></button>
   </div>
 
   <!-- Inner -->
   <div class="carousel-inner relative w-full overflow-hidden">
     <!-- Single item -->
-    <div class="carousel-item active relative float-left w-full h-220">
+    <div class="carousel-item float-left w-full h-220"
+    v-for="herobanner, index in herobanners"
+    :key="herobanner.id"
+    v-bind:class="{'active relative': index === 1}">
       <img
-        src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+        :src="herobanner.image"
         class="block w-full"
-        alt="Motorbike Smoke"
+        alt="image"
       />
       <div class="carousel-caption hidden md:block absolute text-right top-64">
-        <h5 class="text-xl">First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item relative float-left w-full h-220">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(19).webp"
-        class="block w-full"
-        alt="Mountaintop"
-      />
-      <div class="carousel-caption hidden md:block absolute text-right top-64">
-        <h5 class="text-xl">Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item relative float-left w-full h-220">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp"
-        class="block w-full"
-        alt="Woman Reading a Book"
-      />
-      <div class="carousel-caption hidden md:block absolute text-right top-64">
-        <h5 class="text-xl">Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <h5 class="text-xl">{{ userExist ? herobanner.header_gen :herobanner.header_tal }}</h5>
+        <p>{{ userExist ?herobanner.subheader_gen : herobanner.subheader_tal }}</p>
+        <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
+        <div class="btn-edit" v-if="role == 'admin'">
+            <router-link :to="'/hero/edit/'+ herobanner.id"><FilledButton text="Edit Hero Banner" class="w-[176px] " color="white"  ></FilledButton></router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -91,11 +72,26 @@
 </template>
 
 <script>
+import store from '../../store';
+import FilledButton from '../Buttons/FilledButton.vue';
+
 export default {
   name: "Carousel",
+  components: {
+    FilledButton
+  },
+  props: {
+    herobanners: Array,
+    role: String
+  },
+  computed: {
+    userExist() {
+      return store.state.user !== null;
+    }
+  }
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

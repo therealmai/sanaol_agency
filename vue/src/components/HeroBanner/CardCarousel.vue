@@ -1,15 +1,21 @@
 <template>
+  <div class="btn-edit" v-if="role == 'admin'">
+      <router-link :to="'/hero/edit/prev/events'"><FilledButton text="Edit Previous Events" class="w-[220px]" color="white"></FilledButton></router-link>
+  </div>
   <div id="carouselControls" class="carousel slide relative" data-bs-ride="carousel">
-    <div class="carousel-inner justify-center relative overflow-hidden mt-10">
-      
-      <div class="carousel-item justify-center active relative float-left w-full">
-        <HeroEventCard></HeroEventCard>
-      </div>
-      <div class="carousel-item relative float-left w-full">
-        <HeroEventCard ></HeroEventCard>
-      </div>
-      <div class="carousel-item relative float-left w-full">
-        <HeroEventCard></HeroEventCard>
+    <div class="carousel-inner justify-center relative overflow-hidden">
+      <div class="carousel-item justify-center float-left w-full"
+      v-for="event, index in events"
+      v-bind:class="{'active relative': (index === 1)}"
+      :key="event.id"
+      >
+        <HeroEventCard
+        :title="event.title"
+        :content="event.content"
+        :date="event.date"
+        :location="event.location"
+        :image="event.image"
+        />
       </div>
 
     </div>
@@ -37,10 +43,17 @@
 
 <script>
 import HeroEventCard from '../Cards/Events/HeroEventCard.vue';
+import FilledButton from '../Buttons/FilledButton.vue';
+
 export default {
   name: "CardCarousel",
   components: {
-    HeroEventCard
+    HeroEventCard,
+    FilledButton
+  },
+  props: {
+    events: Array,
+    role: String
   }
 };
 </script>
