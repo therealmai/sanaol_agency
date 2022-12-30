@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth:admins']], function() {
 
     //HeroBanner
     Route::post('herobanner/create', [HeroBannerController::class, 'store']);
-    Route::patch('herobanner/{id}', [HeroBannerController::class, 'update']);
+    Route::post('herobanners/{id}', [HeroBannerController::class, 'update']);
     Route::patch('herobanner/delete/{id}', [HeroBannerController::class, 'destroy']);
 
     //News
@@ -79,12 +79,12 @@ Route::group(['middleware' => ['auth:admins']], function() {
 
     //Preview Events
     Route::post('preview/events', [PreviewEventController::class, 'store']);
-    Route::patch('preview/events/{id}', [PreviewEventController::class, 'update']);
+    Route::patch('preview/events', [PreviewEventController::class, 'update']);
     Route::patch('preview/events/delete/{id}', [PreviewEventController::class, 'destroy']);
 
     //Preview News
-    Route::post('preview/news', [PreviewNewsController::class, 'store']);
-    Route::patch('preview/news/{id}', [PreviewNewsController::class, 'update']);
+    Route::post('preview/news/create', [PreviewNewsController::class, 'store']);
+    Route::patch('preview/news', [PreviewNewsController::class, 'update']);
     Route::patch('preview/news/delete/{id}', [PreviewNewsController::class, 'destroy']);
 });
 
@@ -122,10 +122,12 @@ Route::get('events/{id}', [EventsController::class, 'show'])->name('events.getSi
 
 //Preview Events
 Route::get('preview/events', [PreviewEventController::class, 'index']);
+Route::get('preview/featured-events', [PreviewEventController::class, 'getFeaturedEvents']);
 Route::get('preview/events/{id}', [PreviewEventController::class, 'show']);
 
-//Preview Events
+//Preview News
 Route::get('preview/news', [PreviewNewsController::class, 'index']);
+Route::get('preview/featured-news', [PreviewNewsController::class, 'getFeaturedNews']);
 Route::get('preview/news/{id}', [PreviewNewsController::class, 'show']);
 
 

@@ -41,12 +41,12 @@
         <router-link :to="{ name: 'events' }">
           <span class="font-medium px-2 py-2 rounded-l ">NEWS & EVENTS</span>
         </router-link>
-        <router-link :to="{ name: 'login' }"> 
+        <router-link :to="{ name: 'login' }">
           <span class="font-medium px-2 py-2 rounded-l ">LOGIN</span>
         </router-link>
       </span>
     </div>
-    
+
 </nav>
 
 </template>
@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       isLog: ''
-    } 
+    }
   },
   setup () {
     const store = useStore();
