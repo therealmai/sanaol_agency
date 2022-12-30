@@ -1,5 +1,4 @@
 <template>
-
   <nav class=" bg-white drop-shadow-lg flex sticky top-0 z-50 justify-between items-center space-x-4 h-[77px] min-h-[77px] w-full">
       <a href="/" class="pl-[27px] flex items-center space-x-3" >
         <img class="w-[37.58px]" src="../../assets/sanaol-logo.png">
