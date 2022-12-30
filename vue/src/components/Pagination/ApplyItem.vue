@@ -11,21 +11,19 @@
         <FilledButton class="w-[120px]" @click="aModal = true" text="APPROVE" />
         <OutlineButton class="w-[100px]" @click="dModal = true" text="DENY" />
       </span>
-      <ApprovedConfirmModal :open="aModal" :id="id" @close="aModal = !aModal"></ApprovedConfirmModal>
-      <DeniedConfirmationModal :open="dModal" :id="id" @close="dModal = !dModal"></DeniedConfirmationModal>
+      <!-- <ApprovedConfirmModal :open="aModal" :id="id" @close="aModal = !aModal"></ApprovedConfirmModal>
+      <DeniedConfirmationModal :open="dModal" :id="id" @close="dModal = !dModal"></DeniedConfirmationModal> -->
     </div>
   </template>
   
   <script>
   import axiosClient from "../../axios";
-  import ApprovedConfirmModal from '../Modal/UserManagementModals/UserManagementModals/ApprovedConfirmModal.vue';
-  import DeniedConfirmationModal from '../Modal/UserManagementModals/UserManagementModals/DeniedConfirmationModal.vue';
   import FilledButton from '../Buttons/FilledButton.vue';
   import OutlineButton from '../Buttons/OutlineButton.vue';
   import { ref } from "vue";
   export default {
     name: "ApplyItem",
-    components: { FilledButton, OutlineButton, ApprovedConfirmModal, DeniedConfirmationModal },
+    components: { FilledButton, OutlineButton, },
     setup(){
       const aModal = ref(false);
       const dModal = ref(false);

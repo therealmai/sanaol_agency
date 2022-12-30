@@ -18,14 +18,13 @@
   
   <script>
   import axiosClient from "../../axios";
-  import EditUserModal from '../Modal/UserManagementModals/UserManagementModals/EditUserModal.vue';
-  import DeletedConfirmationModal from '../Modal/UserManagementModals/UserManagementModals/DeletedConfirmationModal.vue';
+  
   import FilledButton from '../Buttons/FilledButton.vue';
   import OutlineButton from '../Buttons/OutlineButton.vue';
   import { ref } from "vue";
   export default {
     name: "UserItem",
-    components: { FilledButton, OutlineButton, EditUserModal, DeletedConfirmationModal },
+    components: { FilledButton, OutlineButton},
     setup(){
       const eModal = ref(false);
       const dModal = ref(false);
