@@ -7,14 +7,14 @@
         <span class="w-3/12 text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
 
-      <ApplyItem :key="user.id" v-for="user in users"
-        :id="user.id"
-        :image="user.image"
-        :fname="user.fname"
-        :lname="user.lname"
-        :handle="user.handle"
-        :email="user.email"
-        :user_type="user.user_type"
+      <ApplyItem :key="users.id" v-for="users in user"
+        :id="users.id"
+        :image="users.image"
+        :fname="users.fname"
+        :lname="users.lname"
+        :handle="users.handle"
+        :email="users.email"
+        :user_type="users.user_type"
       />
       <!-- <div class="flex justify-center w-full mt-6">
         <PaginationController :pages="3" />
@@ -31,7 +31,7 @@
     components: { ApplyItem, PaginationController },
     data() {
       return {
-        users:[]
+        user:[]
       }
     },
     methods: {

@@ -7,7 +7,7 @@
         <span class="w-3/12 text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
 
-      <UserItem :key="users.id" v-for="users in users"
+      <UserItem :key="users.id" v-for="users in user"
         :id="users.id"
         :fname="users.fname"
         :lname="users.lname"
@@ -30,12 +30,12 @@
     components: { UserItem, PaginationController },
     data() {
       return {
-        users:[],
+        user:[],
       }
     },
     methods: {
       loadUsers(){
-          axiosClient.get("/users/currentUsers").then(({ data }) => (this.users = data));
+          axiosClient.get("/users/currentUsers").then(({ data }) => (this.user = data));
       },
   },
   mounted() {
