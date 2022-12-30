@@ -11,6 +11,13 @@ class PreviewEvent extends Model
 
     protected $table = "preview_events";
 
+    protected $fillable = [
+        'id',
+        'events_id',
+        'created_at',
+        'updated_at'
+    ];
+
     public function Events(){
         return $this->belongsTo(Events::class, 'event_id');
     }

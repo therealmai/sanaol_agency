@@ -130,7 +130,16 @@ Activating venv
 From the root folder, do:
 ```
 cd vue/selenium/venv/Scripts
-. activate
+```
+
+Activating venv using git bash
+```
+. activate   
+```
+
+Activating venv using powershell
+```
+.\activate   
 ```
 
 Installing dependencies
