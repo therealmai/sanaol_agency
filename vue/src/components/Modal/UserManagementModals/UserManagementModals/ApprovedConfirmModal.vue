@@ -1,5 +1,5 @@
 <template>
-  <Confirmation v-show="open" confirmationType="approved">
+  <Confirmation v-show="open" confirmationType="approved" :id="id">
     <template #confirm_body>
       <svg
         width="84"
@@ -20,30 +20,8 @@
           Are you sure you want to approve this application? Please confirm.
         </h2>
       </div>
-      <div
-        class="w-full bg-[#f0efff] text-primary p-6 rounded-md border border-primary"
-      >
-        <div class="flex flex-row space-x-2">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14.083 27.0685C21.5396 27.0685 27.583 21.1619 27.583 13.8739C27.583 6.58588 21.5396 0.679199 14.083 0.679199C6.62637 0.679199 0.583008 6.58588 0.583008 13.8739C0.583008 21.1619 6.62637 27.0685 14.083 27.0685ZM11.9736 17.9972H13.2393V14.6985H11.9736C11.2723 14.6985 10.708 14.147 10.708 13.4615C10.708 12.776 11.2723 12.2245 11.9736 12.2245H14.5049C15.2063 12.2245 15.7705 12.776 15.7705 13.4615V17.9972H16.1924C16.8937 17.9972 17.458 18.5487 17.458 19.2342C17.458 19.9197 16.8937 20.4712 16.1924 20.4712H11.9736C11.2723 20.4712 10.708 19.9197 10.708 19.2342C10.708 18.5487 11.2723 17.9972 11.9736 17.9972ZM14.083 10.5752C13.1496 10.5752 12.3955 9.83816 12.3955 8.92587C12.3955 8.01358 13.1496 7.27654 14.083 7.27654C15.0164 7.27654 15.7705 8.01358 15.7705 8.92587C15.7705 9.83816 15.0164 10.5752 14.083 10.5752Z"
-              fill="#7367F0"
-            />
-          </svg>
-          <h3>
-            <strong>Warning: </strong>Denying this user will also delete
-            information pertaining to the account.
-          </h3>
-        </div>
-      </div>
     </template>
-  </Confirmation>
+  </Confirmation >
 </template>
 
 <script>
@@ -57,7 +35,8 @@ export default {
     open: {
       type: Boolean,
       required: true
-    }
+    },
+    id: String,
   }
 };
 </script>

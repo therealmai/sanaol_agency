@@ -50,6 +50,24 @@ class UserController extends Controller
         }
     }
 
+    public function memberPage()
+    {
+        $user = User::where('is_member', true)->paginate(10);
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
+    public function nonMemberPage()
+    {
+        $user = User::where('is_member', false)->paginate(10);
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
