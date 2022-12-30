@@ -19,13 +19,17 @@ class ServiceFactory extends Factory
     public function definition()
     {
         $model = Service::class;
+
+        $user = User::all()->where('user_type', 'admin')->random();
+        $user->is_member = true;
+        $user->save();
+
         return [
-            'user_id'    => User::all()->random()->id,
+            'user_id'    => $user->id,
             'title'      => $this->faker->words(5, true),
-            'content'    => $this->faker->sentence(10),
+            'content'    => $this->faker->sentences(15, true),
             'image'      => $this->faker->imageUrl(880,495),
             'ref'        => '#',
-            'is_deleted' => rand(0,1)
         ];
     }
 }
