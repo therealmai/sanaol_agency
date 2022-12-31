@@ -1,7 +1,7 @@
 <template>
   <div class="flex-col">
     <!-- <div class="w-full object-cover h-screen lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div> -->
-    
+
   <!-- Hero Banner -->
     <Carousel
     :herobanners="hero"
@@ -16,10 +16,10 @@
     />
   </div>
   <Divider></Divider>
-  
+
   <!-- Services -->
   <div class="flex flex-row flex-wrap gap-16 justify-center ml-20 mr-20 mt-14 ">
-    <ServiceCard v-for="service in services" v-if="!isLoading.services"\
+    <ServiceCard v-for="service in services" v-if="!isLoading.services"
     :key="service.id"
     :title="service.title"
     :content="service.content"
@@ -136,8 +136,8 @@ export default{
       let result = arr.slice();
       for(var obj of result) {
         let prot = obj.image.slice(0, 4);
-        let base = prot === "http" ? '' : '/src/images/';  
-        obj.image = base + obj.image; 
+        let base = prot === "http" ? '' : '/src/images/';
+        obj.image = base + obj.image;
       }
       return result;
     }
@@ -167,8 +167,7 @@ export default{
 }
 
 </script>
-  
+
   <style>
   </style>
-  
-  
+
