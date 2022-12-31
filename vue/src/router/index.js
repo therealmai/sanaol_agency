@@ -18,7 +18,6 @@ import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
 import EventsCreate from "../pages/CreateEvent.vue";
 
-import UserMgmtModalTester from "../pages/UserManagementTester.vue";
 import DenyApplicationModal from "../components/Modal/UserManageModals/DenyApplicationModal.vue";
 
 const routes = [
@@ -123,11 +122,6 @@ const routes = [
                 name: "reminders",
                 component: Reminders,
                 meta: { title: "Reminders" },
-            },
-            {
-                path: "/user_test",
-                name: "user_test",
-                component: UserMgmtModalTester,
             },
             {
                 path: "/modal_test",
