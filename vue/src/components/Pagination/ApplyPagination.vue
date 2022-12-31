@@ -53,7 +53,6 @@ export default {
     loadUsers() {
       axiosClient.get("/users").then(({ data }) => {
         this.users = data;
-        console.log(data);
       });
     },
   },

@@ -25,15 +25,16 @@
   <ApproveApplicationModal
     v-show="isApproveModalVisible"
     @close="closeApproveModal"
-    @confirm="approve(), refreshPage()"
+    @confirm="approve()"
   />
   <ApprovedModal v-show="isApprovedModal" />
   <DenyApplicationModal
     v-show="isDenyModalVisible"
     @close="closeDenyModal"
-    @confirm="deny(), refreshPage()"
+    @confirm="deny()"
   />
-  <DeniedModal v-show="isDeniedModal" />
+  <DeniedModal v-show="isDeniedModal"
+  @close=""/>
 </template>
 
 <script>
@@ -90,9 +91,9 @@ export default {
         this.isDenyModalVisible = false;
         this.isDeniedModal = true;
         setTimeout(() => {
-          this.isDeniedMModal = false;
-          // this.$router.go();
+          this.isDeniedModal = false;
           this.$emit("reload");
+          // this.$router.go();
         }, 3000);
       });
     },
@@ -108,9 +109,6 @@ export default {
     closeApproveModal() {
       this.isApproveModalVisible = false;
     },
-    refreshPage() {
-      location.reload();
-    }
   },
 };
 </script>
