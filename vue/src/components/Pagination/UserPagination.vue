@@ -1,4 +1,5 @@
 <template>
+
     <div class="w-full min-w-fit justify-between">
       <div class="flex py-4 px-8 bg-white">
         <span class="w-3/12 text-lg font-bold text-[#393540]">USER</span>
@@ -19,7 +20,6 @@
         <PaginationController :pages="5" />
       </div> -->
     </div>
-  </template>
 
   <script>
   import axiosClient from "../../axios";
@@ -37,13 +37,12 @@
       loadUsers(){
           axiosClient.get("/users/currentUsers").then(({ data }) => (this.user = data));
       },
+
   },
   mounted() {
     this.loadUsers();
-  }
-  };
+  },
+};
+</script>
 
-  </script>
-
-  <style lang="postcss" scoped>
-  </style>
+<style lang="postcss" scoped></style>

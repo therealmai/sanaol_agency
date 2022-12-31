@@ -8,6 +8,8 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\HeroBanner;
+use App\Models\Service;
+use App\Models\News;
 use App\Models\PreviewEvent;
 use App\Models\PreviewNews;
 
@@ -31,19 +33,23 @@ class DatabaseSeeder extends Seeder
 		File::makeDirectory($filepath.'/Service',    $mode = 0777, true, true); //storage for service images
         File::makeDirectory($filepath.'/User',       $mode = 0777, true, true); //storage for user images
 
-        User::factory(35)
-            ->hasUserImages(5)
-            ->hasNews(3)
-            ->hasServices(5)
+        User::factory(50)
+            ->hasUserImages(2)
             ->create();
 
         HeroBanner::factory(5)
             ->create();
-        
-        Event::factory(7)
-            ->hasInvolvedTalent(3)
+
+        Event::factory(25)
+            ->hasInvolvedTalent(5)
             ->create();
-        
+
+        News::factory(35)
+            ->create();
+
+        Service::factory(5)
+            ->create();
+
         PreviewEvent::factory(5)->create();
         PreviewNews::factory(5)->create();
     }

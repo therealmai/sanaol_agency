@@ -4,7 +4,9 @@
             <div class="flex text-bold mt-10 mb-2" style="margin-right:53rem">
                 Reminders
             </div>
+
             <div v-for="event in events.sort((a,b)=>(a.date>b.date)?1:-1).slice(0,5)"
+
                  v-bind:key="event.id"
                  class="flex flex-row flex-wrap gap-12 justify-center">
                 <Reminders :image = "event.image"
@@ -46,7 +48,9 @@ export default{
             months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         }
     },
+
 }
+
 </script>
 
 <!-- <template>

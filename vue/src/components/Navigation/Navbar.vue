@@ -1,5 +1,4 @@
 <template>
-
   <nav class=" bg-white drop-shadow-lg flex sticky top-0 z-50 justify-between items-center space-x-4 h-[77px] min-h-[77px] w-full">
       <a href="/" class="pl-[27px] flex items-center space-x-3" >
         <img class="w-[37.58px]" src="../../assets/sanaol-logo.png">
@@ -26,6 +25,7 @@
         <router-link :to="{ name: 'events' }">
           <span class="font-medium px-2 py-2 rounded-l ">NEWS & EVENTS</span>
         </router-link>
+
         <span class="bg-[#F6F5FF] p-2 rounded-[7px] text-primary pr-6 pl-6 cursor-pointer">{{ user.fname.toUpperCase() }}</span>
         <img @click="logout" class=" w-6 h-5 cursor-pointer inline-block ml-2 mr-4" src="../../assets/logout.png"/>
 
@@ -44,12 +44,12 @@
         <router-link :to="{ name: 'events' }">
           <span class="font-medium px-2 py-2 rounded-l ">NEWS & EVENTS</span>
         </router-link>
-        <router-link :to="{ name: 'login' }"> 
+        <router-link :to="{ name: 'login' }">
           <span class="font-medium px-2 py-2 rounded-l ">LOGIN</span>
         </router-link>
       </span>
     </div>
-    
+
 </nav>
 
 </template>
@@ -63,7 +63,7 @@ export default {
   data() {
     return {
       isLog: ''
-    } 
+    }
   },
   setup () {
     const store = useStore();
