@@ -163,6 +163,42 @@ class UserController extends Controller
         return response($this->generateRes($user, $status, $msg), 200, ['application/json']);
     }
 
+    public function update_talent(Request $request, $id)
+    {
+        $user = User::find($id);
+        $msg = '';
+        $status = '';
+        $err = false;
+
+        $request->validate([
+            'fname' => 'required|max:255',
+            'lname' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'insta_handle' => 'max:255'
+        ]);
+
+
+        if(!isset($user)){
+            $msg = $this->MSG_ERR_ID_NOT_FOUND;
+            $status = 404;
+        }
+
+        $user->fill($request->except(['id']));
+
+        if($user){
+            $msg = $this->MSG_SUC_UPDATE;
+            $status = 204;
+            $user->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+            $user->save();
+        }else{
+            $msg = $this->MSG_ERR_ADDITIONAL_PROPS;
+            $status = 500;
+            $user = null;
+        }
+
+        return response($this->generateRes($user, $status, $msg), 200, ['application/json']);
+    }
+
     public function approve(Request $request, $id)
     {
         $user = User::find($id);

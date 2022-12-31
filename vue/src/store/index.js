@@ -13,7 +13,7 @@ const store = createStore({
   getters:  {},
   actions:{
     update_profile({commit}, user){
-      return  axios.patch('users/'+ user.id,user).then((data)=> {
+      return  axios.patch('users_update/'+ user.id,user).then((data)=> {
           commit("setProfile", data.data);
       }).catch(err => {
           console.log(err)
