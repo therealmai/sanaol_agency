@@ -83,7 +83,7 @@ export default {
           this.isApprovedModal = false;
           this.$emit("reload");
           // this.$router.go();
-        }, 3000);
+        }, 1500);
       });
     },
     deny() {
@@ -94,7 +94,7 @@ export default {
           this.isDeniedModal = false;
           this.$emit("reload");
           // this.$router.go();
-        }, 3000);
+        }, 1500);
       });
     },
     showDenyModal() {

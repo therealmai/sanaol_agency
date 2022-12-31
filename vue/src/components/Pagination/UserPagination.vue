@@ -16,6 +16,7 @@
       :handle="users.insta_handle"
       :email="users.email"
       :user_type="users.user_type"
+      @reload="loadUsers"
     />
     <div class="flex justify-center w-full mt-6">
       <PaginationController :pages="5" />
