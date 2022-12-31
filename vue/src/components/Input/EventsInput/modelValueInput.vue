@@ -1,17 +1,17 @@
 <template>
   <label class="text-textInput font-normal">
-    <div style= "position: absolute;margin-top:35px;margin-left:15px; font-size: 14px;">{{ title }} </div>
+    {{ title }}
     <br />
       <!-- TODO: When verification is set up, bind padding-right to state to accomodate Password eye icon. -->
-      <input 
-      :value="modelValue"
-      @input="$emit('update:modelValue',$event.target.value)"
+      <input
+        :value="modelValue"
+        @input="$emit('update:modelValue',$event.target.value)"
         type="text"
         :maxlength="limit"
-        :placeholder="holder"
         class="
           pl-4
           pr-4
+          py-[14px]
           bg-inputField
           rounded-[2px]
           text-inputText
@@ -19,12 +19,10 @@
           outline-inputOutline
           box-outline
           text-color
-          pb-5
-          pt-10
         "
-        style = "color: #525252; white-space: pre-wrap; "
+        style = "color: #525252;"
         :style ="{ width: width + 'px', height: height + 'px', fontSize: fontSize + 'px' }"
-
+        :placeholder="holder"
 
         :class="errorFlag == true ? 'border-2 border-error' : 'border-none'"
         :autofocus="focus"
@@ -43,10 +41,10 @@
 </template>
 
 <script>
-import ErrorText from "./ErrorText.vue";
+import ErrorText from "../ErrorText.vue";
 
 export default {
-  name: "TitledInput",
+  name: "TextInput",
   components: {
     ErrorText,
   },
@@ -65,8 +63,8 @@ export default {
     width: Number,
     height: Number,
     fontSize: Number,
-    modelValue: String,
     holder: String,
+    modelValue: String,
   },
   data() {
     return {
