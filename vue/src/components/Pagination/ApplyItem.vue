@@ -19,19 +19,19 @@
         text="APPROVE"
         @click="showApproveModal"
       />
-      <OutlineButton class="w-[100px]" text="DENY" @click="showDenyModal" />
+      <OutlineButton class="w-[100px]" text="DENY" @click="showDenyModal()" />
     </span>
   </div>
   <ApproveApplicationModal
     v-show="isApproveModalVisible"
     @close="closeApproveModal"
-    @confirm="approve"
+    @confirm="approve(), refreshPage()"
   />
   <ApprovedModal v-show="isApprovedModal" />
   <DenyApplicationModal
     v-show="isDenyModalVisible"
     @close="closeDenyModal"
-    @confirm="deny"
+    @confirm="deny(), refreshPage()"
   />
   <DeniedModal v-show="isDeniedModal" />
 </template>
@@ -108,6 +108,9 @@ export default {
     closeApproveModal() {
       this.isApproveModalVisible = false;
     },
+    refreshPage() {
+      location.reload();
+    }
   },
 };
 </script>
