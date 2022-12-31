@@ -20,7 +20,7 @@
                         <div class="flex items-center ">
                         
                           <!-- edit button will show if the user talent-->
-                          <div v-show="user_type == 'talent'">  
+                          <div v-show="user_type == 'talent' && $route.params.id == user_id">  
                             <EditBtn class="w-[150px]" text="Edit Profile" @click='showModal'></EditBtn>
                           </div>
 
@@ -166,6 +166,7 @@
       isDeleteVisible: false,
       isProfileVisible: false,
       isUpdated: false,
+      user_id:'',
       user_type:'',
       img_id:'',
       profile_pic:'',
@@ -183,6 +184,7 @@
   },
   mounted(){
         this.user_type = this.$store.state.user.data.user_type;
+        this.user_id = this.$store.state.user.data.id;
         axios.get('/users/'+this.$route.params.id).then(
           (response) => {
             const user = JSON.parse(JSON.stringify(response.data));
