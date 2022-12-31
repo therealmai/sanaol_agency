@@ -20,7 +20,7 @@
         <PaginationController :pages="5" />
       </div> -->
     </div>
-
+  </template>
   <script>
   import axiosClient from "../../axios";
   import PaginationController from "./PaginationController.vue";
