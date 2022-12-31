@@ -16,10 +16,10 @@
             {{ content }}
           </p>
         <div v-show="islog==true && usertype=='admin'" class="flex items-center  ml-[60%] gap-[2%] mt-[25px] mb-[25px]" >
-            <router-link :to="'/news/edit/' + id">
-            <OutlineButton text="Delete" class="w-[123px]"  @click='deleteNews'></OutlineButton>
-            </router-link>
             <router-link :to="'/news/' + id">
+            <OutlineButton text="Delete" class="w-[123px]"  @click='deleteNews(), refreshPage()'></OutlineButton>
+            </router-link>
+            <router-link :to="'/news/edit' + id">
             <FilledButton text="Edit" class="w-[123px]" @click='editNews'></FilledButton>
             </router-link>
         </div>
@@ -59,6 +59,20 @@
       usertype: String,
 
     },
+    methods: {
+      refreshPage() {
+            location.reload();
+        },
+        deleteEvent(id) {
+      axios.patch(`news/delete/${id}`)
+        .then(response => {
+          console.log('Nothing to see here');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    }
   };
   </script>
   

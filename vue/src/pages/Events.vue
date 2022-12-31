@@ -35,9 +35,6 @@
     </div>
   </div>
 
-  <div class="mt-[20px] mb-[20px]">
-    <PaginationButtonVue class="flex flex-col items-center"></PaginationButtonVue>
-  </div>
 </div>
 
 </template>

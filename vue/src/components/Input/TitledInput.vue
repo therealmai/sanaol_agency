@@ -8,6 +8,7 @@
       @input="$emit('update:modelValue',$event.target.value)"
         type="text"
         :maxlength="limit"
+        :placeholder="holder"
         class="
           pl-4
           pr-4
@@ -65,6 +66,7 @@ export default {
     height: Number,
     fontSize: Number,
     modelValue: String,
+    holder: String,
   },
   data() {
     return {
