@@ -18,6 +18,7 @@ import UserManagement from "../pages/UserManagement.vue";
 import News_Create from "../pages/News_Create.vue";
 import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
+import herobannerMG2 from "../pages/herobannerMG2.vue";
 import EventsCreate from "../pages/CreateEvent.vue";
 
 import UserMgmtModalTester from "../pages/UserManagementTester.vue";
@@ -97,13 +98,13 @@ const routes = [
                 meta: { title: "News" },
             },
             {
-                path: "/news_create",
+                path: "/news/create",
                 name: "news_create",
                 component: News_Create,
                 meta: { title: "Create News" },
             },
             {
-                path: "/news_update",
+                path: "/news/edit/:id",
                 name: "news_update",
                 component: News_Update,
                 meta: { title: "Edit News" },
@@ -121,13 +122,13 @@ const routes = [
                 meta: { title: "Manage Events" },
             },
             {
-                path: "/event_create",
+                path: "/events/create",
                 name: "event_create",
                 component: EventsCreate,
                 meta: { title: "Create Event" },
             },
             {
-                path: "/edit_events",
+                path: "/events/edit/:id",
                 name: "edit_events",
                 component: Edit_Events,
                 meta: { title: "Edit Event" },
@@ -149,6 +150,7 @@ const routes = [
                 component: DenyApplicationModal,
             },
         ],
+
     },
 
     {

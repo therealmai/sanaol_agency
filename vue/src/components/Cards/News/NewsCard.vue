@@ -1,52 +1,81 @@
 <template>
-
-  <div class="flex flex-col content-center w-[440px] space-y-2 cursor-pointer" >
     
-    <!-- Image -->
-    <div class="bg-lightgray w-full h-[317.35px] border rounded-[8px]">
-      <img :src="image" alt=""/>
+    <div class="flex flex-row gap-10 ml-[100px] space-y-16 justify-center" >
+     <img :src="rootImgPath+image" alt="" class="w-[500px] rounded-[8px] bg-cover cursor-pointer" @click="this.$router.push('/news/'+id)">
+      <div class=" flex flex-col w-[500px] items-start p-4">
+          <!-- subtitle -->
+          <span class="font-bold text-[30px] text-primary pt-4 cursor-pointer" @click="this.$router.push('/news/'+id)">
+            {{ title }}
+          </span>
+          <!-- details -->
+          <p class="font-medium text-[16px] text-detailText pt-0">
+            <span>{{ date }}</span> | <span>{{ location }}</span>
+          </p>
+          <!-- description -->
+          <p class="font-normal leading-normal text-[16px] text-secondary pt-0 text-justify">
+            {{ content }}
+          </p>
+        <div v-show="islog==true && usertype=='admin'" class="flex items-center  ml-[60%] gap-[2%] mt-[25px] mb-[25px]" >
+            <router-link :to="'/news/' + id">
+            <OutlineButton text="Delete" class="w-[123px]"  @click='deleteNews(), refreshPage()'></OutlineButton>
+            </router-link>
+            <router-link :to="'/news/edit' + id">
+            <FilledButton text="Edit" class="w-[123px]" @click='editNews'></FilledButton>
+            </router-link>
+        </div>
+      </div>
+     
     </div>
-        
-    <span class="font-bold leading-none text-[24px] text-primary pt-4" :class="
-      hover != undefined ? `hover:bg-${hover}` : 'hover:bg-primaryHovered'
-    ">
-          {{ title }}
-        </span>
-        <!-- description -->
-        <p class="font-mediem leading-none text-[16px] text-secondary w-full">
-          {{ content }}
-        </p>
-  </div>
-  <!-- </div> -->
+    
+  </template>
+  
+  <script>
+  import OutlineButton from '../../Buttons/OutlineButton.vue';
+  import FilledButton from '../../Buttons/FilledButton.vue';
 
-</template>
+  export default {
+    name: 'NewsCard',
+    components: {
+      OutlineButton,
+      FilledButton,
 
-<script>
-
-
-export default {
-  name: 'NewsCard',
-  components: {
-  },
-  props: {
-    title: {
-      type: String,
-      default: 'Lorem ipsum dolor sit amet'
     },
-    content: {
-      type: String,
-      default: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo'
-    },
-    image: {
-      type: String,
-      default: 'https://via.placeholder.com/880x495.png/0088aa?text=incidunt'
-    },
-    hover: String
-  },
-  computed: {
-  },
-};
-</script>
+    data () {
+      let prot = this.image.slice(0, 4);
 
-<style>
-</style>
+      return {
+        rootImgPath: prot === "http" ? '' : '/src/images/'
+      }
+    },
+    props: {
+      title: String,
+      date: Number,
+      location: String,
+      content: String,
+      id: Number,
+      image: String,
+      author: String,
+      islog: String,
+      usertype: String,
+
+    },
+    methods: {
+      refreshPage() {
+            location.reload();
+        },
+        deleteEvent(id) {
+      axios.patch(`news/delete/${id}`)
+        .then(response => {
+          console.log('Nothing to see here');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    }
+  };
+  </script>
+  
+  <style>
+  </style>
+  

@@ -109,7 +109,8 @@
                 data.set('image', this.service.image);
                 data.set('title', this.service.title);
                 data.set('content', this.service.content);
-
+                
+                console.log(this.service.image)
                 console.log(...data)
 
                 let id = this.$route.params.id;
