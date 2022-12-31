@@ -37,7 +37,9 @@ export default {
   },
   methods: {
     loadUsers() {
-      axiosClient.get("/users").then(({ data }) => (this.users = data));
+      axiosClient.get("/users").then(({ data }) => {
+        this.users = data;
+      });
     },
   },
   mounted() {
