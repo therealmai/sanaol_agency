@@ -174,7 +174,7 @@ export default {
               this.isSuccessfulModalVisible = false;
               this.$emit("close");
               this.$router.go();
-            }, 3000);
+            }, 1500);
           }
         });
     },
