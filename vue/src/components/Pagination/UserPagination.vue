@@ -7,7 +7,6 @@
         <span class="w-2/12 text-lg font-bold text-[#393540]">ROLE</span>
         <span class="w-3/12 text-lg font-bold text-[#393540]">ACTIONS</span>
       </div>
-
       <UserItem :key="users.id" v-for="users in user"
         :id="users.id"
         :fname="users.fname"

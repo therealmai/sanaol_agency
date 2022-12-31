@@ -1,12 +1,19 @@
 <template>
-    <div class="w-full min-w-fit">
-      <div class="flex py-4 px-8 bg-white">
-        <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">USER</span>
-        <span class="w-4/12 min-w-max text-lg font-bold text-[#393540]">EMAIL</span>
-        <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]">ROLE</span>
-        <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]">ACTIONS</span>
-      </div>
-
+  <div class="w-full min-w-fit">
+    <div class="flex py-4 px-8 bg-white">
+      <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]"
+        >USER</span
+      >
+      <span class="w-4/12 min-w-max text-lg font-bold text-[#393540]"
+        >EMAIL</span
+      >
+      <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]"
+        >ROLE</span
+      >
+      <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]"
+        >ACTIONS</span
+      >
+    </div>
 
       <template v-for="user in users">
         <ApplyItem :key="user.id" v-if="!user.is_member"
@@ -39,18 +46,14 @@
         users:[],
 
       }
+
     },
-    methods: {
-      loadUsers(){
-          axiosClient.get("/users").then(({ data }) => (this.users = data));
-      }
   },
   mounted() {
     this.loadUsers();
-  }
-  };
-  
-  </script>
-  
-  <style lang="postcss" scoped>
-  </style>
+  },
+};
+</script>
+
+<style lang="postcss" scoped></style>
+

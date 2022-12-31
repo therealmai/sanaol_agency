@@ -31,19 +31,16 @@
 </template>
 
 <script>
-import Modal from "./Modal.vue";
-import ConfirmButton from "../../Buttons/ConfirmButton.vue";
+import Modal from "../Modal.vue"
 
 export default {
-  name: "DeniedModal",
+  name: "ApprovedModal",
   components: {
     Modal,
-    ConfirmButton,
   },
   props: {
     text: String,
   },
-  emits: ['close'],
   methods: {
     close() {
       this.$emit("close");
