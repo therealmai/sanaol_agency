@@ -1,14 +1,14 @@
 <template> 
-  <div class="flex m-0 ">
+  <div class="flex m-0">
   
-      <div class="flex items-center justify-center container h-fit">
+      <div class="flex justify-center container h-fit">
       <!-- insert log in template here. -->
-        <div class="md:p-4 md:mx-6 m-8">
+        <div class="md:p-4 md:mx-6 m-8 justify-center block">
           <div class="text-center">
-            <h4 class="text-2xl font-semibold mt-6 pb-1">Sanaol Agency</h4>
+            <h4 class="text-2xl font-semibold mt-6 pb-1 text-primary">Sanaol Agency</h4>
             <img
               class="mx-auto w-48 mb-6"
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+              src="../assets/sanaol-logo.png"
               alt="logo"
             />
           </div>
@@ -49,10 +49,10 @@
             </div>
 
             <!-- Error Modal -->
-            <errorModal hidden>
+            <errorModal ref="modal">
               <template v-slot:modal-title> Login </template>
               <template v-slot:modal-content class="justify-center">
-                <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400 text-center">Incorrect username or password.</h3>
+                <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400 text-center">{{ errorMessage }}</h3>
                 <p class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400 text-center">Please try again.</p>
               </template>
             </errorModal>
@@ -96,41 +96,60 @@
       </div>
   
       <!-- image -->
-      <div class="object-cover h-auto lg:w-screen md:h-auto bg-cover bg-center lg:-mb xl:-mb-8" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
+      <div class="object-cover h-fill sm:h-auto lg:w-screen lg:h-auto md:h-auto bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div>
   </div>
   </template>
   
-  <script setup>
+  <script>
   import Navbar from '../components/Navigation/Navbar.vue';
   import errorModal from '../components/Modal/ErrorModal.vue';
   import store from "../store";
-  import {useRouter} from "vue-router";
-  import { reactive, computed } from 'vue';
   import Footer from '../components/Footer/Footer.vue';
+
+  export default {
+    data() {
+      return {
+        user: {
+          email: '',
+          password: '',
+        }
+      }
+    },
+    methods: {
+      clearFields() {
+        this.user.email = '';
+        this.user.password = '';
+      },
+      isEmpty(){
+        return this.user.email == '' || this.user.password == '';
+      },
+      login(ev) {
+        ev.preventDefault();
+        if(!this.isEmpty()) {
+          store.dispatch('login', this.user)
+            .then(() => {
+              this.$router.push('hero');
+            })
+            .catch(err => {
+              this.errorMessage = 'Wrong Email or Password. Please try again.'
+              this.$refs.modal.toggleModal();
+              this.clearFields();
+              console.log(err);
+            })
+          } else {
+            this.errorMessage = 'Empty Fields. Please Enter your credentials.'
+            this.$refs.modal.toggleModal();
+          }
+        }
+      },
+      components: {
+        Navbar,
+        errorModal,
+        Footer
+      }
+    }
   
-  const toggleModal = errorModal.methods.toggleModal();
-  const router = useRouter();
-  const user = reactive({
-    email: '',
-    password: '',
-  })
   
-  function login(ev) {
-    ev.preventDefault();
-    store.dispatch('login', user)
-    .then(() => {
-        router.push('hero');
-      })
-      .catch(err => {
-        // err.value = toggleModal;
-      })
-  }
-  
-  function staticLogin() {
-    router.push({
-      name: 'Hero'
-    })
-  }
   
   </script>
   

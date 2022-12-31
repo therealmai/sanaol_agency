@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::where('is_deleted', 0)->get();
 
         if(isset($user)){
             return response()->json($user, 200, ['application/json']);
@@ -44,6 +44,24 @@ class UserController extends Controller
         $user = User::where('is_deleted',0)
                     ->where('user_type','general')
                     ->get();
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
+    public function memberPage()
+    {
+        $user = User::where('is_member', true)->paginate(10);
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
+    public function nonMemberPage()
+    {
+        $user = User::where('is_member', false)->paginate(10);
 
         if(isset($user)){
             return response()->json($user, 200, ['application/json']);
@@ -154,6 +172,7 @@ class UserController extends Controller
 
         //approve user
         $user->user_type = 'talent';
+        $user->is_member = true;
 
         if($user){
             $msg = $this->MSG_SUC_UPDATE;

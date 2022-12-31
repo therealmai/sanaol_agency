@@ -1,50 +1,67 @@
 <template>
-    <div class="w-full min-w-fit justify-between">
-      <div class="flex py-4 px-8 bg-white">
-        <span class="w-3/12 text-lg font-bold text-[#393540]">USER</span>
-        <span class="w-4/12 text-lg font-bold text-[#393540]">EMAIL</span>
-        <span class="w-2/12 text-lg font-bold text-[#393540]">ROLE</span>
-        <span class="w-3/12 text-lg font-bold text-[#393540]">ACTIONS</span>
-      </div>
+  <div class="w-full min-w-fit">
+    <div class="flex py-4 px-8 bg-white">
+      <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]"
+        >USER</span
+      >
+      <span class="w-4/12 min-w-max text-lg font-bold text-[#393540]"
+        >EMAIL</span
+      >
+      <span class="w-2/12 min-w-max text-lg font-bold text-[#393540]"
+        >ROLE</span
+      >
+      <span class="w-3/12 min-w-max text-lg font-bold text-[#393540]"
+        >ACTIONS</span
+      >
+    </div>
 
-      <ApplyItem :key="user.id" v-for="user in users"
+    <template v-for="user in users">
+      <ApplyItem
+        :key="user.id"
+        v-if="!user.is_member"
         :id="user.id"
-        :image="user.image"
         :fname="user.fname"
         :lname="user.lname"
-        :handle="user.handle"
+        :handle="user.insta_handle"
         :email="user.email"
         :user_type="user.user_type"
+        @reload="loadUsers"
       />
-      <!-- <div class="flex justify-center w-full mt-6">
+    </template>
+
+    <!-- <div class="flex justify-center w-full my-6">
         <PaginationController :pages="3" />
       </div> -->
-    </div>
-  </template>
+  </div>
+</template>
 
-  <script>
-  import axiosClient from "../../axios";
-  import PaginationController from "./PaginationController.vue";
-  import ApplyItem from "./ApplyItem.vue";
-  export default {
-    name: "ApplyPagination",
-    components: { ApplyItem, PaginationController },
-    data() {
-      return {
-        users:[]
-      }
-    },
-    methods: {
-      loadUsers(){
-          axiosClient.get("/users/applications").then(({ data }) => (this.user = data));
-      }
+<script>
+import axiosClient from "../../axios";
+import PaginationController from "./PaginationController.vue";
+import ApplyItem from "./ApplyItem.vue";
+export default {
+  name: "ApplyPagination",
+  components: { ApplyItem, PaginationController },
+  data() {
+    return {
+      users: [],
+      isApproveModalVisible: false,
+      isDenyModalVisible: false,
+    };
   },
-  created() {
+  methods: {
+    loadUsers() {
+      axiosClient.get("/users").then(({ data }) => {
+        this.users = data;
+        console.log(data);
+      });
+    },
+  },
+  mounted() {
     this.loadUsers();
-  }
-  };
+  },
+};
+</script>
 
-  </script>
+<style lang="postcss" scoped></style>
 
-  <style lang="postcss" scoped>
-  </style>
