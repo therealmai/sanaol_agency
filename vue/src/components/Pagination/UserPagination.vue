@@ -17,9 +17,9 @@
       :email="users.email"
       :user_type="users.user_type"
     />
-    <!-- <div class="flex justify-center w-full mt-6">
+    <div class="flex justify-center w-full mt-6">
       <PaginationController :pages="5" />
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -37,7 +37,9 @@ export default {
   },
   methods: {
     loadUsers() {
-      axiosClient.get("/users").then(({ data }) => (this.users = data));
+      axiosClient.get("/users").then(({ data }) => {
+        this.users = data;
+      });
     },
   },
   mounted() {

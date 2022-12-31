@@ -42,8 +42,8 @@
     </template>
     <template #modal_button>
       <div class="flex flex-row space-x-3">
-        <ConfirmButton text="Confirm" @click="confirm"/>
-        <CancelButton text="Cancel" @click="close" />
+        <ConfirmButton text="Confirm" @click="confirm(), refreshPage()"/>
+        <CancelButton text="Cancel" @click="close(), refreshPage()" />
       </div>
     </template>
   </Modal>
@@ -71,6 +71,9 @@ export default {
     confirm() {
       this.$emit("confirm");
     },
+    refreshPage(){
+      location.reload();
+    }
   },
 };
 </script>

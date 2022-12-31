@@ -105,6 +105,9 @@ export default {
         }
       });
     },
+    refreshPage(){
+      location.reload();
+    }
   },
   mounted() {
     this.loadImages();

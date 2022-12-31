@@ -1,60 +1,116 @@
 <template>
-    <div class="flex py-1 px-8 bg-white border-t border-divider text-[#696969]">
-      <div class="w-3/12 grid grid-cols-6 grid-rows-4">
-        <div class=" items-center text-base col-span-1 row-span-4"><img class="mt-2 ml-3 rounded-full w-10 h-10" :src="data.image"/></div>
-        <div class=" text-[#3a3541] opacity-80 font-bold text-lg col-span-5 row-span-2">{{fname}} {{lname}}</div>
-        <div class="text-[#3a3541] opacity-70 font-normal text-base col-span-5 row-span-2">{{handle}}</div>
+  <div
+    class="flex min-w-max justify-between gap-x-2 py-1 px-8 bg-white border-t border-divider"
+  >
+    <div class="w-3/12 min-w-max grid grid-cols-4 grid-rows-4">
+      <div class="text-[#696969] col-span-2 row-span-4">Image</div>
+      <div class="text-[#696969] col-span-2 row-span-2">
+        {{ fname }} {{ lname }}
       </div>
-      <span class="text-[#3a3541] opacity-70 w-4/12 font-normal text-base mt-2">{{email}}</span>
-      <span class="text-[#3a3541] opacity-70 w-2/12 font-normal text-base capitalize mt-2">Application</span>
-      <span class="flex flex-row justify-center flex-nowrap text-[#696969] gap-x-2">
-        <FilledButton class="w-[120px]" @click="aModal = true" text="APPROVE" />
-        <OutlineButton class="w-[100px]" @click="dModal = true" text="DENY" />
-      </span>
-      <ApprovedConfirmModal :open="aModal" :id="id" @close="aModal = !aModal"></ApprovedConfirmModal>
-      <DeniedConfirmationModal :open="dModal" :id="id" @close="dModal = !dModal"></DeniedConfirmationModal>
+      <div class="text-[#696969] col-span-2 row-span-2">{{ handle }}</div>
     </div>
-  </template>
-  
-  <script>
-  import axiosClient from "../../axios";
-  import FilledButton from '../Buttons/FilledButton.vue';
-  import OutlineButton from '../Buttons/OutlineButton.vue';
-  import { ref } from "vue";
-  import ApprovedConfirmModal from '../Modal/UserManagementModals/UserManagementModals/ApprovedConfirmModal.vue'
-  import DeniedConfirmationModal from '../Modal/UserManagementModals/UserManagementModals/DeniedConfirmationModal.vue'
+    <span class="w-4/12 min-w-max text-[#696969]">{{ email }}</span>
+    <span class="w-2/12 min-w-max text-[#696969]">{{ user_type }}</span>
+    <span
+      class="flex flex-row justify-center flex-nowrap text-[#696969] gap-x-2"
+    >
+      <FilledButton
+        class="w-[100px]"
+        text="APPROVE"
+        @click="showApproveModal"
+      />
+      <OutlineButton class="w-[100px]" text="DENY" @click="showDenyModal()" />
+    </span>
+  </div>
+  <ApproveApplicationModal
+    v-show="isApproveModalVisible"
+    @close="closeApproveModal"
+    @confirm="approve()"
+  />
+  <ApprovedModal v-show="isApprovedModal" />
+  <DenyApplicationModal
+    v-show="isDenyModalVisible"
+    @close="closeDenyModal"
+    @confirm="deny()"
+  />
+  <DeniedModal v-show="isDeniedModal"
+  @close=""/>
+</template>
 
-  export default {
-    name: "ApplyItem",
-    components: { FilledButton, OutlineButton, ApprovedConfirmModal, DeniedConfirmationModal},
-    setup(){
-      const aModal = ref(false);
-      const dModal = ref(false);
-      return { aModal, dModal }
-    },
-    data() {
-      return {
-        data:[],
-      }
-    },
-    props: {
-      id: String,
-      fname: String,
-      lname: String,
-      handle: String,
-      email: String,
-      user_type: String,
-    },
-    methods: {
-      loadImages(){
-          axiosClient.get("/user/image/"+this.id).then(({ data }) => (this.data = data.data[0]));
-      },
+<script>
+import FilledButton from "../Buttons/FilledButton.vue";
+import OutlineButton from "../Buttons/OutlineButton.vue";
+import axiosClient from "../../axios";
+import ApproveApplicationModal from "../Modal/UserManageModals/ApproveApplicationModal.vue";
+import ApprovedModal from "../Modal/UserManageModals/ApprovedModal.vue";
+import DenyApplicationModal from "../Modal/UserManageModals/DenyApplicationModal.vue";
+import DeniedModal from "../Modal/UserManageModals/DeniedModal.vue";
+
+export default {
+  name: "ApplyItem",
+  components: {
+    FilledButton,
+    OutlineButton,
+    ApproveApplicationModal,
+    ApprovedModal,
+    DenyApplicationModal,
+    DeniedModal,
   },
-  mounted() {
-    this.loadImages();
-  }
-  };
-  </script>
-  
-  <style lang="postcss" scoped>
-  </style>
+  data() {
+    return {
+      isApproveModalVisible: false,
+      isApprovedModal: false,
+      isDenyModalVisible: false,
+      isDeniedModal: false,
+    };
+  },
+  props: {
+    id: Number,
+    fname: String,
+    lname: String,
+    handle: String,
+    email: String,
+    user_type: String,
+  },
+
+  emits: ["reload"],
+  methods: {
+    approve() {
+      axiosClient.patch(`users/approve/${this.id}`).then((res) => {
+        this.isApproveModalVisible = false;
+        this.isApprovedModal = true;
+        setTimeout(() => {
+          this.isApprovedModal = false;
+          this.$emit("reload");
+          // this.$router.go();
+        }, 3000);
+      });
+    },
+    deny() {
+      axiosClient.patch(`users/delete/${this.id}`).then((res) => {
+        this.isDenyModalVisible = false;
+        this.isDeniedModal = true;
+        setTimeout(() => {
+          this.isDeniedModal = false;
+          this.$emit("reload");
+          // this.$router.go();
+        }, 3000);
+      });
+    },
+    showDenyModal() {
+      this.isDenyModalVisible = true;
+    },
+    closeDenyModal() {
+      this.isDenyModalVisible = false;
+    },
+    showApproveModal() {
+      this.isApproveModalVisible = true;
+    },
+    closeApproveModal() {
+      this.isApproveModalVisible = false;
+    },
+  },
+};
+</script>
+
+<style lang="postcss" scoped></style>

@@ -10,9 +10,5 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^3.0.0"
-    },
-    "dependencies": {
-        "@ocrv/vue-tailwind-pagination": "^0.0.4",
-        "laravel-vue-pagination": "^4.0.0"
     }
 }

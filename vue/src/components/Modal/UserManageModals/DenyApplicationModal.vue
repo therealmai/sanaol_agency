@@ -1,6 +1,6 @@
 <template>
-  <Confirmation v-show="open" confirmationType="denied">
-    <template #confirm_body>
+  <Modal>
+    <template #modal_content>
       <svg
         class="h-[84px] fill-error-light"
         xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +15,10 @@
       <h1 class="text-3xl text-secondary font-bold">Deny Confirmation</h1>
       <div>
         <h2 class="text-secondary text-2xl text-center">
-          Are you sure you want to deny this application? Please confirm.
+          Are you sure you want to deny this 
+        </h2>
+        <h2 class="text-secondary text-2xl text-center">
+          application ? Please confirm.
         </h2>
       </div>
       <div
@@ -32,40 +35,44 @@
               d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32z"
             />
           </svg>
-          <h3>
-            <strong>Warning: </strong>Denying this user will also delete
-            information pertaining to the account.
+          <h3 class="text-justify">
+            <strong>Warning: </strong>Denying this user will also 
+            delete information pertaining to the account.
           </h3>
         </div>
       </div>
     </template>
-  </Confirmation>
+    <template #modal_button>
+      <div class="flex flex-row space-x-3">
+        <ConfirmButton text="Confirm" @click="confirm" />
+        <CancelButton text="Cancel" @click="close" />
+      </div>
+    </template>
+  </Modal>
 </template>
-
 <script>
-import Confirmation from "../Confirmation.vue";
+import Modal from "../Modal.vue";
+import ConfirmButton from "../../Buttons/ConfirmButton.vue";
+import CancelButton from "../../Buttons/CancelButton.vue";
+
 export default {
-  name: "DeniedConfirmationModal",
+  name: "DenyApplicationModal",
   components: {
-    Confirmation,
+    Modal,
+    ConfirmButton,
+    CancelButton,
   },
   props: {
-    open: {
-      type: Boolean,
-      required: true
-    }
-  }
+    text: String,
+    name: String,
+  },
+  methods: {
+    close() {
+      this.$emit("close");
+    },
+    confirm() {
+      this.$emit("confirm");
+    },
+  },
 };
 </script>
-
-<style>
-.modal-fade-enter,
-.modal-fade-leave-to {
-  opacity: 0;
-}
-
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-</style>

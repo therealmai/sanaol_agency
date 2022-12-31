@@ -14,11 +14,11 @@
             />
           </svg>
         </span>
-        <h2 class="font-[700] text-[32px] text-secondary">Deleted</h2>
+        <h2 class="font-[700] text-[32px] text-secondary">Denied</h2>
         <p
           class="font-[400] text-[18px] text-secondary text-center leading-[21.78px] max-w-[70%] pt-2"
         >
-          Successfully deleted {{ text }}
+          Successfully denied {{ text }}
         </p>
 
         <!-- <ConfirmButton text="OK" @click="close"></ConfirmButton> -->
@@ -28,14 +28,12 @@
 </template>
 
 <script>
-import Modal from "./Modal.vue";
-import ConfirmButton from "../../Buttons/ConfirmButton.vue";
+import Modal from "../Modal.vue";
 
 export default {
-  name: "DeleteModal",
+  name: "DeniedModal",
   components: {
     Modal,
-    ConfirmButton,
   },
   props: {
     text: String,
