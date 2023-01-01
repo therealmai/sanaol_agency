@@ -6,6 +6,7 @@ Task Teardown    Teardown
 *** Variables ***
 ${browser}             Chrome
 ${url}                 http://127.0.0.1:5173/hero
+${url-services}        http://127.0.0.1:5173/services
 
 ${wait-seconds}        15 seconds
 ${wait-not-exist-seconds}    5 seconds
@@ -22,6 +23,8 @@ ${input-content}       xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/d
 ${btn-login}           xpath://button[contains(text(),'Log in')]
 ${btn-save}            xpath://button[contains(text(),'SAVE')]
 ${btn-confirm}         xpath://button[contains(text(),'CONFIRM')]
+${btn-back}            xpath://button[contains(text(),'BACK')]
+${btn-cancel}          xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/button[2]
 
 ${modal-success}       xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]
 
@@ -41,70 +44,59 @@ ${msg-alert}           All fields must be filled.
 *** Test Cases ***
 If user is admin, edit button is present
     Login as Admin
-    
     Go To Services
-
     Wait Until Page Contains Element    ${services-1-editBtn}    ${wait-seconds}
-
     Element Should Be Visible   ${services-1-editBtn}
+
+Back button must be working in "Edit Hero Banner" page
+    Login as Admin
+    Go To Services
+    Click service 1 edit button
+    Wait Until Page Contains Element    ${btn-back}    ${wait-seconds}
+    Click Button    ${btn-back}
+    Should be on services
+
+Cancel button must be working in "Edit Hero Banner" page
+    Login as Admin
+    Go to Services
+    Click service 1 edit button
+    Wait Until Page Contains Element    ${btn-cancel}    ${wait-seconds}
+    Click Button    ${btn-cancel}
+    Should be on services
 
 If title field is missing, alert is shown
     Login as Admin
-    
     Go To Services
-
     Click service 1 edit button
-
     Wait for input value to load    ${input-title}
-    
     Press Keys  ${input-title}   CTRL+a   BACKSPACE    
-
     Do Update
-
     Alert Should Be Present    ${msg-alert}    
 
 If content field is missing, alert is shown
     Login as Admin
-    
     Go To Services
-
     Click service 1 edit button
-
     Wait for input value to load    ${input-content}
-    
     Press Keys  ${input-content}   CTRL+a   BACKSPACE    
-
     Do Update
-
     Alert Should Be Present    ${msg-alert}    
 
 If all fields are filled, do update
     Login as Admin
-    
     Go To Services
-
     Click service 1 edit button
-
     Wait for input value to load    ${input-title}
-
     Input Text        ${input-title}    Testing title
-
     Input Text        ${input-content}    Testing content
-    
     Do Update
-
     Wait Until Page Contains Element    ${modal-success}    ${wait-seconds}
-
     Element Should Be Visible    ${modal-success}
-
 
 If user is not admin, edit button is absent
     Login as Guest
-    
     Go To Services
-
     Wait Until Page Does Not Contain Element   ${services-1-editBtn}    ${wait-not-exist-seconds}  
-    
 
 *** Keywords ***
 Login as Admin
@@ -119,6 +111,9 @@ Login as Guest
     Input Text        ${input-email}    ${guest-email}
     Input Text        ${input-pass}     ${guest-pass}
     Click Button      ${btn-login}
+
+Should be on services
+    Wait Until Location Is    ${url-services}    ${wait-seconds}
 
 Go to Services
     Wait Until Page Contains Element    ${link-services}    ${wait-seconds}
