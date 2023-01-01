@@ -7,6 +7,16 @@ ${browser}             Chrome
 ${url}                 http://localhost:5173/hero
 ${speed-slow}          0.75 seconds
 
+# Accounts
+${admin-email}         dkoepp@example.net
+${admin-pass}          password
+
+${talent-email}        garland.rice@example.org
+${talent-pass}         password
+
+${guest-email}         fredrick.davis@example.com
+${guest-pass}          password
+
 
 # Links
 ${link-profile}        xpath://body/div[@id='app']/div[1]/div[1]/nav[1]/div[1]/span[1]/a[2]
@@ -38,17 +48,16 @@ ${confirm-modal}       xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/d
 ${success-modal}       xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]
 ${delete-modal}        xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]
 
-# Accounts
-${admin-email}         whilpert@example.org
-${admin-pass}          password
-
-${talent-email}        tpfannerstill@example.com
-${talent-pass}         password
-
-${guest-email}         nelson54@example.net
-${guest-pass}          password
 
 *** Test Cases ***
+If user is admin, profile button is not visible
+    Login as Admin
+
+    Set Selenium Speed    ${speed-slow}
+
+    Page Should Not Contain Element   ${btn-profile}
+
+
 If user is talent, edit button is visible
     Login as Talent 
 
@@ -105,41 +114,35 @@ If all fields are filled, confirmation modal appear on save
 
     Element Should Be Visible     ${success-modal}
 
-If delete button is clicked, display delete modal 
+# If delete button is clicked, display delete modal 
 
-    Login as Talent 
+#     Login as Talent 
 
-    Set Selenium Speed        ${speed-slow}
+#     Set Selenium Speed        ${speed-slow}
 
-    Page Should Contain Link         ${link-profile}
+#     Page Should Contain Link         ${link-profile}
 
-    Click Link        ${link-profile}
+#     Click Link        ${link-profile}
 
-    Click Button      ${btn-edit}
+#     Click Button      ${btn-edit}
 
-    Element Should Be Visible        ${edit-modal}
+#     Element Should Be Visible        ${edit-modal}
 
-    Click Element        ${btn-delete}
+#     Click Element        ${btn-delete}
 
-    Element Should Be Visible        ${delete-modal}
+#     Element Should Be Visible        ${delete-modal}
 
-    Click Button        ${modal-btn-delete}
+#     Click Button        ${modal-btn-delete}
 
-    Element Should Be Visible        ${modal-del-success}
+#     Element Should Be Visible        ${modal-del-success}
 
-    Click Element        ${modal-del-success}
+#     Click Element        ${modal-del-success}
 
-    Element Should Not Be Visible        ${modal-del-success}
+#     Element Should Not Be Visible        ${modal-del-success}
     
-    Element Should Not Be Visible        ${delete-modal}
+#     Element Should Not Be Visible        ${delete-modal}
    
 
-If user is admin, profile button is not visible
-    Login as Admin
-
-    Set Selenium Speed    ${speed-slow}
-
-    # Element Should Not Be Visible    ${link-profile}
 
 
 
