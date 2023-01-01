@@ -4,7 +4,7 @@
   <div class="mb-10">
     <div class="flex flex-col mt-[76px]">
       <div class="flex flex-row justify-between">
-        <h1 class="font-bold text-3xl text-secondary ml-[15%]">Events</h1>
+        <h1 class="font-bold text-3xl text-secondary ml-[15%]">Events</h1><br><br><br>
           <router-link v-show="islog==true && usertype == 'admin'" :to="'/events_management'" class=" mr-[13%]">
             <FilledButton text="Edit Events" class="w-[179px]"></FilledButton>
           </router-link>
