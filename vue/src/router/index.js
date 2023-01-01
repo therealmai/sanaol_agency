@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import App from "../App.vue";
 import Login from "../pages/Login.vue";
 import Hero from "../pages/Hero.vue";
+import HeroEdit from "../pages/HeroEdit.vue"
+import HeroEditPreview from "../pages/HeroEditPreview.vue"
 import Membership from "../pages/Membership.vue";
 import Talent_List from "../pages/Talent_List.vue";
 import Talent_User from "../pages/Talent_User.vue";
@@ -16,6 +18,7 @@ import UserManagement from "../pages/UserManagement.vue";
 import News_Create from "../pages/News_Create.vue";
 import News_Update from "../pages/News_Update.vue";
 import EventsManagement from "../pages/EventsManagement.vue";
+import herobannerMG2 from "../pages/herobannerMG2.vue";
 import EventsCreate from "../pages/CreateEvent.vue";
 
 import DenyApplicationModal from "../components/Modal/UserManageModals/DenyApplicationModal.vue";
@@ -44,6 +47,18 @@ const routes = [
                 name: "hero",
                 component: Hero,
                 meta: { title: "Home" },
+            },
+            {
+                path: "/hero/edit/:id",
+                name: "heroEdit",
+                component: HeroEdit,
+                meta: {title: 'Edit Hero'}
+            },
+            {
+                path: "/hero/edit/prev/:cat",
+                name: "heroEditPreview",
+                component: HeroEditPreview,
+                meta: {title: 'Edit Hero Preview'}
             },
             {
                 path: "/usermanagement",
@@ -82,13 +97,13 @@ const routes = [
                 meta: { title: "News" },
             },
             {
-                path: "/news_create",
+                path: "/news/create",
                 name: "news_create",
                 component: News_Create,
                 meta: { title: "Create News" },
             },
             {
-                path: "/news_update",
+                path: "/news/edit/:id",
                 name: "news_update",
                 component: News_Update,
                 meta: { title: "Edit News" },
@@ -106,13 +121,13 @@ const routes = [
                 meta: { title: "Manage Events" },
             },
             {
-                path: "/event_create",
+                path: "/events/create",
                 name: "event_create",
                 component: EventsCreate,
                 meta: { title: "Create Event" },
             },
             {
-                path: "/edit_events",
+                path: "/events/edit/:id",
                 name: "edit_events",
                 component: Edit_Events,
                 meta: { title: "Edit Event" },
@@ -129,6 +144,7 @@ const routes = [
                 component: DenyApplicationModal,
             },
         ],
+
     },
 
     {

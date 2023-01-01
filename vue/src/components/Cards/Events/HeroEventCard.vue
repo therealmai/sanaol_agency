@@ -37,24 +37,19 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Lorem ipsum dolor sit amet'
     },
     content: {
       type: String,
-      default: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo'
-    },
+      },
     date: {
       type: String,
-      default: 'November 15, 2022'
-    },
+      },
     location: {
       type: String,
-      default: 'University of San Carlos - Talamban Campus'
-    },
+      },
     image: {
       type: String,
-      default: 'https://via.placeholder.com/880x495.png/0088aa?text=incidunt'
-    },
+      },
   }
 };
 </script>

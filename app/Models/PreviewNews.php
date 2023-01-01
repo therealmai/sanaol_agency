@@ -11,6 +11,13 @@ class PreviewNews extends Model
 
     protected $table = "preview_news";
 
+    protected $fillable = [
+        'id',
+        'news_id',
+        'created_at',
+        'updated_at'
+    ];
+
     public function News(){
         return $this->belongsTo(News::class, 'news_id');
     }

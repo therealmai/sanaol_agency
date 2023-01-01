@@ -39,7 +39,10 @@ const store = createStore({
                 commit("logout")
                   return response;
                 })
-        }
+        },
+    updateAuthor(context, author) {
+      context.commit('updateAuthor', author)
+    }
   },
   mutations: {
     setProfile(state, userData) {

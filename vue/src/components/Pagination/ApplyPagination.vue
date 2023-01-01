@@ -15,25 +15,36 @@
       >
     </div>
 
-    <template v-for="user in users">
-      <ApplyItem
-        :key="user.id"
-        v-if="!user.is_member"
-        :id="user.id"
-        :fname="user.fname"
-        :lname="user.lname"
-        :handle="user.insta_handle"
-        :email="user.email"
-        :user_type="user.user_type"
-        @reload="loadUsers"
-      />
-    </template>
+      <template v-for="user in users">
+        <ApplyItem :key="user.id" v-if="!user.is_member"
+          :id="user.id"
+          :fname="user.fname"
+          :lname="user.lname"
+          :handle="user.insta_handle"
+          :email="user.email"
+          :user_type="user.user_type"
+        />
+      </template>
 
-    <!-- <div class="flex justify-center w-full my-6">
+      <!-- <div class="flex justify-center w-full my-6">
+      
         <PaginationController :pages="3" />
       </div> -->
-  </div>
-</template>
+    </div>
+  </template>
+  
+  <script>
+  import axiosClient from "../../axios";
+  import PaginationController from "./PaginationController.vue";
+  import ApplyItem from "./ApplyItem.vue";
+  export default {
+    name: "ApplyPagination",
+    components: { ApplyItem, PaginationController },
+    data() {
+      return {
+
+        users:[],
+
 
 <script>
 import axiosClient from "../../axios";
@@ -54,12 +65,15 @@ export default {
       axiosClient.get("/users").then(({ data }) => {
         this.users = data;
       });
+
+      }
+
     },
-  },
-  mounted() {
-    this.loadUsers();
-  },
-};
+    mounted() {
+      this.loadUsers();
+
+    },
+  };
 </script>
 
 <style lang="postcss" scoped></style>

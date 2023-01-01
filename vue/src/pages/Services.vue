@@ -42,9 +42,7 @@
       this.userType = this.user != null ? this.user['user_type'] : null;
       axios.get('http://127.0.0.1:8000/api/services').then(
         (response) => {
-          this.services = response.data
-          // console.log("services"),
-          // console.log(this.services)
+          this.services = response.data.slice(0, 2);
         }
       )
     },

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\HeroBanner;
 use App\Models\BannerImage;
 use Illuminate\Http\Request;
@@ -81,24 +82,32 @@ class HeroBannerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id' => 'required',
             'header_tal' => 'required|max:255',
             'subheader_tal' => 'required|max:255',
             'header_gen' => 'required|max:255',
-            'subheader_gen' => 'required|max:255',
-            'preview_events' => 'required',
-            'preview_news' => 'required'
+            'subheader_gen' => 'required|max:255'
         ]);
 
         $banner = HeroBanner::findOrFail($id);
-        $banner->fill($request->except(['user_id']));
-        $banner->user_id = $request->user_id;
+        // $banner->fill($request->except(['user_id']));
+        // $banner->user_id = $request->user_id;
 
-        if($banner->save()) {
-            return response("Succesfully saved data!", 200, ['application/json']);
-        } else {
-            return response("Error in saving data", 400, ['application/json']);
+        if($request->hasFile('image')) {
+            $pathToFile = $request->file('image')
+                ->store('HeroBanner', 'vue');
+            $banner->image = $pathToFile;
         }
+
+        $banner->header_tal = $request->input('header_tal');
+        $banner->subheader_tal = $request->input('subheader_tal');
+        $banner->header_gen = $request->input('header_gen');
+        $banner->subheader_gen = $request->input('subheader_gen');
+        $banner->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+        $banner->save();
+
+        $msg = $this->MSG_SUC_UPDATE;
+        $status = 200;
+        return response($this->generateRes($banner, $status, $msg), 200);
     }
 
     /**
