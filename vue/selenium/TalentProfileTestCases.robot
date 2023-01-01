@@ -17,18 +17,32 @@ ${link-login}          xpath://body/div[@id='app']/div[1]/div[1]/nav[1]/div[1]/s
 ${input-email}         xpath://input[@id='email']
 ${input-pass}          xpath://input[@id='password']
 
+${input-modal-fname}   xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+${input-modal-lname}   xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/input[1]
+${input-modal-email}   xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/input[1]
+${input-modal-ig}      xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/input[1]
+${input-modal-bio}     xpath://textarea[@id='txtarea']
+
 # Buttons
 ${btn-login}           xpath://button[contains(text(),'Log in')]
 ${btn-profile}         xpath://span[contains(text(),'PROFILE')]
 ${btn-edit}            xpath://button[contains(text(),'Edit Profile')]
+${btn-delete}          xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/span[1]/*[1]
+${modal-btn-save}      xpath://button[contains(text(),'Save')]
+${modal-btn-confirm}   xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/button[1]
+${modal-btn-delete}    xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/button[1]
+${modal-del-success}        xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]
 
 ${edit-modal}          xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]
+${confirm-modal}       xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]
+${success-modal}       xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]
+${delete-modal}        xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]
 
 # Accounts
 ${admin-email}         whilpert@example.org
 ${admin-pass}          password
 
-${talent-email}        olson.monserrat@example.org
+${talent-email}        tpfannerstill@example.com
 ${talent-pass}         password
 
 ${guest-email}         nelson54@example.net
@@ -59,9 +73,66 @@ If edit button is clicked, talent edit modal is visible
 
     Element Should Be Visible    ${edit-modal}
 
-If 
+If all fields are filled, confirmation modal appear on save
+    
+    Login as Talent 
 
+    Set Selenium Speed        ${speed-slow}
 
+    Page Should Contain Link         ${link-profile}
+
+    Click Link        ${link-profile}
+
+    Click Button      ${btn-edit}
+
+    Element Should Be Visible    ${edit-modal}
+
+    Input Text        ${input-modal-fname}    test-fname
+
+    Input Text        ${input-modal-lname}    test-lname
+
+    Input Text        ${input-modal-email}    test-email
+
+    Input Text        ${input-modal-ig}    test-ig
+
+    Input Text        ${input-modal-bio}    test-bio
+
+    Click Button      ${modal-btn-save}
+
+    Element Should Be Visible     ${confirm-modal}
+
+    Click Button     ${modal-btn-confirm}
+
+    Element Should Be Visible     ${success-modal}
+
+If delete button is clicked, display delete modal 
+
+    Login as Talent 
+
+    Set Selenium Speed        ${speed-slow}
+
+    Page Should Contain Link         ${link-profile}
+
+    Click Link        ${link-profile}
+
+    Click Button      ${btn-edit}
+
+    Element Should Be Visible        ${edit-modal}
+
+    Click Element        ${btn-delete}
+
+    Element Should Be Visible        ${delete-modal}
+
+    Click Button        ${modal-btn-delete}
+
+    Element Should Be Visible        ${modal-del-success}
+
+    Click Element        ${modal-del-success}
+
+    Element Should Not Be Visible        ${modal-del-success}
+    
+    Element Should Not Be Visible        ${delete-modal}
+   
 
 If user is admin, profile button is not visible
     Login as Admin
