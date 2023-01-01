@@ -17,7 +17,7 @@
             <span>{{ date }}</span> | <span>{{ location }}</span>
           </p>
           <!-- description -->
-          <p class="font-normal leading-normal text-[16px] text-secondary pt-0">
+          <p class="font-normal leading-normal text-[16px] text-secondary pt-0" style="overflow: hidden; text-overflow: ellipsis;max-width: 700px; white-space: nowrap;">
             {{ content }}
           </p>
       </div>
