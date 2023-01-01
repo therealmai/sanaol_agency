@@ -71,6 +71,7 @@ export default {
     confirm() {
       this.$emit("confirm");
     },
+    
   },
 };
 </script>

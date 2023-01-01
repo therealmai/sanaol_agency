@@ -3,6 +3,7 @@
       class="
         bg-white
         text-[20px]
+        px-3
         py-1
         uppercase
         text-black

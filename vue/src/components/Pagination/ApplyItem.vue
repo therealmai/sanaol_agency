@@ -19,21 +19,22 @@
         text="APPROVE"
         @click="showApproveModal"
       />
-      <OutlineButton class="w-[100px]" text="DENY" @click="showDenyModal" />
+      <OutlineButton class="w-[100px]" text="DENY" @click="showDenyModal()" />
     </span>
   </div>
   <ApproveApplicationModal
     v-show="isApproveModalVisible"
     @close="closeApproveModal"
-    @confirm="approve"
+    @confirm="approve()"
   />
   <ApprovedModal v-show="isApprovedModal" />
   <DenyApplicationModal
     v-show="isDenyModalVisible"
     @close="closeDenyModal"
-    @confirm="deny"
+    @confirm="deny()"
   />
-  <DeniedModal v-show="isDeniedModal" />
+  <DeniedModal v-show="isDeniedModal"
+  @close=""/>
 </template>
 
 <script>
@@ -82,7 +83,7 @@ export default {
           this.isApprovedModal = false;
           this.$emit("reload");
           // this.$router.go();
-        }, 3000);
+        }, 1500);
       });
     },
     deny() {
@@ -90,10 +91,10 @@ export default {
         this.isDenyModalVisible = false;
         this.isDeniedModal = true;
         setTimeout(() => {
-          this.isDeniedMModal = false;
-          // this.$router.go();
+          this.isDeniedModal = false;
           this.$emit("reload");
-        }, 3000);
+          // this.$router.go();
+        }, 1500);
       });
     },
     showDenyModal() {

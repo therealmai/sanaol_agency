@@ -45,14 +45,35 @@
 
         users:[],
 
+
+<script>
+import axiosClient from "../../axios";
+import PaginationController from "./PaginationController.vue";
+import ApplyItem from "./ApplyItem.vue";
+export default {
+  name: "ApplyPagination",
+  components: { ApplyItem, PaginationController },
+  data() {
+    return {
+      users: [],
+      isApproveModalVisible: false,
+      isDenyModalVisible: false,
+    };
+  },
+  methods: {
+    loadUsers() {
+      axiosClient.get("/users").then(({ data }) => {
+        this.users = data;
+      });
+
       }
 
     },
     mounted() {
       this.loadUsers();
+
     },
   };
 </script>
 
 <style lang="postcss" scoped></style>
-

@@ -42,6 +42,7 @@
     @close="closeDeleteModal"
     @confirm="deleteUser"
   />
+  <SuccessDeleteModal v-show="isDeleteSuccessModalVisible"/>
 </template>
 
 <script>
@@ -50,6 +51,7 @@ import FilledButton from "../Buttons/FilledButton.vue";
 import OutlineButton from "../Buttons/OutlineButton.vue";
 import EditUserModal from "../Modal/UserManageModals/EditUserModal.vue";
 import DeleteUserConfirmationModal from "../Modal/UserManageModals/DeleteUserConfirmationModal.vue";
+import SuccessDeleteModal from "../Modal/UserManageModals/SuccessDeleteModal.vue"
 
 export default {
   name: "UserItem",
@@ -58,10 +60,12 @@ export default {
     OutlineButton,
     DeleteUserConfirmationModal,
     EditUserModal,
+    SuccessDeleteModal
   },
   data() {
     return {
       isDeleteModalVisible: false,
+      isDeleteSuccessModalVisible: false,
       isEditModalVisible: false,
       image: String,
       data: String,
@@ -75,6 +79,7 @@ export default {
     email: String,
     user_type: String,
   },
+  emits: ["reload"],
   methods: {
     loadImages() {
       axios.get("/user/image/" + this.id).then((res) => {
@@ -97,11 +102,21 @@ export default {
     closeDeleteModal() {
       this.isDeleteModalVisible = false;
     },
+    closeDeleteSuccesModal() {
+      this.isDeleteSuccessModalVisible = false;
+    },
+    showDeleteSuccesModal() {
+      this.isDeleteSuccessModalVisible = true;
+    },
     deleteUser() {
-      console.log("Testing emit");
       axios.patch(`users/delete/${this.id}`).then((res) => {
         if (res.status == 200) {
-          this.$emit("close");
+          this.closeDeleteModal();
+          this.showDeleteSuccesModal();
+          setTimeout(() => {
+            this.closeDeleteSuccesModal();
+            this.$emit("reload");
+          }, 1500);
         }
       });
     },

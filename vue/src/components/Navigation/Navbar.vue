@@ -25,7 +25,8 @@
         <router-link :to="{ name: 'events' }">
           <span class="font-medium px-2 py-2 rounded-l ">NEWS & EVENTS</span>
         </router-link>
-
+        
+        
         <span class="bg-[#F6F5FF] p-2 rounded-[7px] text-primary pr-6 pl-6 cursor-pointer">{{ user.fname.toUpperCase() }}</span>
         <img @click="logout" class=" w-6 h-5 cursor-pointer inline-block ml-2 mr-4" src="../../assets/logout.png"/>
 

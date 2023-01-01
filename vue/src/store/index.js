@@ -21,8 +21,7 @@ const store = createStore({
     },
     register({commit}, user) {
       return axios.post("auth/register", user)
-          .then((data) => {
-              console.log(data);
+          .then(({data}) => {
               return data;
           })
       },
