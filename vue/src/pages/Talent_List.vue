@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col justify-center items-center w-full">
+  <div class="flex flex-col justify-center items-center w-full mb-14">
     <h1 class="text-3xl font-bold text-gray-600 mt-8 mr-[1070px]">
       Our Talents
     </h1>
-    <div class="grid grid-cols-4 gap-12 mt-10">
+    <div class="grid grid-cols-4 gap-12 mt-10 mb-10">
       <!-- Talent Card -->
       <ul :key="item.id" v-for="item in talents">
         <TalentCard
@@ -57,7 +57,7 @@
 <script>
 // import TalentCard from '../components/Cards/Talents/TalentCards.vue';
 import TalentCard from "../components/TalentCards/TalentCards.vue";
-import axios from "axios";
+import axios from "../axios";
 export default {
   components: {
     TalentCard,
@@ -68,17 +68,17 @@ export default {
     };
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/users/").then((response) => {
+    axios.get("/users/").then((response) => {
       (this.talents = response.data),
         (this.talents = this.talents.filter((user) => {
           return user.user_type == "talent";
         }));
       console.log("users - filtered"), console.log(this.talents);
-
       console.log(this.talents.length)
+
       for (let x = 0; x < this.talents.length; x++) {
         axios
-          .get("http://127.0.0.1:8000/api/user/image/" + this.talents[x].id)
+          .get("/user/image/" + this.talents[x].id)
           .then((response) => {
             console.log(response.data.data[0].image)
             this.talents[x].image = response.data.data[0].image;

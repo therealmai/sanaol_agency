@@ -15,11 +15,11 @@
                 </label>
                 <div >
                 <eventsInput width="528" height="49.6" fontSize="16" holder="Event Title" v-model.trim="events.title"></eventsInput><br>
-            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Date" v-model.trim="events.date"></eventsInput><br>
+            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Date yyyy/mm/dd mm/ss/ms" v-model.trim="events.date"></eventsInput><br>
             <eventsInput width="528" height="49.6" fontSize="16" holder="Event Location" v-model.trim="events.location"></eventsInput><br>
             <eventsInput width="528" height="49.6" fontSize="16" holder="Event Type"  v-model.trim="events.event_type"></eventsInput><br><br>
-            <eventsInput width="528" height="49.6" fontSize="16" holder="Event Description" v-model.trim="events.content"></eventsInput><br><br>
-          
+            <textarea class="h-[221px]" style="border-width: 1px; border-color: #A8A8A8; padding: 10px 10px; width: 529px; border-radius: 3px; color: #525252;" placeholder="Content" v-model.trim="events.content" type="text"></textarea><br><br><br>
+            
             </div>
      
             </form>
@@ -142,7 +142,7 @@ export default {
                 data.set('author', this.events.author);
 
                 console.log(...data)
-                
+                console.log(this.events.image)
 
                 
                 axios.post('/events/create', data, {

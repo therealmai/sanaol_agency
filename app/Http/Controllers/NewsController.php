@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -34,6 +35,20 @@ class NewsController extends Controller
         $news->fill($request->except(['user_id']));
         $news->user_id = $request->user_id;
 
+        if($news) {
+            $validated = $request->validate([
+                'user_id'   => 'required',
+                'title'     => 'required',
+                'content'   => 'required',
+                'image'     => 'required',
+                'author'    => 'required',
+            ]);
+
+        if($request->hasFile('image')){
+            $pathToFile = $request->file('image')
+                ->store('News', 'vue');
+            $news->image = $pathToFile;
+        }
         if($request->hasFile('image')){
             $pathToFile = $request->file('image')
                 ->store('News', 'vue');
@@ -43,6 +58,8 @@ class NewsController extends Controller
         $news->content = $request->input('content');
         $news->user_id = $request->input('user_id');
         $news->author = $request->input('author');
+        $news->location = $request->input('location');
+        $news->date = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
         $news->save();
 
         if($news->save()) {
@@ -51,6 +68,7 @@ class NewsController extends Controller
             return response("Error in saving data", 400, ['application/json']);
         }
     }
+}
 
     public function show($id)
     {
@@ -97,6 +115,7 @@ class NewsController extends Controller
             $status = 500;
             $news = null;
         }
+
         if($request->hasFile('image')){
             $pathToFile = $request->file('image')
                 ->store('News', 'vue');

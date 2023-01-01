@@ -20,7 +20,48 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::where('is_deleted', 0)->get();
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
+    public function currentUsers()
+    {
+        $user = User::where('is_deleted',0)
+                    ->where('user_type','admin')
+                    ->orWhere('user_type','talent')
+                    ->get();
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
+    public function applications()
+    {
+        $user = User::where('is_deleted',0)
+                    ->where('user_type','general')
+                    ->get();
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
+    public function memberPage()
+    {
+        $user = User::where('is_member', true)->paginate(10);
+
+        if(isset($user)){
+            return response()->json($user, 200, ['application/json']);
+        }
+    }
+
+    public function nonMemberPage()
+    {
+        $user = User::where('is_member', false)->paginate(10);
 
         if(isset($user)){
             return response()->json($user, 200, ['application/json']);
@@ -34,7 +75,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
         $request->validate([
             'fname' => 'required|max:255',
             'lname' => 'required|max:255',
@@ -42,7 +83,7 @@ class UserController extends Controller
             'password' => 'required',
             'insta_handle' => 'max:255'
         ]);
-      
+
         $user = User::create([
             'fname' => $request->fname,
             'lname' => $request->lname,
@@ -52,7 +93,7 @@ class UserController extends Controller
             'user_type' => $request->user_type,
             'is_member' => $request->is_member
         ]);
-        
+
         return response()->json("User stored successfully", 200, ['application/json']);
     }
 
@@ -67,7 +108,7 @@ class UserController extends Controller
         $user = User::find($id);
         $msg = '';
         $status = '';
-    
+
         if(isset($user)){
             $msg = $this->MSG_SUC_ID_FOUND;
             $status = 200;
@@ -100,13 +141,38 @@ class UserController extends Controller
             'insta_handle' => 'max:255'
         ]);
 
-        
+
         if(!isset($user)){
             $msg = $this->MSG_ERR_ID_NOT_FOUND;
             $status = 404;
         }
 
         $user->fill($request->except(['id']));
+
+        if($user){
+            $msg = $this->MSG_SUC_UPDATE;
+            $status = 204;
+            $user->updated_at = Carbon::now($this->TZ_OFFSET)->toDateTimeString();
+            $user->save();
+        }else{
+            $msg = $this->MSG_ERR_ADDITIONAL_PROPS;
+            $status = 500;
+            $user = null;
+        }
+
+        return response($this->generateRes($user, $status, $msg), 200, ['application/json']);
+    }
+
+    public function approve(Request $request, $id)
+    {
+        $user = User::find($id);
+        $msg = '';
+        $status = '';
+        $err = false;
+
+        //approve user
+        $user->user_type = 'talent';
+        $user->is_member = true;
 
         if($user){
             $msg = $this->MSG_SUC_UPDATE;

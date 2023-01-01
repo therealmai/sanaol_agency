@@ -17,14 +17,17 @@ class HeroBannerFactory extends Factory
      */
     public function definition()
     {
+        $user = User::all()->where('user_type', 'admin')->random();
+        $user->is_member = true;
+        $user->save();
+
         return [
-            'user_id'         => User::all()->random()->id,
+            'user_id'         => $user->id,
             'header_tal'      => $this->faker->words(5, true),
             'subheader_tal'   => $this->faker->sentence(7),
             'header_gen'      => $this->faker->words(5, true),
             'subheader_gen'   => $this->faker->sentence(7),
-            'preview_events'  => rand(0,10),
-            'preview_news'    => rand(0,10),
+            'image'           => $this->faker->imageUrl(880,495),
         ];
     }
 }

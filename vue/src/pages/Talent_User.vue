@@ -9,7 +9,8 @@
             <!-- profile content -->
             <div class="flex flex-row justify-center relative top-[150px] flex-wrap gap-6 mx-10 ">
               <!-- image -->
-              <img class="w-[158px] h-[158px] object-cover rounded-[50%] flex justify-start" src="../assets/dp.jpg" alt="alternatetext">
+                <img class="w-[158px] h-[158px] object-cover rounded-[50%] flex justify-start" alt="profile_pic" :src="profile_pic">
+             
               <div class="text-primary space-y-4 font-inter">
                       <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
@@ -19,7 +20,7 @@
                         <div class="flex items-center ">
                         
                           <!-- edit button will show if the user talent-->
-                          <div v-show="user.user_type == 'talent'">  
+                          <div v-show="user_type == 'talent'">  
                             <EditBtn class="w-[150px]" text="Edit Profile" @click='showModal'></EditBtn>
                           </div>
 
@@ -45,14 +46,14 @@
             <form id="edit" @submit="updateProfile" method="post">
               <div class="flex flex-col w-[800px] max-h-[756px] mt-[30px] space-y-4">  
 
-                <span class="text-[32px] font-bold text-[#525252]">Edit Profile</span>
+                <span class="text-[32px] font-bold text-primary">Edit Profile</span>
                 <div class="flex flex-row gap-10">
                   
                   <input type="file" accept="image/*" name="file" id="file" @change="loadFile" style="display:none;"/>
                   <label for="file">
                     <div>
                         <!-- :src="form.image" -->
-                        <img id="talentImg" class=" hover:bg-black hover:bg-opacity-90 hover:cursor-pointer w-[160px] h-[120px] object-cover rounded-[50%]"  src="../assets/dp.jpg" alt="alternatetext">
+                        <img id="talentImg" class=" hover:bg-black hover:bg-opacity-90 hover:cursor-pointer w-[160px] h-[120px] object-cover rounded-[50%]"  :src="profile_pic" alt="alternatetext">
                     </div>
                   </label>
                 
@@ -70,7 +71,7 @@
                               </div>
                               
                               <div>
-                                <p>Featured Photos</p>
+                                <p class="text-primary">Featured Photos</p>
 
                                  <div class="flex flex-row text-[#A8A8A8] gap-6 w-full relative">
                                     <div v-for="image in images" v-bind:key="image.id">
@@ -165,9 +166,11 @@
       isDeleteVisible: false,
       isProfileVisible: false,
       isUpdated: false,
+      user_type:'',
       img_id:'',
+      profile_pic:'',
       user: {},
-      images: {},
+      images: [],
       form:{
         id:'',
         fname:'',
@@ -179,17 +182,18 @@
     }
   },
   mounted(){
-        axios.get('users/'+this.$route.params.id).then(
+        this.user_type = this.$store.state.user.data.user_type;
+        axios.get('/users/'+this.$route.params.id).then(
           (response) => {
             const user = JSON.parse(JSON.stringify(response.data));
             this.user = user.data;
             this.form = user.data;
-
           }
       );
-      axios.get('user/image/'+this.$route.params.id).then(
+      axios.get('/user/image/'+this.$route.params.id).then(
         (response) => {
           this.images = JSON.parse(JSON.stringify(response.data.data));
+          this.profile_pic = this.images[0].image;
           console.log(this.images);
         }
       );
@@ -208,11 +212,11 @@
       },
       updateImage(){
         this.isDeleted= false;
-        axios.patch('user/image/delete/'+this.img_id).then(
+        axios.patch('/user/image/delete/'+this.img_id).then(
         (response) => {
           console.log(response);
         });
-        axios.get('user/image/'+this.$route.params.id).then(
+        axios.get('/user/image/'+this.$route.params.id).then(
         (response) => {
           this.images = JSON.parse(JSON.stringify(response.data.data));
           console.log(this.images);

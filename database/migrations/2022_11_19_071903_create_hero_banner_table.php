@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string('subheader_tal');
             $table->string('header_gen');
             $table->string('subheader_gen');
-            $table->smallInteger('preview_events')->nullable();
-            $table->smallInteger('preview_news')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });

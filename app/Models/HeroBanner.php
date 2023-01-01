@@ -16,14 +16,9 @@ class HeroBanner extends Model
         'subheader_tal',
         'header_gen',
         'subheader_gen',
-        'preview_events',
-        'preview_news',
+        'image',
         'is_deleted'
     ];
-
-    public function BannerImages(){
-        return $this->hasMany(BannerImage::class, 'hero_id');
-    }
 
     public function User(){
         return $this->belongsTo(User::class, 'user_id');

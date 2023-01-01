@@ -15,11 +15,11 @@
                 </label>
                 <div >
                 <titled-input width="528" height="49.6" fontSize="16" title="Event Title" v-model.trim="events.title"></titled-input><br>
-                <titled-input width="528" height="49.6" fontSize="16" title="Event Date" v-model.trim="events.date"></titled-input><br>
+                <titled-input width="528" height="49.6" fontSize="16" title="Event Date" holder="Event Date yyyy/mm/dd mm/ss/ms" v-model.trim="events.date"></titled-input><br>
                 <titled-input width="528" height="49.6" fontSize="16" title="Event Location" v-model.trim="events.location"></titled-input><br>
-                <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model.trim="events.event_type" ></titled-input><br>
-                <titled-input width="528" height="49.6" fontSize="16" title="Event Description" v-model.trim="events.content"></titled-input><br><br>
-        
+                <titled-input width="528" height="49.6" fontSize="16" title="Event Type" v-model.trim="events.event_type" ></titled-input><br><br>
+                <textarea class="h-[221px]" style="border-width: 1px; border-color: #A8A8A8; padding: 10px 10px; width: 529px; border-radius: 3px; color: #525252;" placeholder="Content" v-model.trim="events.content" type="text"></textarea><br><br><br>
+            
                 
             </div>
      
@@ -54,7 +54,7 @@
 
         
         <!-- Modal appears after you click the CONFIRM button -->
-        <DeletedModal id="mydeletemodal" text="events" v-show="isConfirmDeleteModal" @click="closeDeleteModal">
+        <DeletedModal id="mydeletemodal" text="events" v-show="isConfirmDeleteModal" @click="closeDeleteModal(), refreshPage()">
         </DeletedModal>
 
     </div>
@@ -204,6 +204,9 @@ export default {
             var modal = document.getElementById("mydeletemodal");
             modal.style.display = "none";
         },
+        refreshPage() {
+            location.reload();
+        }
         
 
     },

@@ -10,7 +10,7 @@
           </router-link>
       </div>
     </div>
-    <CardCarousel class="flex justify-center ml-[150px]"></CardCarousel>
+    <eventCarousel class="flex justify-center ml-[150px]" :events="events"></eventCarousel>
   </div>
     <div class="flex flex-row justify-between mb-[50px]">
       <h1 class="font-bold text-3xl text-secondary ml-[15%]">News articles</h1>
@@ -35,9 +35,6 @@
     </div>
   </div>
 
-  <div class="mt-[20px] mb-[20px]">
-    <PaginationButtonVue class="flex flex-col items-center"></PaginationButtonVue>
-  </div>
 </div>
 
 </template>
@@ -53,7 +50,7 @@ import EventCard from '../components/Cards/Events/EventCard.vue';
 import PaginationButtonVue from '../components/Buttons/PaginationButton.vue';
 import OutlineButton from '../components/Buttons/OutlineButton.vue';
 import FilledButton from '../components/Buttons/FilledButton.vue';
-import CardCarousel from '../components/HeroBanner/CardCarousel.vue';
+import eventCarousel from '../components/EventsCarousel/EventCarousel.vue';
 import axios from '../axios';
 
 export default{
@@ -62,6 +59,7 @@ export default{
       islog:'',
       usertype:'',
       News: [],
+      events: [],
     }
   },
   components: {
@@ -74,7 +72,7 @@ export default{
     PaginationButtonVue,
     FilledButton,
     OutlineButton,
-    CardCarousel
+    eventCarousel
   },
   methods: {
     getNews() {
@@ -82,6 +80,14 @@ export default{
         this.News = response.data.filter((news) => {
           return news.is_deleted == 0;
         });
+      })
+    },
+    getEvents() {
+      axios.get('events').then((res) => {
+        this.events = res.data.slice(0,3); // only 3 events to display
+      })
+      .catch((err) => {
+        console.log(err);
       })
     }
   },
@@ -91,6 +97,9 @@ export default{
       this.usertype = this.$store.state.user.data.user_type;
     }
     this.getNews();
+  },
+  created() {
+    this.getEvents();
   },
 }
 </script>

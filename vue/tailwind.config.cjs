@@ -1,9 +1,9 @@
-
 module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
-    './src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js',
+    "./src/**/*.{html,js}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   theme: {
     extend: {
@@ -18,24 +18,27 @@ module.exports = {
         divider: "#E7E7E7",
         detailText: "#989898",
         inputOutline: "#A8A8A8",
-        textInput:"#A8A8A8",
+        textInput: "#A8A8A8",
+
+        error: {
+          bg: "#FFE0E0",
+          light: "#FF7878",
+          strong: "#FF0000",
+        },
       },
       fontSize: {
-          textButtons:"1.5rem",
-          textModal: "1.25rem",
-          textInput: "1.25rem",
+        textButtons: "1.5rem",
+        textModal: "1.25rem",
+        textInput: "1.25rem",
       },
       fontFamily: {
-          inter: ['"Inter"'],
-          
+        inter: ['"Inter"'],
       },
-      height:{
-        '128': '32rem',
-        '220': '39.5rem',
+      height: {
+        128: "32rem",
+        220: "39.5rem",
       },
     },
   },
-  plugins: [
-    require('tw-elements/dist/plugin')
-  ]
-}
+  plugins: [require("tw-elements/dist/plugin")],
+};
