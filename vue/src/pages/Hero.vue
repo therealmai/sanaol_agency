@@ -3,16 +3,16 @@
     <!-- <div class="w-full object-cover h-screen lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);"></div> -->
 
   <!-- Hero Banner -->
+  <div>
     <Carousel
     :herobanners="hero"
     :role="userType"
     />
-
+  </div>
   <!-- Events -->
-  <div class="flex flex-row flex-wrap gap-4 justify-center ml-28 mt-16">
-    <CardCarousel v-if="!isLoading.events"
+  <div class=" flex-row flex-wrap gap-4 justify-center  mt-16">
+    <EventCarousel class="ml-28" v-if="!isLoading.events"
     :events="events"
-    :role="userType"
     />
   </div>
   <Divider></Divider>
@@ -61,7 +61,7 @@ import NewsCard from '../components/Cards/News/NewsCard.vue';
 import Divider from '../components/Divider/Divider.vue';
 import Label from '../components/Label/Label.vue';
 import Carousel from '../components/HeroBanner/Carousel.vue';
-import CardCarousel from '../components/HeroBanner/CardCarousel.vue';
+import EventCarousel from '../components/EventsCarousel/EventCarousel.vue';
 import axios from '../axios';
 import { computed, toRaw } from 'vue';
 import { useStore } from 'vuex';
@@ -77,7 +77,7 @@ export default{
     Divider,
     Label,
     Carousel,
-    CardCarousel
+    EventCarousel
   },
   setup() {
     const store = useStore();
