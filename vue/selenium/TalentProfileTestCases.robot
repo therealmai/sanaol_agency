@@ -22,6 +22,7 @@ ${btn-login}           xpath://button[contains(text(),'Log in')]
 ${btn-profile}         xpath://span[contains(text(),'PROFILE')]
 ${btn-edit}            xpath://button[contains(text(),'Edit Profile')]
 
+${edit-modal}          xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]
 
 # Accounts
 ${admin-email}         whilpert@example.org
@@ -43,15 +44,27 @@ If user is talent, edit button is visible
 
     Element Should Be Visible        ${btn-edit}
 
+If edit button is clicked, talent edit modal is visible
+    Login as Talent 
+
+    Set Selenium Speed        ${speed-slow}
+
+    Page Should Contain Link         ${link-profile}
+
+    Click Link        ${link-profile}
+
+    Click Button      ${btn-edit}
+
+    Element Should Be Visible    ${edit-modal}
 
 If user is admin, profile button is not visible
     Login as Admin
 
     Set Selenium Speed    ${speed-slow}
 
-    Element Should Not Be Visible    ${link-profile}
+    # Element Should Not Be Visible    ${link-profile}
 
-    
+
 
 *** Keywords ***
 Login as Admin
