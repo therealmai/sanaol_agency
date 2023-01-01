@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
 //For talents
 Route::group(['middleware' => ['auth:talents']], function() {
-    Route::patch('users/{id}', [UserController::class, 'update'])->name('user.updateUser');
+    Route::patch('users_update/{id}', [UserController::class, 'update_talent'])->name('user.updateUser2');
 });
 
 //For admins
