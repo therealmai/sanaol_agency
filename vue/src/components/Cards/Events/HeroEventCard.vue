@@ -7,7 +7,7 @@
     <div class="w-[1000px]">
       <div class="w-[800px] h-[221.47px] flex flex-col items-start p-2">
           <!-- label -->
-          <Label class="" :fontSize="16" :height="33" :width="102" text="EVENTS"></Label>
+          <Label class="" :fontSize="16" :height="33" :width="102" text="EVENTS" @click="navigate"></Label>
           <!-- subtitle -->
           <span class="font-bold text-[30px] text-primary pt-4" style="max-width:713px">
             {{ title }}
@@ -50,6 +50,12 @@ export default {
     image: {
       type: String,
       },
+    id: String,
+  },
+  methods : {
+    navigate() {
+      this.$router.push('/events');
+    },
   }
 };
 </script>
