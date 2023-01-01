@@ -9,7 +9,7 @@
           <!-- label -->
           <Label class="" :fontSize="16" :height="33" :width="102" text="EVENTS"></Label>
           <!-- subtitle -->
-          <span class="font-bold text-[30px] text-primary pt-4">
+          <span class="font-bold text-[30px] text-primary pt-4" style="max-width:713px">
             {{ title }}
           </span>
           <!-- details -->
@@ -17,7 +17,7 @@
             <span>{{ date }}</span> | <span>{{ location }}</span>
           </p>
           <!-- description -->
-          <p class="font-normal leading-normal text-[16px] text-secondary pt-0">
+          <p class="font-normal leading-normal text-[16px] text-secondary pt-0" style="overflow: hidden; text-overflow: ellipsis;max-width: 700px; white-space: nowrap;">
             {{ content }}
           </p>
       </div>
