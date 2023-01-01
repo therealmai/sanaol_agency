@@ -31,6 +31,8 @@ ${admin-pass}          password
 ${talent-email}        olson.monserrat@example.org
 ${talent-pass}         password
 
+${guest-email}         nelson54@example.net
+${guest-pass}          password
 
 *** Test Cases ***
 If user is talent, edit button is visible
@@ -57,6 +59,10 @@ If edit button is clicked, talent edit modal is visible
 
     Element Should Be Visible    ${edit-modal}
 
+If 
+
+
+
 If user is admin, profile button is not visible
     Login as Admin
 
@@ -78,6 +84,12 @@ Login as Talent
     Input Text        ${input-email}    ${talent-email}
     Input Text        ${input-pass}     ${talent-pass}
     Click Button      ${btn-login}
+
+Login as Guest
+    Click link        ${link-login}
+    Input Text        ${input-email}    ${guest-email}
+    Input Text        ${input-pass}     ${guest-pass}
+    Click Button      ${btn-login} 
 
 
 Teardown
