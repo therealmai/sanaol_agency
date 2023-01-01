@@ -9,7 +9,7 @@
           <!-- label -->
           <Label class="" :fontSize="16" :height="33" :width="102" text="EVENTS"></Label>
           <!-- subtitle -->
-          <span class="font-bold text-[30px] text-primary pt-4">
+          <span class="font-bold text-[30px] text-primary pt-4" style="max-width:713px">
             {{ title }}
           </span>
           <!-- details -->

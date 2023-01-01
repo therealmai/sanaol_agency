@@ -1,8 +1,8 @@
 <template>
     
     <div class="flex flex-row gap-10 ml-[100px] space-y-16 justify-center" >
-     <img :src="rootImgPath+image" alt="" class="w-[500px] rounded-[8px] bg-cover cursor-pointer" @click="this.$router.push('/news/'+id)">
-      <div class=" flex flex-col w-[500px] items-start p-4">
+     <img :src="rootImgPath+image" alt="" style="height: 326px" class="w-[500px] rounded-[8px] bg-cover cursor-pointer" @click="this.$router.push('/news/'+id)">
+      <div class=" flex flex-col w-[500px] items-start p-4" style="max-height: 372px; overflow: hidden;margin-top: 0px; text-overflow: ellipsis;">
           <!-- subtitle -->
           <span class="font-bold text-[30px] text-primary pt-4 cursor-pointer" @click="this.$router.push('/news/'+id)">
             {{ title }}
@@ -12,10 +12,10 @@
             <span>{{ date }}</span> | <span>{{ location }}</span>
           </p>
           <!-- description -->
-          <p class="font-normal leading-normal text-[16px] text-secondary pt-0 text-justify">
+          <p class="font-normal leading-normal text-[16px] text-secondary pt-0 text-justify" style="display: -webkit-box;-webkit-line-clamp: 6;-webkit-box-orient: vertical;overflow:hidden;">
             {{ content }}
           </p>
-        <div v-show="islog==true && usertype=='admin'" class="flex items-center  ml-[60%] gap-[2%] mt-[25px] mb-[25px]" >
+        <div v-show="islog==true && usertype=='admin'" class="flex items-center  ml-[45%] gap-[2%] mt-[25px] mb-[25px]" >
             <router-link :to="'/news/' + id">
             <OutlineButton text="Delete" class="w-[123px]"  @click='deleteNews(), refreshPage()'></OutlineButton>
             </router-link>
