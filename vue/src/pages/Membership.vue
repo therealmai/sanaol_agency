@@ -1,14 +1,44 @@
 <template>
-  <div class="flex flex-row flex-nowrap text-secondary sm:scale-75 md:scale-100 lg:scale-100 items-center justify-center">
+  <div class="flex flex-row flex-nowrap text-secondary sm:scale-75 md:scale-100 lg:scale-100 justify-center">
     <!-- Image -->
     <div class="hidden w-full object-cover sm:hidden md:flex lg:w-full md:h-screen bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80); display: hidden;"></div>
-    
+
+      <!-- Error Modal -->
+      <errorModal ref="modal">
+        <template v-slot:modal-title> Registration </template>
+        <template v-slot:modal-content>
+          <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400">{{ errorMessage }}</h3>
+        </template>
+      </errorModal>
+
+      <SuccessModal ref="sucmodal">
+        <template v-slot:modal-title> Registration </template>
+        <template v-slot:modal-content>
+          <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400">{{ successMessage }}</h3>
+        </template>
+      </SuccessModal>
+
       <!-- Form Container -->
-      <div class="flex scale-75 items-center justify-center container max-h-screen lg:p-8 sm:scale-75 md:scale-75 lg:scale-100 xl:scale-100 xl:w-full 2xl:scale-100">
-          <div class=" md:mx-2 align-middle flex items-center justify-center lg:mx-6 md:w-full">
-    
+      <div class="flex scale-75 justify-center container max-h-screen lg:p-8 sm:scale-75 md:scale-75 lg:scale-100 xl:scale-100 xl:w-full 2xl:scale-100">
+          <div class=" md:mx-2 align-middle flex xl:items-center justify-center lg:mx-6 md:w-full">
+
             <!-- Form -->
             <form id="register" @submit="register" method="post">
+
+    
+          
+            
+    
+
+          
+          
+            
+    
+
+          
+    
+    @@ -105,7 +90,7 @@
+  
               <!-- Title -->
               <div class="mb-10">
                 <h1 class="text-4xl font-bold">Become a Rising Star</h1>
@@ -87,26 +117,22 @@
                   peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
                   peer-focus:scale-75 peer-focus:-translate-y-8">Confirm Password</label>
               </div>
-    
+
               <!-- Why Join Sanaol Agency -->
               <div class="relative z-0 mb-6 w-full group">
-                <textarea name="reason" id="reason" placeholder=" " required rows="5"
+                <textarea name="reason" id="reason" placeholder=" " required rows="5" v-model="user.reason"
                   class="block py-2 px-3 w-full text-base text-gray-700 bg-transparent border border-solid border-gray-300
                   rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
                   focus:border--indigo-500 peer"/>
+
+  
                 <label for="confirm_password"
                   class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
                   px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
                   peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
                   peer-focus:scale-75 peer-focus:-translate-y-8">Why do you want to join Sanaol Agency</label>
               </div>
-              <!-- Error Modal -->
-              <errorModal hidden>
-                <template v-slot:modal-title> Registration </template>
-                <template v-slot:modal-content>
-                  <h3 class="mb-0 text-lg font-normal text-gray-500 dark:text-gray-400">User already exists. Enter different credentials.</h3>
-                </template>
-              </errorModal>
+
               <!-- Submit Button -->
               <button type="submit" @click="register"
                 class="w-full px-6 py-3 mb-6
@@ -135,39 +161,82 @@
 </template>
 
 
-<script setup>
+<script>
 import { useRouter } from 'vue-router';
 import store from "../store";
 import errorModal from '../components/Modal/ErrorModal.vue';
-
-const toggleModal = errorModal.methods.toggleModal();
+import SuccessModal from '../components/Modal/SuccessModal.vue';
 const router = useRouter();
-const user = {
-  fname: '',
-  lname: '',
-  email: '',
-  password: '',
-  confirm_password: '',
-  insta_handle: '',
-  user_type: 'general',
-  reason: '',
-}
-
-function register(ev) {
-  ev.preventDefault();
-  store.dispatch('register', user)
-       .then(() => {
-        router.push({ name: 'login' });
-       })
-       .catch(err => {
-          console.log("Error");
-       })
-}
-
-function staticRegister() {
-  router.push({
-    name: 'Hero'
-  })
+export default {
+  data() {
+      return {
+        user: {
+          fname: '',
+          lname: '',
+          email: '',
+          password: '',
+          confirm_password: '',
+          insta_handle: '',
+          user_type: 'general',
+          reason: '',
+        },
+        errorMessage: '',
+        successMessage:''
+      }
+    },
+    methods: {
+      isMatch(){
+        return this.user.password === this.user.confirm_password;
+      },
+      isEmpty(){
+        return this.user.fname == '' || this.user.lname == '' || this.user.email == '' || this.user.password == '' ||
+        this.user.confirm_password == '' || this.user.insta_handle == '';
+      }, 
+      clearFields() {
+        this.user.fname = '';
+        this.user.lname = '';
+        this.user.email = '';
+        this.user.password = '';
+        this.user.confirm_password = '';
+        this.user.insta_handle = '';
+        this.user.user_type = 'general';
+        this.user.reason = '';
+      },
+      clearPassword(){
+        this.user.password = '';
+        this.user.confirm_password = '';
+      },
+      register(ev) {
+        ev.preventDefault();
+      
+        if(!this.isEmpty()) {
+          if(this.isMatch()) {
+            store.dispatch('register', this.user)
+              .then(() => {
+                this.successMessage = "Successfully registered!"
+                this.$refs.sucmodal.toggleModal();
+              })
+              .catch(err => {
+                this.errorMessage = 'User already exists. Please try again.'
+                this.$refs.modal.toggleModal();
+                this.clearFields();
+                console.log(err);
+              })
+            } else {
+              this.errorMessage = 'Password does not match. Please try again.'
+              this.$refs.modal.toggleModal();
+              this.clearPassword();
+            }
+          } else {
+            this.errorMessage = 'Fields are empty. Please enter your credentials.'
+            this.$refs.modal.toggleModal();
+          }
+        }
+      },
+      components: {
+        errorModal,
+        SuccessModal
+      }
 }
 </script>
 
