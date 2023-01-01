@@ -52,7 +52,6 @@
       this.loadUsers();
     },
   };
-
 </script>
 
 <style lang="postcss" scoped></style>
