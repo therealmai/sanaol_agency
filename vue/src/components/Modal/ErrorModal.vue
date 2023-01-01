@@ -1,9 +1,9 @@
 <template>
     <transition name="modal-fade">
     <div>
-      <button class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" v-on:click="toggleModal()">
-        Test Error Modal
-      </button>
+      <!-- <button class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" v-on:click="toggleModal()">
+        <slot name="modal-title"></slot>
+      </button> -->
       <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
         <div class="relative w-screen my-6 mx-auto max-w-md">
           <!--content-->
@@ -62,13 +62,11 @@
     }
   }
   </script>
-
 <style>
   .modal-fade-enter,
   .modal-fade-leave-to {
     opacity: 0;
   }
-
   .modal-fade-enter-active,
   .modal-fade-leave-active {
     transition: opacity .5s ease;
