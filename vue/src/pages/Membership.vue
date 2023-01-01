@@ -150,6 +150,7 @@ import store from "../store";
 import errorModal from '../components/Modal/ErrorModal.vue';
 import SuccessModal from '../components/Modal/SuccessModal.vue';
 
+
 const router = useRouter();
 
 export default {
