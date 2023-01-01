@@ -5,7 +5,7 @@
     data-bs-ride="carousel"
     >
   <!-- Indicators -->
-  <div class="carousel-indicators absolute right-0 left-0 flex p-0" style="bottom: -26px">
+  <div class="carousel-indicators absolute right-0 left-0 flex p-0 justify-center" style="bottom: -26px">
     <button
       data-bs-target="#carouselDarkVariant"
       data-bs-slide-to="0"
