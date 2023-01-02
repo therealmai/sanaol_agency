@@ -5,7 +5,7 @@
         <div class="bg-background2 relative h-[321px]">
             <!-- profile title-->
             <div><h1 class="pl-[83px] pt-[53px] font-bold leading-[38.73px] text-[32px] text-[#525252] relative ">Profile</h1></div>
-        
+
             <!-- profile content -->
             <div class="flex flex-row justify-center relative top-[150px] flex-wrap gap-6 mx-10 ">
               <!-- image -->
@@ -17,16 +17,16 @@
                           <p class="font-semibold text-[20px] p-0">@{{ user.insta_handle }}</p>
                         </div>
                         <div class="flex items-center ">
-                        
+
                           <!-- edit button will show if the user talent-->
-                          <div v-show="user_type == 'talent' && $route.params.id == user_id">  
+                          <div v-show="user_type == 'talent' && $route.params.id == user_id">
                             <EditBtn class="w-[150px]" text="Edit Profile" @click='showModal'></EditBtn>
                           </div>
 
                         </div>
                       </div>
                     <p class=" max-w-[968px] text-[20px] leading-[22px] font-normal text-[#A8A8A8] text-justify">{{ user.bio }}</p>
-                    
+
                     <div class="mt-[99px] justify-center container grid grid-cols-3 gap-[21px] w-[970.74px] ">
                       <div v-for="image in images" v-bind:key="image.id">
                         <img class="mt-[15px] rounded-[8px] w-[308.65px] h-[235.43px]" :src="image.image"/>
@@ -35,19 +35,19 @@
               </div>
             </div>
         </div>
-  
-        
-        
+
+
+
         <!-- profile modal display here -->
         <ProfileModal v-show="isProfileVisible" text="Profile Modal" @profile="closeModal" @update="showUpdate">
           <template v-slot:profile_body>
             <!-- content here -->
             <form id="edit" @submit="updateProfile" method="post">
-              <div class="flex flex-col w-[800px] max-h-[756px] mt-[30px] space-y-4">  
+              <div class="flex flex-col w-[800px] max-h-[756px] mt-[30px] space-y-4">
 
                 <span class="text-[32px] font-bold text-[#525252]">Edit Profile</span>
                 <div class="flex flex-row gap-10">
-                  
+
                   <input type="file" accept="image/*" name="file" id="file" @change="loadFile" style="display:none;"/>
                   <label for="file">
                     <div>
@@ -55,7 +55,7 @@
                         <img id="talentImg" class=" hover:bg-black hover:bg-opacity-90 hover:cursor-pointer w-[160px] h-[120px] object-cover rounded-[50%]"  src="../assets/dp.jpg" alt="alternatetext">
                     </div>
                   </label>
-                
+
                       <div class="h-[450px] w-full flex flex-col">
                               <div>
                                 <div class="flex flex-row gap-4 ">
@@ -68,7 +68,7 @@
                                 </div>
                                 <TextArea title="Biography" v-model="form.bio"></TextArea>
                               </div>
-                              
+
                               <div>
                                 <p>Featured Photos</p>
 
@@ -101,7 +101,7 @@
             </form>
           </template>
         </ProfileModal>
-        
+
         <!-- only show when confirm is clicked and isUpdated is true -->
         <UpdateModal v-show="isUpdated" :text="text" @click="updateProfile">
         </UpdateModal>
@@ -128,12 +128,12 @@
       </ConfirmModal>
 
         <DeletedModal v-show="isDeleted" @click="updateImage"></DeletedModal>
-        
+
       </div>
 
   </template>
-  
-  
+
+
   <script>
   import EditBtn from '../components/Buttons/FilledButton.vue';
   import ProfileModal from '../components/Modal/ProfileEditModal.vue';
@@ -230,6 +230,14 @@
         this.isProfileVisible = false;
       },
       showUpdate(){
+
+        if(this.form.fname == ''
+          || this.form.lname == ''
+          || this.form.email == ''
+          || this.form.insta_handle == '') {
+              alert('All fields must be filled.');
+              return;
+          }
         this.isProfileVisible = false;
         this.isUpdated = true;
       },
@@ -248,11 +256,10 @@
               imgHtml.src = URL.createObjectURL(e.target.files[0]);
           },
     },
-   
+
  };
-  
+
   </script>
-  
+
   <style>
   </style>
-  

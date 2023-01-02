@@ -18,11 +18,7 @@ yarn-error.log
 /.vscode
 vue/src/assets/css/main.css
 vue/selenium/venv
-vue/selenium/report.html
-vue/selenium/log.html
-vue/selenium/output.xml
 vue/selenium/python
-results
 
 vue/src/images/Event/*
 vue/src/images/HeroBanner/*

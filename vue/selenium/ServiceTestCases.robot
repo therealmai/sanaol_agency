@@ -5,8 +5,8 @@ Task Teardown    Teardown
 
 *** Variables ***
 ${browser}             Chrome
-${url}                 http://127.0.0.1:5173/hero
-${url-services}        http://127.0.0.1:5173/services
+${url}                 http://localhost:5173/hero
+${url-services}        http://localhost:5173/services
 
 ${wait-seconds}        15 seconds
 ${wait-not-exist-seconds}    5 seconds
@@ -16,7 +16,7 @@ ${link-services}       xpath://span[contains(text(),'SERVICES')]
 ${link-login}          xpath://body/div[@id='app']/div[1]/div[1]/nav[1]/div[1]/span[1]/a[5]
 
 ${input-email}         xpath://input[@id='email']
-${input-pass}          xpath://input[@id='password']  
+${input-pass}          xpath://input[@id='password']
 ${input-title}         xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/input[1]
 ${input-content}       xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[2]/textarea[1]
 
@@ -28,18 +28,18 @@ ${btn-cancel}          xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/d
 
 ${modal-success}       xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]
 
-${admin-email}         stephany39@example.org
+${admin-email}         a@aa.com
 ${admin-pass}          password
-${admin-span}          xpath://span[contains(text(),'FINN')]
+${admin-span}          xpath://span[contains(text(),'Brigitte')]
 
-${guest-email}         sanford.laverne@example.org
+${guest-email}         g@aa.com
 ${guest-pass}          password
-${guest-span}          xpath://span[contains(text(),'LANDEN')]
+${guest-span}          xpath://span[contains(text(),'Brooks')]
 
 ${services-1}          xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]
 ${services-1-editBtn}  xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]/button[1]
 
-${msg-alert}           All fields must be filled.   
+${msg-alert}           All fields must be filled.
 
 *** Test Cases ***
 If user is admin, edit button is present
@@ -48,7 +48,7 @@ If user is admin, edit button is present
     Wait Until Page Contains Element    ${services-1-editBtn}    ${wait-seconds}
     Element Should Be Visible   ${services-1-editBtn}
 
-Back button must be working in "Edit Hero Banner" page
+Back button must be working in "Edit Service" page
     Login as Admin
     Go To Services
     Click service 1 edit button
@@ -56,7 +56,7 @@ Back button must be working in "Edit Hero Banner" page
     Click Button    ${btn-back}
     Should be on services
 
-Cancel button must be working in "Edit Hero Banner" page
+Cancel button must be working in "Edit Service" page
     Login as Admin
     Go to Services
     Click service 1 edit button
@@ -69,18 +69,18 @@ If title field is missing, alert is shown
     Go To Services
     Click service 1 edit button
     Wait for input value to load    ${input-title}
-    Press Keys  ${input-title}   CTRL+a   BACKSPACE    
+    Press Keys  ${input-title}   CTRL+a   BACKSPACE
     Do Update
-    Alert Should Be Present    ${msg-alert}    
+    Alert Should Be Present    ${msg-alert}
 
 If content field is missing, alert is shown
     Login as Admin
     Go To Services
     Click service 1 edit button
     Wait for input value to load    ${input-content}
-    Press Keys  ${input-content}   CTRL+a   BACKSPACE    
+    Press Keys  ${input-content}   CTRL+a   BACKSPACE
     Do Update
-    Alert Should Be Present    ${msg-alert}    
+    Alert Should Be Present    ${msg-alert}
 
 If all fields are filled, do update
     Login as Admin
@@ -96,7 +96,7 @@ If all fields are filled, do update
 If user is not admin, edit button is absent
     Login as Guest
     Go To Services
-    Wait Until Page Does Not Contain Element   ${services-1-editBtn}    ${wait-not-exist-seconds}  
+    Wait Until Page Does Not Contain Element   ${services-1-editBtn}    ${wait-not-exist-seconds}
 
 *** Keywords ***
 Login as Admin
@@ -126,14 +126,14 @@ Click service 1 edit button
 Wait for input value to load
     [Arguments]    ${elem}
     Wait Until Keyword Succeeds    ${wait-seconds}    ${retry-interval-ms}    Input must not be empty    ${elem}
-    
+
 Input must not be empty
     [Arguments]    ${elem}
     ${actual value}=    Get Element Attribute    ${elem}    value
     Should Not Be Empty    ${actual value}
 
 Do Update
-    Click Button    ${btn-save} 
+    Click Button    ${btn-save}
     Wait Until Page Contains Element    ${btn-confirm}    ${wait-seconds}
     Click Button    ${btn-confirm}
 

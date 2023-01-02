@@ -18,7 +18,7 @@
                     <span>{{date}}</span> | <span>{{location}}</span>
                 </p>
                 <!-- description -->
-                <p class="font-normal leading-normal text-[14px] text-secondary pt-1">
+                <p class="font-normal leading-normal text-[14px] text-secondary pt-1 overflow-hidden">
                     {{content}}
                 </p>
             </div>

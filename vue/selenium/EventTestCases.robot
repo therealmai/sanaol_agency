@@ -5,27 +5,27 @@ Test Teardown    Teardown
 
 *** Variables ***
 ${browser}                 Chrome
-${url}                     http://127.0.0.1:5173
+${url}                     http://localhost:5173
 ${speed-fast}              0.1 seconds
 ${speed-slow}              0.5 seconds
 
 ${link-events}             xpath://body/div[@id='app']/div[1]/div[1]/nav[1]/div[1]/span[1]/a[4]
-${link-events-admin}       xpath://body/div[@id="app"]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[6]
-${link-events-general}     xpath://body/div[@id="app"]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[6]
+${link-events-admin}       xpath://html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[6]
+${link-events-general}     xpath://html[1]/body[1]/div[1]/div[1]/div[1]/nav[1]/div[1]/span[1]/a[6]
 ${link-login}              xpath://body/div[@id='app']/div[1]/div[1]/nav[1]/div[1]/span[1]/a[5]
 
 ${input-email}             xpath://input[@id='email']
-${input-pass}              xpath://input[@id='password']  
+${input-pass}              xpath://input[@id='password']
 
 ${btn-login}               xpath://button[contains(text(),'Log in')]
 
-${admin-email}             berniece57@example.com        #change the email based on db
+${admin-email}             a@aa.com        #change the email based on db
 ${admin-pass}              password
 
-${guest-email}             lyda02@example.net            #change the email based on db
+${guest-email}             g@aa.com            #change the email based on db
 ${guest-pass}              password
 
-${events-carousel}         xpath://div[@id='carouselControls']
+${events-carousel}         xpath://div[@id='carouselDarkVariant1']
 ${news-articles}           xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[3]
 
 ${events-edit-link}        xpath://body/div[@id='app']/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]
@@ -48,14 +48,14 @@ ${table-row-element}       xpath://tbody/tr[1]
 ${table-row-edit-link}     xpath://tbody/tr[1]/td[4]/a[1]
 ${table-row-delete-btn}    xpath://tbody/tr[1]/td[4]/button[1]
 
-${msg-alert}               All fields must be filled. 
+${msg-alert}               All fields must be filled.
 
 *** Test Cases ***
 Check Event page for all users
     Set Selenium Speed     ${speed-fast}
 
     Click Link    ${link-events}
-    
+
     Element Should Be Visible    ${events-carousel}
 
     Element Should Be Visible    ${news-articles}
@@ -66,7 +66,7 @@ If user is admin, edit button should be visible
 
     Set Selenium Speed    ${speed-fast}
 
-    Wait Until Keyword Succeeds    1 min    ${speed-slow}     Go to Events as Admin   
+    Wait Until Keyword Succeeds    1 min    ${speed-slow}     Go to Events as Admin
 
     Element Should Be Visible    ${events-edit-link}
 
@@ -78,7 +78,7 @@ If user is not admin, edit button should not be visible
 
     Set Selenium Speed    ${speed-fast}
 
-    Wait Until Keyword Succeeds    30 seconds    ${speed-slow}     Go to Events as Guest 
+    Wait Until Keyword Succeeds    30 seconds    ${speed-slow}     Go to Events as Guest
 
     Element Should Not Be Visible    ${events-edit-link}
 
@@ -90,7 +90,7 @@ If all fields are missing in add events
 
     Set Selenium Speed    ${speed-fast}
 
-    Wait Until Keyword Succeeds    30 seconds    ${speed-slow}     Go to Events as Admin 
+    Wait Until Keyword Succeeds    30 seconds    ${speed-slow}     Go to Events as Admin
 
     Click Link    ${events-edit-link}
 
@@ -132,11 +132,13 @@ If a field is missing in edit events
 
     Click Link    ${table-row-edit-link}
 
-    Press Keys  ${input-event-title}   CTRL+a   BACKSPACE   
+    Wait for input value to load    ${input-event-title}
+
+    Press Keys  ${input-event-title}   CTRL+a   BACKSPACE
 
     Do Save
 
-    #Alert Should Be Present    ${msg-alert}
+    Alert Should Be Present    ${msg-alert}
 
 
 If a field is changed in edit events
@@ -151,6 +153,8 @@ If a field is changed in edit events
     Wait Until Page Contains Element    ${table-row-element}
 
     Click Link    ${table-row-edit-link}
+
+    Wait for input value to load    ${input-event-title}
 
     Input Text    ${input-event-title}     Updated Title
 
@@ -172,7 +176,7 @@ If a row is deleted in events
 
     Click Button    ${table-row-delete-btn}
 
-    #Alert Should Be Present 
+    #Alert Should Be Present
 
 
 *** Keywords ***
@@ -200,6 +204,15 @@ Input Event fields
     Input Text        ${input-event-location}    Testing Location
     Input Text        ${input-event-type}        Testing Type
     Input Text        ${input-event-content}     Testing Content
+
+Wait for input value to load
+    [Arguments]    ${elem}
+    Wait Until Keyword Succeeds    30 seconds    1 second    Input must not be empty    ${elem}
+
+Input must not be empty
+    [Arguments]    ${elem}
+    ${actual value}=    Get Element Attribute    ${elem}    value
+    Should Not Be Empty    ${actual value}
 
 Do Save
     Click Button      ${save-btn}

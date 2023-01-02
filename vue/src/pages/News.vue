@@ -9,7 +9,7 @@
           <div class="font-bold text-[32px] mb-[8px] text-[#525252]"> News </div>
 
           <!-- SHOW ONLY IF THE ACCOUNT IS ADMIN -->
-          <div class="flex flex-row gap-4 right-[314.44px]" v-if="isAdmin">
+          <div class="flex flex-row gap-4 right-[314.44px]" v-if="usertype == 'admin'">
             <OutBtn text="DELETE" class="w-[123px]" @click="deleteEvent(news.id)"></OutBtn>
             <router-link :to="'/news/edit/'+ id"><FilledBtn text="EDIT" class="w-[93px]"></FilledBtn></router-link>
           </div>
@@ -29,7 +29,7 @@
       <h1>News Not Found!</h1>
     </div>
   </div>
-  
+
 </template>
 
 <script>
@@ -42,7 +42,7 @@ import axios from '../axios'
 export default {
   name: 'News',
   data () {
-    
+
     return {
       news: {},
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -53,12 +53,16 @@ export default {
     }
   },
   mounted() {
+    this.islog = this.$store.state.isLoggedIn;
+    if(this.islog == true){
+      this.usertype = this.$store.state.user.data.user_type;
+    }
     axios.get('news/'+this.$route.params.id).then(
       (response) => {
         this.news = response.data.data
         let prot = this.news.image.slice(0, 4);
         this.rootImgPath = prot === "http" ? '' : '/src/images/'
-        
+
       }
     )
   },

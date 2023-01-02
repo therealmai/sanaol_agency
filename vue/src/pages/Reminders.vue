@@ -10,7 +10,7 @@
                  v-bind:key="event.id"
                  class="flex flex-row flex-wrap gap-12 justify-center">
                 <Reminders :image = "event.image"
-                        width = "70"
+                        width = "120"
                         :label = "event.event_type"
                         link = "Talent_list"
                         :title = "event.title"
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Reminders from '../components/Cards/Reminders/Reminderscard.vue';
+import Reminders from '../components/Cards/Reminders/RemindersCard.vue';
 import axios from "../axios";
 
 export default{
