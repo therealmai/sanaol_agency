@@ -24,21 +24,6 @@
 
             <!-- Form -->
             <form id="register" @submit="register" method="post">
-
-    
-          
-            
-    
-
-          
-          
-            
-    
-
-          
-    
-    @@ -105,7 +90,7 @@
-  
               <!-- Title -->
               <div class="mb-10">
                 <h1 class="text-4xl font-bold">Become a Rising Star</h1>
@@ -92,7 +77,7 @@
                   peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
                   peer-focus:scale-75 peer-focus:-translate-y-8">Email address</label>
               </div>
-    
+
               <!-- Password -->
               <div class="relative z-0 mb-6 w-full group">
                 <input type="password" name="password" id="password" v-model="user.password"  placeholder=" " required
@@ -125,7 +110,7 @@
                   rounded dark:text-gray-700 dark:border-gray-300 dark:focus:border-indigo-500 focus:outline-none focus:ring-0
                   focus:border--indigo-500 peer"/>
 
-  
+
                 <label for="confirm_password"
                   class="peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8
                   px-3 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-indigo-500
@@ -154,7 +139,7 @@
                   style="color:#7367f0">Login here.</a>
                 </div>
             </form>
-    
+
         </div>
       </div>
   </div>
@@ -191,7 +176,7 @@ export default {
       isEmpty(){
         return this.user.fname == '' || this.user.lname == '' || this.user.email == '' || this.user.password == '' ||
         this.user.confirm_password == '' || this.user.insta_handle == '';
-      }, 
+      },
       clearFields() {
         this.user.fname = '';
         this.user.lname = '';
@@ -208,7 +193,7 @@ export default {
       },
       register(ev) {
         ev.preventDefault();
-      
+
         if(!this.isEmpty()) {
           if(this.isMatch()) {
             store.dispatch('register', this.user)

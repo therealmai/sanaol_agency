@@ -109,6 +109,10 @@ https://app.swaggerhub.com/apis-docs/therealmai/masterboard/2.0.0
 
 ### SELENIUM SETUP
 
+Notes
+1. Test scripts are found in `vue/selenium` folder. There should be 8 test script files seen.
+2. Test results and log files are found in the `results` folder. 
+
 Requirements
 1. python (latest version) (search in google how to install and verify)
 2. chropath from https://chrome.google.com/webstore/detail/chropath/ljngjbnaijcbncmcnjfhigebomdlkcjo

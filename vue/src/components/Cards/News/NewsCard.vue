@@ -1,5 +1,5 @@
 <template>
-    
+
     <div class="flex flex-row gap-10 ml-[100px] space-y-16 justify-center" >
      <img :src="rootImgPath+image" alt="" style="height: 326px" class="w-[500px] rounded-[8px] bg-cover cursor-pointer" @click="this.$router.push('/news/'+id)">
       <div class=" flex flex-col w-[500px] items-start p-4" style="max-height: 372px; overflow: hidden;margin-top: 0px; text-overflow: ellipsis;">
@@ -16,19 +16,19 @@
             {{ content }}
           </p>
         <div v-show="islog==true && usertype=='admin'" class="flex items-center  ml-[45%] gap-[2%] mt-[25px] mb-[25px]" >
-            <router-link :to="'/news/' + id">
-            <OutlineButton text="Delete" class="w-[123px]"  @click='deleteNews(), refreshPage()'></OutlineButton>
-            </router-link>
-            <router-link :to="'/news/edit' + id">
+            <!-- <router-link :to="'/news/' + id">
+            <OutlineButton text="Delete" class="w-[123px]"  @click='deleteNews(id), refreshPage()'></OutlineButton>
+            </router-link>-->
+            <router-link :to="'/news/edit/' + id">
             <FilledButton text="Edit" class="w-[123px]" @click='editNews'></FilledButton>
             </router-link>
         </div>
       </div>
-     
+
     </div>
-    
+
   </template>
-  
+
   <script>
   import OutlineButton from '../../Buttons/OutlineButton.vue';
   import FilledButton from '../../Buttons/FilledButton.vue';
@@ -63,7 +63,7 @@
       refreshPage() {
             location.reload();
         },
-        deleteEvent(id) {
+        deleteNews(id) {
       axios.patch(`news/delete/${id}`)
         .then(response => {
           console.log('Nothing to see here');
@@ -75,7 +75,6 @@
     }
   };
   </script>
-  
+
   <style>
   </style>
-  
