@@ -1,18 +1,6 @@
-Trello: https://trello.com/b/FaILhCut/masterboard
+# SANAOL AGENCY (Talent Management System)
 
-GDocs: https://docs.google.com/document/d/1Svu7aSQSrrJWlBobQ3g16plVqbe4gtShEG3oo7ViGs8/edit
-
-ERD: https://lucid.app/lucidchart/9a1cab09-f0a9-442d-a978-dfa0e3b312db/edit?viewport_loc=-669%2C-99%2C3945%2C1969%2C0_0&invitationId=inv_39c2fe27-80e4-464b-b9e3-ffd73aea9b29
-
-UI: https://www.figma.com/file/z3FHt6b2J9WzAWoE3pkZcq/Masterboard?node-id=0%3A1&t=RqSsjF12qRpDYPWm-1
-
-ScreenFlow: https://www.figma.com/file/Qj2A3fi7RsCjYLZrDSDn3c/CS-3105-Screenflow?node-id=0%3A1&t=s8OGxrQuUisViISM-1
-
-Laravel Docs: https://laravel.com/docs/9.x/installation
-
-SwaggerHub: https://app.swaggerhub.com/apis-docs/therealmai/masterboard/1.0.0
-
-# 3105 APPLICATION DEVELOPMENT - SANAOL AGENCY 
+![image](https://github.com/therealmai/sanaol_agency/assets/84717650/7dadff08-7013-450f-b774-b163c92377cb)
 
 ## About
 
